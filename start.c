@@ -49,10 +49,4 @@ void COPYSENTENCE()
     }
 }
 
-int main()
-{
-    STARTGAME();
-
-    return 0;
-}
 
