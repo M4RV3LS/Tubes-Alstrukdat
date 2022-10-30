@@ -15,7 +15,7 @@ void STARTGAME();
 // akuisisi file savefile.txt (config awal) dan menyimpan savefile.txt di sebuah list
 
 void COPYSENTENCE();
-//
+// copy 1 game (anggep aja 1 kalimat yaa)
 
 void ADVGAME();
 // nge adv backslash ( \n )
