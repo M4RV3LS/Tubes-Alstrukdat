@@ -17,8 +17,7 @@ void STARTGAME()
 	char *A[MaxGame];
     int neff;  /* Memori tempat penyimpanan elemen (container) */
     } List;
-    
-    List *game = malloc(sizeof(*game));
+    List (*game);
     game->neff = i;
     for (int y = 0; y < game->neff; y++)
     {
