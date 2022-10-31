@@ -5,20 +5,17 @@
 static FILE *pita;
 static int retval;
 
-#define MaxGame 100
 
-void STARTGAME()
+
+void STARTGAME(List *game)
 {
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
     START();
     int i = (GetCC() - '0');
 
-    typedef struct {
-	char *A[MaxGame];
-    int neff;  /* Memori tempat penyimpanan elemen (container) */
-    } List;
-    List (*game);
+
     game->neff = i;
+    
     for (int y = 0; y < game->neff; y++)
     {
         ADVGAME();

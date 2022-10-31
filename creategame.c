@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include "creategame.h"
+#include "start.h"
 
-void CREATEGAME()
+void CREATEGAME(List *game)
 {
     char *nama_game;
     scanf("%s", &nama_game);

@@ -9,6 +9,13 @@
 #define IdxMin 1
 #define IdxUndef -999 /* indeks tak terdefinisi*/
 
+#define MaxGame 100
+
+typedef struct {
+	char *A[MaxGame];
+    int neff;  /* Memori tempat penyimpanan elemen (container) */
+    } List;
+
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
 typedef int ElType;
