@@ -15,7 +15,7 @@ void STARTGAME(List *game)
 
 
     game->neff = i;
-    
+    ADVGAME();
     for (int y = 0; y < game->neff; y++)
     {
         ADVGAME();

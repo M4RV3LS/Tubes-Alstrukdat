@@ -11,7 +11,7 @@ int main()
 {
     List *game;
     CreateEmpty(game);
-    START(*game);       // bisa dari load juga 
+    START(*game);     // bisa dari load juga 
 
     // .... masukkan command-commandnya. 
 
