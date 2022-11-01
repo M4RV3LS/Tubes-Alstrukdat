@@ -9,11 +9,9 @@
 #define IdxMin 1
 #define IdxUndef -999 /* indeks tak terdefinisi*/
 
-#define MaxGame 100
-
 typedef struct {
-	char *A[MaxGame];
-    int neff;  /* Memori tempat penyimpanan elemen (container) */
+	char *A[IdxMax]; /* Memori tempat penyimpanan elemen (container) */
+    int neff;  
     } List;
 
 /* Definisi elemen dan koleksi objek */
@@ -43,6 +41,9 @@ typedef struct
 void MakeEmpty (TabInt *T);
 /* I.S. sembarang */
 /* F.S. Terbentuk tabel T kosong dengan kapasitas IdxMax-IdxMin+1 */
+
+void CreateEmpty(List *X);
+// mirip sama makeempty cuma adt list
 
 /* ********** SELEKTOR ********** */
 /* *** Banyaknya elemen *** */

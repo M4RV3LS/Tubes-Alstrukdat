@@ -38,7 +38,7 @@ void ADVGAME()
 void COPYSENTENCE()
 {
     currentWord.Length = 0;
-    while (currentChar != MARK)
+    while (currentChar != MARK) // Mark nya backslash atau enter ( \n )
     {
         if (currentWord.Length < NMax)
         { // jika lebih akan terpotong

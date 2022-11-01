@@ -14,6 +14,11 @@ void MakeEmpty (TabInt *T)
     // }
 }
 
+void CreateEmpty(List *X)
+{
+    X->neff = 0;
+}
+
 /* ********** SELEKTOR ********** */
 /* *** Banyaknya elemen *** */
 int NbElmt (TabInt T)
