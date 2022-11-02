@@ -10,12 +10,12 @@ void DELETE(List *game)
     ListGame(&game);
     
     printf("Masukkan nomor game yang akan dihapus: ");
-    scanf("%d", &nomor_game);
+    fscanf(stdin, "%d", nomor_game);
 
-    if (game->A[nomor_game] == nama_game)
+    if (game->A[nomor_game] > game->A[5])
     {
         game->neff -= 1;
-        printf("Game berhasil dihapus")
+        printf("Game berhasil dihapus");
     }
     else
     {
