@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include "array.h"
+#include <stdio.h>
 
 #ifndef PLAYGAME_H
 #define PLAYGAME_H
