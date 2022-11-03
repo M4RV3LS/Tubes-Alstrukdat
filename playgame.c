@@ -7,6 +7,10 @@
 void PLAY(Queue *queuegame)
 {
     ElType A;
+    char* rng, dinner;
+    rng = "RNG";
+    dinner = "Dinner DASH"
+
     if (isEmpty(*queuegame))
     {
         queuegame(); // nunggu queuegame
@@ -14,16 +18,16 @@ void PLAY(Queue *queuegame)
 
     else
     {
-        if (queuegame->buffer[0] == "RNG")
+        if (queuegame->buffer[0] == rng)
         {
-            printf("Loading %s ...", queuegame->buffer[0]);
+            printf("Loading %s ...", rng);
             dequeue(queuegame, &A);
             gameRNG();
         } 
 
-        else if (queuegame->buffer[0] == "Dinner DASH")
+        else if (queuegame->buffer[0] == dinner)
         {
-            printf("Loading %s ...", queuegame->buffer[0]);
+            printf("Loading %s ...", dinner);
             dequeue(queuegame, &A);
             dinnerdash(); //nunggu fungsi game dinner dash
         }
