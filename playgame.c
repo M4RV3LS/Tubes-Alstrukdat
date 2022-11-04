@@ -4,7 +4,7 @@
 #include "RNG.h"
 #include "queue.h"
 
-void PLAY(Queue *q1)
+void PLAYGAME(Queue *q1)
 {
     ElType A;
     char* rng, dinner;
