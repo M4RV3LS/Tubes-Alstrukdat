@@ -4,37 +4,37 @@
 #include "RNG.h"
 #include "queue.h"
 
-void PLAY(Queue *queuegame)
+void PLAY(Queue *q1)
 {
     ElType A;
     char* rng, dinner;
     rng = "RNG";
-    dinner = "Dinner DASH"
+    dinner = "Dinner DASH";
 
-    if (isEmpty(*queuegame))
+    if (isEmpty(*q1))
     {
-        queuegame(); // nunggu queuegame
+        QUEUEGAME(*q1); // nunggu queuegame
     }
 
     else
     {
-        if (queuegame->buffer[0] == rng)
+        if (HEAD(*q1) == rng)
         {
             printf("Loading %s ...", rng);
-            dequeue(queuegame, &A);
+            dequeue(q1, &A);
             gameRNG();
         } 
 
-        else if (queuegame->buffer[0] == dinner)
+        else if (HEAD(*q1) == dinner)
         {
             printf("Loading %s ...", dinner);
-            dequeue(queuegame, &A);
+            dequeue(q1, &A);
             dinnerdash(); //nunggu fungsi game dinner dash
         }
 
         else
         {
-            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", queuegame->buffer[0]);
+            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q1));
         }
 
     }
