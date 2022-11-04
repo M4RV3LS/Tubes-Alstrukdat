@@ -34,7 +34,7 @@ void PLAY(Queue *queuegame)
 
         else
         {
-            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", queuegame->A[0]);
+            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", queuegame->buffer[0]);
         }
 
     }
