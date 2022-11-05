@@ -155,6 +155,8 @@ void InsertLast(List *L, ElType X)
     }
 }
 
+
+
 void DeleteFirst(List *L)
 /* I.S. L terdefinisi, tidak kosong. */
 /* F.S. F diset dengan elemen pertama L, elemen pertama L dihapus dari L. */
