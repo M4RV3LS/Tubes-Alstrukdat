@@ -6,7 +6,7 @@ void SKIPGAME(Queue *q, int n)
     printf("Berikut adalah daftar game-mu.\n");
     int i;
     for (i = 0; i < length(*q1); i++){
-        printf("%d. %s",i+1, q1->buffer[i]);
+        printf("%d. %s\n",i+1, q1->buffer[i]);
     }
 
     ElType x;
