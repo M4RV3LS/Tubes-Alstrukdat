@@ -1,53 +1,70 @@
 #include "start.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-static FILE *pita;
-static int retval;
-
-
-
-void STARTGAME(List *game)
-{
-    printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
-    START();
-    int i = (GetCC() - '0');
-
-
-    game->neff = i;
-    ADVGAME();
-    for (int y = 0; y < game->neff; y++)
-    {
-        ADVGAME();
-        COPYSENTENCE();
-        game->A[y] = currentWord.TabWord;
-
+void STARTGAME(ArrayDin *game){
+    char path[NMax];
+    char *filename = "savefile.txt";
+    stringConcat("../data/",filename,path);
+    printf("%s\n",path);
+    STARTWORD(path);
+    int nGame = WordToInt(currentWord);
+    printf("%d\n" , nGame);
+    char string[NMax];
+    for (int i = 1; i <= nGame; i++){
+        ADVLine();
+        wordToString(currentWord , string);
+        //InsertIn(string , ListGames , i);
+        InsertLast(game , string);
+        printf("%s\n" , (*game).A[i-1]);
     }
-
-    /* hasil dari create game :
-    list of list, contoh langsung dari file savefile.txt
-    game->A[i-1] = {"RNG", "Diner DASH", "DINASAUR IN EARTH", "RISEWOMAN", "EIFFEL TOWER"}
+    if(!IsEmpty(*game)) 
+    { 
+        printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n"); 
+    } 
+    
+    /*
+    ADVWORD();
+    int j;
+    int idx2 = currentWord.TabWord[0] - 48;
+    for (j=0; j < idx2; j++){
+        ADVWORD();
+        insertLast(ListHistory, currentWord);
+    }
+    
     */
 }
 
-void ADVGAME()
-{
-    retval = fscanf(pita, "%c", &currentChar);
-}
 
-void COPYSENTENCE()
-{
-    currentWord.Length = 0;
-    while (currentChar != MARK) // Mark nya backslash atau enter ( \n )
-    {
-        if (currentWord.Length < NMax)
-        { // jika lebih akan terpotong
-            currentWord.TabWord[currentWord.Length++] = currentChar;
-            ADV();
-        }
-        else
-            break;
-    }
+int main(){
+    ArrayDin ListGames;
+    STARTGAME(&ListGames);
 }
 
 
+/*
+void LOADBNMO(ArrayDin* GamesList, char* filename) 
+ { 
+     char path[50]; 
+     stringConcat("./data/",filename,path); 
+     // printf("%s",path); 
+     STARTWORD(path); 
+     int TotalGame = WordToInt(currentWord); 
+     int i = 1; 
+     // printf("%d\n",TotalGame); 
+     ADVLine(); 
+     while(i <= TotalGame) 
+     { 
+         // printf("%s\n",currentWord); 
+         char *line; 
+         line = WordToString(currentWord); 
+         // printf("%s\n",line); 
+         InsertLast(GamesList,line); 
+         // PrintArrayDin(*GamesList); 
+         ADVLine(); 
+         // printf("%s\n",line); 
+         i++; 
+     } 
+     if(!IsEmpty(*GamesList)) 
+     { 
+         printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n"); 
+     } 
+ }*/
