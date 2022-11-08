@@ -6,8 +6,8 @@
 ArrayDin CreateDynArray() {
  ArrayDin array;
  // Alokasi elemen array secara dinamik menggunakan malloc
- array.A = (ElType*) malloc (10 * sizeof(ElType));
- array.Capacity = 10; // Kapasitas array diset sebesar StartSize
+ array.A = (ElType*) malloc (50 * sizeof(ElType));
+ array.Capacity = 50; // Kapasitas array diset sebesar StartSize
  array.Neff = 0; // Karena masih kosong, elemen efektif array bernilai 0
  return array;
 }
@@ -57,10 +57,10 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i)
     InsertAt(array, el, 0); 
  }
 
-boolean IsEmpty (ArrayDin T)
+boolean IsEmpty (ArrayDin array)
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 {
-    return (T.Neff == 0);
+    return (array.Neff == 0);
 }
 /*
 int main()

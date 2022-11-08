@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include "listgame.h"
 
-void LISTGAME(List *game)
+void LISTGAME(ArrayDin *ListGames)
 {
-    int i = 0;
     printf("Berikut adalah daftar game yang tersedia\n");
-    for (i; i < game->neff; i++)
+    for (int i=0; i < ListGames->Neff; i++)
     {
-        printf("%i. %s\n", i+1, game->A[i]);
+        printf("%i. %s\n", i+1, ListGames->A[i]);
     }
 }

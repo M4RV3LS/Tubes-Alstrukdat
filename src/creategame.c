@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include "creategame.h"
-#include "start.h"
 
-void CREATEGAME(List *game)
+void CREATEGAME(ArrayDin *ListGames)
 {
-    STARTWORD();
-    game->A[game->neff] = currentWord.TabWord;
-    game->neff += 1;
+    printf("Masukkan nama game yang akan ditambahkan : ");
+    STARTCOMMANDGAME();
+    InsertLast(ListGames, currentCMD.TabWord);
+    printf("Game berhasil ditambahkan\n");
 }
+
+

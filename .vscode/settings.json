@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "CREATEGAME.H": "cpp"
+        "CREATEGAME.H": "cpp",
+        "mesinkar2.h": "c",
+        "deletegame.h": "c",
+        "arrayofstring.h": "c"
     }
 }

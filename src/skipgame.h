@@ -1,4 +1,4 @@
-#include "queue.h"
+#include "ADT/queue.h"
 
 void SKIPGAME(Queue *q, int n);
 // SKIPGAME merupakan command yang digunakan 

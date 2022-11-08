@@ -1,19 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "playgame.h"
-#include "queuegame.h"
-#include "RNG.h"
-#include "queue.h"
+
 
 void PLAYGAME(Queue *q1)
 {
     ElType A;
-    char* rng, dinner;
+    char *rng, *dinner;
     rng = "RNG";
     dinner = "Dinner DASH";
 
     if (isEmpty(*q1))
     {
-        QUEUEGAME(*q1); // nunggu queuegame
+        printf("Antrian game kosong.\n");
     }
 
     else
@@ -25,12 +24,37 @@ void PLAYGAME(Queue *q1)
             gameRNG();
         } 
 
-        else if (HEAD(*q1) == dinner)
+        else if(HEAD(*q1) == "DINOSAUR IN EARTH")
+        {
+            printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+        }
+
+        else if(HEAD(*q1) == "RISEWOMAN")
+        {
+            printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+
+        }
+
+        else if(HEAD(*q1) == "EIFFEL TOWER")
+        {
+            printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+
+        }
+        
+
+
+
+        /*else if (HEAD(*q1) == dinner)
         {
             printf("Loading %s ...", dinner);
             dequeue(q1, &A);
             dinnerdash(); //nunggu fungsi game dinner dash
-        }
+        }*/
+
+        /*else if(HEAD(*q1) == )
+        {
+
+        } */
 
         else
         {
@@ -38,4 +62,16 @@ void PLAYGAME(Queue *q1)
         }
 
     }
-    
+}   
+/*
+int main()
+{
+    Queue q;
+    CreateQueue(&q);
+    enqueue(&q, "RNG");
+    PLAYGAME(&q);
+
+    return 0;
+
+}
+*/

@@ -28,5 +28,5 @@ void InsertLast(ArrayDin *array, ElType el);
   
 void InsertFirst(ArrayDin *array, ElType el);
 
-boolean IsEmpty (ArrayDin T);
+boolean IsEmpty (ArrayDin array);
 #endif

@@ -1,11 +1,14 @@
-#include <stdio.h>
-#include "array.h"
-
-#ifndef DELETEGAME_h
+#ifndef DELETEGAME_H
 #define DELETEGAME_H
 
-void DELETE(List *game);
-// Menghapus game sesuai input dari user
+#include <stdio.h>
+#include "ADT/arrayOfString.h"
+#include "boolean.h"
+#include "ADT/mesinkata2.h"
+#include "ADT/mesinkar2.h"
+
+
+
+void DELETE(ArrayDin *ListGames);
 
 #endif
-
