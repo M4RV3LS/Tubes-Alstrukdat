@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "mesinkatav1.h"
-#include "array.h"
+#include "ADT/mesinkata2.h"
+#include "ADT/array.h"
 
 #ifndef START_H
 #define START_H
