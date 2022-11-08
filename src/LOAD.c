@@ -34,12 +34,12 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     */
 }
 
-/*
+
 int main(){
     ArrayDin ListGames;
     LOADFILE(&ListGames , "savefile.txt");
 }
-*/
+
 
 
 /*
