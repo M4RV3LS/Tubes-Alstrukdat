@@ -3,10 +3,15 @@
 
 void SKIPGAME(Queue *q, int n)
 {
-    printf("Berikut adalah daftar game-mu.\n");
-    int i;
-    for (i = 0; i < length(*q1); i++){
-        printf("%d. %s\n",i+1, q1->buffer[i]);
+    if (isEmpty(*q))
+    {
+        printf("Antrian game kosong.\n");
+    }else
+    {
+    printf("Berikut adalah daftar antrian game-mu.\n");
+    for (int i = IDX_HEAD(*q); i < IDX_HEAD(*q) + length(*q); i++){
+        printf("%d. %s\n",i+1, q->buffer[i]);
+    }
     }
 
     ElType x;
@@ -16,13 +21,30 @@ void SKIPGAME(Queue *q, int n)
         while (i<n)
         {
             dequeue(q,&x);
+            i++;
         }
-        PLAYGAME(q);
-    } else { // 
-        while(!IsEmpty(*q))
+        displayQueue(*q);
+        //PLAYGAME(q);
+    } 
+    else { // 
+        while(!isEmpty(*q))
         {
             dequeue(q,&x);
         } // seluruh game di skip
         printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
     }
+}
+
+int main(){
+    Queue game;
+    CreateQueue(&game);
+    enqueue(&game , "Marvel");
+    enqueue(&game , "Amjad");
+    enqueue(&game , "Asih");
+    enqueue(&game , "Raka");
+    IDX_HEAD(game) = 0;
+    IDX_TAIL(game) = 3;
+    displayQueue(game);
+    SKIPGAME(&game , 2);
+    return 0;
 }

@@ -79,8 +79,8 @@ void displayQueue(Queue q)
         printf("[");
         for (i = IDX_HEAD(q); i != IDX_TAIL(q); i = (i + 1) % CAPACITY)
         {
-            printf("%d,", q.buffer[i]);
+            printf("%s,", q.buffer[i]);
         }
-        printf("%d]\n", TAIL(q));
+        printf("%s]\n", TAIL(q));
     }
 }
