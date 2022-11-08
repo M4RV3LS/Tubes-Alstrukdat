@@ -39,7 +39,7 @@ int main(){
     game.buffer[3] = "Raka";
     IDX_HEAD(game) = 0;
     IDX_TAIL(game) = 3;
-    ArrayDin listgame = CreateDynArray();
+    ArrayDin listgame ;
     listgame.A[0] = "Asih";
     listgame.A[1] = "Marvel";
     listgame.A[2] = "Amjad";
