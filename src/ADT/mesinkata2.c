@@ -199,10 +199,10 @@ void wordToString(Word currentWord, char *string)
     int i = 0;
     while (i < currentWord.Length)
     {
-        *(string + i) = currentWord.TabWord[i];
+        string[i] = currentWord.TabWord[i];
         i++;
     }
-    *(string + i) = '\0';
+    string[i] = '\0';
 }
 
 Word stringToWord(char* command) 

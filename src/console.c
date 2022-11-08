@@ -49,7 +49,7 @@ void LISTGAME(ArrayDin *ListGames)
     printf("Berikut adalah daftar game yang tersedia\n");
     for (int i = 0; i < (*ListGames).Neff; i++)
     {
-        printf("%i. %s\n", i+1, (*ListGames).A[2]);
+        printf("%i. %s\n", i+1, (*ListGames).A[i]);
     }
 }
 
@@ -58,23 +58,32 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     stringConcat("../data/",filename,path);
     printf("%s\n",path);
     STARTWORD(path);
-    int nGame = WordToInt(currentWord) - 10;
+    int nGame = WordToInt(currentWord);
+    //nGame -= 10;
     printf("%d\n" , nGame);
-    char string[NMax];
-    for (int i = 0; i < nGame; i++){
+     char string[NMax];
+    for (int i = 1; i <= nGame; i++){
+        char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
+        // char * gamename;
+        int j = 0;
         ADVLine();
         wordToString(currentWord , string);
+        //printf("%s\n",string);
+        while (j <= currentWord.Length)
+        {
+            gamename[j] = string[j];
+            j++;
+        }
+        //gamename[j] = '\0';
         //InsertIn(string , ListGames , i);
-        ListGames->A[ListGames->Neff] = string;
-        ListGames->Neff++;
-        printf("%s\n" , (*ListGames).A[i]);
-        printf("%s\n", ListGames->A[0]);
+        InsertLast(ListGames , gamename);
+        printf("%s\n" , (*ListGames).A[i-1]);
     }
     if(!IsEmpty(*ListGames)) 
     { 
         printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n"); 
     } 
-    
+    LISTGAME(ListGames);
     /*
     ADVWORD();
     int j;
@@ -289,15 +298,26 @@ void STARTGAME(ArrayDin *ListGames){
     printf("%s\n",path);
     STARTWORD(path);
     int nGame = WordToInt(currentWord);
-    nGame -= 10;
+    // nGame -= 10;
     printf("%d\n" , nGame); 
     char string[NMax];
     for (int i = 1; i <= nGame; i++){
+        char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
+        // char * gamename;
+        int j = 0;
         ADVLine();
         wordToString(currentWord , string);
+        //printf("%s\n",string);
+        while (j <= currentWord.Length)
+        {
+            gamename[j] = string[j];
+            j++;
+        }
+        //gamename[j] = '\0';
         //InsertIn(string , ListGames , i);
-        InsertLast(ListGames , string);
+        InsertLast(ListGames , gamename);
         printf("%s\n" , (*ListGames).A[i-1]);
+
     }
     if(!IsEmpty(*ListGames)) 
     { 
@@ -337,6 +357,7 @@ int main()
 {
     ArrayDin array = CreateDynArray();
     LOADFILE(&array, "savefile.txt");
+    //STARTGAME(&array);
 
     return 0;
 
