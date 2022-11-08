@@ -1,4 +1,5 @@
-#include "array.h"
+#include "listgame.h"
+#include "ADT/queue.h"
 #include <stdio.h>
 
 #ifndef PLAYGAME_H
