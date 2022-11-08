@@ -3,9 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "mesinkar2.h"
-#include "mesinkata2.h"
-#include "arrayOfString.h"
+#include "ADT/mesinkar2.h"
+#include "ADT/mesinkata2.h"
+#include "ADT/arrayOfString.h"
+#include "boolean.h"
 
 
 void LOADFILE(ArrayDin *ListGames , char* filename);

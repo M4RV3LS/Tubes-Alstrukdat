@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "boolean.h"
+#include "../boolean.h"
 
 typedef int IdxType;
 typedef char* ElType;

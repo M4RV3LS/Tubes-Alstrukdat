@@ -5,7 +5,7 @@
 #ifndef __circular_queue_h__
 #define __circular_queue_h__
 
-#include "boolean.h"
+#include "../boolean.h"
 
 /* Nilai untuk indeks yang tidak terdefinisi */
 #define NIL -999

@@ -4,9 +4,9 @@
 
 void LOADFILE(ArrayDin *ListGames , char* filename){
     char path[NMax];
-    //stringConcat("./data/",filename,path);
-    // printf("%s",path);
-    STARTWORD(filename);
+    stringConcat("../data/",filename,path);
+    printf("%s\n",path);
+    STARTWORD(path);
     int nGame = WordToInt(currentWord);
     printf("%d\n" , nGame);
     char string[NMax];
@@ -34,12 +34,12 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     */
 }
 
-/*
+
 int main(){
     ArrayDin ListGames;
     LOADFILE(&ListGames , "savefile.txt");
 }
-*/
+
 
 /*
 void LOADBNMO(ArrayDin* GamesList, char* filename) 
