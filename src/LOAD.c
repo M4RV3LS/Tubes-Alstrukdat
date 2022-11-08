@@ -21,6 +21,9 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     { 
         printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n"); 
     } 
+    else{
+        printf("File tidak ada.");
+    }
     
     /*
     ADVWORD();

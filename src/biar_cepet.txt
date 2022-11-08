@@ -1,0 +1,8 @@
+gcc main.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c console.c
+
+
+5
+
+dinosaur in earth
+
+dinosaur in earth

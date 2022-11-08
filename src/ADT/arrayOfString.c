@@ -49,7 +49,8 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i)
   
  void InsertLast(ArrayDin *array, ElType el) 
  { 
-    InsertAt(array, el, (*array).Neff); 
+    (*array).A[(*array).Neff] = el; 
+    (*array).Neff++; 
  } 
   
  void InsertFirst(ArrayDin *array, ElType el) 

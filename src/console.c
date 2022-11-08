@@ -41,15 +41,15 @@ void DELETE(ArrayDin *ListGames)
 void HELP()
 {
     printf("Berikut command-command yang dapat anda gunakan: \n");
-    printf("1. START \n2. LOAD \n3. SAVE \n4. CREATE GAME \n5. LIST GAME \n6. DELETE GAME \n7. QUEUE GAME \n8. PLAY GAME \n9. SKIP GAME \n10. QUIT \n11. HELP");
+    printf("1. SAVE <nama_file> \n2. CREATE GAME \n3. LIST GAME \n4. DELETE GAME \n5. QUEUE GAME \n6. PLAY GAME \n7. SKIP GAME \n8. QUIT \n9. HELP\n");
 }
 
 void LISTGAME(ArrayDin *ListGames)
 {
     printf("Berikut adalah daftar game yang tersedia\n");
-    for (int i=0; i < ListGames->Neff; i++)
+    for (int i = 0; i < (*ListGames).Neff; i++)
     {
-        printf("%i. %s\n", i+1, ListGames->A[i]);
+        printf("%i. %s\n", i+1, (*ListGames).A[2]);
     }
 }
 
@@ -58,15 +58,17 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     stringConcat("../data/",filename,path);
     printf("%s\n",path);
     STARTWORD(path);
-    int nGame = WordToInt(currentWord);
+    int nGame = WordToInt(currentWord) - 10;
     printf("%d\n" , nGame);
     char string[NMax];
-    for (int i = 1; i <= nGame; i++){
+    for (int i = 0; i < nGame; i++){
         ADVLine();
         wordToString(currentWord , string);
         //InsertIn(string , ListGames , i);
-        InsertLast(ListGames , string);
-        printf("%s\n" , (*ListGames).A[i-1]);
+        ListGames->A[ListGames->Neff] = string;
+        ListGames->Neff++;
+        printf("%s\n" , (*ListGames).A[i]);
+        printf("%s\n", ListGames->A[0]);
     }
     if(!IsEmpty(*ListGames)) 
     { 
@@ -83,6 +85,8 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     }
     
     */
+    
+   
 }
 
 void PLAYGAME(Queue *q1)
@@ -285,8 +289,8 @@ void STARTGAME(ArrayDin *ListGames){
     printf("%s\n",path);
     STARTWORD(path);
     int nGame = WordToInt(currentWord);
-    printf("%d\n" , nGame);
     nGame -= 10;
+    printf("%d\n" , nGame); 
     char string[NMax];
     for (int i = 1; i <= nGame; i++){
         ADVLine();
@@ -310,5 +314,30 @@ void STARTGAME(ArrayDin *ListGames){
     }
     
     */
+    LISTGAME(ListGames);
 }
 
+/*
+int main()
+{
+    ArrayDin listgame = CreateDynArray();
+    listgame.A[0] = "Asih";
+    listgame.A[1] = "Marvel";
+    listgame.A[2] = "Amjad";
+    listgame.A[3] = "Raka" ;
+    listgame.A[4] = "Carissa";
+    listgame.Neff = 5;
+
+    LISTGAME(&listgame);
+    return 0;
+}
+*/
+
+int main()
+{
+    ArrayDin array = CreateDynArray();
+    LOADFILE(&array, "savefile.txt");
+
+    return 0;
+
+}
