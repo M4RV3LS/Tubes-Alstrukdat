@@ -5,12 +5,16 @@
 
 void QUEUEGAME(Queue *q1, ArrayDin *game){
     //List *game;
-
+    if (isEmpty(*q1))
+    {
+        printf("Antrian game kosong.\n");
+    }else
+    {
     printf("Berikut adalah daftar antrian game-mu.\n");
     for (int i = IDX_HEAD(*q1); i < IDX_HEAD(*q1) + length(*q1); i++){
         printf("%d. %s\n",i+1, q1->buffer[i]);
     }
-
+    }
     LISTGAME(game);
 
 
@@ -30,6 +34,7 @@ void QUEUEGAME(Queue *q1, ArrayDin *game){
     enqueue(q1, val);
     printf("Game berhasil ditambahkan kedalam daftar antrian.\n");
     }
+    
 }
 /*
 int main(){
@@ -39,8 +44,8 @@ int main(){
     game.buffer[1] = "Asih";
     game.buffer[2] = "Amjad";
     game.buffer[3] = "Raka";
-    IDX_HEAD(game) = 0;
-    IDX_TAIL(game) = 3;
+    IDX_HEAD(game) = IDX_UNDEF;
+    IDX_TAIL(game) = IDX_UNDEF;
     ArrayDin listgame ;
     listgame.A[0] = "Asih";
     listgame.A[1] = "Marvel";
