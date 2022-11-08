@@ -1,29 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "start.h"
-#include "mesinkarakterv2.h"
-#include "mesinkata.h"
+#include "mesinkar2.h"
+#include "mesinkata2.h"
 #include "arrayOfString.h"
 
 void DELETE(ArrayDin *ListGames)
 {
     int nomor_game;
     printf("Masukkan nomor game yang akan dihapus: ");
-    STARTWORD();
-    nomor_game = (currentWord.TabWord - '0');
+    STARTCOMMAND();
+    nomor_game = (currentCMD.TabWord[0] - '0');
 
     if (nomor_game > 5)
     {
-        int j = game->neff;
+        int j = ListGames->Neff;
         int i = nomor_game-1;
         
         while (i < j)
         {
-            game->A[i] = game->A[i+1];
+            ListGames->A[i] = ListGames->A[i+1];
+            free(ListGames->A[i+1]);
             i++;
         }
         
-        game->neff -= 1;
+        ListGames->Neff -= 1;
         printf("Game berhasil dihapus");
 
     }
@@ -32,4 +33,10 @@ void DELETE(ArrayDin *ListGames)
         printf("Game gagal dihapus");
     }
 
+}
+
+int main()
+{   
+    ArrayDin ListGames;
+    DELETE(&ListGames);
 }
