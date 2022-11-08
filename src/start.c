@@ -1,6 +1,6 @@
 #include "start.h"
 
-void STARTGAME(ArrayDin *game){
+void STARTGAME(ArrayDin *ListGames){
     char path[NMax];
     char *filename = "savefile.txt";
     stringConcat("../data/",filename,path);
@@ -14,10 +14,10 @@ void STARTGAME(ArrayDin *game){
         ADVLine();
         wordToString(currentWord , string);
         //InsertIn(string , ListGames , i);
-        InsertLast(game , string);
-        printf("%s\n" , (*game).A[i-1]);
+        InsertLast(ListGames , string);
+        printf("%s\n" , (*ListGames).A[i-1]);
     }
-    if(!IsEmpty(*game)) 
+    if(!IsEmpty(*ListGames)) 
     { 
         printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n"); 
     } 

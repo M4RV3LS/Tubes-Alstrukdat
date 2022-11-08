@@ -15,7 +15,7 @@ akuisisi file trus filenya taro di list
 */
 
 
-void STARTGAME(ArrayDin *game);
+void STARTGAME(ArrayDin *ListGames);
 // akuisisi file savefile.txt (config awal) dan menyimpan savefile.txt di sebuah list
 
 
