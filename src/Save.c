@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ADT/arrayOfString.h"
+//#include "ADT/arrayOfString.h"
 #include "ADT/mesinkata2.h"
 #include "ADT/mesinkar2.h"
 #include "LOAD.h"
