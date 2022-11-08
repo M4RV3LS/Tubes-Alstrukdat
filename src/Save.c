@@ -27,7 +27,7 @@ void SAVEBNMO(ArrayDin* GamesList, char* filename)
  int main(){
     ArrayDin ListGames = CreateDynArray(); //= CreateDynArray();
     LOADFILE(&ListGames , "savefile.txt");
-    SAVEBNMO(&ListGames , "savefile4.txt");
+    SAVEBNMO(&ListGames , "savefile3.txt");
     /*
     ArrayDin arr;
     arr = CreateDynArray();
