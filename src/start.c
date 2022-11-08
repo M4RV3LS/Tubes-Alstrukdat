@@ -8,6 +8,7 @@ void STARTGAME(ArrayDin *game){
     STARTWORD(path);
     int nGame = WordToInt(currentWord);
     printf("%d\n" , nGame);
+    nGame -= 10;
     char string[NMax];
     for (int i = 1; i <= nGame; i++){
         ADVLine();
