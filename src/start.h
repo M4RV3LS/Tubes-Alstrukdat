@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "ADT/mesinkar2.h"
 #include "ADT/mesinkata2.h"
-#include "ADT/array.h"
+#include "ADT/arrayOfString.h"
+#include "boolean.h"
 
 #ifndef START_H
 #define START_H
@@ -13,14 +15,10 @@ akuisisi file trus filenya taro di list
 */
 
 
-void STARTGAME(List *game);
+void STARTGAME(ArrayDin *game);
 // akuisisi file savefile.txt (config awal) dan menyimpan savefile.txt di sebuah list
 
-void COPYSENTENCE();
-// copy 1 game (anggep aja 1 kalimat yaa)
 
-void ADVGAME();
-// nge adv backslash ( \n )
 
 
 
