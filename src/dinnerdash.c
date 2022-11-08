@@ -3,6 +3,8 @@
 #include "boolean.h"
 #include "arraydinner.h"
 
+//masih berantakan beut gais bntryak
+
 void printAwal()
 {
     printf("SALDO: %d\n", saldo);
