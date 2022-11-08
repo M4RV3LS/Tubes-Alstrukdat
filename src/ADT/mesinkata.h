@@ -5,47 +5,93 @@
 #define __MESINKATA_H__
 
 #include "boolean.h"
-#include "mesinkarakterv2.h"
+#include "mesinkar.h"
 
-#define NMax 50
+#define NMax 100
 #define BLANK ' '
 
-typedef struct
-{
-   char TabWord[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
-   int Length;
-} Word;
+typedef struct {
+	char TabKata[NMax+1]; /* container penyimpan kata, indeks yang dipakai [1..NMax] */
+    int Length;
+} Kata;
 
 /* State Mesin Kata */
-extern boolean EndWord;
-extern Word currentWord;
+extern boolean EndKata;
+extern Kata CKata;
+extern Kata CCommand;
 
-void IgnoreBlanks();
+/* *** ADT untuk baca file eksternal *** */
+
+void IgnoreBlank();
 /* Mengabaikan satu atau beberapa BLANK
-   I.S. : currentChar sembarang
-   F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+   I.S. : CC sembarang 
+   F.S. : CC ≠ BLANK atau CC = MARK */
 
-void STARTWORD();
-/* I.S. : currentChar sembarang
-   F.S. : EndWord = true, dan currentChar = MARK;
-          atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
-          currentChar karakter pertama sesudah karakter terakhir kata */
+void STARTGAME(char* filename);
+/* I.S. : CC sembarang 
+   F.S. : EndKata = true, dan CC = MARK; 
+          atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
+          CC karakter pertama sesudah karakter terakhir kata */
 
-void ADVWORD();
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
-   Proses : Akuisisi kata menggunakan procedure SalinWord */
+void ADVKATA();
+/* I.S. : CC adalah karakter pertama kata yang akan diakuisisi 
+   F.S. : CKata adalah kata terakhir yang sudah diakuisisi, 
+          CC adalah karakter pertama dari kata berikutnya, mungkin MARK
+          Jika CC = MARK, EndKata = true.		  
+   Proses : Akuisisi kata menggunakan procedure SalinKata */
 
-void CopyWord();
-/* Mengakuisisi kata, menyimpan dalam currentWord
-   I.S. : currentChar adalah karakter pertama dari kata
-   F.S. : currentWord berisi kata yang sudah diakuisisi;
-          currentChar = BLANK atau currentChar = MARK;
-          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
+void SalinKata();
+/* Mengakuisisi kata, menyimpan dalam CKata
+   I.S. : CC adalah karakter pertama dari kata
+   F.S. : CKata berisi kata yang sudah diakuisisi; 
+          CC = BLANK atau CC = MARK; 
+          CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
-boolean isEndWord();
+
+/* *** ADT untuk baca commands *** */
+
+void IgnoreDot();
+/* Mengabaikan satu atau beberapa BLANK dan MARK
+   I.S. : CC sembarang 
+   F.S. : CC ≠ BLANK atau CC = ENTER */
+
+void STARTCOMMAND();
+/* I.S. : CC sembarang 
+   F.S. : EndKata = true, dan CC = ENTER; 
+          atau EndKata = false, CCommand adalah kata yang sudah diakuisisi,
+          CC karakter pertama sesudah karakter terakhir kata */
+
+void ADVCOMMAND();
+/* I.S. : CC adalah karakter pertama kata yang akan diakuisisi 
+   F.S. : CComand adalah kata terakhir yang sudah diakuisisi, 
+          CC adalah karakter pertama dari kata berikutnya, mungkin ENTER
+          Jika CC = ENTER, EndKata = true.		  
+   Proses : Akuisisi kata menggunakan procedure SalinCommand */
+
+void SalinCommand();
+/* Mengakuisisi kata, menyimpan dalam CComand
+   I.S. : CC adalah karakter pertama dari kata
+   F.S. : CComand berisi kata yang sudah diakuisisi; 
+          CC = BLANK atau CC = ENTER; 
+          CC adalah karakter sesudah karakter terakhir yang diakuisisi.
+          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+
+
+/* *** FUNGSI TAMBAHAN *** */
+
+boolean IsKataSama(Kata InputCommand, Kata Command);
+/* Mengirimkan true jika K1 = K2 : Length dan elemen tiap arraynya sama */
+
+void PrintKata(Kata K);
+/* Mencetak kata ke layar
+   I.S. : Kata K terdefinisi
+   F.S. : Kata K tercetak pada layar */
+
+int stringLength (char* string);
+/* Mengirimkan panjang sebuah string */
+
+Kata toKata(char* command);
+/* Mengirimkan kata yang elemen of arraynya berasal dari command */
 
 #endif
