@@ -3,8 +3,9 @@
 #include "start.h"
 #include "mesinkarakterv2.h"
 #include "mesinkata.h"
+#include "arrayOfString.h"
 
-void DELETE(List *game)
+void DELETE(ArrayDin *ListGames)
 {
     int nomor_game;
     printf("Masukkan nomor game yang akan dihapus: ");

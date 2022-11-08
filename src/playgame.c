@@ -7,7 +7,7 @@
 void PLAYGAME(Queue *q1)
 {
     ElType A;
-    char* rng, dinner;
+    WORD rng, dinner;
     rng = "RNG";
     dinner = "Dinner DASH";
 
