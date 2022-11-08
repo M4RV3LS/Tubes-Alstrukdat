@@ -7,7 +7,7 @@
 void PLAYGAME(Queue *q1)
 {
     ElType A;
-    char* rng, dinner;
+    WORD rng, dinner;
     rng = "RNG";
     dinner = "Dinner DASH";
 
@@ -32,10 +32,15 @@ void PLAYGAME(Queue *q1)
             dinnerdash(); //nunggu fungsi game dinner dash
         }
 
+        else if(HEAD(*q1) == )
+        {
+            
+        }
+
         else
         {
             printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q1));
         }
 
     }
-    
+}   
