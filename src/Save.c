@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "arrayOfString.h"
-#include "mesinkata2.h"
-#include "mesinkar2.h"
+#include "ADT/arrayOfString.h"
+#include "ADT/mesinkata2.h"
+#include "ADT/mesinkar2.h"
 #include "LOAD.h"
 
 void SAVEBNMO(ArrayDin* GamesList, char* filename) 
@@ -10,7 +10,7 @@ void SAVEBNMO(ArrayDin* GamesList, char* filename)
     FILE* fp; 
     char path[50]; 
   
-    //stringConcat("./data/",filename,path); 
+    stringConcat("../data/",filename,path); 
     fp = fopen (path,"w+"); 
     fprintf(fp,"%d",Length(*GamesList)); 
     for(int i = 0; i < Length(*GamesList);i++) 
@@ -29,7 +29,7 @@ void SAVEBNMO(ArrayDin* GamesList, char* filename)
 
  /*Test Case*/
  int main(){
-    ArrayDin ListGames //= CreateDynArray();
+    ArrayDin ListGames = CreateDynArray(); //= CreateDynArray();
     LOADFILE(&ListGames , "savefile.txt");
     SAVEBNMO(&ListGames , "savefile2.txt");
     /*

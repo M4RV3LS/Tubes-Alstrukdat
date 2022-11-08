@@ -57,10 +57,10 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i)
     InsertAt(array, el, 0); 
  }
 
-boolean IsEmpty (ArrayDin T)
+boolean IsEmpty (ArrayDin array)
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 {
-    return (T.Neff == 0);
+    return (array.Neff == 0);
 }
 /*
 int main()
