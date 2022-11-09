@@ -97,5 +97,5 @@ boolean isMember(Queue q, ElType kata)
         }
         i++;
     }
-
+    return found;
 }

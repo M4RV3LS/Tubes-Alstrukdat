@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "deletegame.h"
 
+
 void DELETE(ArrayDin *ListGames, Queue *q1)
 {
     int nomor_game;
@@ -33,7 +34,8 @@ void DELETE(ArrayDin *ListGames, Queue *q1)
 
 }
 
-/* int main()
+/*
+int main()
 {   
     ArrayDin ListGames = CreateDynArray();
     ListGames.A[0] = "amjad";
@@ -45,7 +47,14 @@ void DELETE(ArrayDin *ListGames, Queue *q1)
     ListGames.A[6] = "marvel4";
     ListGames.A[7] = "marvel5";
     ListGames.Neff = 8;
-    DELETE(&ListGames);
+    Queue anjay;
+    CreateQueue(&anjay);
+    enqueue(&anjay, "ganteng");
+    enqueue(&anjay, "cantik");
+    enqueue(&anjay, "marvel4");
+
+
+    DELETE(&ListGames, &anjay);
 
     for (int i = 0; i < ListGames.Neff;i++)
     {
