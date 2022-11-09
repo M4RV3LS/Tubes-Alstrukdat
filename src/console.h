@@ -27,7 +27,7 @@
 
 void CREATEGAME(ArrayDin *ListGames);
 
-void DELETE(ArrayDin *ListGames);
+void DELETE(ArrayDin *ListGames, Queue *q1);
 
 void HELP();
 

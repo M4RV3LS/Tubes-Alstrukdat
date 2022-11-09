@@ -181,12 +181,13 @@ Word kataKedua(Word w)
     
     int j = i+1; //j mulai dari kata kedua
     int tab = 0;
-    while (j<w.Length){
+    while (j<w.Length)
     {
         second.TabWord[tab] = w.TabWord[j];
         j++;
         tab++;
     }
+    
 
     second.Length = w.Length-i+1;
     return second;

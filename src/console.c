@@ -8,14 +8,15 @@ void CREATEGAME(ArrayDin *ListGames)
     printf("Game berhasil ditambahkan\n");
 }
 
-void DELETE(ArrayDin *ListGames)
+void DELETE(ArrayDin *ListGames, Queue *q1)
 {
     int nomor_game;
     printf("Masukkan nomor game yang akan dihapus: ");
     STARTCOMMAND();
     nomor_game = WordToInt(currentCMD);
+    ElType nama_game = ListGames->A[nomor_game-1];
 
-    if (nomor_game > 5)
+    if (nomor_game > 5 && !isMember(*q1,nama_game) )
     {
         int j = ListGames->Neff;
         int i = nomor_game-1;
@@ -135,29 +136,25 @@ void PLAYGAME(Queue *q1)
             printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
 
         }
-        
 
 
-
-        /*else if (HEAD(*q1) == dinner)
+        /*else if (HEAD(*q1) == Diner DASH)
         {
             printf("Loading %s ...", dinner);
             dequeue(q1, &A);
             dinnerdash(); //nunggu fungsi game dinner dash
         }*/
 
-        /*else if(HEAD(*q1) == )
-        {
-
-        } */
 
         else
         {
-            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q1));
+            srand(time(NULL));
+            int random = rand();
+            printf("%d\n",random);
         }
 
     }
-}
+}   
 
 void QUEUEGAME(Queue *q1, ArrayDin *game){
     //List *game;
