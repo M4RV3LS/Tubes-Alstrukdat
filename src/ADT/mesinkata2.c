@@ -328,6 +328,19 @@ Word splitwordDD(Word kata){
     }
     return splitkata;
 }
+
+char *copystr(char *str)
+{
+    char *copy;
+    int i=0;
+    while(str[i]!='\0')
+    {
+        copy[i] = str[i];
+        i++;
+    }
+    return copy;
+}
+
 /*
 int main(){
     //char path[NMax];
