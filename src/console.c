@@ -3,8 +3,22 @@
 void CREATEGAME(ArrayDin *ListGames)
 {
     printf("Masukkan nama game yang akan ditambahkan : ");
-    STARTCOMMANDGAME();
-    InsertLast(ListGames, currentCMD.TabWord);
+    STARTCOMMAND();
+    char string[1000];
+    char *gamename = (char*) malloc (currentCMD.Length * sizeof(char));
+    // char * gamename;
+    int j = 0;
+    ADVLine();
+    wordToString(currentCMD , string);
+    //printf("%s\n",string);
+    while (j <= currentCMD.Length)
+    {
+        gamename[j] = string[j];
+        j++;
+    }
+        //gamename[j] = '\0';
+        //InsertIn(string , ListGames , i);
+    InsertLast(ListGames , gamename);
     printf("Game berhasil ditambahkan\n");
 }
 
