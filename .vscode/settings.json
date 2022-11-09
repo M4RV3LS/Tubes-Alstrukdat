@@ -4,6 +4,7 @@
         "mesinkar2.h": "c",
         "deletegame.h": "c",
         "arrayofstring.h": "c",
-        "mesinkata2.h": "c"
+        "mesinkata2.h": "c",
+        "queue.h": "c"
     }
 }

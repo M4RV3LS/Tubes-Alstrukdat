@@ -84,3 +84,18 @@ void displayQueue(Queue q)
         printf("%s]\n", TAIL(q));
     }
 }
+
+boolean isMember(Queue q, ElType kata)
+{
+    boolean found = false;
+    int i = IDX_HEAD(q);
+    while (i <= IDX_TAIL(q) && !found)
+    {
+        if (q.buffer[i] == kata)
+        {
+            found = true;
+        }
+        i++;
+    }
+
+}

@@ -2,14 +2,15 @@
 #include <stdlib.h>
 #include "deletegame.h"
 
-void DELETE(ArrayDin *ListGames)
+void DELETE(ArrayDin *ListGames, Queue *q1)
 {
     int nomor_game;
     printf("Masukkan nomor game yang akan dihapus: ");
     STARTCOMMAND();
     nomor_game = WordToInt(currentCMD);
+    ElType nama_game = ListGames->A[nomor_game-1];
 
-    if (nomor_game > 5)
+    if (nomor_game > 5 && !isMember(*q1,nama_game) )
     {
         int j = ListGames->Neff;
         int i = nomor_game-1;
