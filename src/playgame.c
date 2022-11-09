@@ -40,25 +40,21 @@ void PLAYGAME(Queue *q1)
             printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
 
         }
-        
 
 
-
-        /*else if (HEAD(*q1) == dinner)
+        /*else if (HEAD(*q1) == Diner DASH)
         {
             printf("Loading %s ...", dinner);
             dequeue(q1, &A);
             dinnerdash(); //nunggu fungsi game dinner dash
         }*/
 
-        /*else if(HEAD(*q1) == )
-        {
-
-        } */
 
         else
         {
-            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q1));
+            srand(time(NULL));
+            int random = rand();
+            printf("%d\n",random);
         }
 
     }
