@@ -74,4 +74,6 @@ void stringConcat(char str1[] , char str2[] , char *output);
 boolean wordAndCharSama(Word kata, char command[]);
 
 boolean wordAndWordSama(Word InputCommand, Word Command);
+
+int LengthKalimat(char *kalimat);
 #endif

@@ -61,6 +61,7 @@ void CopyWord(){
         currentWord.Length = i;}
 }
 
+
 void PrintWord(Word K){
     for (int i = 0; i < K.Length; i ++) {
         printf("%c", K.TabWord[i]);
@@ -316,6 +317,18 @@ int randint(int lower , int upper){
     srand(time(NULL));
     int random = (rand() % (upper - lower + 1)) + lower;
     return random;
+}
+
+int LengthKalimat(char *kalimat)
+{
+    int i = 0;
+    int length = 0;
+    while (kalimat[i] != ENTER)
+    {
+        length++;
+        i++;
+    }
+    return length;
 }
 
 /*
