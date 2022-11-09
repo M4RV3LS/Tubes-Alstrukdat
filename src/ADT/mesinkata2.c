@@ -341,6 +341,17 @@ char *copystr(char *str)
     return copy;
 }
 
+int LengthKalimat(char *kalimat)
+{
+    int i = 0;
+    int length = 0;
+    while (kalimat[i] != ENTER)
+    {
+        length++;
+        i++;
+    }
+    return length;
+}
 /*
 int main(){
     //char path[NMax];
