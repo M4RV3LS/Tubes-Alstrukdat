@@ -48,6 +48,11 @@ void CopyCommand();
 
 void CopyCommandGame();
 
+/***** ADT UNTUK MANIPULASI INPUT COMMAND *****/
+Word kataPertama(Word w);
+
+Word kataKedua(Word w);
+
 /***** ADT UNTUK KONVERSI TYPE DATA *****/
 char *akusisi(Word kata);
 
