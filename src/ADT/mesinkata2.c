@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "mesinkata2.h"
 
 Word currentWord;
@@ -274,6 +275,12 @@ boolean wordAndWordSama(Word InputCommand, Word Command)
     }
 }
 
+int randint(int lower , int upper){
+    srand(time(NULL));
+    int random = (rand() % (upper - lower + 1)) + lower;
+    return random;
+}
+
 /*
 int main(){
     //char path[NMax];
@@ -292,5 +299,8 @@ int main(){
     int a = 0 ;
     char b = intToChar(a);
     printf("%c",b);
+    int random = randint(1,5);
+    printf("%d" , random);
 }
 */
+
