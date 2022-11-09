@@ -323,7 +323,7 @@ int LengthKalimat(char *kalimat)
 {
     int i = 0;
     int length = 0;
-    while (kalimat[i] != ENTER)
+    while (kalimat[i] != '\0')
     {
         length++;
         i++;

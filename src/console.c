@@ -210,25 +210,32 @@ void QUEUEGAME(Queue *q1, ArrayDin *game){
         printf("%d. %s\n",i+1, q1->buffer[i]);
     }
     }
+    printf("\n");
     LISTGAME(game);
 
 
-    Queue q;
+    // Queue q;
     printf("Nomor Game yang mau ditambahkan ke antrian : ");
     int nomor_game;
-    CreateQueue(&q);
+    // CreateQueue(&q);
     STARTCOMMANDGAME();
     nomor_game = WordToInt(currentCMD);
     if (nomor_game > game->Neff){
          printf("Nomor permainan tidak valid\n");
     } else {
-        char *val = game->A[nomor_game - 1];
-        for (int i = 0; i< game->Neff; i++){
-            enqueue(&q, game->A[i]);
+        char *string = game->A[nomor_game - 1];
+        char *gamename = (char*) malloc (LengthKalimat(game->A[nomor_game - 1]) * sizeof(char));
+        int j = 0;
+        game->A[nomor_game - 1];
+        while (j <= LengthKalimat(game->A[nomor_game - 1]))
+        {
+            gamename[j] = string[j];
+            j++;
         }
-    enqueue(q1, val);
-    printf("Game berhasil ditambahkan kedalam daftar antrian.\n");
+        enqueue(q1, gamename);
+        printf("Game berhasil ditambahkan kedalam daftar antrian.\n");
     }
+    
     
 }
 
