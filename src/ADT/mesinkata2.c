@@ -318,6 +318,15 @@ int randint(int lower , int upper){
     return random;
 }
 
+Word splitwordDD(Word kata){
+    Word splitkata;
+    splitkata.Length = kata.Length - 1;
+    int i = 1;
+    while( i < kata.Length ){
+        splitkata.TabWord[i - 1] = kata.TabWord[i];
+    }
+    return splitkata;
+}
 /*
 int main(){
     //char path[NMax];
@@ -338,5 +347,14 @@ int main(){
     printf("%c",b);
     int random = randint(1,5);
     printf("%d" , random);
+}
+*/
+
+/*
+int main(){
+    char string[100];
+    int i = 20;
+    sprintf(string , "%d" , i);
+    printf("%s\n",string);
 }
 */
