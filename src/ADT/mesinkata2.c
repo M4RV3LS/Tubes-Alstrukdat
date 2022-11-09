@@ -319,16 +319,26 @@ int randint(int lower , int upper){
     return random;
 }
 
-int LengthKalimat(char *kalimat)
+Word splitwordDD(Word kata){
+    Word splitkata;
+    splitkata.Length = kata.Length - 1;
+    int i = 1;
+    while( i < kata.Length ){
+        splitkata.TabWord[i - 1] = kata.TabWord[i];
+    }
+    return splitkata;
+}
+
+char *copystr(char *str)
 {
-    int i = 0;
-    int length = 0;
-    while (kalimat[i] != '\0')
+    char *copy;
+    int i=0;
+    while(str[i]!='\0')
     {
-        length++;
+        copy[i] = str[i];
         i++;
     }
-    return length;
+    return copy;
 }
 
 /*
@@ -351,5 +361,14 @@ int main(){
     printf("%c",b);
     int random = randint(1,5);
     printf("%d" , random);
+}
+*/
+
+/*
+int main(){
+    char string[100];
+    int i = 20;
+    sprintf(string , "%d" , i);
+    printf("%s\n",string);
 }
 */

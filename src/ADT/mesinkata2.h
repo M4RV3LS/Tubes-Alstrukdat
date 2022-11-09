@@ -70,6 +70,10 @@ int string_length(char *str);
 
 void stringConcat(char str1[] , char str2[] , char *output);
 
+Word splitwordDD(Word kata);
+	
+char *copystr(char *str);
+
 /**** ADT UNTUK MEMBANGKAN KATA****/
 boolean wordAndCharSama(Word kata, char command[]);
 
