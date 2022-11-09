@@ -28,7 +28,33 @@ void DELETE(ArrayDin *ListGames, Queue *q1)
     printf("Masukkan nomor game yang akan dihapus: ");
     STARTCOMMAND();
     nomor_game = WordToInt(currentCMD);
-    ElType nama_game = ListGames->A[nomor_game-1];
+    int panjang = LengthKalimat(ListGames->A[nomor_game-1]);
+    char *nama_game = (char*) malloc ( panjang * sizeof(char));    
+
+    int i = 0;
+    while (i <= panjang)
+    {
+        nama_game[i] = ListGames->A[nomor_game-1][i];
+        i++;
+    }
+
+    /*char string[1000];
+    char *gamename = (char*) malloc (currentCMD.Length * sizeof(char));
+    // char * gamename;
+    int j = 0;
+    ADVLine();
+    wordToString(currentCMD , string);
+    //printf("%s\n",string);
+    while (j <= currentCMD.Length)
+    {
+        gamename[j] = string[j];
+        j++;
+    }
+        //gamename[j] = '\0';
+        //InsertIn(string , ListGames , i);
+    InsertLast(ListGames , gamename);
+    printf("Game berhasil ditambahkan\n");*/
+
 
     if (nomor_game > 5 && !isMember(*q1,nama_game) )
     {
@@ -50,6 +76,8 @@ void DELETE(ArrayDin *ListGames, Queue *q1)
     {
         printf("Game gagal dihapus\n");
     }
+
+
 
 }
 

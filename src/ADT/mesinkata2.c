@@ -61,6 +61,7 @@ void CopyWord(){
         currentWord.Length = i;}
 }
 
+
 void PrintWord(Word K){
     for (int i = 0; i < K.Length; i ++) {
         printf("%c", K.TabWord[i]);
@@ -318,15 +319,6 @@ int randint(int lower , int upper){
     return random;
 }
 
-Word splitwordDD(Word kata){
-    Word splitkata;
-    splitkata.Length = kata.Length - 1;
-    int i = 1;
-    while( i < kata.Length ){
-        splitkata.TabWord[i - 1] = kata.TabWord[i];
-    }
-    return splitkata;
-}
 /*
 int main(){
     //char path[NMax];
