@@ -83,7 +83,7 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     { 
         printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n"); 
     } 
-    LISTGAME(ListGames);
+    //LISTGAME(ListGames);
     /*
     ADVWORD();
     int j;
@@ -334,7 +334,7 @@ void STARTGAME(ArrayDin *ListGames){
     }
     
     */
-    LISTGAME(ListGames);
+    //LISTGAME(ListGames);
 }
 
 /*
@@ -352,7 +352,7 @@ int main()
     return 0;
 }
 */
-
+/*
 int main()
 {
     ArrayDin array = CreateDynArray();
@@ -362,3 +362,4 @@ int main()
     return 0;
 
 }
+*/
