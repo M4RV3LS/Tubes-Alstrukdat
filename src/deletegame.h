@@ -6,9 +6,8 @@
 #include "boolean.h"
 #include "ADT/mesinkata2.h"
 #include "ADT/mesinkar2.h"
+#include "ADT/queue.h"
 
-
-
-void DELETE(ArrayDin *ListGames);
+void DELETE(ArrayDin *ListGames, Queue *q1);
 
 #endif

@@ -55,7 +55,6 @@ int main(){
             ADVCOMMAND();
             char *game;
             wordToString(currentCMD, game);
-            printf("%s\n" , game);
             if(wordAndCharSama(currentCMD, "GAME"))
             {
                 CREATEGAME(&ListGames);
@@ -84,9 +83,11 @@ int main(){
             ADVCOMMAND();
             char *game;
             wordToString(currentCMD, game);
+            printf("%s", game);
             if(wordAndCharSama(currentCMD, "GAME"))
             {
-                DELETE(&ListGames);
+                printf("naon yak 2");
+                DELETE(&ListGames, &QueueGame);
             }
             else
             {

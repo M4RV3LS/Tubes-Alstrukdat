@@ -156,6 +156,43 @@ void CopyCommandGame(){
     if (i >= NMax) currentCMD.Length = NMax;
     else currentCMD.Length = i;
 }
+/***** ADT UNTUK MANIPULASI INPUT COMMAND *****/
+Word kataPertama(Word w)
+{
+    Word first;
+    int i = 0;
+    while ((i<w.Length) && (w.TabWord[i] != ' '))
+    {
+        first.TabWord[i] = w.TabWord[i];
+        i++;
+    }
+    first.Length = i; 
+    return first;
+}
+
+Word kataKedua(Word w)
+{
+    Word second;
+    int i=0;
+    while ((i<w.Length) && (w.TabWord[i] != ' '))
+    {
+        i++;
+    }
+    //posisi i berada di spasi
+    
+    int j = i+1; //j mulai dari kata kedua
+    int tab = 0;
+    while (j<w.Length)
+    {
+        second.TabWord[tab] = w.TabWord[j];
+        j++;
+        tab++;
+    }
+    
+
+    second.Length = w.Length-i+1;
+    return second;
+}
 
 /***** ADT UNTUK KONVERSI TYPE DATA *****/
 char *akusisi(Word kata)
@@ -303,4 +340,3 @@ int main(){
     printf("%d" , random);
 }
 */
-
