@@ -89,6 +89,10 @@ boolean isMember(Queue q, ElType kata)
 {
     boolean found = false;
     int i = IDX_HEAD(q);
+    if (isEmpty(q))
+    {
+        return found;
+    }
     while (i <= IDX_TAIL(q) && !found)
     {
         if (q.buffer[i] == kata)

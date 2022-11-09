@@ -13,7 +13,7 @@ int main(){
     CreateQueue(&QueueGame);
     printf("Silahkan pilih Command \n");
     printf("1. START\n");
-    printf("2. LOAD <nama file>\n"); // LOAD savefile1.txt
+    printf("2. LOAD <nama file>\n \n"); // LOAD savefile1.txt
  
 
     while (IsEmpty(ListGames))
