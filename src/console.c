@@ -60,7 +60,7 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     printf("%s\n",path);
     STARTWORD(path);
     int nGame = WordToInt(currentWord);
-    //nGame -= 10;
+    nGame -= 10;
     printf("%d\n" , nGame);
      char string[NMax];
     for (int i = 1; i <= nGame; i++){

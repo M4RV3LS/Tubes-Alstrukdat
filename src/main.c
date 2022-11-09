@@ -86,7 +86,7 @@ int main(){
             wordToString(currentCMD, game);
             if(wordAndCharSama(currentCMD, "GAME"))
             {
-                DELETE(&ListGames);
+                DELETE(&ListGames, &QueueGame);
             }
             else
             {
