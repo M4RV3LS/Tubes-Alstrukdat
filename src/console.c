@@ -198,7 +198,7 @@ void PLAYGAME(Queue *q1)
     }
 }   
 
-void QUEUEGAME(Queue *q1, ArrayDin *game){
+void QUEUEGAME(Queue *q1, ArrayDin game){
     //List *game;
     if (isEmpty(*q1))
     {
@@ -211,7 +211,7 @@ void QUEUEGAME(Queue *q1, ArrayDin *game){
     }
     }
     printf("\n");
-    LISTGAME(game);
+    LISTGAME(&game);
 
 
     // Queue q;
@@ -220,14 +220,13 @@ void QUEUEGAME(Queue *q1, ArrayDin *game){
     // CreateQueue(&q);
     STARTCOMMANDGAME();
     nomor_game = WordToInt(currentCMD);
-    if (nomor_game > game->Neff){
+    if (nomor_game > game.Neff){
          printf("Nomor permainan tidak valid\n");
     } else {
-        char *string = game->A[nomor_game - 1];
-        char *gamename = (char*) malloc (LengthKalimat(game->A[nomor_game - 1]) * sizeof(char));
+        char *string = game.A[nomor_game - 1];
+        char *gamename = (char*) malloc (LengthKalimat(game.A[nomor_game - 1]) * sizeof(char));
         int j = 0;
-        game->A[nomor_game - 1];
-        while (j <= LengthKalimat(game->A[nomor_game - 1]))
+        while (j <= LengthKalimat(game.A[nomor_game - 1]))
         {
             gamename[j] = string[j];
             j++;
@@ -235,8 +234,6 @@ void QUEUEGAME(Queue *q1, ArrayDin *game){
         enqueue(q1, gamename);
         printf("Game berhasil ditambahkan kedalam daftar antrian.\n");
     }
-    
-    
 }
 
 void QUIT() {

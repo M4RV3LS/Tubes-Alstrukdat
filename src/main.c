@@ -101,7 +101,7 @@ int main(){
             wordToString(currentCMD, game);
             if(wordAndCharSama(currentCMD, "GAME"))
             {
-                QUEUEGAME(&QueueGame, &ListGames);
+                QUEUEGAME(&QueueGame, ListGames);
             }
             else
             {

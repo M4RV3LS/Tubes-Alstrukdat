@@ -37,7 +37,7 @@ void LOADFILE(ArrayDin *ListGames , char* filename);
 
 void PLAYGAME(Queue *q1);
 
-void QUEUEGAME(Queue *q1, ArrayDin *game);
+void QUEUEGAME(Queue *q1, ArrayDin game);
 
 void QUIT(); 
 
