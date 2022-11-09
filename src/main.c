@@ -37,8 +37,8 @@ int main(){
     }
     }
 
-    // HELP();
-    LISTGAME(&ListGames);
+    HELP();
+    //LISTGAME(&ListGames);
     printf("ENTER COMMAND: ");
     STARTCOMMAND();
     while (!wordAndCharSama(currentCMD, "QUIT"))
@@ -55,6 +55,7 @@ int main(){
             ADVCOMMAND();
             char *game;
             wordToString(currentCMD, game);
+            printf("%s\n" , game);
             if(wordAndCharSama(currentCMD, "GAME"))
             {
                 CREATEGAME(&ListGames);
