@@ -313,6 +313,53 @@ boolean wordAndWordSama(Word InputCommand, Word Command)
     }
 }
 
+boolean CompareString(char *string1 , char *string2)
+{
+    boolean equal = true;
+    int i = 0;
+    while ((*(string1 + i) != '\0') && (*(string2 + i) != '\0') && equal)
+    {
+        if (*(string1 + i) != *(string2 + i))
+        {
+            equal = false;
+        }
+        else
+        {
+        i++;
+        }
+    }
+    return equal;
+}
+
+boolean isInteger(Word Kata){
+    boolean isInt = true;
+    int panjang = Kata.Length;
+    //printf("%d",panjang);
+    int i = 0;
+    while (i < panjang && (isInt)){
+        //int kata = Kata.TabWord[i] - '\0';
+        if(Kata.TabWord[i] == '\n'){
+            return false;
+        }
+        else if(Kata.TabWord[i] == '1'|| Kata.TabWord[i] == '2'|| Kata.TabWord[i] == '3'|| Kata.TabWord[i] == '5'||
+        Kata.TabWord[i] == '6'|| Kata.TabWord[i] == '7'|| Kata.TabWord[i] == '8'|| Kata.TabWord[i] == '9'|| Kata.TabWord[i] == '0'){
+            isInt = true;
+            //printf("%c\n",Kata.TabWord[i]);
+        //}
+        //if(Kata.TabWord[i] == 1|| Kata.TabWord[i] == 2|| Kata.TabWord[i] == 3|| Kata.TabWord[i] == 5||
+        //Kata.TabWord[i] == 6 || Kata.TabWord[i] == 7 || Kata.TabWord[i] == 8 || Kata.TabWord[i] == 9 || Kata.TabWord[i] == 0){
+            //isInt = true;
+            //printf("benar\n");
+        }
+        else{
+            //printf("Salah\n");
+            return false;
+        }
+        i++;
+    }
+    return isInt;
+}
+/*ADT TAMBAHAN*/
 int randint(int lower , int upper){
     srand(time(NULL));
     int random = (rand() % (upper - lower + 1)) + lower;
@@ -343,13 +390,15 @@ int LengthKalimat(char *kalimat)
 {
     int i = 0;
     int length = 0;
-    while (kalimat[i] != ENTER)
+    while (kalimat[i] != '\0')
     {
         length++;
         i++;
     }
     return length;
 }
+
+
 /*
 int main(){
     //char path[NMax];
@@ -381,3 +430,20 @@ int main(){
     printf("%s\n",string);
 }
 */
+/*
+int main(){
+    printf("ENTER COMMAND: ");
+    STARTCOMMAND();
+    if(EndWord){
+        printf("Masukan kosong\n");
+    }
+    else if(isInteger(currentCMD)){
+        printf("CMD ADALAH INTEGER\n");
+    }
+    else{
+        printf("CMD BUKAN INTEGER\n");
+    }
+    return 0;
+}
+*/
+

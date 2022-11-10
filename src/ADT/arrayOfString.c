@@ -46,6 +46,17 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i)
     (*array).A[i]=el; 
     (*array).Neff++; 
  } 
+
+ void DeleteAt(ArrayDin *array, IdxType i)
+{
+	int j;
+	for (j = i ; j < array->Neff ; j++)
+	{
+		array->A[j] = array->A[j+1]; 
+	}
+	
+	array->Neff -= 1;
+}
   
  void InsertLast(ArrayDin *array, ElType el) 
  { 

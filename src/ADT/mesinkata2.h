@@ -72,12 +72,16 @@ void stringConcat(char str1[] , char str2[] , char *output);
 
 Word splitwordDD(Word kata);
 	
-char *copystr(char *str);
-
-/**** ADT UNTUK MEMBANGKAN KATA****/
+/**** ADT UNTUK MEMBANDINGKAN KATA****/
 boolean wordAndCharSama(Word kata, char command[]);
 
 boolean wordAndWordSama(Word InputCommand, Word Command);
+
+boolean CompareString(char *string1 , char *string2);
+
+boolean isInteger(Word Kata);
+
+void *copystr(char *str, char *copy);
 
 int LengthKalimat(char *kalimat);
 #endif
