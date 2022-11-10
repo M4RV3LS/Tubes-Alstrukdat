@@ -1,10 +1,10 @@
 # Deskripsi Singkat Program :
-## BNMO (dibaca: Binomo) adalah robot game console yang dapat menjalankan permainan. BNMO memiliki beberapa fitur utama, yaitu:
+### BNMO (dibaca: Binomo) adalah robot game console yang dapat menjalankan permainan. BNMO memiliki beberapa fitur utama, yaitu:
 
-######  1. Memainkan game
-######  2. Menambahkan game
-######  3. Menghapus game
-######  4. Mengurutkan game yang akan dimainkan
+####  1. Memainkan game
+####  2. Menambahkan game
+####  3. Menghapus game
+####  4. Mengurutkan game yang akan dimainkan
 
 
 # Anggota Kelompok :
