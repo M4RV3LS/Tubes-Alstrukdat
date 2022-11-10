@@ -385,11 +385,12 @@ int randint(int lower , int upper){
 
 Word splitwordDD(Word kata){
     Word splitkata;
-    splitkata.Length = kata.Length - 1;
+    splitkata.Length=0; ;
     int i = 1;
     while( i < kata.Length ){
         splitkata.TabWord[i - 1] = kata.TabWord[i];
         i++;
+        splitkata.Length++;
     }
     return splitkata;
 }
