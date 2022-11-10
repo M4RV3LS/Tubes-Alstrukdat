@@ -123,15 +123,12 @@ void COOK(Word ID, Queue *Pesanan, Queue *Masakan)
 // Memasak makanan yang ada di urutan paling atas di
 // antrian pesanan dan memasukkannnya ke dalam antrian masakan
 {
-    Word num = splitwordDD(ID);
-    int i = WordToInt(num);
-    Food f = copyFood((*Pesanan).buffer[i]);
+    int i = WordToInt(ID);
+    Food f = copyFood(Pesanan.buffer[i]);
     enqueue(Masakan,f);
 
-    Word label;
-    salinword(ID,&label);
     printf("\n");
-    printf("Berhasil memasak %s\n", label);
+    printf("Berhasil memasak %s\n", ID);
 }
 
 void SERVE(Queue *Pesanan, Queue *Sajian, int *Saldo)
@@ -216,7 +213,6 @@ void dinnerdash()
                             printf("%s sudah bisa disajikan!\n", snd);
                         } else {
                             asal = 0;
-                            printf("Target");
                         }
                     } else {
                         printf("%s bukan bagian dari pesanan \n", snd);
@@ -258,7 +254,7 @@ void dinnerdash()
         printf("%s\n",kataPertama(currentCMD));
         if(isCook(currentCMD))
         {
-            COOK(kataKedua(currentCMD),&pesanan,&masakan);
+            COOK(splitwordDD(currentCMD),&pesanan,&masakan);
         } else if (isServe(currentCMD)) {
             SERVE(&pesanan,&sajian,&saldo);
             countserve++;
