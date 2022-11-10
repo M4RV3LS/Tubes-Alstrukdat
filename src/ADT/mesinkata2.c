@@ -389,6 +389,7 @@ Word splitwordDD(Word kata){
     int i = 1;
     while( i < kata.Length ){
         splitkata.TabWord[i - 1] = kata.TabWord[i];
+        i++;
     }
     return splitkata;
 }
