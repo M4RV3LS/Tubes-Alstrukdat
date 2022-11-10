@@ -104,7 +104,7 @@ Food copyFood(Food f)
     copy.Durasi = f.Durasi;
     copy.Harga = f.Harga;
     copy.Tahan = f.Tahan
-    copy.ID = copystr(f.ID);
+    copystr(f.ID,copy.ID);
 }
 
 // Command in-game
