@@ -1,19 +1,29 @@
 /* File : queue.h */
 /* Definisi ADT Queue dengan representasi array secara eksplisit dan alokasi statik */
 
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef QUEUE_DINNER_H
+#define QUEUE_DINNER_H
 
 #include "boolean.h"
+#include "mesinkata2.h"
 
 #define IDX_UNDEF -1
 #define CAPACITY 100
 
 /* Definisi elemen dan address */
-typedef char *ElType;
+//typedef char *ElType;
+
+typedef char *string;
 typedef struct
 {
-    ElType buffer[CAPACITY];
+    Word ID;
+    int Durasi;
+    int Tahan;
+    int Harga;
+} Food;
+typedef struct
+{
+    Food buffer[CAPACITY];
     int idxHead;
     int idxTail;
 } Queue;

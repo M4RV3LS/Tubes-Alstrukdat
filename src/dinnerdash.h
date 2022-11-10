@@ -1,22 +1,15 @@
 #include <stdio.h>
 #include "queue.h"
 #include "mesinkata2.h"
+#include "queuedinner.h"
 
 #ifndef DINERDASH_h
 #define DINERDASH_H
 
-typedef char *string;
-typedef struct
-{
-    string ID;
-    int Durasi;
-    int Tahan;
-    int Harga;
-} Food;
 
 int saldo;
 
-void COOK(string ID, Queue *Pesanan, Queue *Masakan);
+void COOK(Word ID, Queue *Pesanan, Queue *Masakan);
 // Memasak makanan yang ada di urutan paling atas di
 // antrian pesanan dan memasukkannnya ke dalam antrian masakan
 
@@ -36,6 +29,6 @@ void DisplayMasakan();
 void DisplaySajian();
 // Menampilkan antrian sajian
 
-function IsTop(string ID);
+Word IsTop(Word ID);
 
 #endif

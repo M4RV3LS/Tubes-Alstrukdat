@@ -10,8 +10,8 @@ void DisplayPesanan(Queue q)
     {
         int i;
         for (i=0;i<length(q);i++)
-        {
-            string mk = q.buffer[i].ID;
+        {   string mk;
+            wordToString(q.buffer[i].ID , mk);
             int dr = q.buffer[i].Durasi;
             int kt = q.buffer[i].Tahan;
             int hr = q.buffer[i].Harga;
@@ -32,7 +32,8 @@ void DisplayMasakan(Queue q)
         int i;
         for (i=0;i<length(q);i++)
         {
-            string mk = q.buffer[i].ID;
+            string mk;
+            wordToString(q.buffer[i].ID , mk);
             int dr = q.buffer[i].Durasi;
             printf("%s      | %d\n", mk,dr);
         }
@@ -51,7 +52,8 @@ void DisplaySajian(Queue q)
         int i;
         for (i=0;i<length(q);i++)
         {
-            string mk = q.buffer[i].ID;
+            string mk;
+            wordToString(q.buffer[i].ID , mk);
             int kt = q.buffer[i].Tahan;
             printf("%s      | %d\n", mk,kt);
         }
@@ -89,11 +91,11 @@ Food generateFood(int i)
     pes.Tahan = randint(1,5);
     pes.Harga = randint(10000,50000);
     
-    // membuat ID
-    string m = 'M';
-    string idcode;
+    // membuat ID / Label 
+    Word m = 'M';
+    Word idcode;
     sprintf(idcode,"%d",i);
-    stringConcat(m,idcode,pes.ID);
+    WordConcat(m,idcode,pes.ID);
     return pes;
 }
 
@@ -103,7 +105,7 @@ Food copyFood(Food f)
     Food copy;
     copy.Durasi = f.Durasi;
     copy.Harga = f.Harga;
-    copy.Tahan = f.Tahan
+    copy.Tahan = f.Tahan;
     copystr(f.ID,copy.ID);
 }
 
@@ -118,8 +120,8 @@ void COOK(Word ID, Queue *Pesanan, Queue *Masakan)
     Food f = copyFood(Pesanan.buffer[i]);
     enqueue(Masakan,f);
 
-    string label;
-    wordToString(ID,label);
+    Word label;
+    wordToWord(ID,label);
     printf("\n");
     printf("Berhasil memasak %s\n", label);
 }
@@ -185,8 +187,8 @@ void dinnerdash()
             if (isValid(currentWord))
             {
                 Word snd = kataKedua(currentWord);
-                string temp;
-                wordToString(snd,temp);
+                Word temp;
+                wordToWord(snd,temp);
                 if(isCook(currentWord))
                 {
                     if (isMember(pesanan,snd))
@@ -213,8 +215,8 @@ void dinnerdash()
                             {
                                 valid = true;
                             } else {
-                                string bef = HEAD(pesanan).ID;
-                                string af = temp;
+                                Word bef = HEAD(pesanan).ID;
+                                Word af = temp;
                                 printf("%s belum dapat disajikan karena %s belum selesai\n", af, bef);
                             }
                         } else {
@@ -272,7 +274,7 @@ void dinnerdash()
                 {
                     dequeue(&masakan,&masak);
                     enqueue(&sajian,masak);
-                    string a = masak.ID;
+                    Word a = masak.ID;
                     printf("%s sudah selesai dimasak\n", a);
                 }
             }
@@ -288,7 +290,7 @@ void dinnerdash()
                 if (sajian.buffer[k].Tahan==0)
                 {
                     dequeue(&sajian,&basi);
-                    string a = basi.ID;
+                    Word a = basi.ID;
                     printf("%s sudah tidak dapat disajikan. Segera masak ulang %s\n", a);
                 }
             }

@@ -60,6 +60,8 @@ int charToInt(char c);
 
 char intToChar(int c);
 
+Word IntToWord(int X);
+
 int WordToInt(Word kata);
 
 void wordToString(Word currentWord, char *string);

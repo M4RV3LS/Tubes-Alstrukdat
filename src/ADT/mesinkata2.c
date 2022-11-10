@@ -220,6 +220,21 @@ char intToChar(int c){
     return (c + '0');//Cuman bisa convert dari angka 0-9 
 }
 
+Word IntToWord(int X){ 
+    Word Kata; 
+    int i=0, temp=X; 
+    Kata.Length=0;   
+    while (X >= 10){ 
+        Kata.TabWord[i] = (X / 10) + '0'; 
+        Kata.Length++; 
+        i++; 
+        X %= 10;  
+    } 
+    Kata.TabWord[i] = X + '0'; 
+    Kata.Length++; 
+    return Kata; 
+}
+
 int WordToInt(Word kata)
 {
     int i, hasil;

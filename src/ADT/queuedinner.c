@@ -29,7 +29,7 @@ int length(Queue q)
     }
 }
 
-void enqueue(Queue *q, ElType val)
+void enqueue(Queue *q,  val)
 {
     if (isFull(*q))
     {
