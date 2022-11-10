@@ -51,6 +51,8 @@ boolean isEmpty(Queue q);
 boolean isFull(Queue q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
+boolean isMember(Queue q, ElType f);
+/* Mengembalikan true apabila f ditemukan di queue q*/
 
 int length(Queue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
