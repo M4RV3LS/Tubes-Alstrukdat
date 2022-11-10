@@ -77,10 +77,10 @@ void dequeue(Queue *q, ElType *val)
     }
 }
 
-boolean isMember(Queue q, ElType f)
+boolean isMember(Queue q, Word w)
 {
     boolean found = false;
-    boolean same = false;
+    //boolean same = false;
     int i = IDX_HEAD(q);
     if (isEmpty(q))
     {
@@ -89,8 +89,7 @@ boolean isMember(Queue q, ElType f)
     while (i <= IDX_TAIL(q) && !found)
     {
         Word a = q.buffer[i].ID;
-        Word b = f.ID;
-        if (wordAndWordSama(a,b))
+        if (wordAndWordSama(a,w))
         {
             found = true;
         }

@@ -162,7 +162,7 @@ Word kataPertama(Word w)
 {
     Word first;
     int i = 0;
-    while ((i<w.Length) && (w.TabWord[i] != ' '))
+    while ((i<w.Length) && (w.TabWord[i] != BLANK))
     {
         first.TabWord[i] = w.TabWord[i];
         i++;
@@ -175,7 +175,7 @@ Word kataKedua(Word w)
 {
     Word second;
     int i=0;
-    while ((i<w.Length) && (w.TabWord[i] != ' '))
+    while ((i<w.Length) && (w.TabWord[i] != BLANK))
     {
         i++;
     }
@@ -377,7 +377,7 @@ boolean isInteger(Word Kata){
 /*ADT TAMBAHAN*/
 int randint(int lower , int upper){
     int random = (rand() % (upper - lower + 1)) + lower;; // assign the rand() function to random variable  
-    srand( time(0));
+    srand(time(0));
     //srand(time(NULL));
     //int random = (rand() % (upper - lower + 1)) + lower;
     return random;
@@ -433,6 +433,14 @@ void delay(int number_of_seconds)
     // looping till required time is not achieved
     while (clock() < start_time + milli_seconds)
         ;
+}
+
+void MergeWord(Word *W1, Word W2){
+    int Len = W1->Length;
+    for (int i=Len;i < Len + W2.Length;i++){
+        W1->TabWord[i] = W2.TabWord[i-Len];
+    }
+    W1->Length += W2.Length;
 }
 /*
 int main(){

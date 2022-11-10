@@ -6,3 +6,13 @@ gcc main.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c cons
 dinosaur in earth
 
 dinosaur in earth
+
+COOK M1
+STARTCOMMAND();
+ENTER COMMAND = COOK M1
+COOK = currentCMD 
+ADVCOMMAND();
+M1 = currentCMD;
+
+STARTCOMMANDGAME();
+COOK M1 = currentCMD

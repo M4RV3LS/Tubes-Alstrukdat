@@ -5,16 +5,21 @@ void DisplayPesanan(Queue q)
 {
     printf("Daftar Pesanan\n");
     printf("Makanan | Durasi memasak | Ketahanan | Harga\n");
-    printf("—---------------------------------------------\n");
+    printf("============================================\n");
     if(!isEmpty(q))
     {
+        //printf("Gagal 2");
         int i;
         for (i=0;i<length(q);i++)
-        {   string mk;
-            wordToString(q.buffer[i].ID , mk);
+        {   Word mk = q.buffer[i].ID;
+            //wordToString(q.buffer[i].ID , *mk);
+            //printf("%s\n", mk);
             int dr = q.buffer[i].Durasi;
+            //printf("%d\n" , dr);
             int kt = q.buffer[i].Tahan;
+            //printf("%d\n" , kt);
             int hr = q.buffer[i].Harga;
+            //printf("%d\n" , hr);
             printf("%s      | %d              | %d         | %d\n", mk,dr,kt,hr);
         }
     } else {
@@ -26,7 +31,7 @@ void DisplayMasakan(Queue q)
 {
     printf("Daftar Makanan yang sedang dimasak\n");
     printf("Makanan | Sisa durasi memasak\n");
-    printf("—-----------------------------\n");
+    printf("=============================\n");
     if(!isEmpty(q))
     {
         int i;
@@ -46,7 +51,7 @@ void DisplaySajian(Queue q)
 {
     printf("Daftar Makanan yang dapat disajikan\n");
     printf("Makanan | Sisa ketahanan makanan\n");
-    printf("—-----------------------------\n");
+    printf("================================\n");
     if(!isEmpty(q))
     {
         int i;
@@ -92,9 +97,13 @@ Food generateFood(int i)
     pes.Harga = randint(10000,50000);
     
     // membuat ID / Label 
-    Word m = stringToWord('M');
+    Word m = stringToWord("M");
+    //printf("%c\n",m);
     Word idcode = IntToWord(i);
-    WordConcat(m,idcode,pes.ID);
+    //printf("%s\n",idcode);
+    MergeWord(&m,idcode);
+    salinword(m , &pes.ID);
+    //printf("%s\n",pes.ID);
     return pes;
 }
 
@@ -120,7 +129,7 @@ void COOK(Word ID, Queue *Pesanan, Queue *Masakan)
     enqueue(Masakan,f);
 
     Word label;
-    wordToWord(ID,label);
+    salinword(ID,&label);
     printf("\n");
     printf("Berhasil memasak %s\n", label);
 }
@@ -145,7 +154,7 @@ void dinnerdash()
     boolean finished = false;
     int countserve = 0;
     int saldo = 0;
-    Word currentWord;
+    Word currentCMD;
 
     // Membuat queue pesanan, masakan, sajian
     Queue pesanan;
@@ -162,11 +171,12 @@ void dinnerdash()
         Food pes;
         pes = generateFood(i);
         enqueue(&pesanan,pes);
+        //printf("%s\n", pesanan.buffer[i].ID);
         i++;
     }
 
     // Tampilan awal
-    printf("Selamat Datang di Diner Dash!");
+    printf("Selamat Datang di Diner Dash!\n");
     printf("SALDO: %d\n", saldo);
     printf("\n");
     DisplayPesanan(pesanan);
@@ -178,66 +188,78 @@ void dinnerdash()
 
     while (!finished)
     {
-        boolean valid = false;
-        while(!valid)
+        int asal = 1;
+        while(asal == 1)
         {
+            printf("%d",asal);
             printf("MASUKKAN COMMAND:");
-            STARTFILE();
-            if (isValid(currentWord))
-            {
-                Word snd = kataKedua(currentWord);
-                Word temp;
-                wordToWord(snd,temp);
-                if(isCook(currentWord))
-                {
+            char*coba;
+            //STARTCOMMAND();
+            scanf("%s\n",coba);
+            Word currentCMD = stringToWord(coba);
+            if (isValid(currentCMD))
+            {   Word first = currentCMD;
+                //printf("%s",currentCMD);
+                //ADVCOMMAND();
+                Word snd = stringToWord("M1");
+                //salinword(currentCMD,&snd);
+                //printf("%s\n",snd);
+                if(isCook(currentCMD))
+                {   printf("isCook");
                     if (isMember(pesanan,snd))
-                    {
+                    {   printf("Pesanan");
                         if (isMember(masakan,snd))
                         {
-                            printf("%s sedang dimasak!\n", temp);
+                            
+                            printf("%s sedang dimasak!\n", snd);
                         } else if (isMember(sajian,snd)) {
-                            printf("%s sudah bisa disajikan!\n", temp);
+                            printf("%s sudah bisa disajikan!\n", snd);
                         } else {
-                            valid = true;
+                            asal = 0;
+                            printf("Target");
                         }
                     } else {
-                        printf("%s bukan bagian dari pesanan \n", temp);
+                        printf("%s bukan bagian dari pesanan \n", snd);
                     }  
-                } else if (isServe(currentWord)) {
+                } else if (isServe(currentCMD)) {
                     if (isMember(pesanan,snd))
-                    {
+                    {   
                         if (isMember(masakan,snd))
                         {
-                            printf("%s sedang dimasak!\n", temp);
+                            printf("%s sedang dimasak!\n", snd);
                         } else if (isMember(sajian,snd)) {
                             if (wordAndWordSama(snd,HEAD(pesanan).ID))
                             {
-                                valid = true;
+                                asal = 0;
                             } else {
                                 Word bef = HEAD(pesanan).ID;
-                                Word af = temp;
+                                Word af = snd;
                                 printf("%s belum dapat disajikan karena %s belum selesai\n", af, bef);
                             }
                         } else {
-                            printf("%s perlu dimasak terlebih dahulu!\n", temp);
+                            printf("%s perlu dimasak terlebih dahulu!\n", snd);
                         }
                     } else {
-                        printf("%s bukan bagian dari pesanan \n", temp);
+                        printf("%s bukan bagian dari pesanan \n", snd);
                     }  
                 } else { // isSkip
-                    valid = true;
+                    asal = 0 ;
                 }
-            } else {
+            } 
+            else {
                 printf("Perintah tidak valid!\n");
             }
+            printf("%d",asal);
         }
-
+        printf("\nfa");
+        //printf("Perintah tidak valid!\n");
         // command sudah valid
         // perpindahan makanan dr masakan ke sajian BELUM
-        if(isCook(currentWord))
+        printf("%s\n",kataPertama(currentCMD));
+        if(isCook(currentCMD))
         {
-            COOK(kataKedua(currentWord),&pesanan,&masakan);
-        } else if (isServe(currentWord)) {
+            COOK(kataKedua(currentCMD),&pesanan,&masakan);
+        } else if (isServe(currentCMD)) {
             SERVE(&pesanan,&sajian,&saldo);
             countserve++;
         } 

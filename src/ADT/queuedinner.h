@@ -51,7 +51,7 @@ boolean isEmpty(Queue q);
 boolean isFull(Queue q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
-boolean isMember(Queue q, ElType f);
+boolean isMember(Queue q, Word w);
 /* Mengembalikan true apabila f ditemukan di queue q*/
 
 int length(Queue q);
@@ -68,15 +68,5 @@ void dequeue(Queue *q, ElType *val);
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
         q mungkin kosong */
-
-/* *** Display Queue *** */
-void displayQueue(Queue q);
-/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
-   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
-   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
-/* I.S. q boleh kosong */
-/* F.S. Jika q tidak kosong: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika Queue kosong : menulis [] */
 
 #endif

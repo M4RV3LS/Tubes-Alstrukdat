@@ -92,4 +92,6 @@ void *copystr(char *str, char *copy);
 int LengthKalimat(char *kalimat);
 
 void delay(int number_of_seconds);
+
+void MergeWord(Word *W1, Word W2);
 #endif

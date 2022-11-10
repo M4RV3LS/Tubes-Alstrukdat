@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "queuedinner.h"
+#include "ADT/queuedinner.h"
 
 #ifndef DINERDASH_h
 #define DINERDASH_H
