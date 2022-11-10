@@ -18,8 +18,9 @@
 
 
 ## Cara Kompilasi Program :
-#### gcc -o main.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c console.c MULAI
-#### ./MULAI
+### Di terminal folder src:
+#### gcc main.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c console.c MULAI -o <nama_variabel>
+#### ./<nama_variabel>
 
 
 
