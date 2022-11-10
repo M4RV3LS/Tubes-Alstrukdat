@@ -26,11 +26,24 @@ int main(){
         
     }
     else if(wordAndCharSama(currentCMD, "LOAD")) // asumsi nama file pasti benar dan file tidak kosong
-    {
+    {   //printf("%s\n", currentCMD);
         ADVCOMMAND();
-        char *namafile;
+        //printf("%s\n", currentCMD);
+        char namafile[50];
+
         wordToString(currentCMD, namafile);
-        LOADFILE(&ListGames, namafile);
+        printf("%s\n",namafile);
+        int j =0;
+        char *filename = (char *)malloc(currentCMD.Length * sizeof(char));
+        //printf("%d",currentCMD.Length);
+        while (j <= currentCMD.Length)
+        {
+            filename[j] = namafile[j];
+            j++;
+        }
+        printf("%s\n",filename);
+        LOADFILE(&ListGames, filename);
+        
     }
     else{
         printf("Masukan command salah. Silahkan masukkan command kembali.\n ");
@@ -39,25 +52,28 @@ int main(){
 
     HELP();
     //LISTGAME(&ListGames);
-    printf("ENTER COMMAND: ");
-    STARTCOMMAND();
+    
     while (!wordAndCharSama(currentCMD, "QUIT"))
     {
+        char*GAME = "GAME";
+        printf("ENTER COMMAND: ");
+        STARTCOMMAND();
         if (wordAndCharSama(currentCMD, "SAVE"))
         {
             ADVCOMMAND();
-            char *namafile;
+            char namafile[50];
             wordToString(currentCMD, namafile);
             SAVEBNMO(&ListGames, namafile);
         }
         else if (wordAndCharSama(currentCMD, "CREATE"))
         {
             ADVCOMMAND();
-            char *game;
+            char game[50];
             wordToString(currentCMD, game);
-            if(wordAndCharSama(currentCMD, "GAME"))
+            if(CompareString(game , GAME))
             {
-                CREATEGAME(&ListGames);
+            //printf("%s\n",currentCMD);
+            CREATEGAME(&ListGames);
             }
             else
             {
@@ -65,11 +81,18 @@ int main(){
             }
         }
         else if(wordAndCharSama(currentCMD, "LIST"))
-        {
+        {   
             ADVCOMMAND();
-            char *game;
+            char game[50];
             wordToString(currentCMD, game);
-            if(wordAndCharSama(currentCMD, "GAME"))
+            printf("%s\n",game);
+            
+            //for (int i = 0 ; i <= currentCMD.Length ; i++){
+                //printf("%c" , currentCMD.TabWord[i]);
+            //}
+            //wordToString(currentCMD, game);
+            //printf("%s\n",game);
+            if(CompareString(game , GAME))
             {
                 LISTGAME(&ListGames);
             }
@@ -81,25 +104,25 @@ int main(){
         else if(wordAndCharSama(currentCMD, "DELETE"))
         {
             ADVCOMMAND();
-            char *game;
+            char game[50];
             wordToString(currentCMD, game);
-            printf("%s", game);
-            if(wordAndCharSama(currentCMD, "GAME"))
+            //printf("%s", game);
+            if(CompareString(game , "GAME"))
             {
-                printf("naon yak 2");
+                //printf("naon yak 2");
                 DELETE(&ListGames, &QueueGame);
             }
-            else
-            {
-                printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
-            }
+            //else
+            //{
+                //printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+            //}
         }
         else if(wordAndCharSama(currentCMD, "QUEUE"))
         {
             ADVCOMMAND();
-            char *game;
+            char game[50];
             wordToString(currentCMD, game);
-            if(wordAndCharSama(currentCMD, "GAME"))
+            if(CompareString(game , "GAME"))
             {
                 QUEUEGAME(&QueueGame, ListGames);
             }
@@ -111,9 +134,9 @@ int main(){
         else if(wordAndCharSama(currentCMD, "PLAY"))
         {
             ADVCOMMAND();
-            char *game;
+            char game[50];
             wordToString(currentCMD, game);
-            if(wordAndCharSama(currentCMD, "GAME"))
+            if(CompareString(game , "GAME"))
             {
                 PLAYGAME(&QueueGame);
             }
@@ -125,8 +148,14 @@ int main(){
         else if(wordAndCharSama(currentCMD, "SKIPGAME")) // setelah "SKIPGAME" wajib beed integer
         {
             ADVCOMMAND();
-            int skip = WordToInt(currentCMD) - 10 ;            
-            SKIPGAME(&QueueGame, skip);
+            if(isInteger(currentCMD) && !(EndWord)){
+                int skip = WordToInt(currentCMD); //- 10 ;            
+                SKIPGAME(&QueueGame, skip);
+            }
+             else
+            {
+                printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+            }
         }
         else if(wordAndCharSama(currentCMD, "HELP"))
         {
@@ -136,8 +165,8 @@ int main(){
         {
             printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
         }
-        printf("ENTER COMMAND: ");
-        STARTCOMMAND();   
+        // printf("ENTER COMMAND: ");
+        // STARTCOMMAND();   
     }
     QUIT();
 

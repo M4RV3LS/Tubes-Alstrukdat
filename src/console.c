@@ -3,12 +3,12 @@
 void CREATEGAME(ArrayDin *ListGames)
 {
     printf("Masukkan nama game yang akan ditambahkan : ");
-    STARTCOMMAND();
+    STARTCOMMANDGAME();
     char string[1000];
     char *gamename = (char*) malloc (currentCMD.Length * sizeof(char));
     // char * gamename;
     int j = 0;
-    ADVLine();
+    //
     wordToString(currentCMD , string);
     //printf("%s\n",string);
     while (j <= currentCMD.Length)
@@ -28,16 +28,29 @@ void DELETE(ArrayDin *ListGames, Queue *q1)
     printf("Masukkan nomor game yang akan dihapus: ");
     STARTCOMMAND();
     nomor_game = WordToInt(currentCMD);
+    //printf("%s\n",ListGames->A[nomor_game-1]);
+    //printf("%c\n",ListGames->A[nomor_game-1][0]);
     int panjang = LengthKalimat(ListGames->A[nomor_game-1]);
-    char *nama_game = (char*) malloc ( panjang * sizeof(char));    
-
+    //printf("%d\n",panjang);
+    char *nama_game = (char*) malloc ( panjang * sizeof(char)); 
+    
     int i = 0;
     while (i <= panjang)
     {
         nama_game[i] = ListGames->A[nomor_game-1][i];
+        //printf("%c\n" , nama_game[i]);
         i++;
+        
     }
-
+    /*
+    printf("%s\n" , nama_game);
+    if (CompareString(nama_game  , "MARV")){
+        printf("Udah string\n");
+    }
+    else{
+        printf("Bukan string\n");
+    }
+    */
     /*char string[1000];
     char *gamename = (char*) malloc (currentCMD.Length * sizeof(char));
     // char * gamename;
@@ -56,7 +69,7 @@ void DELETE(ArrayDin *ListGames, Queue *q1)
     printf("Game berhasil ditambahkan\n");*/
 
 
-    if (nomor_game > 5 && !isMember(*q1,nama_game) )
+    if (nomor_game > 5 && !isMember(*q1,nama_game))
     {
         int j = ListGames->Neff;
         int i = nomor_game-1;
@@ -100,32 +113,40 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     char path[NMax];
     stringConcat("../data/",filename,path);
     printf("%s\n",path);
-    STARTWORD(path);
-    int nGame = WordToInt(currentWord);
-    nGame -= 10;
-    printf("%d\n" , nGame);
-     char string[NMax];
-    for (int i = 1; i <= nGame; i++){
-        char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
-        // char * gamename;
-        int j = 0;
-        ADVLine();
-        wordToString(currentWord , string);
-        //printf("%s\n",string);
-        while (j <= currentWord.Length)
-        {
-            gamename[j] = string[j];
-            j++;
+    FILE *open = fopen(path,"r");
+    if (open != NULL)
+    {
+        STARTWORD(path);
+        int nGame = WordToInt(currentWord);
+        //nGame -= 10;
+        printf("%d\n" , nGame);
+        char string[NMax];
+        for (int i = 1; i <= nGame; i++){
+            char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
+            // char * gamename;
+            int j = 0;
+            ADVLine();
+            wordToString(currentWord , string);
+            //printf("%s\n",string);
+            while (j <= currentWord.Length)
+            {
+                gamename[j] = string[j];
+                j++;
+            }
+            //gamename[j] = '\0';  
+            //InsertIn(string , ListGames , i);
+            InsertLast(ListGames , gamename);
+            printf("%s\n" , (*ListGames).A[i-1]);
         }
-        //gamename[j] = '\0';
-        //InsertIn(string , ListGames , i);
-        InsertLast(ListGames , gamename);
-        printf("%s\n" , (*ListGames).A[i-1]);
+        if(!IsEmpty(*ListGames)) 
+        { 
+            printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n"); 
+        } 
     }
-    if(!IsEmpty(*ListGames)) 
-    { 
-        printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n"); 
-    } 
+    else
+    {
+        printf("%s tidak dikenali.\n",filename);
+    }
     //LISTGAME(ListGames);
     /*
     ADVWORD();
@@ -137,16 +158,18 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     }
     
     */
-    
-   
 }
 
 void PLAYGAME(Queue *q1)
 {
     ElType A;
-    char *rng, *dinner;
+    char *rng, *dinner , *dino ,*risewoman ,*eiffel;
+    
     rng = "RNG";
     dinner = "Dinner DASH";
+    dino = "DINOSAUR IN EARTH";
+    risewoman = "RISEWOMAN";
+    eiffel = "EIFFEL TOWER";
 
     if (isEmpty(*q1))
     {
@@ -155,27 +178,32 @@ void PLAYGAME(Queue *q1)
 
     else
     {
-        if (HEAD(*q1) == rng)
+        char*game;
+        dequeue(q1 , &game);
+        //wordToString()
+        //printf("%s\n",game);
+        //printf("%s\n",rng);
+        if (CompareString(game , rng))
         {
-            printf("Loading %s ...", rng);
-            dequeue(q1, &A);
+            printf("Loading %s ...\n", rng);
+            //dequeue(q1, &A);
             gameRNG();
         } 
 
-        else if(HEAD(*q1) == "DINOSAUR IN EARTH")
+        else if(CompareString(game , dino))
         {
-            printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+            printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
         }
 
-        else if(HEAD(*q1) == "RISEWOMAN")
+        else if(CompareString(game , risewoman))
         {
-            printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+            printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
 
         }
 
-        else if(HEAD(*q1) == "EIFFEL TOWER")
+        else if(CompareString(game , eiffel))
         {
-            printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+            printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
 
         }
 
@@ -275,7 +303,7 @@ void gameRNG()
         printf("YA , X Adalah %d\n" , random);
         skor = maxTry - nTebakan + 1;
     }
-    printf("skor = %d" , skor);
+    printf("skor = %d\n" , skor);
 }
 
 void SAVEBNMO(ArrayDin* GamesList, char* filename) 
@@ -322,10 +350,14 @@ void SKIPGAME(Queue *q, int n)
             dequeue(q,&x);
             i++;
         }
-        displayQueue(*q);
+    PLAYGAME(q);
+        //displayQueue(*q);
         //PLAYGAME(q);
-    } 
-    else { // 
+        //for (int i = IDX_HEAD(*q) - n; i < IDX_HEAD(*q) - n + length(*q); i++){
+        //printf("%d. %s\n",i+1, q->buffer[i]);
+    }
+     
+    else { 
         while(!isEmpty(*q))
         {
             dequeue(q,&x);
@@ -341,7 +373,7 @@ void STARTGAME(ArrayDin *ListGames){
     printf("%s\n",path);
     STARTWORD(path);
     int nGame = WordToInt(currentWord);
-    nGame -= 10;
+    //nGame -= 10;
     printf("%d\n" , nGame); 
     char string[NMax];
     for (int i = 1; i <= nGame; i++){
@@ -406,3 +438,9 @@ int main()
 
 }
 */
+/*
+int main(){
+    ArrayDin game = CreateDynArray();
+    LOADFILE(&game , "savefile.txt");
+    SAVEBNMO(&game , "savefile3.txt");
+}*/
