@@ -1,12 +1,12 @@
 #include "RNG.h"
 
-void gameRNG()  
+int gameRNG()  
 {  
     srand(time(NULL));
     int maxTry = 50;
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak sebuah angka X yang rentangnya berada diantara 1 - 50.\n");
     int random = rand() % 50 + 1;
-    printf("%d\n",random); //Buat mengetahui random integernya hehe
+    //printf("%d\n",random); //Buat mengetahui random integernya hehe
     int tebakan;
     int skor = 0;
     printf("Tebakan : ");
@@ -34,6 +34,7 @@ void gameRNG()
         skor = maxTry - nTebakan + 1;
     }
     printf("skor = %d" , skor);
+    return skor;
 }
 
 /*TEST CASE*/
