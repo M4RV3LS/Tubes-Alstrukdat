@@ -211,11 +211,8 @@ void PLAYGAME(Queue *q1)
         }
         else if(CompareString(game , MTK))
         {
-<<<<<<< Updated upstream
             printf("Loading MATH QUIZ ...");
-=======
             delay(2);
->>>>>>> Stashed changes
             mathquiz();
         }
         

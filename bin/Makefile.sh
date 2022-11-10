@@ -1,0 +1,1 @@
+gcc ../src/main.c ../src/ADT/mesinkata2.c ../src/ADT/mesinkar2.c ../src/ADT/arrayOfString.c ../src/ADT/queue.c ../src/console.c ../src/ADT/queuedinner.c -o main && ./main && rm main.exe
