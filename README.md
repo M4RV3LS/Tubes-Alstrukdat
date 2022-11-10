@@ -19,9 +19,13 @@
 
 ## Cara Kompilasi Program :
 #### gcc -o main.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c console.c MULAI
+#### ./MULAI
 
 
 
 ## Available Saved Games
 #### savefile.txt
 #### savefile3.txt
+
+
+## Available File Configuration
