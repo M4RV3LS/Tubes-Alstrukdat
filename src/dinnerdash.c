@@ -143,6 +143,7 @@ void dinnerdash()
     // Kamus
     boolean finished = false;
     int countserve = 0;
+    int saldo = 0;
     Word currentWord;
 
     // Membuat queue pesanan, masakan, sajian
@@ -298,4 +299,7 @@ void dinnerdash()
             finished = true;
         }
     }
+    
+    printf("\n");
+    printf("Skor anda %d\n", saldo);
 }
