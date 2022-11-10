@@ -164,13 +164,14 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
 void PLAYGAME(Queue *q1)
 {
     ElType A;
-    char *rng, *dinner , *dino ,*risewoman ,*eiffel;
+    char *rng, *dinner , *dino ,*risewoman ,*eiffel, *MTK;
     
     rng = "RNG";
     dinner = "Dinner DASH";
     dino = "DINOSAUR IN EARTH";
     risewoman = "RISEWOMAN";
     eiffel = "EIFFEL TOWER";
+    MTK = "MATH QUIZ";
 
     if (isEmpty(*q1))
     {
@@ -186,7 +187,7 @@ void PLAYGAME(Queue *q1)
         //printf("%s\n",rng);
         if (CompareString(game , rng))
         {
-            printf("Loading %s ...\n", rng);
+            printf("Loading RNG ...\n");
             delay(2);
             //dequeue(q1, &A);
             gameRNG();
@@ -208,21 +209,21 @@ void PLAYGAME(Queue *q1)
             printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
 
         }
-        else if(CompareString(game , "MATH QUIZ"))
+        else if(CompareString(game , MTK))
         {
+            printf("Loading MATH QUIZ ...");
             mathquiz();
-            printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
-
         }
         
         
 
-        /*else if (HEAD(*q1) == Diner DASH)
+        else if (CompareString(game , dinner))
         {
-            printf("Loading %s ...", dinner);
-            dequeue(q1, &A);
+            printf("Loading Dinner DASH ...");
+            delay(2);
+            //dequeue(q1, &A);
             dinnerdash(); //nunggu fungsi game dinner dash
-        }*/
+        }
 
 
         else
