@@ -223,10 +223,10 @@ void PLAYGAME(Queue *q1)
 
         else if (CompareString(game , dinner))
         {
-            printf("Loading Dinner DASH ...");
-            delay(2);
+            //printf("Loading Dinner DASH ...");
+            //delay(2);
             //dequeue(q1, &A);
-            dinnerdash(); //nunggu fungsi game dinner dash
+            //dinnerdash(); //nunggu fungsi game dinner dash
         }
 
 
