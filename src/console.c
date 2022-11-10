@@ -1,5 +1,6 @@
 #include "console.h"
 
+
 void CREATEGAME(ArrayDin *ListGames)
 {
     printf("Masukkan nama game yang akan ditambahkan : ");
@@ -186,6 +187,7 @@ void PLAYGAME(Queue *q1)
         if (CompareString(game , rng))
         {
             printf("Loading %s ...\n", rng);
+            delay(2);
             //dequeue(q1, &A);
             gameRNG();
         } 
@@ -206,7 +208,14 @@ void PLAYGAME(Queue *q1)
             printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
 
         }
+        else if(CompareString(game , "MATH QUIZ"))
+        {
+            mathquiz();
+            printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
 
+        }
+        
+        
 
         /*else if (HEAD(*q1) == Diner DASH)
         {
@@ -398,7 +407,234 @@ void STARTGAME(ArrayDin *ListGames){
     { 
         printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n"); 
     } 
+} 
+
+ 
+int pertambahan(int skor){
+    printf("Pilih Tingkat Kesulitan ! \n");
+    printf("1.Mudah\n2.Normal\n3.Sulit\n");
+    int batasbawah , batasatas;
+    boolean input = false;
+    while(!input){
+        printf("ENTER COMMAND : ");
+        STARTCOMMANDGAME();
+        if(wordAndCharSama(currentCMD,"Mudah")){
+            input = true;
+            batasbawah = 0;
+            batasatas = 100;
+        }
+        else if(wordAndCharSama(currentCMD,"Normal")){
+            input = true;
+            batasbawah = 101;
+            batasatas = 500;
+        }
+        else if(wordAndCharSama(currentCMD,"Sulit")){
+            input = true;
+            batasbawah = 501;
+            batasatas = 1000;
+        }
+        else
+        {
+            printf("Masukan Command Anda Salah , Silahkan Ulangi\n");
+        }
+    }
     
+    printf("Loading Mode pertambahan...\n");
+    delay(2);
+        for (int i = 0;i < 10;i++){
+                int a = randint(batasbawah,batasatas);
+                int b = randint(batasbawah,batasatas);
+                int c = a + b;
+                //printf("hasil adalah %d\n" , c);
+                printf("%d + %d = ", a , b);
+                STARTCOMMANDGAME();
+                if(isInteger(currentCMD)){
+                    int masukan = WordToInt(currentCMD);
+                    //printf("Masukan kamu adalah %d\n",masukan);
+                    
+                    if (masukan == c){
+                        skor = skor + 10;
+                    }
+                }
+                printf("Jawabannya adalah %d\n",c);
+                printf("Skor kuis kamu sekarang adalah %d\n" , skor);
+            //printf("%d\n",a);
+            
+            //printf("%d\n",b);    
+        
+        printf("\n");
+}
+
+return skor;
+}
+
+int pengurangan(int skor){
+    printf("Pilih Tingkat Kesulitan ! \n");
+    printf("1.Mudah\n2.Normal\n3.Sulit\n");
+    int batasbawah , batasatas;
+    boolean input = false;
+    while(!input){
+        printf("ENTER COMMAND : ");
+        STARTCOMMANDGAME();
+        if(wordAndCharSama(currentCMD,"Mudah")){
+            input = true;
+            batasbawah = 0;
+            batasatas = 100;
+        }
+        else if(wordAndCharSama(currentCMD,"Normal")){
+            input = true;
+            batasbawah = 101;
+            batasatas = 500;
+        }
+        else if(wordAndCharSama(currentCMD,"Sulit")){
+            input = true;
+            batasbawah = 501;
+            batasatas = 1000;
+        }
+        else{
+            printf("Masukan Command Anda Salah , Silahkan Ulangi\n");
+        }
+    }
+    
+    printf("Loading Mode pengurangan...\n");
+    delay(2);
+        for(int i = 0;i < 10;i++){
+                int c;
+                int a = randint(batasbawah,batasatas);
+                while(a == 0){
+                    a = randint(batasbawah,batasatas);
+                }
+                int b = randint(batasbawah,batasatas);
+                while(b < a){
+                     b = randint(batasbawah,batasatas);
+                }
+                if (a >= b){
+                    c = a - b;
+                    //printf("hasil adalah %d\n" , c);
+                    printf("%d - %d = ", a , b);
+                }
+                else{
+                    c = b - a;
+                    printf("%d - %d = ", b , a);
+                }
+                
+                STARTCOMMANDGAME();
+                if(isInteger(currentCMD)){
+                    int masukan = WordToInt(currentCMD);
+                    //printf("Masukan kamu adalah %d\n",masukan);
+                    
+                    if (masukan == c){
+                        skor = skor + 10;
+                    }
+                }
+                printf("Jawabannya adalah %d\n",c);
+                printf("Skor kuis kamu sekarang adalah %d\n" , skor);
+            //printf("%d\n",a);
+            
+            //printf("%d\n",b);    
+        
+        printf("\n");
+}
+
+return skor;
+}
+
+int perkalian(int skor){
+    printf("Pilih Tingkat Kesulitan ! \n");
+    printf("1.Mudah\n2.Normal\n3.Sulit\n");
+    int batasbawah , batasatas;
+    boolean input = false;
+    while(!input){
+        printf("ENTER COMMAND : ");
+        STARTCOMMANDGAME();
+        if(wordAndCharSama(currentCMD,"Mudah")){
+            input = true;
+            batasbawah = 0;
+            batasatas = 10;
+        }
+        else if(wordAndCharSama(currentCMD,"Normal")){
+            input = true;
+            batasbawah = 11;
+            batasatas = 30;
+        }
+        else if(wordAndCharSama(currentCMD,"Sulit")){
+            input = true;
+            batasbawah = 31;
+            batasatas = 100;
+        }
+        else{
+            printf("Masukan Command Anda Salah , Silahkan Ulangi\n");
+        }
+    }
+    
+    printf("Loading Mode perkalian...\n");
+    delay(2);
+        for(int i = 0;i < 10;i++){
+                int a = randint(batasbawah,batasatas);
+                int b = randint(batasbawah,batasatas);
+                int c = a * b;
+                //printf("hasil adalah %d\n" , c);
+                printf("%d x %d = ", a , b);
+                STARTCOMMANDGAME();
+                if(isInteger(currentCMD)){
+                    int masukan = WordToInt(currentCMD);
+                    //printf("Masukan kamu adalah %d\n",masukan);
+                    
+                    if (masukan == c){
+                        skor = skor + 10;
+                    }
+                }
+                printf("Jawabannya adalah %d\n",c);
+                printf("Skor kuis kamu sekarang adalah %d\n" , skor);
+            //printf("%d\n",a);
+            
+            //printf("%d\n",b);    
+        
+        printf("\n");
+}
+
+return skor;
+}
+
+int mathquiz(){
+    printf("<SELAMAT DATANG DI GAME MATHQUIZ>\n");
+    delay(1);
+    printf("GAME RULE : \n");
+    printf("1.Pilih Mode Quiz Matematika\n");
+    printf("2.Pilih Tingkat Kesulitan Mode , Semakin Tinggi Tingkat Kesulitannya, Semakin Besar Angka Yang Akan Dihitung\n");
+    printf("3.Jawaban Kuis Tidak Perlu Dispasi\n");
+    printf("4.Setiap Mode terdiri dari 10 soal\n");
+    printf("5.Skor Maksimal Dari Setiap Permainan Adalah 100\n\n");
+    printf("SELAMAT BERMAIN!\n");
+    delay(1);
+    printf("Pilih Mode Quiz Matematika ! \n");
+    printf("1.Pertambahan\n2.Pengurangan\n3.Perkalian\n");
+    int skormath = 0;
+    boolean masukanbenar = false;
+    while (!masukanbenar){
+        printf("ENTER COMMAND : ");
+        STARTCOMMANDGAME();
+        if(wordAndCharSama(currentCMD,"Pertambahan")){
+            masukanbenar = true;
+            skormath = pertambahan(skormath);
+        
+        }
+        else if(wordAndCharSama(currentCMD,"Pengurangan")){
+            masukanbenar = true;
+            skormath = pengurangan(skormath);
+        }
+        else if(wordAndCharSama(currentCMD,"Perkalian")){
+            masukanbenar = true;
+            skormath = perkalian(skormath);
+        }
+        else {
+            printf("Masukan Command Anda Salah , Silahkan Ulangi\n");
+        }
+    }
+    
+    printf("GAME TELAH SELESAI , SKOR KAMU ADALAH %d\n" , skormath);
+    return skormath;
+}
     /*
     ADVWORD();
     int j;
@@ -410,7 +646,7 @@ void STARTGAME(ArrayDin *ListGames){
     
     */
     //LISTGAME(ListGames);
-}
+
 
 /*
 int main()

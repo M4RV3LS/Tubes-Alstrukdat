@@ -75,6 +75,8 @@ int string_length(char *str);
 void stringConcat(char str1[] , char str2[] , char *output);
 
 Word splitwordDD(Word kata);
+
+int randint(int lower , int upper);
 	
 /**** ADT UNTUK MEMBANDINGKAN KATA****/
 boolean wordAndCharSama(Word kata, char command[]);
@@ -88,4 +90,6 @@ boolean isInteger(Word Kata);
 void *copystr(char *str, char *copy);
 
 int LengthKalimat(char *kalimat);
+
+void delay(int number_of_seconds);
 #endif

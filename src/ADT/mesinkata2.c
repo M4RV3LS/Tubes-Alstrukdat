@@ -376,8 +376,10 @@ boolean isInteger(Word Kata){
 }
 /*ADT TAMBAHAN*/
 int randint(int lower , int upper){
-    srand(time(NULL));
-    int random = (rand() % (upper - lower + 1)) + lower;
+    int random = (rand() % (upper - lower + 1)) + lower;; // assign the rand() function to random variable  
+    srand( time(0));
+    //srand(time(NULL));
+    //int random = (rand() % (upper - lower + 1)) + lower;
     return random;
 }
 
@@ -420,7 +422,18 @@ int LengthKalimat(char *kalimat)
     return length;
 }
 
-
+void delay(int number_of_seconds)
+{
+    // Converting time into milli_seconds
+    int milli_seconds = 1000 * number_of_seconds;
+ 
+    // Storing start time
+    clock_t start_time = clock();
+ 
+    // looping till required time is not achieved
+    while (clock() < start_time + milli_seconds)
+        ;
+}
 /*
 int main(){
     //char path[NMax];

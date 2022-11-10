@@ -49,3 +49,10 @@ void SKIPGAME(Queue *q, int n);
 
 void STARTGAME(ArrayDin *ListGames);
 
+int pertambahan(int skor);
+
+int pengurangan(int skor);
+
+int perkalian(int skor);
+
+int mathquiz();
