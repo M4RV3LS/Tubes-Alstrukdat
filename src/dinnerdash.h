@@ -1,13 +1,13 @@
 #include <stdio.h>
-#include "queue.h"
-#include "mesinkata2.h"
-#include "queuedinner.h"
+//#include "queue.h"
+//#include "mesinkata2.h"
+#include "ADT/queuedinner.h"
 
 #ifndef DINERDASH_h
 #define DINERDASH_H
 
 
-int saldo;
+//int saldo;
 
 void COOK(Word ID, Queue *Pesanan, Queue *Masakan);
 // Memasak makanan yang ada di urutan paling atas di

@@ -29,14 +29,14 @@ int length(Queue q)
     }
 }
 
-void enqueue(Queue *q,  val)
+void enqueue(Queue *q, ElType val)
 {
     if (isFull(*q))
     {
         printf("Queue is full!\n");
     }
     else
-    {
+    {   string label;
         if (isEmpty(*q))
         {
             IDX_HEAD(*q) = 0;
@@ -45,7 +45,10 @@ void enqueue(Queue *q,  val)
         TAIL(*q).Durasi = val.Durasi;
         TAIL(*q).Harga = val.Harga;
         TAIL(*q).Tahan = val.Tahan;
-        copystr(val.ID,TAIL(*q).ID);
+        //Test Case 1
+        //TAIL(*q).ID = val.ID;
+        /*Test Case 2*/
+        salinword(val.ID , &(TAIL(*q).ID));
     }
 }
 
@@ -57,10 +60,11 @@ void dequeue(Queue *q, ElType *val)
     }
     else
     {
-        *val.Durasi = HEAD(*q).Durasi;
-        *val.Harga = HEAD(*q).Harga;
-        *val.Tahan = HEAD(*q).Tahan;
-        copystr(HEAD(*q).ID,*val.ID);
+        (*val).Durasi = HEAD(*q).Durasi;
+        (*val).Harga = HEAD(*q).Harga;
+        (*val).Tahan = HEAD(*q).Tahan;
+        salinword(HEAD(*q).ID , &(*val).ID);
+        //copystr(HEAD(*q).ID,*val.ID);
         if (IDX_HEAD(*q) == IDX_TAIL(*q))
         {
             IDX_HEAD(*q) = IDX_UNDEF;
@@ -84,8 +88,8 @@ boolean isMember(Queue q, ElType f)
     }
     while (i <= IDX_TAIL(q) && !found)
     {
-        Word a = stringToWord(q.buffer[i].ID);
-        Word b = stringToWord(f.ID);
+        Word a = q.buffer[i].ID;
+        Word b = f.ID;
         if (wordAndWordSama(a,b))
         {
             found = true;

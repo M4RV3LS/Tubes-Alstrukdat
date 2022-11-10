@@ -401,6 +401,13 @@ void *copystr(char *str, char *copy)
     }
 }
 
+void salinword(Word a , Word *b){
+    for(int i = 0; i < a.Length ;i++){
+        (*b).TabWord[i] = a.TabWord[i];
+    }
+    (*b).Length = a.Length;
+}
+
 int LengthKalimat(char *kalimat)
 {
     int i = 0;

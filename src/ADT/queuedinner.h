@@ -21,6 +21,8 @@ typedef struct
     int Tahan;
     int Harga;
 } Food;
+
+typedef Food ElType;
 typedef struct
 {
     Food buffer[CAPACITY];

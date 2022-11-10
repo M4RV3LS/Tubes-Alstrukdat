@@ -92,9 +92,8 @@ Food generateFood(int i)
     pes.Harga = randint(10000,50000);
     
     // membuat ID / Label 
-    Word m = 'M';
-    Word idcode;
-    sprintf(idcode,"%d",i);
+    Word m = stringToWord('M');
+    Word idcode = IntToWord(i);
     WordConcat(m,idcode,pes.ID);
     return pes;
 }
@@ -106,7 +105,7 @@ Food copyFood(Food f)
     copy.Durasi = f.Durasi;
     copy.Harga = f.Harga;
     copy.Tahan = f.Tahan;
-    copystr(f.ID,copy.ID);
+    salinword(f.ID,&copy.ID);
 }
 
 // Command in-game
@@ -117,7 +116,7 @@ void COOK(Word ID, Queue *Pesanan, Queue *Masakan)
 {
     Word num = splitwordDD(ID);
     int i = WordToInt(num);
-    Food f = copyFood(Pesanan.buffer[i]);
+    Food f = copyFood((*Pesanan).buffer[i]);
     enqueue(Masakan,f);
 
     Word label;
@@ -126,7 +125,7 @@ void COOK(Word ID, Queue *Pesanan, Queue *Masakan)
     printf("Berhasil memasak %s\n", label);
 }
 
-void SERVE(Queue *Masakan, Queue *Sajian, int *Saldo)
+void SERVE(Queue *Pesanan, Queue *Sajian, int *Saldo)
 // Menyajikan makanan yang ada di urutan paling atas di
 // antrian makanan siap saji
 {
@@ -211,7 +210,7 @@ void dinnerdash()
                         {
                             printf("%s sedang dimasak!\n", temp);
                         } else if (isMember(sajian,snd)) {
-                            if (wordAndCharSama(snd,HEAD(pesanan).ID))
+                            if (wordAndWordSama(snd,HEAD(pesanan).ID))
                             {
                                 valid = true;
                             } else {
@@ -259,7 +258,7 @@ void dinnerdash()
         printf("\n");
 
         // Menambahkan pesanan (dimulai dari M3)
-        enqueue(pesanan,generateFood(i));
+        enqueue(&pesanan,generateFood(i));
         i++;
         
         // Proses makanan
@@ -304,4 +303,9 @@ void dinnerdash()
     
     printf("\n");
     printf("Skor anda %d\n", saldo);
+}
+
+int main(){
+    dinnerdash();
+    return 0;
 }

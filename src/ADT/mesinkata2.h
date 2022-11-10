@@ -68,6 +68,8 @@ void wordToString(Word currentWord, char *string);
 
 Word stringToWord(char* command);
 
+void salinword(Word a , Word *b);
+
 int string_length(char *str);
 
 void stringConcat(char str1[] , char str2[] , char *output);
