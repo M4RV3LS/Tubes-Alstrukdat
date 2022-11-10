@@ -214,7 +214,6 @@ void PLAYGAME(Queue *q1)
 <<<<<<< Updated upstream
             printf("Loading MATH QUIZ ...");
 =======
-            printf("Loading %s ...\n", rng);
             delay(2);
 >>>>>>> Stashed changes
             mathquiz();
