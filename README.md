@@ -27,6 +27,5 @@
 ## Available Saved Games
 #### savefile.txt
 #### savefile3.txt
+#### savefile6.txt
 
-
-## Available File Configuration
