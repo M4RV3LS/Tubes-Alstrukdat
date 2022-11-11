@@ -119,8 +119,8 @@ void COOK(Word ID, Queue *Pesanan, Queue *Masakan)
 // Memasak makanan yang ada di urutan paling atas di
 // antrian pesanan dan memasukkannnya ke dalam antrian masakan
 {
-    int i = WordToInt(ID);
-    Food f = copyFood(Pesanan.buffer[findBuffer(ID,*Pesanan)]);
+    Food f;
+    copyFood(Pesanan->buffer[findBuffer(ID,*Pesanan)],&f);
     enqueue(Masakan,f);
 
     printf("\n");
@@ -188,7 +188,7 @@ void dinnerdash()
             char*coba;
             //STARTCOMMAND();
             scanf("%s\n",coba);
-            Word currentCMD = stringToWord(coba);
+            currentCMD = stringToWord(coba);
             if (isValid(currentCMD))
             {   Word first = currentCMD;
                 //printf("%s",currentCMD);
