@@ -1,8 +1,8 @@
 /* File : queue.h */
 /* Definisi ADT Queue dengan representasi array secara eksplisit dan alokasi statik */
 
-#ifndef QUEUE_DINNER_H
-#define QUEUE_DINNER_H
+#ifndef QUEUE_H
+#define QUEUE_H
 
 #include "boolean.h"
 #include "mesinkata2.h"
@@ -11,8 +11,6 @@
 #define CAPACITY 100
 
 /* Definisi elemen dan address */
-//typedef char *ElType;
-
 typedef char *string;
 typedef struct
 {
@@ -25,9 +23,10 @@ typedef struct
 typedef Food ElType;
 typedef struct
 {
-    Food buffer[CAPACITY];
+    ElType buffer[CAPACITY];
     int idxHead;
     int idxTail;
+    int Neff;
 } Queue;
 
 /* ********* AKSES (Selektor) ********* */
@@ -51,7 +50,7 @@ boolean isEmpty(Queue q);
 boolean isFull(Queue q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
-boolean isMember(Queue q, Word w);
+boolean isMember(Queue q, ElType f);
 /* Mengembalikan true apabila f ditemukan di queue q*/
 
 int length(Queue q);
@@ -68,5 +67,11 @@ void dequeue(Queue *q, ElType *val);
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
         q mungkin kosong */
+
+void DeleteAt(Queue *q, int i, Food *f);
+/* Proses: Menghapus f pada q di index i */
+/* I.S. q tidak mungkin kosong */
+/* F.S. val = nilai elemen pada index i 
+pd I.S., IDX_TAIL "mundur" q mungkin kosong */
 
 #endif
