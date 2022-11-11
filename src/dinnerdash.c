@@ -37,8 +37,7 @@ void DisplayMasakan(Queue q)
         int i;
         for (i=0;i<length(q);i++)
         {
-            string mk;
-            wordToString(q.buffer[i].ID , mk);
+            Word mk = q.buffer[i].ID;
             int dr = q.buffer[i].Durasi;
             printf("%s      | %d\n", mk,dr);
         }
@@ -57,8 +56,7 @@ void DisplaySajian(Queue q)
         int i;
         for (i=0;i<length(q);i++)
         {
-            string mk;
-            wordToString(q.buffer[i].ID , mk);
+            Word mk = q.buffer[i].ID;
             int kt = q.buffer[i].Tahan;
             printf("%s      | %d\n", mk,kt);
         }
@@ -98,12 +96,10 @@ Food generateFood(int i)
     
     // membuat ID / Label 
     Word m = stringToWord("M");
-    //printf("%c\n",m);
     Word idcode = IntToWord(i);
-    //printf("%s\n",idcode);
     MergeWord(&m,idcode);
-    salinword(m , &pes.ID);
-    //printf("%s\n",pes.ID);
+    salinword(m,&pes.ID);
+
     return pes;
 }
 
@@ -124,7 +120,7 @@ void COOK(Word ID, Queue *Pesanan, Queue *Masakan)
 // antrian pesanan dan memasukkannnya ke dalam antrian masakan
 {
     int i = WordToInt(ID);
-    Food f = copyFood(Pesanan.buffer[i]);
+    Food f = copyFood(Pesanan.buffer[findBuffer(ID,*Pesanan)]);
     enqueue(Masakan,f);
 
     printf("\n");
@@ -168,7 +164,6 @@ void dinnerdash()
         Food pes;
         pes = generateFood(i);
         enqueue(&pesanan,pes);
-        //printf("%s\n", pesanan.buffer[i].ID);
         i++;
     }
 
@@ -247,10 +242,9 @@ void dinnerdash()
             }
             printf("%d",asal);
         }
-        printf("\nfa");
-        //printf("Perintah tidak valid!\n");
+
         // command sudah valid
-        // perpindahan makanan dr masakan ke sajian BELUM
+
         printf("%s\n",kataPertama(currentCMD));
         if(isCook(currentCMD))
         {
