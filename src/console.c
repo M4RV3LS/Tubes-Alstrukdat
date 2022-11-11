@@ -26,8 +26,6 @@ void CREATEGAME(ArrayDin *ListGames)
 void DELETE(ArrayDin *ListGames, Queue *q1)
 {
     int nomor_game;
-    printf("Masukkan nomor game yang akan dihapus: ");
-    STARTCOMMAND();
     nomor_game = WordToInt(currentCMD);
     //printf("%s\n",ListGames->A[nomor_game-1]);
     //printf("%c\n",ListGames->A[nomor_game-1][0]);
@@ -35,14 +33,14 @@ void DELETE(ArrayDin *ListGames, Queue *q1)
     //printf("%d\n",panjang);
     char *nama_game = (char*) malloc ( panjang * sizeof(char)); 
     
-    int i = 0;
-    while (i <= panjang)
+    printf("Berikut adalah daftar game yang tersedia\n");
+    for (int i = 0; i < (*ListGames).Neff; i++)
     {
-        nama_game[i] = ListGames->A[nomor_game-1][i];
-        //printf("%c\n" , nama_game[i]);
-        i++;
-        
+        printf("%i. %s\n", i+1, (*ListGames).A[i]);
     }
+
+    printf("Masukkan nomor game yang akan dihapus: ");
+    STARTCOMMAND();
     /*
     printf("%s\n" , nama_game);
     if (CompareString(nama_game  , "MARV")){
@@ -172,6 +170,13 @@ void PLAYGAME(Queue *q1)
     risewoman = "RISEWOMAN";
     eiffel = "EIFFEL TOWER";
     MTK = "MATH QUIZ";
+
+    printf("Berikut adalah daftar Game-mu");
+    for (int i = IDX_HEAD(*q1); i < IDX_HEAD(*q1) + length(*q1); i++)
+    {
+        printf("%d. %s\n",i+1, q1->buffer[i]);
+    }
+
 
     if (isEmpty(*q1))
     {
