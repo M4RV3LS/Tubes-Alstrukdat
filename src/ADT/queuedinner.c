@@ -14,19 +14,33 @@ boolean isEmpty(Queue q)
 
 boolean isFull(Queue q)
 {
-    return IDX_HEAD(q) == (IDX_TAIL(q) + 1) % CAPACITY;
+    return IDX_TAIL(q)==CAPACITY-1
+}
+
+boolean isMember(Queue q, Word w)
+{
+    boolean found = false;
+    boolean same = false;
+    int i = IDX_HEAD(q);
+    if (isEmpty(q))
+    {
+        return found;
+    }
+    while (i <= IDX_TAIL(q) && !found)
+    {
+        Word a = q.buffer[i].ID
+        if (wordAndWordSama(a,w))
+        {
+            found = true;
+        }
+        i++;
+    }
+    return found;
 }
 
 int length(Queue q)
 {
-    if (isEmpty(q))
-    {
-        return 0;
-    }
-    else
-    {
-        return (IDX_TAIL(q) - IDX_HEAD(q) + CAPACITY) % CAPACITY + 1;
-    }
+    return q.Neff;
 }
 
 void enqueue(Queue *q, ElType val)
@@ -36,19 +50,16 @@ void enqueue(Queue *q, ElType val)
         printf("Queue is full!\n");
     }
     else
-    {   string label;
+    {
         if (isEmpty(*q))
         {
-            IDX_HEAD(*q) = 0;
+            IDX_HEAD(*q)++;
         }
-        IDX_TAIL(*q) = (IDX_TAIL(*q) + 1) % CAPACITY;
+        IDX_TAIL(*q)++;
         TAIL(*q).Durasi = val.Durasi;
         TAIL(*q).Harga = val.Harga;
         TAIL(*q).Tahan = val.Tahan;
-        //Test Case 1
-        //TAIL(*q).ID = val.ID;
-        /*Test Case 2*/
-        salinword(val.ID , &(TAIL(*q).ID));
+        salinword(val.ID,&(TAIL(*q).ID));
     }
 }
 
@@ -60,11 +71,10 @@ void dequeue(Queue *q, ElType *val)
     }
     else
     {
-        (*val).Durasi = HEAD(*q).Durasi;
-        (*val).Harga = HEAD(*q).Harga;
-        (*val).Tahan = HEAD(*q).Tahan;
-        salinword(HEAD(*q).ID , &(*val).ID);
-        //copystr(HEAD(*q).ID,*val.ID);
+        *val.Durasi = HEAD(*q).Durasi;
+        *val.Harga = HEAD(*q).Harga;
+        *val.Tahan = HEAD(*q).Tahan;
+        salinword(HEAD(*q).ID,val.ID);
         if (IDX_HEAD(*q) == IDX_TAIL(*q))
         {
             IDX_HEAD(*q) = IDX_UNDEF;
@@ -72,15 +82,22 @@ void dequeue(Queue *q, ElType *val)
         }
         else
         {
-            IDX_HEAD(*q) = (IDX_HEAD(*q) + 1) % CAPACITY;
+            int i;
+            while (i<(q->Neff)-1)
+            {
+                q.buffer[i] = q.buffer[i+1];
+                i++;
+            }
+            q->Neff--;
+            IDX_TAIL(*q)--;
         }
     }
 }
 
-boolean isMember(Queue q, Word w)
+boolean isMember(Queue q, ElType f)
 {
     boolean found = false;
-    //boolean same = false;
+    boolean same = false;
     int i = IDX_HEAD(q);
     if (isEmpty(q))
     {
@@ -88,8 +105,9 @@ boolean isMember(Queue q, Word w)
     }
     while (i <= IDX_TAIL(q) && !found)
     {
-        Word a = q.buffer[i].ID;
-        if (wordAndWordSama(a,w))
+        Word a = stringToWord(q.buffer[i].ID);
+        Word b = stringToWord(f.ID);
+        if (wordAndWordSama(a,b))
         {
             found = true;
         }
@@ -98,18 +116,18 @@ boolean isMember(Queue q, Word w)
     return found;
 }
 
-int findBuffer(Word w, Queue q)
+void DeleteAt(Queue *q, int i, Food *f)
 {
-    int i = 0;
-    boolean found = false;
-    while (i<length(q))
-    {   
-        if (wordAndWordSama(q.buffer[i].ID,w))
-        {
-            found = true;
-        } else {
-            i++;
+	int length = length(*q);
+    f->Durasi = q->buffer[i].Durasi;
+    f->Harga = q->buffer[i].Harga;
+    f->Tahan = q->buffer[i].Tahan;
+    salinword(q->buffer[i].ID,&(f->ID));
+    if (!isEmpty(*q)){
+        for (int a = i; a <length-1; a++) {
+            q->buffer[a] = q->buffer[a + 1];
         }
+        IDX_TAIL(*q)--;
+        q->Neff--;
     }
-    return i;
 }
