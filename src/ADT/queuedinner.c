@@ -97,3 +97,19 @@ boolean isMember(Queue q, Word w)
     }
     return found;
 }
+
+int findBuffer(Word w, Queue q)
+{
+    int i = 0;
+    boolean found = false;
+    while (i<length(q))
+    {   
+        if (wordAndWordSama(q.buffer[i].ID,w))
+        {
+            found = true;
+        } else {
+            i++;
+        }
+    }
+    return i;
+}
