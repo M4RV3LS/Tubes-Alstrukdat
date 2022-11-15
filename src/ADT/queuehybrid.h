@@ -1,10 +1,10 @@
 /* File : queue.h */
 /* Definisi ADT Queue dengan representasi array secara eksplisit dan alokasi statik */
 
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef QUEUE_HYBRID_H
+#define QUEUE_HYBRID_H
 
-#include "boolean.h"
+//#include "boolean.h"
 #include "mesinkata.h"
 
 #define IDX_UNDEF -1

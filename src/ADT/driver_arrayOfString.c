@@ -1,5 +1,6 @@
 #include "arrayOfString.h"
 
+/*
 int main()
 {
     ArrayDin arr;
@@ -14,3 +15,4 @@ int main()
         i++;
     }
 }
+*/

@@ -1,5 +1,6 @@
 #include "queue.h"
 
+/*
 int main(){
     Queue game;
     CreateQueue(&game);
@@ -16,3 +17,4 @@ int main(){
     }
    return 0;
 }
+*/

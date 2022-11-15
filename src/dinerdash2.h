@@ -1,10 +1,12 @@
+#ifndef DINERDASH2_H
+#define DINERDASH2_H
+
 #include <stdio.h>
-#include "queuehybrid.h"
+#include "ADT/queuehybrid.h"
 #include <time.h>
 #include <stdlib.h>
 
-#ifndef DINERDASH2_h
-#define DINERDASH2_H
+
 
 void DisplayPesanan(Queue q);
 // Menampilkan antrian pesanan

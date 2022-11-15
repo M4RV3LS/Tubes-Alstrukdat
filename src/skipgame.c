@@ -34,7 +34,7 @@ void SKIPGAME(Queue *q, int n)
         printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
     }
 }
-
+/*
 int main(){
     Queue game;
     CreateQueue(&game);
@@ -48,3 +48,4 @@ int main(){
     SKIPGAME(&game , 2);
     return 0;
 }
+*/

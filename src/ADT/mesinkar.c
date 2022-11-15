@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "mesinkar.h"
 
-char currentChar;
+char karakter;
 
 static FILE *command;
 static int retval;
@@ -16,6 +16,6 @@ void COMMAND() {
 void ADVC()
 // Pita dimajukan satu karakter.
 {
-    retval = fscanf(command,"%c",&currentChar);
+    retval = fscanf(command,"%c",&karakter);
     // Pita command tidak diclose agar dapat terus terbaca oleh mesin
 }

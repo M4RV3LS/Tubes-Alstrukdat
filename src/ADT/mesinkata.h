@@ -1,5 +1,5 @@
-#ifndef __MESINKATA_H__
-#define __MESINKATA_H__
+#ifndef __MESINKATA_H__DD__
+#define __MESINKATA_H__DD__
 
 #include "boolean.h"
 #include "mesinkar.h"

@@ -341,8 +341,8 @@ void dinnerdash()
 }
 
 
-/*int main(){
+int main(){
     srand(time(0));
     dinnerdash();
     return 0;
-}*/
+}

@@ -1,12 +1,12 @@
-#ifndef __MESIN_KAR__
-#define __MESIN_KAR__
+#ifndef __MESIN_KAR__DD__
+#define __MESIN_KAR__DD__
 
 #include "boolean.h"
 #include <stdio.h>
 #define MARK '.'
 #define ENTER '\n'
 
-char currentChar;
+extern char karakter;
 
 static FILE *command;
 static int retval;

@@ -7,8 +7,8 @@ Word currentCmd;
 /* Pembacaan Pita */
 void CopyCommandGame(){
     int i = 0;
-    while ((currentChar != ENTER) && i != NMax) {
-        currentCmd.TabWord[i] = currentChar;
+    while ((karakter != ENTER) && i != NMax) {
+        currentCmd.TabWord[i] = karakter;
         ADVC();
         i++;
     }
@@ -18,7 +18,7 @@ void CopyCommandGame(){
 void STARTCOMMAND()
 {
     COMMAND();
-    if (currentChar == '\n')
+    if (karakter == '\n')
     {
         EndWord = true;
     }
