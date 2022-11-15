@@ -193,7 +193,13 @@ void dinnerdash()
         i++;
     }
 
-    printf("Selamat Datang di Diner Dash!\n");
+    printf("==============================WELCOME TO===========================\n");
+    printf("=================== K E L O M P O K = 9 = P U N Y A ===============\n");
+	printf(" ==================================================================\n");
+	printf("  ____  _____ _____ _____ _____    ____  _____ _____ _____ \n");
+	printf(" |    \\|     |   | |   __| __  |  |    \\|  _  |   __|  |  |\n");
+	printf(" |  |  |-   -| | | |   __|    -|  |  |  |     |__   |     |\n");
+	printf(" |____/|_____|_|___|_____|__|__|  |____/|__|__|_____|__|__|\n\n");
 
     while (!finished)
     {
@@ -337,12 +343,35 @@ void dinnerdash()
     }
     
     printf("\n");
-    printf("Skor anda %d\n", saldo);
+    printf("====G  A  M  E  -  O  V  E  R===\n");
+    if (length(pesanan)>7 && countserve!=15)
+    {
+        printf("===============================\n");
+        printf("Y O U  L O S T!\n");
+        printf("Amount of guests served = %d\n", countserve);
+        printf("Total profit: %d\n", saldo);
+        printf("Better luck next time!\n");
+        printf("===============================\n");
+    } else if (length(pesanan)<=7 && countserve==15) {
+        printf("===============================\n");
+        printf("Y O U  W I N!\n");
+        printf("Amount of guests served = %d\n", countserve);
+        printf("Total profit: %d\n", saldo);
+        printf("Good job, Chef!\n");
+        printf("===============================\n");
+    } else {
+        printf("===============================\n");
+        printf("Y O U  W O N  A N D  L O S T!\n");
+        printf("Amount of guests served = %d\n", countserve);
+        printf("Total profit: %d\n", saldo);
+        printf("Good job, (kinda)!\n");
+        printf("===============================\n");
+    }
 }
 
 
-int main(){
+/*int main(){
     srand(time(0));
     dinnerdash();
     return 0;
-}
+}*/
