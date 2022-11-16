@@ -1,1 +1,1 @@
-gcc ../src/main.c ../src/ADT/mesinkata2.c ../src/ADT/mesinkar2.c ../src/ADT/arrayOfString.c ../src/ADT/queue.c ../src/console.c ../src/ADT/queuedinner.c -o main && ./main && rm main.exe
+gcc main.c console.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c ADT/DinerDash/queuehybrid.c ADT/DinerDash/mesinkar.c ADT/DinerDash/mesinkata.c -o main && ./main && rm main.exe

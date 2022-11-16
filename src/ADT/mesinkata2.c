@@ -162,7 +162,7 @@ Word kataPertama(Word w)
 {
     Word first;
     int i = 0;
-    while ((i<w.Length) && (w.TabWord[i] != BLANK))
+    while ((i<w.Length) && (w.TabWord[i] != ' '))
     {
         first.TabWord[i] = w.TabWord[i];
         i++;
@@ -175,7 +175,7 @@ Word kataKedua(Word w)
 {
     Word second;
     int i=0;
-    while ((i<w.Length) && (w.TabWord[i] != BLANK))
+    while ((i<w.Length) && (w.TabWord[i] != ' '))
     {
         i++;
     }
@@ -218,21 +218,6 @@ int charToInt(char c)
 
 char intToChar(int c){
     return (c + '0');//Cuman bisa convert dari angka 0-9 
-}
-
-Word IntToWord(int X){ 
-    Word Kata; 
-    int i=0, temp=X; 
-    Kata.Length=0;   
-    while (X >= 10){ 
-        Kata.TabWord[i] = (X / 10) + '0'; 
-        Kata.Length++; 
-        i++; 
-        X %= 10;  
-    } 
-    Kata.TabWord[i] = X + '0'; 
-    Kata.Length++; 
-    return Kata; 
 }
 
 int WordToInt(Word kata)
@@ -302,7 +287,7 @@ void stringConcat(char str1[] , char str2[] , char *output)
 boolean wordAndCharSama(Word kata, char command[]) {
     /* Mengirimkan true apabila kedua kata sama */
     boolean sama = true;
-    for (int i = 0; i < kata.Length; i++) {
+    for (int i = 0; i < LengthKalimat(command); i++) {
         if (kata.TabWord[i] != command[i]) {
             sama = false;
         }
@@ -376,7 +361,9 @@ boolean isInteger(Word Kata){
 }
 /*ADT TAMBAHAN*/
 int randint(int lower , int upper){
-    int random = (rand() % (upper - lower + 1)) + lower;; // assign the rand() function to random variable  
+    
+    int random = (rand() % (upper - lower + 1)) + lower; 
+    // assign the rand() function to random variable  
     srand(time(0));
     //srand(time(NULL));
     //int random = (rand() % (upper - lower + 1)) + lower;
@@ -385,31 +372,24 @@ int randint(int lower , int upper){
 
 Word splitwordDD(Word kata){
     Word splitkata;
-    splitkata.Length=0; ;
+    splitkata.Length = kata.Length - 1;
     int i = 1;
     while( i < kata.Length ){
         splitkata.TabWord[i - 1] = kata.TabWord[i];
-        i++;
-        splitkata.Length++;
     }
     return splitkata;
 }
 
-void *copystr(char *str, char *copy)
+char *copystr(char *str)
 {
+    char *copy;
     int i=0;
     while(str[i]!='\0')
     {
         copy[i] = str[i];
         i++;
     }
-}
-
-void salinword(Word a , Word *b){
-    for(int i = 0; i < a.Length ;i++){
-        (*b).TabWord[i] = a.TabWord[i];
-    }
-    (*b).Length = a.Length;
+    return copy;
 }
 
 int LengthKalimat(char *kalimat)
@@ -437,58 +417,13 @@ void delay(int number_of_seconds)
         ;
 }
 
-void MergeWord(Word *W1, Word W2){
-    int Len = W1->Length;
-    for (int i=Len;i < Len + W2.Length;i++){
-        W1->TabWord[i] = W2.TabWord[i-Len];
+char* getCurrentWord(Word string){
+    char* string1 = malloc ((string.Length)*sizeof(char));
+    int i;
+    for(i=0;i<string.Length;i++){
+        string1[i]=string.TabWord[i];
     }
-    W1->Length += W2.Length;
+    string1[i] = '\0';
+    return string1;
 }
-/*
-int main(){
-    //char path[NMax];
-    //int masukan;
-    //STARTCOMMAND();
-    //masukan = kataToInt(currentCMD);
-    //if(masukan == 55){
-        //printf("Berhasil");
-    //}
-    //else{
-        //printf("Gagal");
-    //}
-    //stringConcat("./data/" , "savefile.txt" , path);
-    //printf("%s", path);
-    //return 0;
-    int a = 0 ;
-    char b = intToChar(a);
-    printf("%c",b);
-    int random = randint(1,5);
-    printf("%d" , random);
-}
-*/
-
-/*
-int main(){
-    char string[100];
-    int i = 20;
-    sprintf(string , "%d" , i);
-    printf("%s\n",string);
-}
-*/
-/*
-int main(){
-    printf("ENTER COMMAND: ");
-    STARTCOMMAND();
-    if(EndWord){
-        printf("Masukan kosong\n");
-    }
-    else if(isInteger(currentCMD)){
-        printf("CMD ADALAH INTEGER\n");
-    }
-    else{
-        printf("CMD BUKAN INTEGER\n");
-    }
-    return 0;
-}
-*/
 

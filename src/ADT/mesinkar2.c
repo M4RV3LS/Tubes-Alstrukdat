@@ -51,7 +51,3 @@ void ADVC()
     // Pita command tidak diclose agar dapat terus terbaca oleh mesin
 }
 
-//int main(){
-    //COMMAND();
-    //START("savefile.txt");
-//}

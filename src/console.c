@@ -6,10 +6,12 @@ void CREATEGAME(ArrayDin *ListGames)
     STARTCOMMANDGAME();
     char string[1000];
     char *gamename = (char*) malloc (currentCMD.Length * sizeof(char));
+    // char * gamename;
     int j = 0;
     //
     wordToString(currentCMD , string);
     //printf("%s\n",string);
+
     while (j <= currentCMD.Length)
     {
         gamename[j] = string[j];
@@ -17,8 +19,22 @@ void CREATEGAME(ArrayDin *ListGames)
     }
         //gamename[j] = '\0';
         //InsertIn(string , ListGames , i);
-    InsertLast(ListGames , gamename);
-    printf("Game berhasil ditambahkan\n");
+
+    boolean found = false;
+    for (int i = 0; i < ListGames->Neff; i++)
+    {
+        if (CompareString(gamename, ListGames->A[i]))
+        {
+            found = true;
+            printf("Game sudah ada di dalam list game.\n");
+        }
+        
+    }
+    if (!found)
+    {
+        InsertLast(ListGames, gamename);
+        printf("Game berhasil ditambahkan.\n");
+    }
 }
 
 void DELETE(ArrayDin *ListGames, Queue q1)
@@ -30,7 +46,6 @@ void DELETE(ArrayDin *ListGames, Queue q1)
     printf("\n");
     int input;
     input = WordToInt(currentCMD);
-    printf("inputan adalah %d\n",input);
     if ((input > 0 && input <=5)  || input>(*ListGames).Neff) {
         printf("Game gagal dihapus");
     } else {
@@ -86,25 +101,18 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     {
         STARTWORD(path);
         int nGame = WordToInt(currentWord);
-        //nGame -= 10;
-        //printf("%d\n" , nGame);
         char string[NMax];
         for (int i = 1; i <= nGame; i++){
             char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
-            // char * gamename;
             int j = 0;
             ADVLine();
             wordToString(currentWord , string);
-            //printf("%s\n",string);
             while (j <= currentWord.Length)
             {
                 gamename[j] = string[j];
                 j++;
             }
-            //gamename[j] = '\0';  
-            //InsertIn(string , ListGames , i);
             InsertLast(ListGames , gamename);
-            //printf("%s\n" , (*ListGames).A[i-1]);
         }
         if(!IsEmpty(*ListGames)) 
         { 
@@ -115,17 +123,6 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     {
         printf("%s tidak dikenali.\n",filename);
     }
-    //LISTGAME(ListGames);
-    /*
-    ADVLINE();
-    int j;
-    int idx2 = currentWord.TabWord[0] - 48;
-    for (j=0; j < idx2; j++){
-        ADVWORD();
-        insertLast(ListHistory, currentWord);
-    }
-    
-    */
 }
 
 void PLAYGAME(Queue *q1)
@@ -149,9 +146,6 @@ void PLAYGAME(Queue *q1)
     {
         char*game;
         dequeue(q1 , &game);
-        //wordToString()
-        //printf("%s\n",game);
-        //printf("%s\n",rng);
         if (CompareString(game , rng))
         {
             printf("Loading %s ...\n", rng);
@@ -184,10 +178,8 @@ void PLAYGAME(Queue *q1)
 
         else if (CompareString(game , dinerDash))
         {
-            printf("Loading %s ...", dinerDash);
-            //dequeue(q1, &A);
+            printf("Loading %s ...\n", dinerDash);
             delay(2);
-            //srand(time(0));
             dinnerdash(); 
         }
 

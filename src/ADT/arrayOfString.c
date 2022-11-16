@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include<stdlib.h>
 #include "arrayOfString.h"
 
 
@@ -74,19 +74,3 @@ boolean IsEmpty (ArrayDin array)
 {
     return (array.Neff == 0);
 }
-/*
-int main()
-{
-    ArrayDin arr;
-    arr = CreateDynArray();
-    char temp[8] = "Timothy";
-    arr.A[0] = temp;
-    int i = 0;
-    int j = 0;
-    while (arr.A[0][i] != '\0')
-    {
-        printf("%c",arr.A[0][i]);
-        i++;
-    }
-}
-*/
