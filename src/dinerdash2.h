@@ -2,31 +2,31 @@
 #define DINERDASH2_H
 
 #include <stdio.h>
-#include "ADT/queuehybrid.h"
+#include "ADT/DinerDash/queuehybrid.h"
 #include <time.h>
 #include <stdlib.h>
 
 
 
-void DisplayPesanan(Queue q);
+void DisplayPesanan(QUEUEDD q);
 // Menampilkan antrian pesanan
 
-void DisplayMasakan(Queue q);
+void DisplayMasakan(QUEUEDD q);
 // Menampilkan antrian makanan
 
-void DisplaySajian(Queue q);
+void DisplaySajian(QUEUEDD q);
 // Menampilkan antrian sajian
 
-boolean isValid(Word a);
+boolean isValid(Kata a);
 // Memeriksa validitas command
 
-boolean isCook(Word a);
+boolean isCook(Kata a);
 // Memeriksa apakah command berupa COOK
 
-boolean isServe(Word a);
+boolean isServe(Kata a);
 // Memeriksa apakah command berupa SERVE
 
-boolean isSkip(Word a);
+boolean isSkip(Kata a);
 // Memeriksa apakah command berupa SKIP
 
 void generateFood(Food *pes,int i);
@@ -35,11 +35,11 @@ void generateFood(Food *pes,int i);
 void copyFood(Food *copy,Food f);
 // Menyalin info makanan
 
-void COOK(Word ID, Queue *Pesanan, Queue *Masakan);
+void COOK(Kata ID, QUEUEDD *Pesanan, QUEUEDD *Masakan);
 // Memasak makanan yang ada di urutan paling atas di
 // antrian pesanan dan memasukkannnya ke dalam antrian masakan
 
-void SERVE(Queue *Masakan, Queue *Sajian, int *Saldo);
+void SERVE(QUEUEDD *Masakan, QUEUEDD *Sajian, int *Saldo);
 // Menyajikan makanan yang ada di urutan paling atas di
 // antrian makanan siap saji
 

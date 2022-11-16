@@ -7,13 +7,13 @@ static FILE *command;
 static int retval;
 
 /* *** Membaca dari terminal *** */
-void COMMAND() {
+void CMD() {
     /* Mesin siap dioperasikan. Pita command disiapkan ... */
     command = stdin;
-    ADVC();
+    advcharacter();
 }
 
-void ADVC()
+void advcharacter()
 // Pita dimajukan satu karakter.
 {
     retval = fscanf(command,"%c",&karakter);

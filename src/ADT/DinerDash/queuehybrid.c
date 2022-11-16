@@ -1,37 +1,37 @@
 #include <stdio.h>
 #include "queuehybrid.h"
 
-void CreateQueue(Queue *q)
+void CreateQUEUEDD(QUEUEDD *q)
 {
     IDX_HEAD(*q) = IDX_UNDEF;
     IDX_TAIL(*q) = IDX_UNDEF;
     q->Neff = 0;
 }
 
-boolean isEmpty(Queue q)
+boolean isKosong(QUEUEDD q)
 {
-    return length(q)==0;
+    return nbElement(q)==0;
 }
 
-boolean isFull(Queue q)
+boolean isPenuh(QUEUEDD q)
 {
     return IDX_TAIL(q)==CAPACITY-1;
 }
 
-int length(Queue q)
+int nbElement(QUEUEDD q)
 {
     return q.Neff;
 }
 
-void enqueue(Queue *q, ElType val)
+void ENQUEUEDD(QUEUEDD *q, FoodType val)
 {
-    if (isFull(*q))
+    if (isPenuh(*q))
     {
-        printf("Queue is full!\n");
+        printf("QUEUEDD is full!\n");
     }
     else
     {
-        if (isEmpty(*q))
+        if (isKosong(*q))
         {
             IDX_HEAD(*q)++;
         }
@@ -39,23 +39,23 @@ void enqueue(Queue *q, ElType val)
         TAIL(*q).Durasi = val.Durasi;
         TAIL(*q).Harga = val.Harga;
         TAIL(*q).Tahan = val.Tahan;
-        salinWord(&TAIL(*q).ID,val.ID);
+        salinKata(&TAIL(*q).ID,val.ID);
         q->Neff++;
     }
 }
 
-void dequeue(Queue *q, ElType *val)
+void DEQUEUEDD(QUEUEDD *q, FoodType *val)
 {
-    if (isEmpty(*q))
+    if (isKosong(*q))
     {
-        printf("Queue is empty!\n");
+        printf("QUEUEDD is empty!\n");
     }
     else
     {
         val->Durasi = HEAD(*q).Durasi;
         val->Harga = HEAD(*q).Harga;
         val->Tahan = HEAD(*q).Tahan;
-        salinWord(&val->ID,HEAD(*q).ID);
+        salinKata(&val->ID,HEAD(*q).ID);
         if (IDX_HEAD(*q) == IDX_TAIL(*q))
         {
             IDX_HEAD(*q) = IDX_UNDEF;
@@ -76,18 +76,18 @@ void dequeue(Queue *q, ElType *val)
     }
 }
 
-boolean isMember(Queue q, Word w)
+boolean isAnggota(QUEUEDD q, Kata w)
 {
     boolean found = false;
     boolean same = false;
     int i = IDX_HEAD(q);
-    if (isEmpty(q))
+    if (isKosong(q))
     {
         return found;
     }
     while (i <= IDX_TAIL(q) && !found)
     {
-        if (wordWordEq(q.buffer[i].ID,w))
+        if (wordKataEq(q.buffer[i].ID,w))
         {
             found = true;
         }
@@ -96,15 +96,15 @@ boolean isMember(Queue q, Word w)
     return found;
 }
 
-void DeleteAt(Queue *q, int i, Food *f)
+void DELETEATDD(QUEUEDD *q, int i, Food *f)
 {
-	int length = q->Neff;
+	int nbElement = q->Neff;
     f->Durasi = q->buffer[i].Durasi;
     f->Harga = q->buffer[i].Harga;
     f->Tahan = q->buffer[i].Tahan;
-    salinWord(&f->ID,q->buffer[i].ID);
-    if (!isEmpty(*q)){
-        for (int a = i; a <length-1; a++) {
+    salinKata(&f->ID,q->buffer[i].ID);
+    if (!isKosong(*q)){
+        for (int a = i; a <nbElement-1; a++) {
             q->buffer[a] = q->buffer[a + 1];
         }
         IDX_TAIL(*q)--;
@@ -112,13 +112,13 @@ void DeleteAt(Queue *q, int i, Food *f)
     }
 }
 
-int findBuffer(Word code,Queue q)
+int findBuffer(Kata code,QUEUEDD q)
 {
     int i = 0;
     boolean found = false;
-    while (i<length(q) && !found)
+    while (i<nbElement(q) && !found)
     {
-        if (wordWordEq(code,q.buffer[i].ID))
+        if (wordKataEq(code,q.buffer[i].ID))
         {
             found = true;
         } else {
@@ -130,25 +130,25 @@ int findBuffer(Word code,Queue q)
 
 /*int main()
 {
-    Queue q;
+    QUEUEDD q;
     Food f;
-    CreateQueue(&q);
+    CreateQUEUEDD(&q);
     f.Durasi = 2;
     f.Tahan = 3;
     f.Harga = 15000;
-    STARTCOMMAND();
+    STARTCMD();
     f.ID = currentCmd;
     printf("%d\n", f.ID.Length);
     return 0;
 
-    STARTCOMMAND();
-    printWord(getCommand(currentCmd));
+    STARTCMD();
+    printKata(getCommand(currentCmd));
     printf("\n");
-    printWord(getLabel(currentCmd));
+    printKata(getLabel(currentCmd));
     printf("\n");
 
-    Queue q;
-    CreateQueue(&q);
+    QUEUEDD q;
+    CreateQUEUEDD(&q);
     Food f1,f2,f3,f4,f5;
 
     f1.Durasi = 2;
@@ -171,49 +171,49 @@ int findBuffer(Word code,Queue q)
     f5.Tahan = 3;
     f5.Harga = 15000;
 
-    STARTCOMMAND();
+    STARTCMD();
     f1.ID = currentCmd;
-    STARTCOMMAND();
+    STARTCMD();
     f2.ID = currentCmd;
-    STARTCOMMAND();
+    STARTCMD();
     f3.ID = currentCmd;
-    STARTCOMMAND();
+    STARTCMD();
     f4.ID = currentCmd;
-    STARTCOMMAND();
+    STARTCMD();
     f5.ID = currentCmd;
 
-    printWord(f1.ID);
+    printKata(f1.ID);
     printf("%d %d %d\n", f1.Durasi,f1.Harga,f1.Tahan);
 
-    printWord(f2.ID);
+    printKata(f2.ID);
     printf("%d %d %d\n", f2.Durasi,f2.Harga,f2.Tahan);
 
-    printWord(f3.ID);
+    printKata(f3.ID);
     printf("%d %d %d\n", f3.Durasi,f3.Harga,f3.Tahan);
 
-    printWord(f4.ID);
+    printKata(f4.ID);
     printf("%d %d %d\n", f4.Durasi,f4.Harga,f4.Tahan);
 
-    printWord(f5.ID);
+    printKata(f5.ID);
     printf("%d %d %d\n", f5.Durasi,f5.Harga,f5.Tahan);
 
-    enqueue(&q,f1);
-    enqueue(&q,f2);
-    enqueue(&q,f3);
-    enqueue(&q,f4);
-    enqueue(&q,f5);
+    ENQUEUEDD(&q,f1);
+    ENQUEUEDD(&q,f2);
+    ENQUEUEDD(&q,f3);
+    ENQUEUEDD(&q,f4);
+    ENQUEUEDD(&q,f5);
 
-    dequeue(&q,&f1);
-    dequeue(&q,&f2);
+    DEQUEUEDD(&q,&f1);
+    DEQUEUEDD(&q,&f2);
 
-    printWord(f1.ID);
+    printKata(f1.ID);
     printf("%d %d %d\n", f1.Durasi,f1.Harga,f1.Tahan);
 
-    printWord(f2.ID);
+    printKata(f2.ID);
     printf("%d %d %d\n", f2.Durasi,f2.Harga,f2.Tahan);
 
-    DeleteAt(&q,1,&f3);
-    printWord(f3.ID);
+    DELETEATDD(&q,1,&f3);
+    printKata(f3.ID);
     printf("%d %d %d\n", f3.Durasi,f3.Harga,f3.Tahan);
 
     DisplayPesanan(q);

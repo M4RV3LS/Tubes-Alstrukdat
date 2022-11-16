@@ -1,16 +1,16 @@
 #include "dinerdash2.h"
 
 // Menampilkan tabel
-void DisplayPesanan(Queue q)
+void DisplayPesanan(QUEUEDD q)
 {
     printf("Daftar Pesanan\n");
     printf("Makanan | Durasi memasak | Ketahanan | Harga\n");
     printf("============================================\n");
-    if(!isEmpty(q))
+    if(!isKosong(q))
     {
         int i;
-        for (i=0;i<length(q);i++)
-        {   Word mk = q.buffer[i].ID;
+        for (i=0;i<nbElement(q);i++)
+        {   Kata mk = q.buffer[i].ID;
             //wordToString(q.buffer[i].ID , *mk);
             //printf("%s\n", mk);
             int dr = q.buffer[i].Durasi;
@@ -18,7 +18,7 @@ void DisplayPesanan(Queue q)
             int kt = q.buffer[i].Tahan;
             //printf("%d\n" , kt);
             int hr = q.buffer[i].Harga;
-            printWord(mk);
+            printKata(mk);
             if (mk.Length==1)
             {
                 printf("       | %d              | %d         | %d\n", dr,kt,hr);
@@ -31,19 +31,19 @@ void DisplayPesanan(Queue q)
     }
 }
 
-void DisplayMasakan(Queue q)
+void DisplayMasakan(QUEUEDD q)
 {
     printf("Daftar Makanan yang sedang dimasak\n");
     printf("Makanan | Sisa durasi memasak\n");
     printf("=============================\n");
-    if(!isEmpty(q))
+    if(!isKosong(q))
     {
         int i;
-        for (i=0;i<length(q);i++)
+        for (i=0;i<nbElement(q);i++)
         {
-            Word mk = q.buffer[i].ID;
+            Kata mk = q.buffer[i].ID;
             int dr = q.buffer[i].Durasi;
-            printWord(mk);
+            printKata(mk);
             if (mk.Length==2)
             {
                 printf("      | %d\n",dr);
@@ -56,21 +56,21 @@ void DisplayMasakan(Queue q)
     }
 }
 
-void DisplaySajian(Queue q)
+void DisplaySajian(QUEUEDD q)
 {
     printf("Daftar Makanan yang dapat disajikan\n");
     printf("Makanan | Sisa ketahanan makanan\n");
     printf("================================\n");
-    if(!isEmpty(q))
+    if(!isKosong(q))
     {
         int i;
-        Word mk;
+        Kata mk;
         int kt;
-        for (i=0;i<length(q);i++)
+        for (i=0;i<nbElement(q);i++)
         {
             mk = q.buffer[i].ID;
             kt = q.buffer[i].Tahan;
-            printWord(mk);
+            printKata(mk);
             if (mk.Length==2)
             {
                 printf("      | %d\n",kt);
@@ -84,22 +84,22 @@ void DisplaySajian(Queue q)
 }
 
 // Validasi command
-boolean isValid(Word a)
+boolean isValid(Kata a)
 {
     return isCook(a) || isServe(a) || isSkip(a);
 }
 
-boolean isCook(Word a)
+boolean isCook(Kata a)
 {
     return wordStringEq(getCommand(a),"COOK");
 }
 
-boolean isServe(Word a)
+boolean isServe(Kata a)
 {
     return wordStringEq(getCommand(a),"SERVE");
 }
 
-boolean isSkip(Word a)
+boolean isSkip(Kata a)
 {
     return wordStringEq(getCommand(a),"SKIP");
 }
@@ -112,12 +112,12 @@ void generateFood(Food *pes,int i)
     pes->Harga = randint(10000,50000);
     
     // membuat ID / Label 
-    Word m;
-    m.TabWord[0] = 'M';
+    Kata m;
+    m.TabKata[0] = 'M';
     m.Length = 1;
-    Word idcode = IntToWord(i);
-    joinWord(&m,idcode);
-    salinWord(&pes->ID,m);
+    Kata idcode = IntToKata(i);
+    joinKata(&m,idcode);
+    salinKata(&pes->ID,m);
 }
 
 // Menyalin info makanan
@@ -126,39 +126,39 @@ void copyFood(Food *copy,Food f)
     copy->Durasi = f.Durasi;
     copy->Harga = f.Harga;
     copy->Tahan = f.Tahan;
-    salinWord(&copy->ID,f.ID);
+    salinKata(&copy->ID,f.ID);
 }
 
 // Command in-game
 
-void COOK(Word code, Queue *Pesanan, Queue *Masakan)
+void COOK(Kata code, QUEUEDD *Pesanan, QUEUEDD *Masakan)
 // Memasak makanan yang ada di urutan paling atas di
 // antrian pesanan dan memasukkannnya ke dalam antrian masakan
 {
     Food f;
     copyFood(&f,Pesanan->buffer[findBuffer(code,*Pesanan)]);
     f.Durasi++;
-    enqueue(Masakan,f);
+    ENQUEUEDD(Masakan,f);
 
     printf("\n");
     printf("Berhasil memasak ");
-    printWord(code);
+    printKata(code);
     printf("\n");
 }
 
-void SERVE(Queue *Pesanan, Queue *Sajian, int *Saldo)
+void SERVE(QUEUEDD *Pesanan, QUEUEDD *Sajian, int *Saldo)
 // Menyajikan makanan yang ada di urutan paling atas di
 // antrian makanan siap saji
 {
     Food saji;
     Food saji2;
-    dequeue(Pesanan,&saji);
-    dequeue(Sajian,&saji2);
+    DEQUEUEDD(Pesanan,&saji);
+    DEQUEUEDD(Sajian,&saji2);
     *Saldo += saji2.Harga;
 
     printf("\n");
     printf("Berhasil menyajikan ");
-    printWord(saji2.ID);
+    printKata(saji2.ID);
     printf("\n");
 }
 
@@ -176,12 +176,12 @@ void dinnerdash()
     int saldo = 0;
 
     // Membuat queue pesanan, masakan, sajian
-    Queue pesanan;
-    Queue masakan;
-    Queue sajian;
-    CreateQueue(&pesanan);
-    CreateQueue(&masakan);
-    CreateQueue(&sajian);
+    QUEUEDD pesanan;
+    QUEUEDD masakan;
+    QUEUEDD sajian;
+    CreateQUEUEDD(&pesanan);
+    CreateQUEUEDD(&masakan);
+    CreateQUEUEDD(&sajian);
 
     //Generate pesanan awal
     int i = 0;
@@ -189,7 +189,7 @@ void dinnerdash()
     while (i<3)
     {
         generateFood(&temp,i);
-        enqueue(&pesanan,temp);
+        ENQUEUEDD(&pesanan,temp);
         i++;
     }
 
@@ -220,60 +220,60 @@ void dinnerdash()
         boolean valid = false;
         while(!valid)
         {
-            printf("MASUKKAN COMMAND: ");
-            STARTCOMMAND();
-            if (isValid(currentCmd))
+            printf("MASUKKAN CMD: ");
+            STARTCMD();
+            if (isValid(CURRENTCOMMAND))
             {   
-                if(isCook(currentCmd))
+                if(isCook(CURRENTCOMMAND))
                 {   
-                    if (isMember(pesanan,getLabel(currentCmd)))
+                    if (isAnggota(pesanan,getLabel(CURRENTCOMMAND)))
                     {   
-                        if (isMember(masakan,getLabel(currentCmd)))
+                        if (isAnggota(masakan,getLabel(CURRENTCOMMAND)))
                         {
-                            printWord(getLabel(currentCmd));
+                            printKata(getLabel(CURRENTCOMMAND));
                             printf(" sedang dimasak!\n");
                             printf("\n");
-                        } else if (isMember(sajian,getLabel(currentCmd))) {
-                            printWord(getLabel(currentCmd));
+                        } else if (isAnggota(sajian,getLabel(CURRENTCOMMAND))) {
+                            printKata(getLabel(CURRENTCOMMAND));
                             printf(" sudah bisa disajikan!\n");
                             printf("\n");
                         } else {
                             valid = true;
                         }
                     } else {
-                        printWord(getLabel(currentCmd));
+                        printKata(getLabel(CURRENTCOMMAND));
                         printf(" bukan bagian dari pesanan \n");
                         printf("\n");
                     }  
-                } else if (isServe(currentCmd)) {
-                    if (isMember(pesanan,getLabel(currentCmd)))
+                } else if (isServe(CURRENTCOMMAND)) {
+                    if (isAnggota(pesanan,getLabel(CURRENTCOMMAND)))
                     {   
-                        if (isMember(masakan,getLabel(currentCmd)))
+                        if (isAnggota(masakan,getLabel(CURRENTCOMMAND)))
                         {
-                            printWord(getLabel(currentCmd));
+                            printKata(getLabel(CURRENTCOMMAND));
                             printf(" sedang dimasak!\n");
                             printf("\n");
-                        } else if (isMember(sajian,getLabel(currentCmd))) {
-                            if (wordWordEq(getLabel(currentCmd),HEAD(pesanan).ID))
+                        } else if (isAnggota(sajian,getLabel(CURRENTCOMMAND))) {
+                            if (wordKataEq(getLabel(CURRENTCOMMAND),HEAD(pesanan).ID))
                             {
                                 valid = true;
                             } else {
-                                Word bef = HEAD(pesanan).ID;
-                                Word af = getLabel(currentCmd);
-                                printWord(af);
+                                Kata bef = HEAD(pesanan).ID;
+                                Kata af = getLabel(CURRENTCOMMAND);
+                                printKata(af);
                                 printf(" belum dapat disajikan karena ");
-                                printWord(bef);
+                                printKata(bef);
                                 printf(" belum selesai\n");
                                 printf("\n");
                                 printf("\n");
                             }
                         } else {
-                            printWord(getLabel(currentCmd));
+                            printKata(getLabel(CURRENTCOMMAND));
                             printf(" perlu dimasak terlebih dahulu!\n");
                             printf("\n");
                         }
                     } else {
-                        printWord(getLabel(currentCmd));
+                        printKata(getLabel(CURRENTCOMMAND));
                         printf(" bukan bagian dari pesanan \n");
                         printf("\n");
                     } 
@@ -289,43 +289,43 @@ void dinnerdash()
 
         // command sudah valid 
 
-        if(isCook(currentCmd))
+        if(isCook(CURRENTCOMMAND))
         {
-            COOK(getLabel(currentCmd),&pesanan,&masakan);
-        } else if (isServe(currentCmd)) {
+            COOK(getLabel(CURRENTCOMMAND),&pesanan,&masakan);
+        } else if (isServe(CURRENTCOMMAND)) {
             SERVE(&pesanan,&sajian,&saldo);
             countserve++;
         } 
 
-        if (!isEmpty(masakan))
+        if (!isKosong(masakan))
         {
             int j;
             Food masak;
-            for (j=0;j<length(masakan);j++)
+            for (j=0;j<nbElement(masakan);j++)
             {
                 masakan.buffer[j].Durasi--;
                 if (masakan.buffer[j].Durasi==0)
                 {
-                    DeleteAt(&masakan,j,&masak);
+                    DELETEATDD(&masakan,j,&masak);
                     masak.Tahan++;
-                    enqueue(&sajian,masak);
-                    printWord(masak.ID);
+                    ENQUEUEDD(&sajian,masak);
+                    printKata(masak.ID);
                     printf(" sudah selesai dimasak\n");
                 }
             }
         }
 
-        if (!isEmpty(sajian))
+        if (!isKosong(sajian))
         {
             int k;
             Food basi;
-            for (k=0;k<length(sajian);k++)
+            for (k=0;k<nbElement(sajian);k++)
             {
                 sajian.buffer[k].Tahan--;
                 if (sajian.buffer[k].Tahan==0)
                 {
-                    dequeue(&sajian,&basi);
-                    printWord(basi.ID);
+                    DEQUEUEDD(&sajian,&basi);
+                    printKata(basi.ID);
                     printf(" sudah tidak dapat disajikan. Segera masak ulang\n");
                 }
             }
@@ -333,10 +333,10 @@ void dinnerdash()
 
         Food temp2;
         generateFood(&temp2,i);
-        enqueue(&pesanan,temp2);
+        ENQUEUEDD(&pesanan,temp2);
         i++;
 
-        if (length(pesanan)>7 || countserve==15)
+        if (nbElement(pesanan)>7 || countserve==15)
         {
             finished = true;
         }
@@ -344,7 +344,7 @@ void dinnerdash()
     
     printf("\n");
     printf("====G  A  M  E  -  O  V  E  R===\n");
-    if (length(pesanan)>7 && countserve!=15)
+    if (nbElement(pesanan)>7 && countserve!=15)
     {
         printf("===============================\n");
         printf("Y O U  L O S T!\n");
@@ -352,7 +352,7 @@ void dinnerdash()
         printf("Total profit: %d\n", saldo);
         printf("Better luck next time!\n");
         printf("===============================\n");
-    } else if (length(pesanan)<=7 && countserve==15) {
+    } else if (nbElement(pesanan)<=7 && countserve==15) {
         printf("===============================\n");
         printf("Y O U  W I N!\n");
         printf("Amount of guests served = %d\n", countserve);
@@ -369,9 +369,3 @@ void dinnerdash()
     }
 }
 
-
-/*int main(){
-    srand(time(0));
-    dinnerdash();
-    return 0;
-}*/

@@ -32,7 +32,7 @@ int main(){
         char namafile[50];
 
         wordToString(currentCMD, namafile);
-        printf("%s\n",namafile);
+        //printf("%s\n",namafile);
         int j =0;
         char *filename = (char *)malloc(currentCMD.Length * sizeof(char));
         //printf("%d",currentCMD.Length);
@@ -41,19 +41,22 @@ int main(){
             filename[j] = namafile[j];
             j++;
         }
-        printf("%s\n",filename);
+        //printf("%s\n",filename);
         LOADFILE(&ListGames, filename);
         
     }
     else{
         printf("Masukan command salah. Silahkan masukkan command kembali.\n ");
     }
+    while(!EndWord){
+        ADVCOMMAND();
+    }
     }
 
     HELP();
     //LISTGAME(&ListGames);
-    
-    while (!wordAndCharSama(currentCMD, "QUIT"))
+    boolean berhenti = false;
+    while (!berhenti)
     {
         char*GAME = "GAME";
         printf("ENTER COMMAND: ");
@@ -106,16 +109,15 @@ int main(){
             ADVCOMMAND();
             char game[50];
             wordToString(currentCMD, game);
-            //printf("%s", game);
             if(CompareString(game , "GAME"))
             {
                 //printf("naon yak 2");
-                DELETE(&ListGames, &QueueGame);
+                DELETE(&ListGames, QueueGame);
             }
-            //else
-            //{
-                //printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
-            //}
+            else
+            {
+                printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+            }
         }
         else if(wordAndCharSama(currentCMD, "QUEUE"))
         {
@@ -152,7 +154,7 @@ int main(){
                 int skip = WordToInt(currentCMD); //- 10 ;            
                 SKIPGAME(&QueueGame, skip);
             }
-             else
+            else
             {
                 printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
             }
@@ -161,10 +163,16 @@ int main(){
         {
             HELP();
         }
+        else if(wordAndCharSama(currentCMD, "QUIT")){
+            berhenti = true;
+        }
         else
         {
             printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
         }
+        //while(!EndWord){
+        //ADVCOMMAND();
+        //}
         // printf("ENTER COMMAND: ");
         // STARTCOMMAND();   
     }

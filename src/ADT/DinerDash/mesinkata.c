@@ -1,58 +1,58 @@
 #include <stdio.h>
 #include "mesinkata.h"
 
-boolean EndWord;
-Word currentCmd;
+boolean EndKata;
+Kata CURRENTCOMMAND;
 
 /* Pembacaan Pita */
-void CopyCommandGame(){
+void COPYCOMMANDGAMEDD(){
     int i = 0;
     while ((karakter != ENTER) && i != NMax) {
-        currentCmd.TabWord[i] = karakter;
-        ADVC();
+        CURRENTCOMMAND.TabKata[i] = karakter;
+        advcharacter();
         i++;
     }
-    currentCmd.Length = i;
+    CURRENTCOMMAND.Length = i;
 }
 
-void STARTCOMMAND()
+void STARTCMD()
 {
-    COMMAND();
+    CMD();
     if (karakter == '\n')
     {
-        EndWord = true;
+        EndKata = true;
     }
     else
     {
-        EndWord = false;
-        CopyCommandGame();
+        EndKata = false;
+        COPYCOMMANDGAMEDD();
     }
 }
 
-/* Operasi pada Word */
-int WordToInt(Word w)
+/* Operasi pada Kata */
+int KataToInt(Kata w)
 {
     int result = 0;
-    result += w.TabWord[0] - 48;
+    result += w.TabKata[0] - 48;
     if (w.Length > 1)
     {
         int i;
         for (i=1; i < w.Length; i++)
         {
             result = result*10;
-            result += w.TabWord[i] - 48;
+            result += w.TabKata[i] - 48;
         }
     }
     return result;
 }
 
-Word getCommand(Word w)
+Kata getCommand(Kata w)
 {
-    Word temp;
+    Kata temp;
     int i = 0;
-    while ((i<w.Length) && (w.TabWord[i] != ' ')){
+    while ((i<w.Length) && (w.TabKata[i] != ' ')){
         if (i < NMax){
-            temp.TabWord[i] = w.TabWord[i];
+            temp.TabKata[i] = w.TabKata[i];
             i++;
         }
     }
@@ -60,12 +60,12 @@ Word getCommand(Word w)
     return temp;
 }
 
-Word getLabel(Word w)
+Kata getLabel(Kata w)
 {
-    Word temp;
+    Kata temp;
     int i=0;
 
-    while ((i<w.Length) && (w.TabWord[i] != ' '))
+    while ((i<w.Length) && (w.TabKata[i] != ' '))
     {
         i++;
     }
@@ -75,7 +75,7 @@ Word getLabel(Word w)
     temp.Length=0; 
     while (j<w.Length){
         if (i < NMax){
-            temp.TabWord[x] = w.TabWord[j];
+            temp.TabKata[x] = w.TabKata[j];
             temp.Length++;
             j++;
             x++;
@@ -96,7 +96,7 @@ int stringLength(char *str)
     return length;
 }
 
-boolean wordStringEq(Word w1, char *w2)
+boolean wordStringEq(Kata w1, char *w2)
 { 
     if (w1.Length != stringLength(w2)){
         return false;
@@ -105,7 +105,7 @@ boolean wordStringEq(Word w1, char *w2)
         int i;
         for (i=0;i<w1.Length;i++)
         {
-            if (w1.TabWord[i] != w2[i])
+            if (w1.TabKata[i] != w2[i])
             {
                 sama = false;
             }
@@ -115,7 +115,7 @@ boolean wordStringEq(Word w1, char *w2)
 }
 //Cek apakah Kata sama dengan input yang dimasukkan
 
-boolean wordWordEq(Word w1, Word w2)
+boolean wordKataEq(Kata w1, Kata w2)
 {
     boolean sama = true;
     if (w1.Length != w2.Length) {
@@ -123,7 +123,7 @@ boolean wordWordEq(Word w1, Word w2)
     } else {
         int i = 0;
         while (sama && (i < w1.Length)) {
-            if (w1.TabWord[i] != w2.TabWord[i]) {
+            if (w1.TabKata[i] != w2.TabKata[i]) {
                 sama = false;
             }
             i++;
@@ -132,53 +132,53 @@ boolean wordWordEq(Word w1, Word w2)
     }
 }
 
-Word IntToWord(int n)
+Kata IntToKata(int n)
 {
-    Word temp;
+    Kata temp;
     int i,j;
     i=0;
     j=n;
     temp.Length=0;  
 
     while (n >= 10){
-        temp.TabWord[i] = (n/10) + '0';
+        temp.TabKata[i] = (n/10) + '0';
         temp.Length++;
         n = n%10; 
         i++;
     }
     temp.Length++;
-    temp.TabWord[i] = n + '0';
+    temp.TabKata[i] = n + '0';
 
     return temp;
 }
 //ubah INT menjadi WORD
 
-void joinWord(Word *w1, Word w2)
+void joinKata(Kata *w1, Kata w2)
 {
     int i;
     int sum = w1->Length + w2.Length;
     for (i=w1->Length;i<sum;i++){
-        w1->TabWord[i] = w2.TabWord[i-(w1->Length)];
+        w1->TabKata[i] = w2.TabKata[i-(w1->Length)];
     }
     w1->Length += w2.Length;
 }
 
 //Menggabungkan dua kata dan menyimpannya dalam W1
 
-void salinWord(Word *w1, Word w2)
+void salinKata(Kata *w1, Kata w2)
 {
     int i;
     for(i=0;i<w2.Length;i++){
-        w1->TabWord[i] = w2.TabWord[i];
+        w1->TabKata[i] = w2.TabKata[i];
     }
     w1->Length = w2.Length;
     //w2 disalin ke w1
 }
 
-void printWord(Word w)
+void printKata(Kata w)
 {
     int i;
     for (i=0;i<w.Length;i++){
-        printf("%c", w.TabWord[i]);
+        printf("%c", w.TabKata[i]);
     }
 }
