@@ -47,9 +47,8 @@ void DELETE(ArrayDin *ListGames, Queue q1)
     printf("\n");
     int input;
     input = WordToInt(currentCMD);
-    printf("inputan adalah %d\n",input);
     if ((input > 0 && input <=5)  || input>(*ListGames).Neff) {
-        printf("Game gagal dihapus");
+        printf("Game ke-%d gagal dihapus\n" , input);
     } else {
         boolean found;
         found = false;
@@ -62,7 +61,7 @@ void DELETE(ArrayDin *ListGames, Queue q1)
             } j++;
         }
         if (found) {
-            printf("Game gagal dihapus");
+            printf("Game ke-%d gagal dihapus\n" , input);
         } else {
             int i;
             i = input-1;

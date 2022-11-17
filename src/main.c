@@ -88,13 +88,7 @@ int main(){
             ADVCOMMAND();
             char game[50];
             wordToString(currentCMD, game);
-            printf("%s\n",game);
-            
-            //for (int i = 0 ; i <= currentCMD.Length ; i++){
-                //printf("%c" , currentCMD.TabWord[i]);
-            //}
-            //wordToString(currentCMD, game);
-            //printf("%s\n",game);
+        
             if(CompareString(game , GAME))
             {
                 LISTGAME(&ListGames);
