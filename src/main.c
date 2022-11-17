@@ -163,7 +163,9 @@ int main(){
         else
         {
             printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
-        }   
+        }
+        while(!EndWord){
+        ADVCOMMAND();}
     }
     QUIT();
 
