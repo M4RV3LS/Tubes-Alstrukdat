@@ -30,6 +30,10 @@ void QUEUEGAME(Queue *q1, ArrayDin game);
 
 void QUIT(); 
 
+void printRNG();
+
+void printMathQuiz();
+
 void gameRNG(); 
 
 void SAVEBNMO(ArrayDin* GamesList, char* filename);

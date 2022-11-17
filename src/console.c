@@ -258,6 +258,14 @@ void QUIT() {
     exit(0);
 }
 
+void printRNG(){
+
+}
+
+void printMathQuiz(){
+
+}
+
 void gameRNG()  
 {  
     srand(time(NULL));
@@ -832,7 +840,7 @@ void dinnerdash()
         boolean valid = false;
         while(!valid)
         {
-            printf("MASUKKAN CMD: ");
+            printf("MASUKKAN COMMAND: ");
             STARTCMD();
             if (isValid(CURRENTCOMMAND))
             {   
@@ -981,55 +989,5 @@ void dinnerdash()
     }
 }
 
-/*int main(){
-    srand(time(0));
-    dinnerdash();
-    return 0;
-}*/
 
-    /*
-    ADVLINE();
-    int j;
-    int idx2 = currentWord.TabWord[0] - 48;
-    for (j=0; j < idx2; j++){
-        ADVLINE();
-        insertLast(ListHistory, currentWord);
-    }
-    
-    */
-    //LISTGAME(ListGames);
-
-
-/*
-int main()
-{
-    ArrayDin listgame = CreateDynArray();
-    listgame.A[0] = "Asih";
-    listgame.A[1] = "Marvel";
-    listgame.A[2] = "Amjad";
-    listgame.A[3] = "Raka" ;
-    listgame.A[4] = "Carissa";
-    listgame.Neff = 5;
-
-    LISTGAME(&listgame);
-    return 0;
-}
-*/
-/*
-int main()
-{
-    ArrayDin array = CreateDynArray();
-    LOADFILE(&array, "savefile.txt");
-    //STARTGAME(&array);
-
-    return 0;
-
-}
-*/
-/*
-int main(){
-    ArrayDin game = CreateDynArray();
-    LOADFILE(&game , "savefile.txt");
-    SAVEBNMO(&game , "savefile3.txt");
-}*/
 
