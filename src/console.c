@@ -259,15 +259,28 @@ void QUIT() {
 }
 
 void printRNG(){
-
+    printf("    ____   _   _______\n");
+    printf("   / __  / | / / ____/\n");
+    printf("  / /_/ /  |/ / / __\n");  
+    printf(" / _, _/ /| / /_/ /\n");  
+    printf("/_/ |_/_/ |_/____/\n"); 
 }
 
 void printMathQuiz(){
-
+printf("   ▄▄▄▄███▄▄▄▄      ▄████████     ███        ▄█    █▄         ████████▄   ███    █▄   ▄█   ▄███████▄\n");
+printf(" ▄██▀▀▀███▀▀▀██▄   ███    ███ ▀█████████▄   ███    ███        ███    ███  ███    ███ ███  ██▀     ▄██ \n");
+printf(" ███   ███   ███   ███    ███    ▀███▀▀██   ███    ███        ███    ███  ███    ███ ███▌       ▄███▀ \n");
+printf(" ███   ███   ███   ███    ███     ███   ▀  ▄███▄▄▄▄███▄▄      ███    ███  ███    ███ ███▌  ▀█▀▄███▀▄▄ \n");
+printf(" ███   ███   ███ ▀███████████     ███     ▀▀███▀▀▀▀███▀       ███    ███  ███    ███ ███▌   ▄███▀   ▀ \n");
+printf(" ███   ███   ███   ███    ███     ███       ███    ███        ███    ███  ███    ███ ███  ▄███▀       \n");
+printf(" ███   ███   ███   ███    ███     ███       ███    ███        ███  ▀ ███  ███    ███ ███  ███▄     ▄█  \n");
+printf("  ▀█   ███   █▀    ███    █▀     ▄████▀     ███    █▀          ▀██████▀▄█ ████████▀  █▀    ▀████████▀  \n");       
+printf("+ - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x :\n");
 }
 
 void gameRNG()  
-{  
+{   printRNG();
+    printf("\n");
     srand(time(NULL));
     int maxTry = 50;
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak sebuah angka X yang rentangnya berada diantara 1 - 50.\n");
@@ -585,7 +598,9 @@ int perkalian(int skor){
 return skor;
 }
 
-int mathquiz(){                                                         
+int mathquiz(){      
+    printMathQuiz();
+    printf("\n");
     printf("<SELAMAT DATANG DI GAME MATHQUIZ>\n");
     delay(1);
     printf("GAME RULE : \n");

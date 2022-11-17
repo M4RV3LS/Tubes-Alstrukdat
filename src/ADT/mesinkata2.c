@@ -328,6 +328,9 @@ boolean CompareString(char *string1 , char *string2)
         i++;
         }
     }
+    if((*(string1 + i) != '\0') || (*(string2 + i) != '\0')){
+        equal = false;
+    }
     return equal;
 }
 

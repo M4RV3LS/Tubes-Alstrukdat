@@ -1,5 +1,5 @@
 #ifndef _ARRAY_OF_STRING_
-#define _ARRAY_OF_STRING
+#define _ARRAY_OF_STRING_
 
 #include <stdio.h>
 #include <stdbool.h>
