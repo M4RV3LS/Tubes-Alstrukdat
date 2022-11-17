@@ -128,6 +128,12 @@ int findBuffer(Kata code,QUEUEDD q)
     return i;
 }
 
+int RANDINTDD(int lower , int upper){
+    
+    int random = (rand() % (upper - lower + 1)) + lower; 
+    return random;
+}
+
 /*int main()
 {
     QUEUEDD q;

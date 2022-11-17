@@ -6,6 +6,7 @@
 
 //#include "boolean.h"
 #include "mesinkata.h"
+#include <stdlib.h>
 
 #define IDX_UNDEF -1
 #define CAPACITY 100
@@ -76,5 +77,7 @@ pd I.S., IDX_TAIL "mundur" q mungkin kosong */
 
 int findBuffer(Kata code,QUEUEDD q);
 /* Menemukan indeks */
+
+int RANDINTDD(int lower , int upper);
 
 #endif

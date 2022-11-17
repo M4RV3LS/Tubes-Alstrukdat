@@ -1,18 +1,1 @@
-gcc main.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c console.c
-
-
-5
-
-dinosaur in earth
-
-dinosaur in earth
-
-COOK M1
-STARTCOMMAND();
-ENTER COMMAND = COOK M1
-COOK = currentCMD 
-ADVCOMMAND();
-M1 = currentCMD;
-
-STARTCOMMANDGAME();
-COOK M1 = currentCMD
+ gcc main.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c console.c ADT/DinerDash/queuehybrid.c ADT/DinerDash/mesinkar.c ADT/DinerDash/mesinkata.c  -o main

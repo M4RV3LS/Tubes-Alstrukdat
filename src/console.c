@@ -4,12 +4,14 @@ void CREATEGAME(ArrayDin *ListGames)
 {
     printf("Masukkan nama game yang akan ditambahkan : ");
     STARTCOMMANDGAME();
-    char string[1000];
+        char string[1000];
     char *gamename = (char*) malloc (currentCMD.Length * sizeof(char));
+    // char * gamename;
     int j = 0;
     //
     wordToString(currentCMD , string);
     //printf("%s\n",string);
+
     while (j <= currentCMD.Length)
     {
         gamename[j] = string[j];
@@ -17,9 +19,24 @@ void CREATEGAME(ArrayDin *ListGames)
     }
         //gamename[j] = '\0';
         //InsertIn(string , ListGames , i);
-    InsertLast(ListGames , gamename);
-    printf("Game berhasil ditambahkan\n");
+
+    boolean found = false;
+    for (int i = 0; i < ListGames->Neff; i++)
+    {
+        if (CompareString(gamename, ListGames->A[i]))
+        {
+            found = true;
+            printf("Game sudah ada di dalam list game.\n");
+        }
+        
+    }
+    if (!found)
+    {
+        InsertLast(ListGames, gamename);
+        printf("Game berhasil ditambahkan.\n");
+    }
 }
+
 
 void DELETE(ArrayDin *ListGames, Queue q1)
 {
@@ -149,13 +166,11 @@ void PLAYGAME(Queue *q1)
     {
         char*game;
         dequeue(q1 , &game);
-        //wordToString()
-        //printf("%s\n",game);
-        //printf("%s\n",rng);
+        
         if (CompareString(game , rng))
         {
             printf("Loading %s ...\n", rng);
-            //dequeue(q1, &A);
+            delay(2);
             gameRNG();
         } 
 
@@ -184,10 +199,8 @@ void PLAYGAME(Queue *q1)
 
         else if (CompareString(game , dinerDash))
         {
-            printf("Loading %s ...", dinerDash);
-            //dequeue(q1, &A);
+            printf("Loading %s ...\n", dinerDash);
             delay(2);
-            //srand(time(0));
             dinnerdash(); 
         }
 
@@ -344,7 +357,7 @@ void SKIPGAME(Queue *q, int n)
 
 void STARTGAME(ArrayDin *ListGames){
     char path[NMax];
-    char *filename = "savefile.txt";
+    char *filename = "config.txt";
     stringConcat("../data/",filename,path);
     //printf("%s\n",path);
     STARTWORD(path);
@@ -711,9 +724,9 @@ boolean isSkip(Kata a)
 void generateFood(Food *pes,int i)
 {
     
-    pes->Durasi = randint(1,5);
-    pes->Tahan = randint(1,5);
-    pes->Harga = randint(10000,50000);
+    pes->Durasi = RANDINTDD(1,5);
+    pes->Tahan = RANDINTDD(1,5);
+    pes->Harga = RANDINTDD(10000,50000);
     
     // membuat ID / Label 
     Kata m;
@@ -765,13 +778,7 @@ void SERVE(QUEUEDD *Pesanan, QUEUEDD *Sajian, int *Saldo)
     printKata(saji2.ID);
     printf("\n");
 }
-/*
-int randint(int lower, int upper)
-{
-    int num = (rand() % (upper - lower + 1)) + lower;
-    return num;
-}
-*/
+
 void dinnerdash()
 {
     
