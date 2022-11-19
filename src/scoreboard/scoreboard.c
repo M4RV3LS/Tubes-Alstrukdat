@@ -16,7 +16,6 @@
 // }
 
 boolean ya(){
-    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD TOWER OF HANOI (YA/TIDAK)?\n");
     boolean value = false;
     boolean valid = false;
     while(!valid){
@@ -73,8 +72,8 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
         }
         else{
             if (input == 0){
-            printf("SEMUA SCOREBOARD AKAN DIHAPUS\n");
             valid = true;
+            printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL (YA/TIDAK)?\n");
             if (ya()){
                 CreateEmpty(RNG);
                 CreateEmpty(DinerDASH);
@@ -90,7 +89,8 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
         }
         else if (input == 1){
             valid = true;
-            if(ya){
+            printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD RNG (YA/TIDAK)?\n");
+            if(ya()){
                 CreateEmpty(RNG);
                 printf("Scoreboard berhasil di-reset.\n");
             }
@@ -100,7 +100,8 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
         }
         else if (input == 2){
             valid = true;
-            if(ya){
+            printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET Diner DASH ALL (YA/TIDAK)?\n");
+            if(ya()){
                 CreateEmpty(DinerDASH);
                 printf("Scoreboard berhasil di-reset.\n");
             }
@@ -110,7 +111,8 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
         }
         else if (input == 3){
             valid = true;
-            if(ya){
+            printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD HANGMAN (YA/TIDAK)?\n");
+            if(ya()){
                 CreateEmpty(HANGMAN);
                 printf("Scoreboard berhasil di-reset.\n");
             }
@@ -120,7 +122,8 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
         }
         else if (input == 4){
             valid = true;
-            if(ya){
+            printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD TOWER OF HANOI (YA/TIDAK)?\n");
+            if(ya()){
                 CreateEmpty(TOWEROFHANOI);
                 printf("Scoreboard berhasil di-reset.\n");
             }
@@ -130,7 +133,8 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
         }
         else if (input == 5){
             valid = true;
-            if(ya){
+            printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD SNAKE OF METEOR (YA/TIDAK)?\n");
+            if(ya()){
                 CreateEmpty(SNAKEOFMETEOR);
                 printf("Scoreboard berhasil di-reset.\n");
             }
@@ -142,7 +146,7 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
             valid = true;
             if (found)
             {
-                if(ya){
+                if(ya()){
                     CreateEmpty(MATHQUIZ);
                     printf("Scoreboard berhasil di-reset.\n");
                 }
@@ -163,33 +167,51 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
 }
 
 
-int main(){
-    printf("Test");
-    ArrayDin ListGames;
-    CreateDynArray(&ListGames);
-    InsertLast(&ListGames , "RNG");
-    InsertLast(&ListGames , "Diner DASH");
-    InsertLast(&ListGames , "HANGMAN");
-    InsertLast(&ListGames , "TOWER OF HANOI");
-    InsertLast(&ListGames , "SNAKE ON METEOR");
-    InsertLast(&ListGames , "MATH QUIZ");
-    for (int i = 0; i < ListGames.Neff; i++)
-    {
-        printf("%s\n", ListGames.A[i]);
-    }
-    printf("Test");
-    Map RNG;
-    Map DinerDASH;
-    Map HANGMAN;
-    Map TOWEROFHANOI;
-    Map SNAKEOFMETEOR;
-    Map MATHQUIZ;
-    CreateEmpty(&RNG);
-    CreateEmpty(&DinerDASH);
-    CreateEmpty(&HANGMAN);
-    CreateEmpty(&TOWEROFHANOI);
-    CreateEmpty(&SNAKEOFMETEOR);
-    CreateEmpty(&MATHQUIZ);
-    ResetScoreboard(&ListGames , &RNG , &DinerDASH , &HANGMAN , &TOWEROFHANOI , &SNAKEOFMETEOR , &MATHQUIZ);
-    return 0;
-}
+// int main(){
+//     printf("Test");
+//     ArrayDin ListGames;
+//     CreateDynArray(&ListGames);
+//     InsertLast(&ListGames , "RNG");
+//     InsertLast(&ListGames , "Diner DASH");
+//     InsertLast(&ListGames , "HANGMAN");
+//     InsertLast(&ListGames , "TOWER OF HANOI");
+//     InsertLast(&ListGames , "SNAKE ON METEOR");
+//     InsertLast(&ListGames , "MATH QUIZ");
+//     for (int i = 0; i < ListGames.Neff; i++)
+//     {
+//         printf("%s\n", ListGames.A[i]);
+//     }
+//     printf("Test");
+//     Map RNG;
+//     Map DinerDASH;
+//     Map HANGMAN;
+//     Map TOWEROFHANOI;
+//     Map SNAKEOFMETEOR;
+//     Map MATHQUIZ;
+//     CreateEmpty(&RNG);
+//     CreateEmpty(&DinerDASH);
+//     CreateEmpty(&HANGMAN);
+//     CreateEmpty(&TOWEROFHANOI);
+//     CreateEmpty(&SNAKEOFMETEOR);
+//     CreateEmpty(&MATHQUIZ);
+//     Insert(&RNG , "MARVEL" , 250);
+//     Insert(&RNG , "LIM" , 300);
+//     Insert(&RNG , "TIM" , 200);
+//     SortMap(&RNG);
+//     for(int i = 0; i < RNG.Count - 1; i++){
+// 		printf("[%s | %d] ,", RNG.Elements[i].Nama, RNG.Elements[i].Skor);
+// 	}
+// 	int i = RNG.Count - 1;
+// 	printf("[%s | %d]\n", RNG.Elements[i].Nama, RNG.Elements[i].Skor);
+//     //PrintMap(RNG);
+//     ResetScoreboard(&ListGames , &RNG , &DinerDASH , &HANGMAN , &TOWEROFHANOI , &SNAKEOFMETEOR , &MATHQUIZ);
+//     if (RNG.Count == 0)
+//     {
+//         printf("RNG Kosong\n");
+//     }
+//     else{
+//         printf("RNG Tidak Kosong\n");
+//     }
+//     //PrintMap(RNG);
+//     return 0;
+// }
