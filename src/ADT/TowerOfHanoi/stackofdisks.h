@@ -5,8 +5,8 @@
 #ifndef stacks_H
 #define stacks_H
 
-#include "boolean.h"
-#include "ADT/DinerDash/mesinkata.h"
+#include "../boolean.h"
+#include "../DinerDash/mesinkata.h"
 
 #define Nil -1
 #define MaxEl 5
