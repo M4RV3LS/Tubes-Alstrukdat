@@ -5,6 +5,8 @@
         "deletegame.h": "c",
         "arrayofstring.h": "c",
         "mesinkata2.h": "c",
-        "queue.h": "c"
-    }
+        "queue.h": "c",
+        "snakeonmeteor.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
