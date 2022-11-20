@@ -6,14 +6,6 @@
 #include "../ADT/boolean.h"
 #include "../ADT/mesinkata2.h"
 
-// void LISTGAME(ArrayDin *ListGames)
-// {
-//     printf("Berikut adalah daftar game yang tersedia\n");
-//     for (int i = 0; i < (*ListGames).Neff; i++)
-//     {
-//         printf("%i. %s\n", i+1, (*ListGames).A[i]);
-//     }
-// }
 
 boolean ya(){
     boolean value = false;
@@ -166,7 +158,54 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
 }
 }
 
+int KataTerpanjang(Map Game){
+    int max = 0;
+    int i = 0;
+    while(i < Game.Count){
+        if (string_length(Game.Elements[i].Nama) > max){
+            max = string_length(Game.Elements[i].Nama);
+        }
+        i++;
+    }
+    return max;
+}
+// void PrintScoreboard(Map RNG , Map DinerDASH , Map HANGMAN , Map TOWEROFHANOI , Map SNAKEOFMETEOR , Map MATHQUIZ){
+//     printf("**** SCOREBOARD GAME TOWER OF HANOI ****\n");
+//     printf("| NAMA")
+// }
 
+void PrintScoreBoard(Map Game)
+{
+    int maxstring = KataTerpanjang(Game);
+    if (maxstring == 0)
+    {
+        printf("| %-10s | %-10s |\n", "NAMA", "SCORE");
+        printf("-----SCOREBOARD KOSONG-----\n");
+    }
+    else
+    {
+        printf("| NAMA");
+        for (int i = 0; i < maxstring + 2 ; i++)
+        {
+            printf(" ");
+        }
+        printf(" | %-10s |\n", "SKOR");
+        for (int i = 0; i < maxstring + 23; i++)
+        {
+            printf("-");
+        }
+        printf("\n");
+        for (int i = 0; i < Game.Count; i++)
+        {
+            printf("| %s", Game.Elements[i].Nama);
+            for (int j = 0; j < maxstring - (string_length(Game.Elements[i].Nama) - 6); j++)
+            {
+                printf(" ");
+            }
+            printf(" | %-10d |\n", Game.Elements[i].Skor);
+        }
+    }
+}
 // int main(){
 //     printf("Test");
 //     ArrayDin ListGames;
@@ -203,15 +242,34 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
 // 	}
 // 	int i = RNG.Count - 1;
 // 	printf("[%s | %d]\n", RNG.Elements[i].Nama, RNG.Elements[i].Skor);
-//     //PrintMap(RNG);
-//     ResetScoreboard(&ListGames , &RNG , &DinerDASH , &HANGMAN , &TOWEROFHANOI , &SNAKEOFMETEOR , &MATHQUIZ);
-//     if (RNG.Count == 0)
-//     {
-//         printf("RNG Kosong\n");
-//     }
-//     else{
-//         printf("RNG Tidak Kosong\n");
-//     }
-//     //PrintMap(RNG);
+    
+//     int max = KataTerpanjang(RNG);
+//     printf("%d\n",max);
+//     // ResetScoreboard(&ListGames , &RNG , &DinerDASH , &HANGMAN , &TOWEROFHANOI , &SNAKEOFMETEOR , &MATHQUIZ);
+//     // if (RNG.Count == 0)
+//     // {
+//     //     printf("RNG Kosong\n");
+//     // }
+//     // else{
+//     //     printf("RNG Tidak Kosong\n");
+//     // }
+    
+//     return 0;
+// }
+
+// int main(){
+//     Map RNG;
+//     Map DinerDASH;
+//     CreateEmpty(&RNG);
+//     Insert(&RNG , "MARVEL" , 250);
+//     Insert(&RNG , "LIM" , 300);
+//     Insert(&RNG , "TIM" , 200);
+//     SortMap(&RNG);
+//     int max = KataTerpanjang(RNG);
+//     printf("%d\n",max);
+//     PrintScoreBoard(RNG);
+//     printf("\n");
+//     PrintScoreBoard(DinerDASH);
+//     printf("\n");
 //     return 0;
 // }
