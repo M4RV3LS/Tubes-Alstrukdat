@@ -93,7 +93,7 @@ void LISTGAME(ArrayDin *ListGames)
     }
 }
 
-void LOADFILE(ArrayDin *ListGames , char* filename){
+void LOADFILE(ArrayDin *ListGames , ArrayDin *GameHistory , char* filename ,Map *RNG , Map *DinerDASH , Map *HANGMAN , Map *TOWEROFHANOI , Map *SNAKEONMETEOR , Map *MATHQUIZ){
     char path[NMax];
     stringConcat("../data/",filename,path);
     //printf("%s\n",path);
@@ -103,7 +103,7 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
         STARTWORD(path);
         int nGame = WordToInt(currentWord);
         //nGame -= 10;
-        //printf("%d\n" , nGame);
+        printf("%d\n" , nGame);
         char string[NMax];
         for (int i = 1; i <= nGame; i++){
             char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
@@ -120,7 +120,130 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
             //gamename[j] = '\0';  
             //InsertIn(string , ListGames , i);
             InsertLast(ListGames , gamename);
-            //printf("%s\n" , (*ListGames).A[i-1]);
+            printf("%s\n" , (*ListGames).A[i-1]);
+        }
+        /*GAME HISTORY*/
+        ADVLine(); //printf("%s\n" , currentCMD);
+        nGame = WordToInt(currentWord);
+        printf("%d\n" , nGame);
+        char *kata;
+        for (int i = 1; i <= nGame; i++){
+            //char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
+            ADVLine();
+            kata = WORDTOSTRING(currentWord);
+            //printf("%s\n",kata);
+            // while (j <= currentWord.Length)
+            // {
+            //     gamename[j] = kata[j];
+            //     j++;
+            // }
+            //gamename[j] = '\0';  
+            //InsertIn(string , ListGames , i);
+            InsertLast(GameHistory, kata); 
+            printf("%s\n" , (*GameHistory).A[i-1]);
+        }
+        /*MAP RNG*/
+        ADVLine(); //printf("%s\n" , currentCMD);
+        nGame = WordToInt(currentWord);
+        printf("%d\n" , nGame);
+        int i = 0;
+        int score ;
+        while(i < nGame){
+            //char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
+            //printf("%s\n" , currentWord);
+            //printf("panjang currentWord sekarang %d\n" , currentWord.Length);
+            ADVWORD();
+            kata = WORDTOSTRING(currentWord);
+            //printf("Panjang currentWord Kata = %d\n" , currentWord.Length);
+            //printf("%s\n",kata);
+            //printf("%s\n" , currentWord);
+            ADVWORD();
+            score = WordToInt(currentWord);
+            //printf("panjang currentWord score = %d\n" , currentWord.Length);
+            //printf("%d\n",score);
+            // while (j <= currentWord.Length)
+            // {
+            //     gamename[j] = kata[j];
+            //     j++;
+            // }
+            //gamename[j] = '\0';  
+            //InsertIn(string , ListGames , i);
+            Insert(RNG, kata, score);
+            printf("%s %d\n" , (*RNG).Elements[i].Nama , (*RNG).Elements[i].Skor);
+            i++;
+        }
+        /*MAP Diner DASH*/
+        ADVLine(); 
+        nGame = WordToInt(currentWord);
+        printf("%d\n" , nGame);
+        i = 0;
+        while(i < nGame){
+            ADVWORD();
+            kata = WORDTOSTRING(currentWord);
+            ADVWORD();
+            score = WordToInt(currentWord);
+            Insert(DinerDASH, kata, score);
+            printf("%s %d\n" , (*DinerDASH).Elements[i].Nama , (*DinerDASH).Elements[i].Skor);
+            i++;
+        }
+        /*MAP HANGMAN*/
+        ADVLine(); 
+        nGame = WordToInt(currentWord);
+        printf("%d\n" , nGame);
+        i = 0;
+        while(i < nGame){
+            ADVWORD();
+            kata = WORDTOSTRING(currentWord);
+            ADVWORD();
+            score = WordToInt(currentWord);
+            Insert(HANGMAN, kata, score);
+            printf("%s %d\n" , (*HANGMAN).Elements[i].Nama , (*HANGMAN).Elements[i].Skor);
+            i++;
+        }
+        /*MAP TOWER OF HANOI*/ 
+        ADVLine();
+        nGame = WordToInt(currentWord);
+        printf("%d\n" , nGame);
+        i = 0;
+        while(i < nGame){
+            ADVWORD();
+            kata = WORDTOSTRING(currentWord);
+            ADVWORD();
+            score = WordToInt(currentWord);
+            Insert(TOWEROFHANOI, kata, score);
+            printf("%s %d\n" , (*TOWEROFHANOI).Elements[i].Nama , (*TOWEROFHANOI).Elements[i].Skor);
+            i++;
+        }
+        /*MAP SNAKE ON METEOR*/
+        ADVLine();
+        nGame = WordToInt(currentWord);
+        printf("%d\n" , nGame);
+        i = 0;
+        while(i < nGame){
+            ADVWORD();
+            kata = WORDTOSTRING(currentWord);
+            ADVWORD();
+            score = WordToInt(currentWord);
+            Insert(SNAKEONMETEOR, kata, score);
+            printf("%s %d\n" , (*SNAKEONMETEOR).Elements[i].Nama , (*SNAKEONMETEOR).Elements[i].Skor);
+            i++;
+        }
+        if(foundmathquiz(ListGames)){
+            /*MAP MATH QUIZ*/
+        ADVLine();
+        nGame = WordToInt(currentWord);
+        printf("%d\n" , nGame);
+        i = 0;
+        while(i < nGame){
+            ADVWORD();
+            kata = WORDTOSTRING(currentWord);
+            printf("%s\n" , kata);
+            ADVWORD();
+            score = WordToInt(currentWord);
+            Insert(MATHQUIZ, kata, score);
+            printf("%s %d\n" , (*MATHQUIZ).Elements[i].Nama , (*MATHQUIZ).Elements[i].Skor);
+            i++;
+        }
         }
         if(!IsEmpty(*ListGames)) 
         { 
@@ -131,17 +254,6 @@ void LOADFILE(ArrayDin *ListGames , char* filename){
     {
         printf("%s tidak dikenali.\n",filename);
     }
-    //LISTGAME(ListGames);
-    /*
-    ADVLINE();
-    int j;
-    int idx2 = currentWord.TabWord[0] - 48;
-    for (j=0; j < idx2; j++){
-        ADVWORD();
-        insertLast(ListHistory, currentWord);
-    }
-    
-    */
 }
 
 void PLAYGAME(Queue *q1)
@@ -1003,5 +1115,20 @@ void dinnerdash()
     }
 }
 
-
+boolean foundmathquiz(ArrayDin *ListGames){
+    boolean found = false;
+    int i = 0;
+    while(i < (*ListGames).Neff && !found)
+    {
+        if (CompareString((*ListGames).A[i], "MATH QUIZ"))
+        {
+            found = true;
+            //printf("Ketemu\n");
+        }
+        else{
+            i++;
+        }
+    }
+    return found;
+}
 

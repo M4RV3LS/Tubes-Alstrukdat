@@ -10,7 +10,7 @@
 #include "ADT/DinerDash/queuehybrid.h"
 #include "ADT/DinerDash/mesinkar.h"
 #include "ADT/DinerDash/mesinkata.h"
-
+#include "ADT/SetMap/map.h"
 
 
 
@@ -22,7 +22,7 @@ void HELP();
 
 void LISTGAME(ArrayDin *ListGames);
 
-void LOADFILE(ArrayDin *ListGames , char* filename);
+void LOADFILE(ArrayDin *ListGames , ArrayDin *GameHistory , char* filename ,Map *RNG , Map *DinerDASH , Map *HANGMAN , Map *TOWEROFHANOI , Map *SNAKEONMETEOR , Map *MATHQUIZ);
 
 void PLAYGAME(Queue *q1);
 
@@ -90,3 +90,5 @@ void SERVE(QUEUEDD *Masakan, QUEUEDD *Sajian, int *Saldo);
 
 void dinnerdash();
 // procedure utama untuk menjalankan game dinner dash
+
+boolean foundmathquiz(ArrayDin *ListGames);
