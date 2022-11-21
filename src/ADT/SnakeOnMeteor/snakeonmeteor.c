@@ -85,7 +85,7 @@ int NbElmt (List L)
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 {
     int count = 0;
-    if IsEmpty(List L)
+    if (IsEmpty(List L))
     {
         return 0;
     }
@@ -109,56 +109,60 @@ boolean IsPointSama(Point P1, Point P2)
 Point GenerateMeteor(Point Obstacle)
 /* Menghasilkan Point Meteor di tempat selain obstacle dan list-nya */
 {
-    int X = rand(0,4);
-    int Y = rand(0,4);
-    CreatePoint(Point Meteor, X, Y);
+    int X = randint(0,4);
+    int Y = randint(0,4);
+    Point Meteor;
+    CreatePoint(Meteor, X, Y);
     while (IsPointSama(Obstacle, Meteor))
     {
-        X = rand(0,4);
-        Y = rand(0,4);
-        CreatePoint(Point Meteor, X, Y);
+        X = randint(0,4);
+        Y = randint(0,4);
+        CreatePoint(Meteor, X, Y);
     }
     return Meteor;
 }
 
 Point GenerateFoodPertama(Point Obstacle, List L)
 {
-    int X = rand(0,4);
-    int Y = rand(0,4);
-    CreatePoint(Point Food, X, Y);
+    int X = randint(0,4);
+    int Y = randint(0,4);
+    Point Food;
+    CreatePoint(Food, X, Y);
     while (IsPointSama(Obstacle, Food) || IsMember(L, Food))
     {
-        X = rand(0,4);
-        Y = rand(0,4);
-        CreatePoint(Point Food, X, Y);
+        X = randint(0,4);
+        Y = randint(0,4);
+        CreatePoint(Food, X, Y);
     }
     return Food;
 }
 
 Point GenerateFood(Point Obstacle, Point Meteor, List L)
 {
-    int X = rand(0,4);
-    int Y = rand(0,4);
-    CreatePoint(Point Food, X, Y);
+    int X = randint(0,4);
+    int Y = randint(0,4);
+    Point Food;
+    CreatePoint(Food, X, Y);
     while (IsPointSama(Obstacle, Food) || IsPointSama(Meteor, Food) || IsMember(L, Food))
     {
-        X = rand(0,4);
-        Y = rand(0,4);
-        CreatePoint(Point Food, X, Y);
+        X = randint(0,4);
+        Y = randint(0,4);
+        CreatePoint(Food, X, Y);
     }
     return Food;
 }
 
 Point GenerateObstacle(List L)
 {
-    int X = rand(0,4);
-    int Y = rand(0,4);
-    CreatePoint(Point Obstacle, X, Y);
+    int X = randint(0,4);
+    int Y = randint(0,4);
+    Point Obstacle;
+    CreatePoint(Obstacle, X, Y);
     while (IsMember(L, Obstacle))
     {
-        X = rand(0,4);
-        Y = rand(0,4);
-        CreatePoint(Point Obstacle, X, Y);
+        X = randint(0,4);
+        Y = randint(0,4);
+        CreatePoint(Obstacle, X, Y);
     }
     return Obstacle;
 }
@@ -339,4 +343,20 @@ void printPeta(Point Obstacle, Point Meteor, Point Food, List L)
         }
         printf("\n");
     }
+}
+
+int main()
+{
+  List L;
+  CreateEmpty(L);
+
+  int X = radint(0,4);
+  int Y = radint(0,4);
+
+  Point P1;
+  CreatePoint(P1, X, Y);
+
+  printf("%d %d", P1.X, P1.Y);
+
+  return 0;
 }

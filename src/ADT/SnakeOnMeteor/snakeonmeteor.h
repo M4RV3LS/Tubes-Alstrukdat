@@ -20,11 +20,14 @@ typedef struct tElmtList {
     address Next;
 } ElmtList;
 
-#define Prev(L) (L)->Prev
-#define Next(L) (L)->Next
+#define Info(E) (E)->Info
+#define Prev(E) (E)->Prev
+#define Next(E) (E)->Next
 
-#define Head(L) ((L).Head)
-#define Tail(L) ((L).Tail)
+
+
+#define Head(L) (L).Head
+#define Tail(L) (L).Tail
 
 #define Absis(P) P.X
 #define Ordinat(P) P.Y

@@ -45,7 +45,8 @@ int SnakeOnMeteor(){
     STARTCOMMANDGAME();
     printf("\n");
 
-    Point Geser = Head(L)->Info;
+    Point Geser;
+    Geser = Info(Head(L));
 
     if (wordAndCharSama(currentCMD, "a"))
     {
