@@ -350,8 +350,8 @@ int main()
   List L;
   CreateEmpty(L);
 
-  int X = radint(0,4);
-  int Y = radint(0,4);
+  int X = randint(0,4);
+  int Y = randint(0,4);
 
   Point P1;
   CreatePoint(P1, X, Y);
