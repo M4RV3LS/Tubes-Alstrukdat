@@ -343,6 +343,16 @@ void printPeta(Point Obstacle, Point Meteor, Point Food, List L)
     }
 }
 
+int randint(int lower , int upper){
+
+    int random = (rand() % (upper - lower + 1)) + lower;
+    // assign the rand() function to random variable
+    srand(time(0));
+    //srand(time(NULL));
+    //int random = (rand() % (upper - lower + 1)) + lower;
+    return random;
+}
+
 /*
 // test case
 int main()

@@ -28,15 +28,15 @@ int SnakeOnMeteor(){
 //                  INTERFACE                   //
 
     printf("Berhasil digenerate!\n\n");
-    // Print peta
+    // Print peta (tanpa meteor)
 
     // selanjutnya adalah pergerakan snake dan summon meteor
 
     int turn = 1;
-    boolean gerak = false;
-    boolean input = false;
+    boolean gerak = false; // kalo gerak = true, snake bergerak
+    boolean input = false; // kalo input = true, lakukan operasi (belum tentu gerak, bisa aja nabrak obstacle)
     Point Meteor;
-    CreatePoint(&Meteor, 5 ,5);
+    // CreatePoint(&Meteor, 5 ,5);
     do {
 
     printf("TURN %d:\n", turn);
@@ -83,7 +83,7 @@ int SnakeOnMeteor(){
         }
         input = true;
     }
-    else
+    else // input salah
     {
         printf("Command tidak valid! Silahkan input command menggunakan huruf w/a/s/d\n");
         input = false;
@@ -104,7 +104,7 @@ int SnakeOnMeteor(){
             gerak = false;
             input = false;
         }
-        
+
     }
     else if (input) // berhasil bergerak
     {
@@ -112,7 +112,7 @@ int SnakeOnMeteor(){
         {
             InsertLast(&L);
             MoveList(&L, Geser);
-            Food = GenerateFood(Obstacle, Meteor, L);
+            Food = GenerateFood(Obstacle, Meteor, L); // food auto muncul di next turn
         }
         else // ga dapet makanan
         {
@@ -123,13 +123,13 @@ int SnakeOnMeteor(){
         turn++;
     }
 
-    if (gerak)
+    if (gerak) // fix move (gerak)
     {
         Point Meteor = GenerateMeteor(Obstacle);
         printPeta(Obstacle, Meteor, Food, L);
         if (IsBadanKenaMeteor(L, Meteor) && gerak)
         {
-            DeleteAt(L, Meteor);
+            DeleteAt(&L, Meteor);
             printf("\nAnda terkena meteor!\n");
             // Print peta
             gerak = false;
@@ -137,12 +137,13 @@ int SnakeOnMeteor(){
         }
         else if (gerak && !IsHeadKenaMeteor(L, Meteor))
         {
+            // Print peta
             printf("Anda beruntung tidak terkena meteor! Silahkan lanjutkan permainan\n");
             gerak = false;
         }
     }
-    
-    
+
+
 
     }
     while (IsGameOver(L, Meteor));

@@ -144,5 +144,7 @@ void MoveList2(List *L, Point P);
 
 void printPeta(Point Obstacle, Point Meteor, Point Food, List L);
 
+int randint(int lower , int upper);
+
 
 #endif
