@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "snakeonmeteor.h"
-#include "../mesinkata2.h"
+#include "ADT/SnakeOnMeteor/snakeonmeteor.h"
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
@@ -11,16 +10,16 @@ int SnakeOnMeteor(){
     delay(2);
 
     List L;
-    CreateEmpty(L);
+    CreateEmpty(&L);
     int X = randint(0,4);
     int Y = randint(0,4);
 
     Point P1;
-    CreatePoint(P1, X, Y);
+    CreatePoint(&P1, X, Y);
     Point P2 = CreateNextPoint(P1);
     Point P3 = CreateNextPoint(P2);
 
-    CreateList3Elemen(L, P1, P2, P3);
+    CreateList3Elemen(&L, P1, P2, P3);
 
     Point Obstacle = GenerateObstacle(L);
     Point Food = GenerateFoodPertama(Obstacle, L);
@@ -37,7 +36,7 @@ int SnakeOnMeteor(){
     boolean gerak = false;
     boolean input = false;
     Point Meteor;
-    CreatePoint(Meteor, 5 ,5);
+    CreatePoint(&Meteor, 5 ,5);
     do {
 
     printf("TURN %d:\n", turn);
@@ -111,13 +110,13 @@ int SnakeOnMeteor(){
     {
         if (IsFood(Food, Geser)) // dapet makanan
         {
-            InsertLast(L);
-            MoveList(L, Geser);
+            InsertLast(&L);
+            MoveList(&L, Geser);
             Food = GenerateFood(Obstacle, Meteor, L);
         }
         else // ga dapet makanan
         {
-            MoveList2(L, Geser);
+            MoveList2(&L, Geser);
         }
         printf("Berhasil bergerak!\n");
         gerak = true;

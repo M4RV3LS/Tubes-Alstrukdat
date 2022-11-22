@@ -1,3 +1,11 @@
+#include "../mesinkar2.h"
+#include "../mesinkata2.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+
 #ifndef snakeonmeteor_H
 #define snakeonmeteor_H
 #include "../boolean.h"
@@ -136,7 +144,5 @@ void MoveList2(List *L, Point P);
 
 void printPeta(Point Obstacle, Point Meteor, Point Food, List L);
 
-int randint(int lower , int upper);
-/* Menghasilkan random integer antara lower dan upper */
 
 #endif
