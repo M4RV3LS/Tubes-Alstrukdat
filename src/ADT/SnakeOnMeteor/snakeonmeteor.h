@@ -3,48 +3,46 @@
 #include "../boolean.h"
 
 #define Nil NULL
-typedef struct tElmtlist *address;
+typedef struct tElmtList *address;
 typedef struct {
     int X;
     int Y;
 } Point;
 
 typedef struct {
-    address Head;
-    address Tail;
+    address head;
+    address tail;
 } List;
 
 typedef struct tElmtList {
-    address Prev;
-    Point Info;
-    address Next;
+    address prev;
+    Point info;
+    address next;
 } ElmtList;
 
-#define Info(E) (E)->Info
-#define Prev(E) (E)->Prev
-#define Next(E) (E)->Next
+#define Info(E) (E)->info
+#define Prev(E) (E)->prev
+#define Next(E) (E)->next
 
+#define Head(L) (L).head
+#define Tail(L) (L).tail
 
-
-#define Head(L) (L).Head
-#define Tail(L) (L).Tail
-
-#define Absis(P) P.X
-#define Ordinat(P) P.Y
+#define Absis(P) (P).X
+#define Ordinat(P) (P).Y
 
 boolean IsEmpty (List L);
 /* Mengirim true jika list kosong */
 
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmpty (List L);
+void CreateEmpty (List *L);
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
 
-void CreatePoint (Point P, int X, int Y);
+void CreatePoint (Point *P, int X, int Y);
 /* I.S. sembarang             */
 /* F.S. Terbentuk Point dengan Absis X dan Ordinat Y */
 
-void CreateList3Elemen (List L, Point P1, Point P2, Point P3);
+void CreateList3Elemen (List *L, Point P1, Point P2, Point P3);
 /* I.S. sembarang             */
 /* F.S. Terbentuk list dengan 3 elemen */
 
@@ -82,16 +80,16 @@ Point GenerateFood(Point Obstacle, Point Meteor, List L);
 Point GenerateObstacle(List L);
 /* Menghasilkan Point Obstacle di tempat selain list-nya */
 
-void SalinPoint(Point P1, Point P2);
+void SalinPoint(Point P1, Point *P2);
 /* I.S. P1 terdefinisi */
 /* F.S. P2 terdefinisi */
 
-void InsertLast (List L);
+void InsertLast (List *L);
 /* I.S. Sembarang */
 /* F.S. X ditambahkan sebagai elemen terakhir yang baru dengan X adalah point elemen
 sebelumnya */
 
-void DeleteAt (List L, Point P);
+void DeleteAt (List *L, Point P);
 /* I.S. List tidak kosong */
 /* F.S. Elemen list ber-Point P dihapus dari list karena kena meteor*/
 
@@ -128,14 +126,17 @@ boolean IsGameOver(List L, Point Meteor);
 5. dan mati konyol lainnya
 */
 
-void MoveList(List L, Point P);
+void MoveList(List *L, Point P);
 /* I.S. List tidak kosong */
 /* F.S. List bergerak ke arah P */
 
-void MoveList2(List L, Point P);
+void MoveList2(List *L, Point P);
 /* I.S. List tidak kosong */
 /* F.S. List bergerak ke arah P */
 
 void printPeta(Point Obstacle, Point Meteor, Point Food, List L);
+
+int randint(int lower , int upper);
+/* Menghasilkan random integer antara lower dan upper */
 
 #endif

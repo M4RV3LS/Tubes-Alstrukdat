@@ -10,31 +10,31 @@ boolean IsEmpty (List L)
     return (Head(L) == Nil && Tail(L) == Nil);
 }
 
-void CreateEmpty (List L)
+void CreateEmpty (List *L)
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
 {
-    Head(L) = Nil;
-    Tail(L) = Nil;
+    Head(*L) = Nil;
+    Tail(*L) = Nil;
 }
 
-void CreatePoint (Point P, int X, int Y)
+void CreatePoint (Point *P, int X, int Y)
 {
-    Absis(P) = X;
-    Ordinat(P) = Y;
+    Absis(*P) = X;
+    Ordinat(*P) = Y;
 }
 
-void CreateList3Elemen (List L, Point P1, Point P2, Point P3)
+void CreateList3Elemen(List *L, Point P1, Point P2, Point P3)
 {
     address P;
     P = Alokasi(P1);
-    Head(L) = P;
+    Head(*L) = P;
     P = Alokasi(P2);
-    Next(Head(L)) = P;
-    Prev(P) = Head(L);
+    Next(Head(*L)) = P;
+    Prev(P) = Head(*L);
     P = Alokasi(P3);
-    Prev(P) = Next(Head(L));
-    Tail(L) = P;
+    Prev(P) = Next(Head(*L));
+    Tail(*L) = P;
 }
 
 Point CreateNextPoint(Point P)
@@ -67,9 +67,11 @@ address Alokasi (Point X)
 /* Jika alokasi gagal, mengirimkan Nil */
 {
     address P = (address) malloc(sizeof(ElmtList));
-    Info(P) = X;
-    Next(P) = Nil;
-    Prev(P) = Nil;
+    if (P != Nil) {
+        Info(P) = X;
+        Next(P) = Nil;
+        Prev(P) = Nil;
+    }
     return P;
 }
 
@@ -85,7 +87,7 @@ int NbElmt (List L)
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 {
     int count = 0;
-    if (IsEmpty(List L))
+    if (IsEmpty(L))
     {
         return 0;
     }
@@ -112,12 +114,12 @@ Point GenerateMeteor(Point Obstacle)
     int X = randint(0,4);
     int Y = randint(0,4);
     Point Meteor;
-    CreatePoint(Meteor, X, Y);
+    CreatePoint(&Meteor, X, Y);
     while (IsPointSama(Obstacle, Meteor))
     {
         X = randint(0,4);
         Y = randint(0,4);
-        CreatePoint(Meteor, X, Y);
+        CreatePoint(&Meteor, X, Y);
     }
     return Meteor;
 }
@@ -127,12 +129,12 @@ Point GenerateFoodPertama(Point Obstacle, List L)
     int X = randint(0,4);
     int Y = randint(0,4);
     Point Food;
-    CreatePoint(Food, X, Y);
+    CreatePoint(&Food, X, Y);
     while (IsPointSama(Obstacle, Food) || IsMember(L, Food))
     {
         X = randint(0,4);
         Y = randint(0,4);
-        CreatePoint(Food, X, Y);
+        CreatePoint(&Food, X, Y);
     }
     return Food;
 }
@@ -142,12 +144,12 @@ Point GenerateFood(Point Obstacle, Point Meteor, List L)
     int X = randint(0,4);
     int Y = randint(0,4);
     Point Food;
-    CreatePoint(Food, X, Y);
+    CreatePoint(&Food, X, Y);
     while (IsPointSama(Obstacle, Food) || IsPointSama(Meteor, Food) || IsMember(L, Food))
     {
         X = randint(0,4);
         Y = randint(0,4);
-        CreatePoint(Food, X, Y);
+        CreatePoint(&Food, X, Y);
     }
     return Food;
 }
@@ -157,48 +159,48 @@ Point GenerateObstacle(List L)
     int X = randint(0,4);
     int Y = randint(0,4);
     Point Obstacle;
-    CreatePoint(Obstacle, X, Y);
+    CreatePoint(&Obstacle, X, Y);
     while (IsMember(L, Obstacle))
     {
         X = randint(0,4);
         Y = randint(0,4);
-        CreatePoint(Obstacle, X, Y);
+        CreatePoint(&Obstacle, X, Y);
     }
     return Obstacle;
 }
 
-void SalinPoint(Point P1, Point P2)
+void SalinPoint(Point P1, Point *P2)
 {
-    Absis(P2) = Absis(P1);
-    Ordinat(P2) = Ordinat(P1);
+    Absis(*P2) = Absis(P1);
+    Ordinat(*P2) = Ordinat(P1);
 }
 
-void InsertLast (List L)
+void InsertLast (List *L)
 /* I.S. Sembarang */
 /* F.S. X ditambahkan sebagai elemen terakhir yang baru dengan X adalah point elemen
 sebelumnya */
 {
-    Point X = Info(Tail(L));
+    Point X = Info(Tail(*L));
     address P = Alokasi(X);
-    Prev(P) = Tail(L);
-    Next(Tail(L)) = P;
-    Tail(L) = P;
+    Prev(P) = Tail(*L);
+    Next(Tail(*L)) = P;
+    Tail(*L) = P;
 
 }
 
-void DeleteAt (List L, Point P)
+void DeleteAt (List *L, Point P)
 /* I.S. List tidak kosong */
 /* F.S. Elemen list ber-Point P dihapus dari list karena kena meteor*/
 {
-    address X = Head(L);
+    address X = Head(*L);
     while (!IsPointSama(Info(X), P))
     {
         X = Next(X);
     }
-    if (X == Tail(L)) // di ekor or sama kayak delete last
+    if (X == Tail(*L)) // di ekor or sama kayak delete last
     {
-        Tail(L) = Prev(X);
-        Next(Tail(L)) = Nil;
+        Tail(*L) = Prev(X);
+        Next(Tail(*L)) = Nil;
     }
     else // selain pala sama ekor
     {
@@ -288,27 +290,27 @@ boolean IsGameOver(List L, Point Meteor)
     return (IsHeadKenaMeteor(L, Meteor) || IsHeadNabrakBadan(L) || IsEmpty(L));
 }
 
-void MoveList(List L, Point Geser) // kalo dia abis makan
+void MoveList(List *L, Point Geser) // kalo dia abis makan
 {
     InsertLast(L);
-    address P = Prev(Tail(L));
-    while (P != Head(L))
+    address P = Prev(Tail(*L));
+    while (P != Head(*L))
     {
         Info(P) = Info(Prev(P));
         P = Prev(P);
     }
-    Info(Head(L)) = Geser;
+    Info(Head(*L)) = Geser;
 }
 
-void MoveList2(List L, Point Geser) // kalo dia ga makan
+void MoveList2(List *L, Point Geser) // kalo dia ga makan
 {
-    address P = Tail(L);
-    while (P != Head(L))
+    address P = Tail(*L);
+    while (P != Head(*L))
     {
         Info(P) = Info(Prev(P));
         P = Prev(P);
     }
-    Info(Head(L)) = Geser;
+    Info(Head(*L)) = Geser;
 }
 
 void printPeta(Point Obstacle, Point Meteor, Point Food, List L)
@@ -319,7 +321,7 @@ void printPeta(Point Obstacle, Point Meteor, Point Food, List L)
         for (j = 0; j < 5; j++)
         {
             Point P;
-            CreatePoint(P, i, j);
+            CreatePoint(&P, i, j);
             if (IsObstacle(Obstacle, P))
             {
                 printf("O ");
@@ -345,16 +347,27 @@ void printPeta(Point Obstacle, Point Meteor, Point Food, List L)
     }
 }
 
+int randint(int lower , int upper){
+    
+    int random = (rand() % (upper - lower + 1)) + lower; 
+    // assign the rand() function to random variable  
+    srand(time(0));
+    //srand(time(NULL));
+    //int random = (rand() % (upper - lower + 1)) + lower;
+    return random;
+}
+
+// test case
 int main()
 {
   List L;
-  CreateEmpty(L);
+  CreateEmpty(&L);
 
   int X = randint(0,4);
   int Y = randint(0,4);
 
   Point P1;
-  CreatePoint(P1, X, Y);
+  CreatePoint(&P1, X, Y);
 
   printf("%d %d", P1.X, P1.Y);
 
