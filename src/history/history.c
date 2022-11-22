@@ -2,18 +2,23 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../boolean.h"
-#include "../ADT/arrayOfString.h"
+// #include "../ADT/arrayOfString.h"
 #include "../ADT/boolean.h"
 #include "../ADT/mesinkata2.h"
+#include "../ADT/Stack/stack.h"
 
 boolean yes(){
+    //printf("Test\n");
     boolean value = false;
     boolean valid = false;
     while(!valid){
         printf("\nAPAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK)\n");
         STARTCOMMANDGAME();
-        char*temp;
+        char*temp = (char*) malloc (currentCMD.Length* sizeof(char));
         wordToString(currentCMD , temp);
+
+        //printf("Test2\n");
+        //printf("%s\n" , temp);
         if (CompareString(temp, "YA")){
             value = true;
             valid = true;}
@@ -24,27 +29,64 @@ boolean yes(){
             printf("Masukan tidak valid, silahkan masukan kembali\n");
         }
     }
+    //printf("woi\n");
    return value; 
 }
 
-void History(ArrayDin Game , int n){
-    if(IsEmpty(Game)){
+// void History(ArrayDin Game , int n){
+//     if(IsEmpty(Game)){
+//         printf("Belum ada game yang dimainkan\n");
+//     }
+//     else {
+//         if(n <= Game.Neff && n > 0){
+//             printf("Berikut adalah daftar Game yang telah dimainkan \n");
+//             for (int i = 0; i < n; i++)
+//             {
+//                 printf("%d. %s\n", i+1, Game.A[i]);
+//             }
+//         }
+//         else if (n > Game.Neff) {
+//             printf("Berikut adalah daftar Game yang telah dimainkan \n");
+//             for (int i = 0; i < Game.Neff; i++)
+//             {
+//                 printf("%d. %s\n", i+1, Game.A[i]);
+//             }
+//         }
+//         else if(n <= 0){
+//             printf("Masukan tidak valid , harap masukan angka dengan besar minimal 1\n");
+//         }
+//         else {
+//             printf("Masukan tidak valid , harap masukan angka dengan besar minimal 1\n");
+//         }
+//     }
+// }
+void History(Stack Game , int n){
+    if(IsEmptyStack(Game)){
         printf("Belum ada game yang dimainkan\n");
     }
     else {
-        if(n <= Game.Neff && n > 0){
+        if(n <= Top(Game) + 1 && n > 0){
             printf("Berikut adalah daftar Game yang telah dimainkan \n");
-            for (int i = 0; i < n; i++)
-            {
-                printf("%d. %s\n", i+1, Game.A[i]);
-            }
+            int nomor = 0;
+            // char *TOP;
+            for(int i=n;i>=0;i--){
+                nomor = nomor + 1;
+                printf("%d. %s\n", nomor , Game.T[i] );
+                }
+            // while(n && !IsEmptyStack(Game)){
+            //     Pop(&Game , &TOP);
+            //     nomor = nomor + 1;
+            //     printf("%d. %s\n", nomor , TOP);
+            //     n--;
+            // }
         }
-        else if (n > Game.Neff) {
+        else if (n > Top(Game) + 1) {
             printf("Berikut adalah daftar Game yang telah dimainkan \n");
-            for (int i = 0; i < Game.Neff; i++)
-            {
-                printf("%d. %s\n", i+1, Game.A[i]);
-            }
+            int nomor = 0;
+            for(int i=n;i>=0;i--){
+                nomor = nomor + 1;
+                printf("%d. %s\n", nomor , Game.T[i] );
+                }
         }
         else if(n <= 0){
             printf("Masukan tidak valid , harap masukan angka dengan besar minimal 1\n");
@@ -54,18 +96,44 @@ void History(ArrayDin Game , int n){
         }
     }
 }
-
-void ResetHistory (ArrayDin * Game){
+// void ResetHistory (ArrayDin * Game){
+    
+//     if(yes()){
+//         DeallocateList(Game);
+//         //Buat Test Case
+//         // int n = (*Game).Neff;
+//         // for (int i = 0; i < n; i++)
+//         // {
+//         //     printf("%d. %s\n", i+1, (*Game).A[i]);
+//         // }
+//         if(IsEmpty(*Game)){
+//             printf("History berhasil direset\n");
+//         }
+//         else {
+//             printf("History gagal direset\n");
+//         }
+//         // printf("History berhasil di-reset.\n");
+//     }
+//     else{
+//         printf("History tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
+//         int n = (*Game).Neff;
+//         for (int i = 0; i < n; i++)
+//         {
+//             printf("%d. %s\n", i+1, (*Game).A[i]);
+//         }
+//     }
+// }
+void ResetHistory (Stack * Game){
     
     if(yes()){
-        DeallocateList(Game);
+        CreateEmptyStack(Game);
         //Buat Test Case
         // int n = (*Game).Neff;
         // for (int i = 0; i < n; i++)
         // {
         //     printf("%d. %s\n", i+1, (*Game).A[i]);
         // }
-        if(IsEmpty(*Game)){
+        if(IsEmptyStack(*Game)){
             printf("History berhasil direset\n");
         }
         else {
@@ -75,23 +143,48 @@ void ResetHistory (ArrayDin * Game){
     }
     else{
         printf("History tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
-        int n = (*Game).Neff;
-        for (int i = 0; i < n; i++)
-        {
-            printf("%d. %s\n", i+1, (*Game).A[i]);
-        }
+        int n = Top(*Game);
+        int nomor = 0;
+            for(int i=n;i>=0;i--){
+                nomor = nomor + 1;
+                printf("%d. %s\n", nomor , (*Game).T[i] );
+                }
+        // int nomor = 0;
+        // char *TOP;
+        // while(n && !IsEmptyStack(*Game)){
+        //     Pop(Game , &TOP);
+        //     nomor = nomor + 1;
+        //     printf("%d. %s\n", nomor , TOP);
+        //     n--;
+        // }
     }
 }
 
+// int main(){
+//     ArrayDin Game = CreateDynArray();
+//     InsertFirst(&Game, "RNG");
+//     InsertFirst(&Game, "Diner DASH");
+//     InsertFirst(&Game, "HANGMAN");
+//     InsertFirst(&Game, "TOWER OF HANOI");
+//     InsertFirst(&Game, "SNAKE ON METEOR");
+//     InsertFirst(&Game, "MATH QUIZ");
+//     History(Game, 6);
+//     ResetHistory(&Game);
+//     return 0;
+// }
+
 int main(){
-    ArrayDin Game = CreateDynArray();
-    InsertFirst(&Game, "RNG");
-    InsertFirst(&Game, "Diner DASH");
-    InsertFirst(&Game, "HANGMAN");
-    InsertFirst(&Game, "TOWER OF HANOI");
-    InsertFirst(&Game, "SNAKE ON METEOR");
-    InsertFirst(&Game, "MATH QUIZ");
-    History(Game, 6);
+    Stack Game;
+    CreateEmptyStack(&Game);
+    Push(&Game, "RNG");
+    Push(&Game, "Diner DASH");
+    Push(&Game, "HANGMAN");
+    Push(&Game, "TOWER OF HANOI");
+    Push(&Game, "SNAKE ON METEOR");
+    Push(&Game, "MATH QUIZ");
+    //DisplayStack(Game , Top(Game));
+    History(Game , Top(Game));
     ResetHistory(&Game);
+    //yes();
     return 0;
 }

@@ -39,7 +39,7 @@ void ResetScoreboard(ArrayDin *ListGames , Map *RNG , Map *DinerDASH , Map *HANG
     int i = 0;
     while(i < (*ListGames).Neff && !found)
     {
-        if (strcmp((*ListGames).A[i], "MATH QUIZ") == 0)
+        if (CompareString((*ListGames).A[i], "MATH QUIZ"))
         {
             found = true;
             //printf("Ketemu\n");
@@ -243,16 +243,16 @@ void PrintScoreBoard(Map Game)
 // 	int i = RNG.Count - 1;
 // 	printf("[%s | %d]\n", RNG.Elements[i].Nama, RNG.Elements[i].Skor);
     
-//     int max = KataTerpanjang(RNG);
-//     printf("%d\n",max);
-//     // ResetScoreboard(&ListGames , &RNG , &DinerDASH , &HANGMAN , &TOWEROFHANOI , &SNAKEOFMETEOR , &MATHQUIZ);
-//     // if (RNG.Count == 0)
-//     // {
-//     //     printf("RNG Kosong\n");
-//     // }
-//     // else{
-//     //     printf("RNG Tidak Kosong\n");
-//     // }
+//     // int max = KataTerpanjang(RNG);
+//     // printf("%d\n",max);
+//     ResetScoreboard(&ListGames , &RNG , &DinerDASH , &HANGMAN , &TOWEROFHANOI , &SNAKEOFMETEOR , &MATHQUIZ);
+//     if (RNG.Count == 0)
+//     {
+//         printf("RNG Kosong\n");
+//     }
+//     else{
+//         printf("RNG Tidak Kosong\n");
+//     }
     
 //     return 0;
 // }

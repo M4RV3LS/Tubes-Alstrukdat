@@ -93,7 +93,7 @@ void LISTGAME(ArrayDin *ListGames)
     }
 }
 
-void LOADFILE(ArrayDin *ListGames , ArrayDin *GameHistory , char* filename ,Map *RNG , Map *DinerDASH , Map *HANGMAN , Map *TOWEROFHANOI , Map *SNAKEONMETEOR , Map *MATHQUIZ){
+void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,Map *RNG , Map *DinerDASH , Map *HANGMAN , Map *TOWEROFHANOI , Map *SNAKEONMETEOR , Map *MATHQUIZ){
     char path[NMax];
     stringConcat("../data/",filename,path);
     //printf("%s\n",path);
@@ -103,6 +103,7 @@ void LOADFILE(ArrayDin *ListGames , ArrayDin *GameHistory , char* filename ,Map 
         STARTWORD(path);
         int nGame = WordToInt(currentWord);
         //nGame -= 10;
+        //printf("%s\n",currentWord);
         printf("%d\n" , nGame);
         char string[NMax];
         for (int i = 1; i <= nGame; i++){
@@ -127,6 +128,7 @@ void LOADFILE(ArrayDin *ListGames , ArrayDin *GameHistory , char* filename ,Map 
         nGame = WordToInt(currentWord);
         printf("%d\n" , nGame);
         char *kata;
+        //printf("Ini Sebelum Reverse\n");
         for (int i = 1; i <= nGame; i++){
             //char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
             ADVLine();
@@ -139,9 +141,12 @@ void LOADFILE(ArrayDin *ListGames , ArrayDin *GameHistory , char* filename ,Map 
             // }
             //gamename[j] = '\0';  
             //InsertIn(string , ListGames , i);
-            InsertLast(GameHistory, kata); 
-            printf("%s\n" , (*GameHistory).A[i-1]);
+            PushStack(GameHistory, kata); 
+            printf("%s\n" , InfoTop(*GameHistory));
         }
+        (*GameHistory) = ReverseStack(*GameHistory);
+        //printf("Ini Setelah Reverse\n");
+        //DisplayStack(*GameHistory , Top(*GameHistory));
         /*MAP RNG*/
         ADVLine(); //printf("%s\n" , currentCMD);
         nGame = WordToInt(currentWord);
@@ -228,16 +233,18 @@ void LOADFILE(ArrayDin *ListGames , ArrayDin *GameHistory , char* filename ,Map 
             printf("%s %d\n" , (*SNAKEONMETEOR).Elements[i].Nama , (*SNAKEONMETEOR).Elements[i].Skor);
             i++;
         }
+        //printf("siniwoi\n");
         if(foundmathquiz(ListGames)){
+            //printf("mathquiz found\n");
             /*MAP MATH QUIZ*/
         ADVLine();
         nGame = WordToInt(currentWord);
         printf("%d\n" , nGame);
         i = 0;
-        while(i < nGame){
+        while(i < nGame ){
             ADVWORD();
             kata = WORDTOSTRING(currentWord);
-            printf("%s\n" , kata);
+            //printf("%s\n" , kata);
             ADVWORD();
             score = WordToInt(currentWord);
             Insert(MATHQUIZ, kata, score);

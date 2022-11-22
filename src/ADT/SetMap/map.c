@@ -1,4 +1,5 @@
 #include "map.h"
+#include "../mesinkata2.h"
 
 /* MODUL Map
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
@@ -103,20 +104,23 @@ void Delete(Map *M, keytype k){
         boolean found = false;
         int idx = 0;
         while (!found && (idx < ((*M).Count))){
-            if((*M).Elements[idx].Nama == k){
+            if(CompareString((*M).Elements[idx].Nama , k)){
                 found = true;
-            }
+				printf("Masuk\n");
+				printf("%s\n", (*M).Elements[idx].Nama);
+			}
             else {
+				printf("Ga Masuk\n");
                 idx++;
             }
-        
+		}
         for(int i = idx ; i < ((*M).Count - 1);i++){
             (*M).Elements[i] = (*M).Elements[i+1];
 			
         }
         
         (*M).Count--;
-        }
+        
     }
 }
 
@@ -129,7 +133,7 @@ boolean IsMember(Map M, keytype k){
 	boolean found = false;
 	int i = 0;
 	while(!found && (i < M.Count)){
-		if(M.Elements[i].Nama == k){
+		if(CompareString(M.Elements[i].Nama , k)){
 			found = true;
 		}
 		else {
@@ -186,5 +190,13 @@ void SortMap(Map *M){
 // 	printf("%d\n",M.Elements[0].Skor);
 //     printf("Isi Map M:\n");
 //     PrintMap(M);
+// 	printf("\n");
+// 	printf("%d\n",M.Count);
+// 	Delete(&M , "Akk");
+// 	printf("%d\n",M.Count);
+// 	PrintMap(M);
+// 	printf("\n");
+// 	valuetype Score = Skor(M , "Ikk");
+// 	printf("Ini Skor untuk nilai Ikk = %d",Score);
 //     return 0;
 // }
