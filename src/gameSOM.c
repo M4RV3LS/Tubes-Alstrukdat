@@ -7,7 +7,7 @@
 int SnakeOnMeteor(){
     printf("Selamat datang di Snake on Meteor!\n\n");
     printf("Mengenerate peta, snake, dan makanan . . .\n\n");
-    // delay(1);
+    delay(1);
 
     List L;
     CreateEmpty(&L);
@@ -29,7 +29,7 @@ int SnakeOnMeteor(){
 
     printf("Berhasil digenerate!\n\n");
 
-    printf("__________________________________________\n");
+    printf("________________________________\n\n\n");
 
     // selanjutnya adalah pergerakan snake dan summon meteor
 
