@@ -1,1 +1,9 @@
  gcc main.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c console.c ADT/DinerDash/queuehybrid.c ADT/DinerDash/mesinkar.c ADT/DinerDash/mesinkata.c  -o main
+
+
+
+
+cara run gameSOM.c
+direktori harus di posisi src
+salin teks dibawah :
+gcc gameSOM.c ADT/SnakeOnMeteor/snakeonmeteor.c ADT/mesinkata2.c ADT/mesinkar2.c -o main
