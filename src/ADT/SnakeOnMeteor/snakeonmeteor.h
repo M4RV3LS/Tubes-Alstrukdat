@@ -70,14 +70,18 @@ void Dealokasi (address *P);
 /* F.S. P dikembalikan ke sistem */
 /* Melakukan dealokasi/pengembalian address P */
 
+void printList(List L);
+/* I.S. L terdefinisi */
+/* F.S. L dicetak ke layar */
+
 int NbElmt (List L);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
 boolean IsPointSama(Point P1, Point P2);
 /* Mengirimkan true jika P1 dan P2 sama */
 
-Point GenerateMeteor(Point P);
-/* Menghasilkan Point Meteor di tempat selain obstacle */
+Point GenerateMeteor(Point Food, Point Obstacle);
+/* Menghasilkan Point Meteor di tempat selain obstacle dan Food*/
 
 Point GenerateFoodPertama(Point Obstacle, List L);
 /* Menghasilkan Point Food di tempat selain obstacle dan list-nya */
@@ -124,7 +128,7 @@ boolean IsHeadNabrakBadan(List L);
 boolean IsFood(Point Food, Point Geser);
 /* Mengirim true jika Food berada di tempat yang dituju */
 
-boolean IsGameOver(List L, Point Meteor);
+boolean IsGameOver(List L, Point Meteor, Point Obstacle);
 /* Mengirim true jika game over */
 /* Aturan game over :
 1. nabrak obstacle
@@ -142,9 +146,12 @@ void MoveList2(List *L, Point P);
 /* I.S. List tidak kosong */
 /* F.S. List bergerak ke arah P */
 
-void printPeta(Point Obstacle, Point Meteor, Point Food, List L);
+void printmap(List L, Point M, Point F, Point O);
+/* I.S. sembarang */
+/* F.S. Map ditampilkan */
 
-int randint(int lower , int upper);
+int indexOf(List L, Point P);
+/* Mengirimkan index dari elemen list yang ber-Point P */
 
 
 #endif

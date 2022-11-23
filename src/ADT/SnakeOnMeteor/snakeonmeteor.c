@@ -23,13 +23,25 @@ void CreatePoint (Point *P, int X, int Y)
 void CreateList3Elemen(List *L, Point P1, Point P2, Point P3)
 {
     address P;
-    P = Alokasi(P1);
+    P = (address) malloc (sizeof(ElmtList));
+    Info(P) = P1;
+    Prev(P) = Nil;
+    Next(P) = Nil;
     Head(*L) = P;
-    P = Alokasi(P2);
-    Next(Head(*L)) = P;
-    Prev(P) = Head(*L);
-    P = Alokasi(P3);
-    Prev(P) = Next(Head(*L));
+    Tail(*L) = P;
+
+    P = (address) malloc (sizeof(ElmtList));
+    Info(P) = P2;
+    Prev(P) = Tail(*L);
+    Next(P) = Nil;
+    Next(Tail(*L)) = P;
+    Tail(*L) = P;
+
+    P = (address) malloc (sizeof(ElmtList));
+    Info(P) = P3;
+    Prev(P) = Tail(*L);
+    Next(P) = Nil;
+    Next(Tail(*L)) = P;
     Tail(*L) = P;
 }
 
@@ -63,11 +75,10 @@ address Alokasi (Point X)
 /* Jika alokasi gagal, mengirimkan Nil */
 {
     address P = (address) malloc(sizeof(ElmtList));
-    if (P != Nil) {
-        Info(P) = X;
-        Next(P) = Nil;
-        Prev(P) = Nil;
-    }
+    Info(P) = X;
+    Next(P) = Nil;
+    Prev(P) = Nil;
+    
     return P;
 }
 
@@ -77,6 +88,16 @@ void Dealokasi (address *P)
 /* Melakukan dealokasi/pengembalian address P */
 {
     free(*P);
+}
+
+void printList(List L)
+{
+    address P = Head(L);
+    while (P != Nil)
+    {
+        printf("(%d,%d)\n", Absis(Info(P)), Ordinat(Info(P)));
+        P = Next(P);
+    }
 }
 
 int NbElmt (List L)
@@ -104,14 +125,14 @@ boolean IsPointSama(Point P1, Point P2)
     return (Absis(P1) == Absis(P2) && Ordinat(P1) == Ordinat(P2));
 }
 
-Point GenerateMeteor(Point Obstacle)
+Point GenerateMeteor(Point Food, Point Obstacle)
 /* Menghasilkan Point Meteor di tempat selain obstacle dan list-nya */
 {
     int X = randint(0,4);
     int Y = randint(0,4);
     Point Meteor;
     CreatePoint(&Meteor, X, Y);
-    while (IsPointSama(Obstacle, Meteor))
+    while (IsPointSama(Obstacle, Meteor) || IsPointSama(Food, Meteor))
     {
         X = randint(0,4);
         Y = randint(0,4);
@@ -275,7 +296,7 @@ boolean IsFood(Point Food, Point Geser)
     return (IsPointSama(Food, Geser));
 }
 
-boolean IsGameOver(List L, Point Meteor)
+boolean IsGameOver(List L, Point Meteor, Point Obstacle)
 /* Mengirim true jika game over */
 /* Aturan game over :
 2. pala kena meteor
@@ -283,7 +304,7 @@ boolean IsGameOver(List L, Point Meteor)
 4. ulernya abis (kosong)
 */
 {
-    return (IsHeadKenaMeteor(L, Meteor) || IsHeadNabrakBadan(L) || IsEmpty(L));
+    return (IsHeadKenaMeteor(L, Meteor) || IsHeadNabrakBadan(L) || IsEmpty(L)) || IsObstacle(Obstacle, Info(Head(L)));
 }
 
 void MoveList(List *L, Point Geser) // kalo dia abis makan
@@ -309,48 +330,99 @@ void MoveList2(List *L, Point Geser) // kalo dia ga makan
     Info(Head(*L)) = Geser;
 }
 
-void printPeta(Point Obstacle, Point Meteor, Point Food, List L)
+int indexOf(List L, Point P)
 {
-    int i, j;
-    for (i = 0; i < 5; i++)
+    int i = 0;
+    address X = Head(L);
+    while (X != Nil)
     {
-        for (j = 0; j < 5; j++)
+        if (IsPointSama(Info(X), P))
         {
-            Point P;
-            CreatePoint(&P, i, j);
-            if (IsObstacle(Obstacle, P))
+            return i;
+        }
+        X = Next(X);
+        i++;
+    }
+    return -1;
+}
+
+void printmap(List L, Point M, Point F, Point O)
+{
+    printf("Berikut merupakan peta permainan\n");
+    int i,j;
+    Point S;
+    for(i = 0; i < 11; i++)
+    {
+        for(j = 0; j < 11; j++)
+        {
+            
+            if(i % 2 == 0)
             {
-                printf("O ");
+                if (j % 2 == 0)
+                {
+                    printf(" ");
+                }
+                else 
+                {
+                    printf("---");
+                }
             }
-            else if (IsMeteor(Meteor, P))
+            
+            else 
             {
-                printf("M ");
-            }
-            else if (IsFood(Food, P))
-            {
-                printf("F ");
-            }
-            else if (IsMember(L, P))
-            {
-                printf("S ");
-            }
-            else
-            {
-                printf("- ");
+                if(j % 2 == 0)
+                {
+                    printf("|");
+                }
+                
+                else 
+                {
+                    S.X = j/2;
+                    S.Y = i/2;
+                    if(IsMember(L,S)) // kalo ketemu bagian dari list
+                    {
+                        if(M.X == S.X && M.Y == S.Y){ // kalo ketemu meteor
+                            printf(" m ");
+                        }
+                        else { // kalo ga ktemu meteor
+                            // printf(" %c ", Search(L,S)->info);
+                            if (indexOf(L,S) == 0)
+                            {
+                                printf(" H ");
+                            }
+                            else{
+                                printf(" %i ", indexOf(L,S));
+                            }
+                        }
+                        
+                    }
+                    
+                    else  // kalo di luar dari list
+                    {
+                        if(F.X == S.X && F.Y == S.Y) // makanan
+                        {
+                            printf(" o ");
+                        }
+                        else if(M.X == S.X && M.Y == S.Y) // meteor
+                        {
+                            printf(" m ");
+                        }
+                        else if(O.X == S.X && O.Y == S.Y) // obstacle
+                        {
+                            printf(" + "); 
+                        }
+                        else 
+                        {
+                            printf("   ");
+                        }
+                    }
+                    
+                    
+                }
             }
         }
         printf("\n");
     }
-}
-
-int randint(int lower , int upper){
-
-    int random = (rand() % (upper - lower + 1)) + lower;
-    // assign the rand() function to random variable
-    srand(time(0));
-    //srand(time(NULL));
-    //int random = (rand() % (upper - lower + 1)) + lower;
-    return random;
 }
 
 /*

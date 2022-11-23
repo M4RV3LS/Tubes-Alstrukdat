@@ -7,7 +7,7 @@
 int SnakeOnMeteor(){
     printf("Selamat datang di Snake on Meteor!\n\n");
     printf("Mengenerate peta, snake, dan makanan . . .\n\n");
-    delay(2);
+    // delay(1);
 
     List L;
     CreateEmpty(&L);
@@ -28,18 +28,23 @@ int SnakeOnMeteor(){
 //                  INTERFACE                   //
 
     printf("Berhasil digenerate!\n\n");
-    // Print peta (tanpa meteor)
+
+    printf("__________________________________________\n");
 
     // selanjutnya adalah pergerakan snake dan summon meteor
 
     int turn = 1;
+    boolean turnPertama = true;
     boolean gerak = false; // kalo gerak = true, snake bergerak
     boolean input = false; // kalo input = true, lakukan operasi (belum tentu gerak, bisa aja nabrak obstacle)
     Point Meteor;
+    CreatePoint(&Meteor, -1, -1);
+    printmap(L, Meteor, Food, Obstacle);
+    printf("\n");
     // CreatePoint(&Meteor, 5 ,5);
     do {
 
-    printf("TURN %d:\n", turn);
+    printf("TURN %d\n", turn);
     printf("Silahkan masukkan command anda:");
     STARTCOMMANDGAME();
     printf("\n");
@@ -72,9 +77,10 @@ int SnakeOnMeteor(){
         {
             Ordinat(Geser) = Ordinat(Geser) + 5;
         }
+        // printf("Geser: %d %d\n", Absis(Geser), Ordinat(Geser));
         input = true;
     }
-    else if (wordAndCharSama(currentCMD, "w"))
+    else if (wordAndCharSama(currentCMD, "s"))
     {
         Ordinat(Geser) = Ordinat(Geser) + 1;
         while(Ordinat(Geser) > 4)
@@ -88,113 +94,142 @@ int SnakeOnMeteor(){
         printf("Command tidak valid! Silahkan input command menggunakan huruf w/a/s/d\n");
         input = false;
     }
-
-    if (IsObstacle(Obstacle, Geser) && input)
+ 
+    if (input) // input benar
     {
-        printf("Ada obstacle itu lho, yo jangan mbok tabrak to mas\n");
-        gerak = false;
-        input = false;
-    }
-    else if (turn > 1 && input )
-    {
-        if  (IsMeteor(Meteor, Geser))
+        if(IsMeteor(Geser, Meteor))
         {
             printf("Meteor masih panas! Anda belum dapat kembali ke titik tersebut.\n");
-            printf("Silahkan masukkan command lainnya\n");
+            printf("Silahkan masukkan command lainnya\n\n");
             gerak = false;
             input = false;
         }
-
-    }
-    else if (input) // berhasil bergerak
-    {
+        else 
+        {
         if (IsFood(Food, Geser)) // dapet makanan
         {
-            InsertLast(&L);
             MoveList(&L, Geser);
             Food = GenerateFood(Obstacle, Meteor, L); // food auto muncul di next turn
+            turn++;
+            turnPertama = false;
+            printf("Berhasil bergerak!\n");
+            gerak = true;
         }
         else // ga dapet makanan
         {
             MoveList2(&L, Geser);
-        }
-        printf("Berhasil bergerak!\n");
-        gerak = true;
-        turn++;
+            turn++;
+            turnPertama = false;
+            printf("Berhasil bergerak!\n");
+            gerak = true;
+        } 
+        }          
+        
     }
 
     if (gerak) // fix move (gerak)
     {
-        Point Meteor = GenerateMeteor(Obstacle);
-        printPeta(Obstacle, Meteor, Food, L);
+        Meteor = GenerateMeteor(Obstacle, Food);
+        printmap(L, Meteor, Food, Obstacle);
         if (IsBadanKenaMeteor(L, Meteor) && gerak)
         {
             DeleteAt(&L, Meteor);
             printf("\nAnda terkena meteor!\n");
-            // Print peta
+            printmap(L, Meteor, Food, Obstacle);
+            printf("\n");
             gerak = false;
             printf("Silahkan lanjutkan permainan\n");
         }
         else if (gerak && !IsHeadKenaMeteor(L, Meteor))
         {
-            // Print peta
-            printf("Anda beruntung tidak terkena meteor! Silahkan lanjutkan permainan\n");
+            printf("Anda beruntung tidak terkena meteor! Silahkan lanjutkan permainan\n\n");
             gerak = false;
         }
     }
 
-
-
-    }
-    while (IsGameOver(L, Meteor));
+    }while (!IsGameOver(L, Meteor, Obstacle));
 
     // INTERFACE GAMEOVER //
 
     if (IsHeadKenaMeteor(L, Meteor))
     {
         printf("Kepala snake terkena meteor!\n");
+        int skor = NbElmt(L)*2;
+        printf("Game berakhir. Skor: %d\n", skor-2);
     }
     else if (IsHeadNabrakBadan(L))
     {
         printf("Kepala snake nabrak badan!\n");
+        int skor = NbElmt(L)*2;
+        printf("Game berakhir. Skor: %d\n", skor-2);
     }
     else if (IsEmpty(L))
     {
         printf("Snake mati karena tubuh snake terkena meteor semua!\n");
     }
-
-    int skor = NbElmt(L)*2;
-    printf("Game berakhir. Skor: %d\n", skor);
-
+    else if (IsObstacle(Obstacle, Info(Head(L)))) // nabrak obstacle
+    {
+        printf("Ada obstacle itu lho, yo jangan mbok tabrak to mas\n");
+        gerak = false;
+        input = false;
+        int skor = NbElmt(L)*2;
+        printf("Game berakhir. Skor: %d\n", skor-2);
+    }
 
     return 0;
 }
 
-int main()
+/*int main()
 {
+    
+    
+    List L;
+    CreateEmpty(&L);
+    int X = randint(0,4);
+    int Y = randint(0,4);
+
+    Point P1;
+    CreatePoint(&P1, X, Y);
+    Point P2 = CreateNextPoint(P1);
+    Point P3 = CreateNextPoint(P2);
+
+    printf("P1: %d %d\n", Absis(P1), Ordinat(P1));
+    printf("P2: %d %d\n", Absis(P2), Ordinat(P2));
+    printf("P3: %d %d\n", Absis(P3), Ordinat(P3));
+
+    
+    CreateList3Elemen(&L, P1, P2, P3);
+
+    
+    printf("Isi list: \n");
+    printList(L);
+    printf("%i\n", NbElmt(L));
+
+    printf("info head: %d %d\n", Absis(Info(Head(L))), Ordinat(Info(Head(L))));
+    
+
+    //SnakeOnMeteor();
+    return 0;
+}*/
+
+int main(){
     SnakeOnMeteor();
     return 0;
 }
 
 
-/* Urutan bermain :
-A. Inisialisasi
-1. buat list kosong
-2. buat 3 point random
-3. alokasi 3 point
-4. insert 3 point ke list
-6. Buat obstacle
-7. print ke layar
-
-B. Permainan (loop sampai mati)
-1. input
-2. gerakkan snake
-3. summon meteor
-4. print ke layar
-
-C. Penutup
-1. print alasan mati
-2. print score
-
-
-*/
+/*int main()
+{
+    Point P1, P2;
+    CreatePoint(&P1, 1, 1);
+    CreatePoint(&P2, 1, 1);
+    if (IsMeteor(P1, P2))
+    {
+        printf("mati\n");
+    }
+    else
+    {
+        printf("idup\n");
+    }
+    return 0;
+}*/
