@@ -62,8 +62,50 @@ Point CreateNextPoint(Point P)
     }
     else
     {
-        Absis(Pnew) = Absis(P) + 1;
+        Absis(Pnew) = Absis(P);
+        Ordinat(Pnew) = Ordinat(P)+1;    
+    }
+    return Pnew;
+}
+
+Point CreateNextNextPoint(Point P, Point P1)
+{
+    Point Pnew;
+    if (Absis(P) > 0) //misal point head/P1 di 0,0
+    {
+        if (Absis(P1) == 0 && Ordinat(P1) == 0)
+        {
+            Absis(Pnew) = Absis(P) + 1;
+            Ordinat(Pnew) = Ordinat(P);
+        }else{
+        Absis(Pnew) = Absis(P) - 1;
         Ordinat(Pnew) = Ordinat(P);
+        }
+        return Pnew;
+    }
+    else if (Ordinat(P) > 0)
+    {
+        if (Absis(P1) == 0 && Ordinat(P1) == 0)
+        {
+            Absis(Pnew) = Absis(P);
+            Ordinat(Pnew) = Ordinat(P) + 1;
+        }else{
+            Absis(Pnew) = Absis(P);
+            Ordinat(Pnew) = Ordinat(P) - 1;
+        }
+        return Pnew;
+    }
+    else // kalo point sebelumnya di 0,0
+    {
+        if (Absis(P1) == 1 && Ordinat(P1) == 0) // ngecek apakah head/P1 nya di (1,0) bukan. kalo iya, dia bakal turun. vice versa
+        {
+            Absis(Pnew) = Absis(P) + 1;
+            Ordinat(Pnew) = Ordinat(P);
+        }else
+        {
+            Absis(Pnew) = Absis(P);
+            Ordinat(Pnew) = Ordinat(P) + 1;
+        }
     }
     return Pnew;
 }

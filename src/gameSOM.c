@@ -17,7 +17,7 @@ int SnakeOnMeteor(){
     Point P1;
     CreatePoint(&P1, X, Y);
     Point P2 = CreateNextPoint(P1);
-    Point P3 = CreateNextPoint(P2);
+    Point P3 = CreateNextNextPoint(P2,P1);
 
     CreateList3Elemen(&L, P1, P2, P3);
 

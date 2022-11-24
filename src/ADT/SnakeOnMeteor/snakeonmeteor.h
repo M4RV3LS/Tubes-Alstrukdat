@@ -55,6 +55,8 @@ void CreateList3Elemen (List *L, Point P1, Point P2, Point P3);
 /* F.S. Terbentuk list dengan 3 elemen */
 
 Point CreateNextPoint(Point P);
+
+Point CreateNextNextPoint(Point P, Point P1);
 /* I.S. sembarang             */
 /* F.S. Terbentuk Point dengan Absis X dan Ordinat Y */
 
