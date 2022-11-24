@@ -1,6 +1,6 @@
 #include "console.h"
 #include <stdio.h>
-void CREATEGAME(ArrayDin *ListGames)
+void CREATEGAME(ArrayDin *ListGames , ArrayOfMap *GameMap)
 {
     printf("Masukkan nama game yang akan ditambahkan : ");
     STARTCOMMANDGAME();
@@ -31,14 +31,16 @@ void CREATEGAME(ArrayDin *ListGames)
         
     }
     if (!found)
-    {
+    {   Map Temp;
+        CreateEmptyMap(&Temp);
         InsertLast(ListGames, gamename);
         printf("Game berhasil ditambahkan.\n");
+        InsertLastArrayOfMap(GameMap, Temp);
     }
 }
 
 
-void DELETE(ArrayDin *ListGames, Queue q1)
+void DELETE(ArrayDin *ListGames, Queue q1 , ArrayOfMap *GameMap)
 {
     LISTGAME(ListGames);
     printf("\n");
@@ -47,7 +49,8 @@ void DELETE(ArrayDin *ListGames, Queue q1)
     printf("\n");
     int input;
     input = WordToInt(currentCMD);
-    if ((input > 0 && input <=5)  || input>(*ListGames).Neff) {
+    printf("input = %d\n",input);
+    if ((input > 0 && input <=6)  || input>(*ListGames).Neff) {
         printf("Game ke-%d gagal dihapus\n" , input);
     } else {
         boolean found;
@@ -70,6 +73,7 @@ void DELETE(ArrayDin *ListGames, Queue q1)
                 i++;  
             } 
             (*ListGames).Neff--;
+            DeleteAtArrayOfMap(GameMap, input - 1);
             printf("Game berhasil dihapus");
         }
     }
@@ -81,7 +85,19 @@ void DELETE(ArrayDin *ListGames, Queue q1)
 void HELP()
 {
     printf("Berikut command-command yang dapat anda gunakan: \n");
-    printf("1. SAVE <nama_file> \n2. CREATE GAME \n3. LIST GAME \n4. DELETE GAME \n5. QUEUE GAME \n6. PLAY GAME \n7. SKIPGAME <Jumlah Game>\n8. QUIT \n9. HELP\n");
+    printf("1. SAVE <nama_file> \n");
+    printf("2. CREATE GAME \n");
+    printf("3. LIST GAME \n");
+    printf("4. DELETE GAME \n");
+    printf("5. QUEUE GAME \n");
+    printf("6. PLAY GAME \n");
+    printf("7. SKIPGAME <n>\n");
+    printf("8. SCOREBOARD \n");
+    printf("9. RESET SCOREBOARD \n");
+    printf("10. HISTORY <n> \n");
+    printf("11. RESET HISTORY \n");
+    printf("12. HELP \n");
+    printf("13. QUIT\n");
 }
 
 void LISTGAME(ArrayDin *ListGames)
@@ -93,7 +109,7 @@ void LISTGAME(ArrayDin *ListGames)
     }
 }
 
-void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,Map *RNG , Map *DinerDASH , Map *HANGMAN , Map *TOWEROFHANOI , Map *SNAKEONMETEOR , Map *MATHQUIZ){
+void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOfMap *GameMap){
     char path[NMax];
     stringConcat("../data/",filename,path);
     //printf("%s\n",path);
@@ -147,111 +163,42 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,Map *RN
         (*GameHistory) = ReverseStack(*GameHistory);
         //printf("Ini Setelah Reverse\n");
         //DisplayStack(*GameHistory , Top(*GameHistory));
-        /*MAP RNG*/
-        ADVLine(); //printf("%s\n" , currentCMD);
-        nGame = WordToInt(currentWord);
-        printf("%d\n" , nGame);
-        int i = 0;
+
+        /*Game Map*/
+        int idxArrMap;
+        int idxMap;
         int score ;
-        while(i < nGame){
-            //char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
-            //printf("%s\n" , currentWord);
-            //printf("panjang currentWord sekarang %d\n" , currentWord.Length);
-            ADVWORD();
-            kata = WORDTOSTRING(currentWord);
-            //printf("Panjang currentWord Kata = %d\n" , currentWord.Length);
-            //printf("%s\n",kata);
-            //printf("%s\n" , currentWord);
-            ADVWORD();
-            score = WordToInt(currentWord);
-            //printf("panjang currentWord score = %d\n" , currentWord.Length);
-            //printf("%d\n",score);
-            // while (j <= currentWord.Length)
-            // {
-            //     gamename[j] = kata[j];
-            //     j++;
-            // }
-            //gamename[j] = '\0';  
-            //InsertIn(string , ListGames , i);
-            Insert(RNG, kata, score);
-            printf("%s %d\n" , (*RNG).Elements[i].Nama , (*RNG).Elements[i].Skor);
-            i++;
+
+        for (idxArrMap = 0; idxArrMap < (*ListGames).Neff;idxArrMap++){
+            Map Temp;
+            CreateEmptyMap(&Temp);
+            ADVLine(); //printf("%s\n" , currentCMD);
+            nGame = WordToInt(currentWord);
+            printf("%d\n" , nGame);
+            idxMap = 0;
+            while(idxMap < nGame){
+                
+                ADVWORD();
+                kata = WORDTOSTRING(currentWord);
+                ADVWORD();
+                score = WordToInt(currentWord);
+                //printf("panjang currentWord score = %d\n" , currentWord.Length);
+                //printf("%d\n",score);
+                // while (j <= currentWord.Length)
+                // {
+                //     gamename[j] = kata[j];
+                //     j++;
+                // }
+                //gamename[j] = '\0';  
+                Insert(&Temp, kata, score);
+                printf("%s %d\n" , (Temp).Elements[idxMap].Nama , (Temp).Elements[idxMap].Skor);
+                idxMap++;
+            }
+            
+            InsertLastArrayOfMap(GameMap , Temp);
+                
         }
-        /*MAP Diner DASH*/
-        ADVLine(); 
-        nGame = WordToInt(currentWord);
-        printf("%d\n" , nGame);
-        i = 0;
-        while(i < nGame){
-            ADVWORD();
-            kata = WORDTOSTRING(currentWord);
-            ADVWORD();
-            score = WordToInt(currentWord);
-            Insert(DinerDASH, kata, score);
-            printf("%s %d\n" , (*DinerDASH).Elements[i].Nama , (*DinerDASH).Elements[i].Skor);
-            i++;
-        }
-        /*MAP HANGMAN*/
-        ADVLine(); 
-        nGame = WordToInt(currentWord);
-        printf("%d\n" , nGame);
-        i = 0;
-        while(i < nGame){
-            ADVWORD();
-            kata = WORDTOSTRING(currentWord);
-            ADVWORD();
-            score = WordToInt(currentWord);
-            Insert(HANGMAN, kata, score);
-            printf("%s %d\n" , (*HANGMAN).Elements[i].Nama , (*HANGMAN).Elements[i].Skor);
-            i++;
-        }
-        /*MAP TOWER OF HANOI*/ 
-        ADVLine();
-        nGame = WordToInt(currentWord);
-        printf("%d\n" , nGame);
-        i = 0;
-        while(i < nGame){
-            ADVWORD();
-            kata = WORDTOSTRING(currentWord);
-            ADVWORD();
-            score = WordToInt(currentWord);
-            Insert(TOWEROFHANOI, kata, score);
-            printf("%s %d\n" , (*TOWEROFHANOI).Elements[i].Nama , (*TOWEROFHANOI).Elements[i].Skor);
-            i++;
-        }
-        /*MAP SNAKE ON METEOR*/
-        ADVLine();
-        nGame = WordToInt(currentWord);
-        printf("%d\n" , nGame);
-        i = 0;
-        while(i < nGame){
-            ADVWORD();
-            kata = WORDTOSTRING(currentWord);
-            ADVWORD();
-            score = WordToInt(currentWord);
-            Insert(SNAKEONMETEOR, kata, score);
-            printf("%s %d\n" , (*SNAKEONMETEOR).Elements[i].Nama , (*SNAKEONMETEOR).Elements[i].Skor);
-            i++;
-        }
-        //printf("siniwoi\n");
-        if(foundmathquiz(ListGames)){
-            //printf("mathquiz found\n");
-            /*MAP MATH QUIZ*/
-        ADVLine();
-        nGame = WordToInt(currentWord);
-        printf("%d\n" , nGame);
-        i = 0;
-        while(i < nGame ){
-            ADVWORD();
-            kata = WORDTOSTRING(currentWord);
-            //printf("%s\n" , kata);
-            ADVWORD();
-            score = WordToInt(currentWord);
-            Insert(MATHQUIZ, kata, score);
-            printf("%s %d\n" , (*MATHQUIZ).Elements[i].Nama , (*MATHQUIZ).Elements[i].Skor);
-            i++;
-        }
-        }
+        
         if(!IsEmpty(*ListGames)) 
         { 
             printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n"); 
@@ -263,16 +210,16 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,Map *RN
     }
 }
 
-void PLAYGAME(Queue *q1)
+void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *GameHistory)
 {
     ElType A;
-    char *rng, *dinerDash , *dino ,*risewoman ,*eiffel ,*MTK;
-    
+    char *rng, *dinerDash , *hangman ,*towerofhanoi ,*snakeonmeteor ,*MTK;
+    int score;
     rng = "RNG";
     dinerDash = "Diner DASH";
-    dino = "DINOSAUR IN EARTH";
-    risewoman = "RISEWOMAN";
-    eiffel = "EIFFEL TOWER";
+    hangman = "HANGMAN";
+    towerofhanoi = "TOWER OF HANOI";
+    snakeonmeteor = "SNAKE ON METEOR";
     MTK = "MATH QUIZ";
 
     if (isEmpty(*q1))
@@ -289,37 +236,50 @@ void PLAYGAME(Queue *q1)
         {
             printf("Loading %s ...\n", rng);
             delay(2);
-            gameRNG();
+            gameRNG(game , ListGames ,GameMap , score); 
+            //printf("Skor: %d\n", score);
+            PushStack(GameHistory , game);
+            
         } 
 
-        else if(CompareString(game , dino))
+        else if(CompareString(game , hangman))
         {
-            printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+            // printf("Loading %s ...\n", hangman);
+            // delay(2);
+            //Hangman();
         }
 
-        else if(CompareString(game , risewoman))
+        else if(CompareString(game , towerofhanoi))
         {
-            printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+            // printf("Loading %s ...\n", towerofhanoi);
+            // delay(2);
+            // TowerOfHanoi();
 
         }
 
-        else if(CompareString(game , eiffel))
+        else if(CompareString(game , snakeonmeteor))
         {
-            printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+            // printf("Loading %s ...\n", snakeonmeteor);
+            // delay(2);
+            // SnakeOnMeteor();
 
         }
         else if(CompareString(game , MTK))
         {
             printf("Loading MATH QUIZ ...\n");
             delay(2);
-            mathquiz();
+            mathquiz(score);
+            PushStack(GameHistory , game);
+            Username(game , ListGames , GameMap , score);
         }
 
         else if (CompareString(game , dinerDash))
         {
             printf("Loading %s ...\n", dinerDash);
             delay(2);
-            dinnerdash(); 
+            dinnerdash();
+            PushStack(GameHistory , game);
+            Username(game , ListGames , GameMap , score); 
         }
 
 
@@ -396,13 +356,14 @@ printf("  ▀█   ███   █▀    ███    █▀     ▄████
 printf("+ - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x :\n");
 }
 
-void gameRNG()  
+void gameRNG(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)  
 {   printRNG();
     printf("\n");
     srand(time(NULL));
     int maxTry = 50;
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak sebuah angka X yang rentangnya berada diantara 1 - 50.\n");
     int random = rand() % 50 + 1;
+    printf("Jawaban = %d\n",random);
     int tebakan;
     int skor = 0;
     printf("Tebakan : ");
@@ -430,21 +391,55 @@ void gameRNG()
         skor = maxTry - nTebakan + 1;
     }
     printf("skor = %d\n" , skor);
+    score = skor;
+    printf("Score =  %d\n",score);
+    Username(game , ListGames , GameMap , score);
 }
 
-void SAVEBNMO(ArrayDin* GamesList, char* filename) 
+void SAVEBNMO(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOfMap *GameMap) 
  { 
     FILE* fp; 
     char path[50]; 
   
     stringConcat("../data/",filename,path); 
+    printf("%s\n",path);
     fp = fopen (path,"w+"); 
-    fprintf(fp,"%d",Length(*GamesList)); 
-    for(int i = 0; i < Length(*GamesList);i++) 
+    if(fp == NULL)
+    {
+    printf("File tidak dapat dibuka\n");   
+    exit(1);             
+    }  
+    fprintf(fp,"%d",Length(*ListGames)); 
+    for(int i = 0; i < Length(*ListGames);i++) 
     { 
-        fprintf(fp,"\n%s",(*GamesList).A[i]); 
+        fprintf(fp,"\n%s",(*ListGames).A[i]); 
     } 
+    fprintf(fp , "\n%d" , Top(*GameHistory) + 1);
+    printf("Top = %d\n",Top(*GameHistory));
+    INFOTYPE Game;
+    while(!IsEmptyStack(*GameHistory))
+    {   PopStack(GameHistory , &Game);
+        //printf("Game = %s\n",Game);
+        fprintf(fp , "\n%s" , Game);
+        
+    }
+    int idxArrMap;
+    int idxMap;
+    char *name;
+    int score ;
+    int MapCount;
+    for (idxArrMap = 0;idxArrMap < (*ListGames).Neff;idxArrMap++){
+        MapCount = GetElmtArrayOfMap(*GameMap , idxArrMap).Count;
+        fprintf(fp , "\n%d" , MapCount);
+        for(idxMap = 0;idxMap < MapCount ; idxMap++){
+            name = GetElmtArrayOfMap(*GameMap , idxArrMap).Elements[idxMap].Nama;
+            score = GetElmtArrayOfMap(*GameMap , idxArrMap).Elements[idxMap].Skor;
+            fprintf(fp , "\n%s %d" , name , score);
+        }
+    }
+     
     fclose(fp); 
+
   
     fp = fopen(path, "r"); 
     if (fp != NULL) 
@@ -454,7 +449,7 @@ void SAVEBNMO(ArrayDin* GamesList, char* filename)
     } 
  }
 
-void SKIPGAME(Queue *q, int n)
+void SKIPGAME(Queue *q, int n , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *GameHistory)
 {
     if (isEmpty(*q))
     {
@@ -478,7 +473,7 @@ void SKIPGAME(Queue *q, int n)
             dequeue(q,&x);
             i++;
         }
-    PLAYGAME(q);
+    PLAYGAME(q ,ListGames , GameMap , GameHistory);
         //displayQueue(*q);
         //PLAYGAME(q);
         //for (int i = IDX_HEAD(*q) - n; i < IDX_HEAD(*q) - n + length(*q); i++){
@@ -716,7 +711,7 @@ int perkalian(int skor){
 return skor;
 }
 
-int mathquiz(){      
+void mathquiz(int score){      
     printMathQuiz();
     printf("\n");
     printf("<SELAMAT DATANG DI GAME MATHQUIZ>\n");
@@ -755,7 +750,7 @@ int mathquiz(){
     }
     
     
-    return skormath;
+    score = skormath;
 }
 // Menampilkan tabel
 void DisplayPesanan(QUEUEDD q)
@@ -1122,12 +1117,12 @@ void dinnerdash()
     }
 }
 
-boolean foundmathquiz(ArrayDin *ListGames){
+boolean foundmathquiz(ArrayDin ListGames){
     boolean found = false;
     int i = 0;
-    while(i < (*ListGames).Neff && !found)
+    while(i < (ListGames).Neff && !found)
     {
-        if (CompareString((*ListGames).A[i], "MATH QUIZ"))
+        if (CompareString((ListGames).A[i], "MATH QUIZ"))
         {
             found = true;
             //printf("Ketemu\n");
@@ -1139,3 +1134,71 @@ boolean foundmathquiz(ArrayDin *ListGames){
     return found;
 }
 
+void Scoreboard(ArrayDin ListGames , ArrayOfMap GameMap){
+    int idxlistgame;
+    for(idxlistgame = 0 ; idxlistgame < ListGames.Neff ; idxlistgame++){
+        printf("**** SCOREBOARD GAME %s ****\n", ListGames.A[idxlistgame]);
+        PrintScoreBoard(GameMap.ArrMap[idxlistgame]);
+        printf("\n");
+    }
+}
+
+void Username(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score){
+    int index = 0;
+    boolean found = false;
+    while(!found){
+        if (CompareString(game , (ListGames).A[index])){
+            found = true;
+        }
+        else{
+            index++;
+        }
+    }
+    if(found){
+        boolean berhasil = false;
+        while(!berhasil){
+            printf("Masukkan username: ");
+            STARTCOMMANDGAME();
+            char*name = WORDTOSTRING(currentCMD);
+            if(!IsMemberMap(GameMap->ArrMap[index] , name)){
+                Insert(&(GameMap->ArrMap[index]) , name , score);
+                berhasil = true;
+            }
+            else{
+                printf("Username sudah ada . Silahkan Masukan Kembali !\n");
+                printf("\n");
+            }
+        }   
+    }
+    else{
+        printf("Game tidak ditemukan\n");
+    } 
+}
+
+// int main(){
+//     Stack GameHistory;
+//     ArrayOfMap GameMap;
+//     Queue QueueGame;
+//     CreateQueue(&QueueGame);
+//     ArrayDin ListGames = CreateDynArray() ;
+//     MakeEmptyArrayOfMap(&GameMap);
+//     CreateEmptyStack(&GameHistory);
+//     LOADFILE(&ListGames , &GameHistory , "savefile2.txt", &GameMap);
+//     CREATEGAME(&ListGames , &GameMap);
+//     int lastidx = NbElmtArrayOfMap(GameMap);
+//     printf("lastidx = %d\n", lastidx);
+//     char*name = "Marvel";
+//     int score = 100;
+//     Map Temp = GetElmtArrayOfMap(GameMap , lastidx); 
+//     Insert(&GameMap.ArrMap[lastidx] , name , score);
+//     // GameMap.ArrMap[lastidx].Elements[0].Nama = name;
+//     // GameMap.ArrMap[lastidx].Elements[0].Skor = score;
+//     printf("%s %d\n", GetElmtArrayOfMap(GameMap , lastidx).Elements[0].Nama , GetElmtArrayOfMap(GameMap , lastidx).Elements[0].Skor);
+//     printf("%d\n",GameMap.ArrMap[lastidx].Count);
+//     DELETE(&ListGames , QueueGame , &GameMap);
+//     //Scoreboard(ListGames , GameMap);
+//     //SAVEBNMO(&ListGames , &GameHistory , "savefile4.txt",&GameMap);
+//     // printf("List Games : \n");
+
+//     return 0;
+// }

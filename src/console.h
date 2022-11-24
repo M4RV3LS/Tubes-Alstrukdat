@@ -12,20 +12,22 @@
 #include "ADT/DinerDash/mesinkata.h"
 #include "ADT/SetMap/map.h"
 #include "ADT/Stack/stack.h"
+#include "scoreboard/scoreboard.h"
+#include "history/history.h"
 
 
 
-void CREATEGAME(ArrayDin *ListGames);
+void CREATEGAME(ArrayDin *ListGames , ArrayOfMap *GameMap);
 
-void DELETE(ArrayDin *ListGames, Queue q1);
+void DELETE(ArrayDin *ListGames, Queue q1 , ArrayOfMap *GameMap);
 
 void HELP();
 
 void LISTGAME(ArrayDin *ListGames);
 
-void LOADFILE(ArrayDin *ListGames , ArrayDin *GameHistory , char* filename ,Map *RNG , Map *DinerDASH , Map *HANGMAN , Map *TOWEROFHANOI , Map *SNAKEONMETEOR , Map *MATHQUIZ);
+void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOfMap *GameMap);
 
-void PLAYGAME(Queue *q1);
+void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *GameHistory);
 
 void QUEUEGAME(Queue *q1, ArrayDin game);
 
@@ -35,11 +37,11 @@ void printRNG();
 
 void printMathQuiz();
 
-void gameRNG(); 
+void gameRNG(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)  ; 
 
-void SAVEBNMO(ArrayDin* GamesList, char* filename);
+void SAVEBNMO(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOfMap *GameMap);
 
-void SKIPGAME(Queue *q, int n);
+void SKIPGAME(Queue *q, int n , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *GameHistory);
 
 void STARTGAME(ArrayDin *ListGames);
 
@@ -49,7 +51,7 @@ int pengurangan(int skor);
 
 int perkalian(int skor);
 
-int mathquiz();
+void mathquiz(int score);
 
 void DisplayPesanan(QUEUEDD q);
 // Menampilkan antrian pesanan
@@ -92,4 +94,8 @@ void SERVE(QUEUEDD *Masakan, QUEUEDD *Sajian, int *Saldo);
 void dinnerdash();
 // procedure utama untuk menjalankan game dinner dash
 
-boolean foundmathquiz(ArrayDin *ListGames);
+boolean foundmathquiz(ArrayDin ListGames);
+
+void Scoreboard(ArrayDin ListGames , ArrayOfMap GameMap);
+
+void Username(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score);

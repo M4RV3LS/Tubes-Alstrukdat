@@ -19,6 +19,7 @@ boolean ya(){
             valid = true;}
         else{
             printf("Masukan tidak valid, silahkan masukan kembali\n");
+            printf("\nAPAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL (YA/TIDAK)?\n");
         }
     }
    return value; 
@@ -264,92 +265,101 @@ void PrintScoreBoard(Map Game)
         }
     }
 }
-int main(){
-    printf("Test");
-    ArrayDin ListGames;
-    ListGames = CreateDynArray();
-    printf("cap= %d\n",ListGames.Capacity);
-    char *a;
-    a = "RNG\0";
-    printf("wibu\n");
-    char *b;
-    b = "DinerDASH\0";
-    char *c;
-    c = "HANGMAN\0";
-    char *d;
-    d = "TOWEROFHANOI\0";
-    char *e;
-    e = "SNAKEOFMETEOR\0";
-    char *f;
-    f = "MATHQUIZ\0";
-    printf("%s\n", a)  ;
-    printf("%s\n", b)  ;
-    printf("%s\n", c)  ;
-    printf("%s\n", d)  ;
-    printf("%s\n", e)  ;
-    printf("%s\n", f)  ;
-    InsertLast(&ListGames , a);
-    InsertLast(&ListGames , b);
-    InsertLast(&ListGames , c);
-    InsertLast(&ListGames , d);
-    InsertLast(&ListGames , e);
-    InsertLast(&ListGames , f);
-    for (int j = 0; j < ListGames.Neff; j++)
-    {
-        printf("%s\n", ListGames.A[j]);
-    }
-    //printf("Test");
-    Map RNG;
-    Map DinerDASH;
-    Map HANGMAN;
-    Map TOWEROFHANOI;
-    Map SNAKEOFMETEOR;
-    Map MATHQUIZ;
-    CreateEmptyMap(&RNG);
-    CreateEmptyMap(&DinerDASH);
-    CreateEmptyMap(&HANGMAN);
-    CreateEmptyMap(&TOWEROFHANOI);
-    CreateEmptyMap(&SNAKEOFMETEOR);
-    CreateEmptyMap(&MATHQUIZ);
-    Insert(&RNG , "MARVEL" , 250);
-    Insert(&RNG , "LIM" , 300);
-    Insert(&RNG , "TIM" , 200);
-    SortMap(&RNG);
-    Insert(&DinerDASH , "MARVEL2" , 300);
-    Insert(&DinerDASH , "LIM2" , 250);
-    Insert(&DinerDASH , "TIM2" , 220);
-    SortMap(&DinerDASH);
-    ArrayOfMap M;
-    MakeEmptyArrayOfMap(&M);
-    InsertLastArrayOfMap(&M , RNG);
-    InsertLastArrayOfMap(&M , DinerDASH);
-    // for(int i = 0; i < RNG.Count - 1; i++){
-	// 	printf("[%s | %d] ,", RNG.Elements[i].Nama, RNG.Elements[i].Skor);
-	// }
-	// int i = RNG.Count - 1;
-	// printf("[%s | %d]\n", RNG.Elements[i].Nama, RNG.Elements[i].Skor);
-    int i = 0;
-    //int j = 0;
-    while(i < NbElmtArrayOfMap(M)){
-        //printf("Test");
-        PrintScoreBoard(M.ArrMap[i]);
-        i++;
-        printf("\n");
-    }
-    // int max = KataTerpanjang(RNG);
-    // printf("%d\n",max);
-    ResetScoreboard(&M , &ListGames);
+// int main(){
+//     printf("Test");
+//     ArrayDin ListGames;
+//     ListGames = CreateDynArray();
+//     printf("cap= %d\n",ListGames.Capacity);
+//     char *a;
+//     a = "RNG\0";
+//     printf("wibu\n");
+//     char *b;
+//     b = "DinerDASH\0";
+//     char *c;
+//     c = "HANGMAN\0";
+//     char *d;
+//     d = "TOWEROFHANOI\0";
+//     char *e;
+//     e = "SNAKEOFMETEOR\0";
+//     char *f;
+//     f = "MATHQUIZ\0";
+//     printf("%s\n", a)  ;
+//     printf("%s\n", b)  ;
+//     printf("%s\n", c)  ;
+//     printf("%s\n", d)  ;
+//     printf("%s\n", e)  ;
+//     printf("%s\n", f)  ;
+//     InsertLast(&ListGames , a);
+//     InsertLast(&ListGames , b);
+//     InsertLast(&ListGames , c);
+//     InsertLast(&ListGames , d);
+//     InsertLast(&ListGames , e);
+//     InsertLast(&ListGames , f);
+//     for (int j = 0; j < ListGames.Neff; j++)
+//     {
+//         printf("%s\n", ListGames.A[j]);
+//     }
+//     //printf("Test");
+//     Map RNG;
+//     Map DinerDASH;
+//     Map HANGMAN;
+//     Map TOWEROFHANOI;
+//     Map SNAKEOFMETEOR;
+//     Map MATHQUIZ;
+//     CreateEmptyMap(&RNG);
+//     CreateEmptyMap(&DinerDASH);
+//     CreateEmptyMap(&HANGMAN);
+//     CreateEmptyMap(&TOWEROFHANOI);
+//     CreateEmptyMap(&SNAKEOFMETEOR);
+//     CreateEmptyMap(&MATHQUIZ);
+//     Insert(&RNG , "MARVEL" , 250);
+//     Insert(&RNG , "LIM" , 300);
+//     Insert(&RNG , "TIM" , 200);
+//     SortMap(&RNG);
+//     Insert(&DinerDASH , "MARVEL2" , 300);
+//     Insert(&DinerDASH , "LIM2" , 250);
+//     Insert(&DinerDASH , "TIM2" , 220);
+//     SortMap(&DinerDASH);
+//     ArrayOfMap M;
+//     MakeEmptyArrayOfMap(&M);
+//     InsertLastArrayOfMap(&M , RNG);
+//     InsertLastArrayOfMap(&M , DinerDASH);
+//     // for(int i = 0; i < RNG.Count - 1; i++){
+// 	// 	printf("[%s | %d] ,", RNG.Elements[i].Nama, RNG.Elements[i].Skor);
+// 	// }
+// 	// int i = RNG.Count - 1;
+// 	// printf("[%s | %d]\n", RNG.Elements[i].Nama, RNG.Elements[i].Skor);
+//     int i = 0;
+//     //int j = 0;
+//     while(i < NbElmtArrayOfMap(M)){
+//         //printf("Test");
+//         PrintScoreBoard(M.ArrMap[i]);
+//         i++;
+//         printf("\n");
+//     }
+//     DeleteFirstArrayOfMap(&M);
+//     printf("Scoreboard habis didelete : \n");
+//     i = 0;
+//     while(i < NbElmtArrayOfMap(M)){
+//         //printf("Test");
+//         PrintScoreBoard(M.ArrMap[i]);
+//         i++;
+//         printf("\n");
+//     }
+//     // int max = KataTerpanjang(RNG);
+//     // printf("%d\n",max);
+//     //ResetScoreboard(&M , &ListGames);
     
-    // if (RNG.Count == 0)
-    // {
-    //     printf("RNG Kosong\n");
-    // }
-    // else{
-    //     printf("RNG Tidak Kosong\n");
-    // }
+//     // if (RNG.Count == 0)
+//     // {
+//     //     printf("RNG Kosong\n");
+//     // }
+//     // else{
+//     //     printf("RNG Tidak Kosong\n");
+//     // }
     
-    return 0;
-}
+//     return 0;
+// }
 
 // int main(){
 //     Map RNG;

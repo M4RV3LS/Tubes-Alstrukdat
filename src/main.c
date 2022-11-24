@@ -11,6 +11,10 @@ int main(){
     ArrayDin ListGames = CreateDynArray();
     Queue QueueGame;
     CreateQueue(&QueueGame);
+    Stack GameHistory;
+    CreateEmptyStack(&GameHistory);
+    ArrayOfMap GameMap;
+    MakeEmptyArrayOfMap(&GameMap);
     printf("Silahkan pilih Command \n");
     printf("1. START\n");
     printf("2. LOAD <nama file>\n \n"); // LOAD savefile1.txt
@@ -42,7 +46,7 @@ int main(){
             j++;
         }
         //printf("%s\n",filename);
-        LOADFILE(&ListGames, filename);
+        LOADFILE(&ListGames,&GameHistory, filename , &GameMap);
         
     }
     else{
@@ -66,7 +70,7 @@ int main(){
             ADVCOMMAND();
             char namafile[50];
             wordToString(currentCMD, namafile);
-            SAVEBNMO(&ListGames, namafile);
+            SAVEBNMO(&ListGames, &GameHistory , namafile ,&GameMap);
         }
         else if (wordAndCharSama(currentCMD, "CREATE"))
         {
@@ -76,7 +80,7 @@ int main(){
             if(CompareString(game , GAME))
             {
             //printf("%s\n",currentCMD);
-            CREATEGAME(&ListGames);
+            CREATEGAME(&ListGames , &GameMap);
             }
             else
             {
@@ -106,7 +110,7 @@ int main(){
             if(CompareString(game , "GAME"))
             {
                 //printf("naon yak 2");
-                DELETE(&ListGames, QueueGame);
+                DELETE(&ListGames, QueueGame , &GameMap);
             }
             else
             {
@@ -134,19 +138,60 @@ int main(){
             wordToString(currentCMD, game);
             if(CompareString(game , "GAME"))
             {
-                PLAYGAME(&QueueGame);
+                PLAYGAME(&QueueGame , ListGames , &GameMap , &GameHistory);
             }
             else
             {
                 printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
             }
         }
-        else if(wordAndCharSama(currentCMD, "SKIPGAME")) // setelah "SKIPGAME" wajib beed integer
+        else if(wordAndCharSama(currentCMD, "SKIPGAME"))
         {
             ADVCOMMAND();
             if(isInteger(currentCMD) && !(EndWord)){
                 int skip = WordToInt(currentCMD); //- 10 ;            
-                SKIPGAME(&QueueGame, skip);
+                SKIPGAME(&QueueGame, skip , ListGames , &GameMap , &GameHistory);
+            }
+            else
+            {
+                printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+            }
+        }
+        else if(wordAndCharSama(currentCMD, "SCOREBOARD")) // setelah "SKIPGAME" wajib beed integer
+        {
+            ADVCOMMAND();
+            if(EndWord){
+                Scoreboard(ListGames , GameMap);
+            }
+            else
+            {
+                printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+            }
+        }
+        else if(wordAndCharSama(currentCMD, "RESET"))
+        {
+            ADVCOMMAND();
+            char game[50];
+            wordToString(currentCMD, game);
+            if(CompareString(game , "SCOREBOARD"))
+            {
+                ResetScoreboard(&GameMap , &ListGames);
+            }
+            else if(CompareString(game , "HISTORY"))
+            {
+                ResetHistory(&GameHistory);
+            }
+            else
+            {
+                printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+            }
+        }
+        else if(wordAndCharSama(currentCMD, "HISTORY"))
+        {
+            ADVCOMMAND();
+            if(isInteger(currentCMD) && !(EndWord)){
+                int n = WordToInt(currentCMD); 
+                History(GameHistory , n);            
             }
             else
             {

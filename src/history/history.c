@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../boolean.h"
-// #include "../ADT/arrayOfString.h"
-#include "../ADT/boolean.h"
-#include "../ADT/mesinkata2.h"
-#include "../ADT/Stack/stack.h"
+#include "history.h"
 
 boolean yes(){
     //printf("Test\n");
@@ -66,10 +62,12 @@ void History(Stack Game , int n){
     }
     else {
         if(n <= Top(Game) + 1 && n > 0){
+            // printf("Top Game = %d\n",Top(Game));
+            // printf("Masuk ke kasus1 : \n");
             printf("Berikut adalah daftar Game yang telah dimainkan \n");
             int nomor = 0;
             // char *TOP;
-            for(int i=n;i>=0;i--){
+            for(int i=n-1;i>=0;i--){
                 nomor = nomor + 1;
                 printf("%d. %s\n", nomor , Game.T[i] );
                 }
@@ -81,9 +79,10 @@ void History(Stack Game , int n){
             // }
         }
         else if (n > Top(Game) + 1) {
+            // printf("Masuk ke kasus2 : \n");
             printf("Berikut adalah daftar Game yang telah dimainkan \n");
             int nomor = 0;
-            for(int i=n;i>=0;i--){
+            for(int i=Top(Game);i>=0;i--){
                 nomor = nomor + 1;
                 printf("%d. %s\n", nomor , Game.T[i] );
                 }
@@ -173,18 +172,18 @@ void ResetHistory (Stack * Game){
 //     return 0;
 // }
 
-int main(){
-    Stack Game;
-    CreateEmptyStack(&Game);
-    Push(&Game, "RNG");
-    Push(&Game, "Diner DASH");
-    Push(&Game, "HANGMAN");
-    Push(&Game, "TOWER OF HANOI");
-    Push(&Game, "SNAKE ON METEOR");
-    Push(&Game, "MATH QUIZ");
-    //DisplayStack(Game , Top(Game));
-    History(Game , Top(Game));
-    ResetHistory(&Game);
-    //yes();
-    return 0;
-}
+// int main(){
+//     Stack Game;
+//     CreateEmptyStack(&Game);
+//     Push(&Game, "RNG");
+//     Push(&Game, "Diner DASH");
+//     Push(&Game, "HANGMAN");
+//     Push(&Game, "TOWER OF HANOI");
+//     Push(&Game, "SNAKE ON METEOR");
+//     Push(&Game, "MATH QUIZ");
+//     //DisplayStack(Game , Top(Game));
+//     History(Game , Top(Game));
+//     ResetHistory(&Game);
+//     //yes();
+//     return 0;
+// }
