@@ -2,6 +2,7 @@
 #define map_H
 #include <stdio.h>
 #include "boolean.h"
+#include "../mesinkata2.h"
 
 /* MODUL Map
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
@@ -35,7 +36,7 @@ typedef struct {
 /* ********* Prototype ********* */
 
 /* *** Konstruktor/Kreator *** */
-void CreateEmpty(Map *M);
+void CreateEmptyMap(Map *M);
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
 /* Ciri Map kosong : count bernilai Nil */
@@ -66,7 +67,7 @@ void Delete(Map *M, keytype k);
         element dengan key k mungkin anggota / bukan anggota dari M */
 /* F.S. element dengan key k bukan anggota dari M */
 
-boolean IsMember(Map M, keytype k);
+boolean IsMemberMap(Map M, keytype k);
 /* Mengembalikan true jika k adalah member dari M */
 
 void PrintMap(Map M);

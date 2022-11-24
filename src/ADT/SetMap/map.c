@@ -34,7 +34,7 @@ typedef struct {
 /* ********* Prototype ********* */
 
 /* *** Konstruktor/Kreator *** */
-void CreateEmpty(Map *M){
+void CreateEmptyMap(Map *M){
 	(*M).Count = Nil;
 }
 /* I.S. Sembarang */
@@ -57,7 +57,7 @@ boolean IsFull(Map M){
 /* ********** Operator Dasar Map ********* */
 valuetype Skor(Map M, keytype k){
 	valuetype Skor;
-	if(IsMember(M , k)){
+	if(IsMemberMap(M , k)){
 		boolean found = false;
 		int i = 0;
 		while(!found && (i < M.Count)){
@@ -87,12 +87,13 @@ void Insert(Map *M, keytype k, valuetype v){
 		(*M).Count++;
 	}
 	else{
-		if(!IsMember(*M , k)){
+		if(!IsMemberMap(*M , k)){
 			(*M).Elements[(*M).Count].Nama = k;
 			(*M).Elements[(*M).Count].Skor = v;
 			(*M).Count++;
 		}
 	}
+	SortMap(M);
 }
 /* Menambahkan Elmt sebagai elemen Map M. */
 /* I.S. M mungkin kosong, M tidak penuh
@@ -100,7 +101,7 @@ void Insert(Map *M, keytype k, valuetype v){
 /* F.S. v menjadi anggota dari M dengan Nama k. Jika k sudah ada, operasi tidak dilakukan */
 
 void Delete(Map *M, keytype k){
-	if(IsMember(*M , k)){
+	if(IsMemberMap(*M , k)){
         boolean found = false;
         int idx = 0;
         while (!found && (idx < ((*M).Count))){
@@ -129,7 +130,7 @@ void Delete(Map *M, keytype k){
         element dengan Nama k mungkin anggota / bukan anggota dari M */
 /* F.S. element dengan Nama k bukan anggota dari M */
 
-boolean IsMember(Map M, keytype k){
+boolean IsMemberMap(Map M, keytype k){
 	boolean found = false;
 	int i = 0;
 	while(!found && (i < M.Count)){
@@ -157,7 +158,7 @@ void PrintMap(Map M){
 // }
 
 void SortMap(Map *M){
-	printf("test1\n");
+	//printf("test1\n");
 	int i, j;
 	infotype temp;
 	for(i = 0; i < (*M).Count - 1; i++){
