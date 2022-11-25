@@ -150,17 +150,17 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
     }while (!IsGameOver(L, Meteor, Obstacle));
 
     // INTERFACE GAMEOVER //
-
+    int skor;
     if (IsHeadKenaMeteor(L, Meteor))
     {
         printf("Kepala snake terkena meteor!\n");
-        int skor = NbElmt(L)*2;
+        skor = NbElmt(L)*2;
         printf("Game berakhir. Skor: %d\n", skor-2);
     }
     else if (IsHeadNabrakBadan(L))
     {
         printf("Kepala snake nabrak badan!\n");
-        int skor = NbElmt(L)*2;
+        skor = NbElmt(L)*2;
         printf("Game berakhir. Skor: %d\n", skor-2);
     }
     else if (IsEmptySOM(L))
@@ -172,7 +172,7 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         printf("Ada obstacle itu lho, yo jangan mbok tabrak to mas\n");
         gerak = false;
         input = false;
-        int skor = NbElmt(L)*2;
+        skor = NbElmt(L)*2;
         printf("Game berakhir. Skor: %d\n", skor-2);
     }
 

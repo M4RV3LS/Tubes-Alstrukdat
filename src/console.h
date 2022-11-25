@@ -14,9 +14,9 @@
 #include "ADT/Stack/stack.h"
 #include "scoreboard/scoreboard.h"
 #include "history/history.h"
-#include "ADT/towerofhanoi/towerofhanoi.h"
-#include "ADT/snakeonmeteor/gameSOM.h"
-#include "ADT/hangman/hangman.h"
+#include "towerofhanoi/towerofhanoi.h"
+#include "snakeonmeteor/gameSOM.h"
+#include "hangman/hangman.h"
 
 
 

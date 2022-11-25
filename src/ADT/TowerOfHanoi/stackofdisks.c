@@ -2,38 +2,38 @@
 Nama: Kinanti Wening Asih
 NIM: 18221044
 Tanggal: 22 Oktober 2022
-Topik Praktikum: ADT Stack
-Deskripsi: Implementasi stack.h
+Topik Praktikum: ADT STACKSS
+Deskripsi: Implementasi STACKSS.h
 */
 
 #include <stdio.h>
 #include "stackofdisks.h"
 
-void CreateEmptySS(Stack *S)
+void CreateEmptySS(STACKSS *S)
 /* I.S. sembarang; */
-/* F.S. Membuat sebuah stack S yang kosong berkapasitas Maksimal */
+/* F.S. Membuat sebuah STACKSS S yang kosong berkapasitas Maksimal */
 /* jadi indeksnya antara 0.. Maksimal */
-/* Ciri stack kosong : TOP berInvalidai Invalid */
+/* Ciri STACKSS kosong : TOP berInvalidai Invalid */
 {
     Top(*S) = Invalid;
 }
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmptySS(Stack S)
-/* Mengirim true jika Stack kosong: lihat definisi di atas */
+boolean IsEmptySS(STACKSS S)
+/* Mengirim true jika STACKSS kosong: lihat definisi di atas */
 {
     return Top(S) == Invalid;
 }
-boolean IsFullSS(Stack S)
-/* Mengirim true jika tabel penampung Invalidai elemen stack penuh */
+boolean IsFullSS(STACKSS S)
+/* Mengirim true jika tabel penampung Invalidai elemen STACKSS penuh */
 {
     return Top(S) == Maksimal-1;
 }
 
-/* ************ Menambahkan sebuah elemen ke Stack ************ */
-void PushSS(Stack * S, TipeElemen X, int sz)
-/* Menambahkan X sebagai elemen Stack S. */
-/* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
+/* ************ Menambahkan sebuah elemen ke STACKSS ************ */
+void PushSS(STACKSS * S, TipeElemen X, int sz)
+/* Menambahkan X sebagai elemen STACKSS S. */
+/* I.S. S mungkin kosong, tabel penampung elemen STACKSS TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 {
     Top(*S)++;
@@ -41,9 +41,9 @@ void PushSS(Stack * S, TipeElemen X, int sz)
     InfoTop(*S).size = sz;
 }
 
-/* ************ Menghapus sebuah elemen Stack ************ */
-void PopSS(Stack * S, Disk* X)
-/* Menghapus X dari Stack S. */
+/* ************ Menghapus sebuah elemen STACKSS ************ */
+void PopSS(STACKSS * S, Disk* X)
+/* Menghapus X dari STACKSS S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah Invalidai elemen TOP yang lama, TOP berkurang 1 */
 {

@@ -1,5 +1,4 @@
 #include "hangman.h"
-#include "ADT/Hangman/hangmanprint.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

@@ -10,7 +10,7 @@
 #define snakeonmeteor_H
 #include "../boolean.h"
 
-#define Nil NULL
+#define NilSOM NULL
 typedef struct tElmtList *address;
 typedef struct {
     int X;
@@ -63,9 +63,9 @@ Point CreateNextNextPoint(Point P, Point P1);
 /****************** Manajemen Memori ******************/
 address Alokasi (Point X);
 /* Mengirimkan address hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
-/* menghasilkan P, maka info(P)=X, Next(P)=Nil */
-/* Jika alokasi gagal, mengirimkan Nil */
+/* Jika alokasi berhasil, maka address tidak NilSOM, dan misalnya */
+/* menghasilkan P, maka info(P)=X, Next(P)=NilSOM */
+/* Jika alokasi gagal, mengirimkan NilSOM */
 
 void Dealokasi (address *P);
 /* I.S. P terdefinisi */

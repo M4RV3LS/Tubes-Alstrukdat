@@ -21,7 +21,7 @@ void scoring(int steps, int* score)
     *score = a;
 }
 
-void cekValiditas(char tow1, char tow2, Stack a, Stack b, Stack c, boolean *valid)
+void cekValiditas(char tow1, char tow2, StackSS a, StackSS b, StackSS c, boolean *valid)
 {
     if ((tow1=='A' || tow1=='B' || tow1=='C') && (tow2=='A' || tow2=='B' || tow2=='C'))
     {
@@ -133,10 +133,10 @@ void cekValiditas(char tow1, char tow2, Stack a, Stack b, Stack c, boolean *vali
     } 
 }
 
-boolean win(Stack c)
+boolean win(StackSS c)
 {
     // Create winning tower
-    Stack w;
+    StackSS w;
     CreateEmptySS(&w);
     PushSS(&w,"*********", 5);
     PushSS(&w," ******* ", 4);
@@ -160,7 +160,7 @@ boolean win(Stack c)
     return !found;
 }
 
-void displaystacks(Stack a, Stack b, Stack c)
+void displaystacks(StackSS a, StackSS b, StackSS c)
 {
     int i = Maksimal-1;
 
@@ -192,9 +192,9 @@ void towerofhanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
     int skor = 0;
 
     // Menciptakan "towers"
-    Stack a;
-    Stack b;
-    Stack c;
+    StackSS a;
+    StackSS b;
+    StackSS c;
     CreateEmptySS(&a);
     CreateEmptySS(&b);
     CreateEmptySS(&c);

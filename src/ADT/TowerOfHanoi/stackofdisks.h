@@ -1,9 +1,9 @@
-/* File : stack.h */
-/* deklarasi stack yang diimplementasi dengan tabel kontigu dan ukuran sama */
+/* File : STACKSS.h */
+/* deklarasi STACKSS yang diimplementasi dengan tabel kontigu dan ukuran sama */
 /* TOP adalah alamat elemen puncak */
 /* Implementasi dalam bahasa C dengan alokasi statik */
-#ifndef stacks_H
-#define stacks_H
+#ifndef STACKSSs_H
+#define STACKSSs_H
 
 #include "../boolean.h"
 #include "../DinerDash/mesinkata.h"
@@ -12,7 +12,7 @@
 #define Maksimal 5
 #define MaxDisk 9
 
-/* InvalidTowerOfHanoi adalah stack dengan elemen kosong . */
+/* InvalidTowerOfHanoi adalah STACKSS dengan elemen kosong . */
 
 typedef char* TipeElemen;
 typedef int address;   /* indeks tabel */
@@ -22,15 +22,15 @@ typedef struct {
     int size;
 } Disk;
 
-/* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
+/* Contoh deklarasi variabel bertype STACKSS dengan ciri TOP : */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct { 
   Disk T[Maksimal]; /* tabel penyimpan elemen */
   address TOP;  /* alamat TOP: elemen puncak */
-} Stack;
-/* Definisi stack S kosong : S.TOP = InvalidTowerOfHanoi */
-/* Elemen yang dipakai menyimpan InvalidTowerOfHanoiai Stack T[0]..T[Maksimal-1] */
-/* Jika S adalah Stack maka akses elemen : */
+} STACKSS;
+/* Definisi STACKSS S kosong : S.TOP = InvalidTowerOfHanoi */
+/* Elemen yang dipakai menyimpan InvalidTowerOfHanoiai STACKSS T[0]..T[Maksimal-1] */
+/* Jika S adalah STACKSS maka akses elemen : */
    /* S.T[(S.TOP)] untuk mengakses elemen TOP */
    /* S.TOP adalah alamat elemen TOP */
 
@@ -40,27 +40,27 @@ typedef struct {
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
-void CreateEmptySS(Stack *S);
+void CreateEmptySS(STACKSS *S);
 /* I.S. sembarang; */
-/* F.S. Membuat sebuah stack S yang kosong berkapasitas Maksimal */
+/* F.S. Membuat sebuah STACKSS S yang kosong berkapasitas Maksimal */
 /* jadi indeksnya antara 0.. Maksimal */
-/* Ciri stack kosong : TOP berInvalidTowerOfHanoiai InvalidTowerOfHanoi */
+/* Ciri STACKSS kosong : TOP berInvalidTowerOfHanoiai InvalidTowerOfHanoi */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmptySS(Stack S);
-/* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFullSS(Stack S);
-/* Mengirim true jika tabel penampung Invalidai elemen stack penuh */
+boolean IsEmptySS(STACKSS S);
+/* Mengirim true jika STACKSS kosong: lihat definisi di atas */
+boolean IsFullSS(STACKSS S);
+/* Mengirim true jika tabel penampung Invalidai elemen STACKSS penuh */
 
-/* ************ Menambahkan sebuah elemen ke Stack ************ */
-void PushSS(Stack * S, TipeElemen X, int sz);
-/* Menambahkan X sebagai elemen Stack S. */
-/* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
+/* ************ Menambahkan sebuah elemen ke STACKSS ************ */
+void PushSS(STACKSS * S, TipeElemen X, int sz);
+/* Menambahkan X sebagai elemen STACKSS S. */
+/* I.S. S mungkin kosong, tabel penampung elemen STACKSS TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
-/* ************ Menghapus sebuah elemen Stack ************ */
-void PopSS(Stack * S, Disk* X);
-/* Menghapus X dari Stack S. */
+/* ************ Menghapus sebuah elemen STACKSS ************ */
+void PopSS(STACKSS * S, Disk* X);
+/* Menghapus X dari STACKSS S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah Invalidai elemen TOP yang lama, TOP berkurang 1 */
 

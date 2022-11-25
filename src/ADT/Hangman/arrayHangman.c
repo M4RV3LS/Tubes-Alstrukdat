@@ -72,7 +72,7 @@ boolean IsEmptyArrayHangman (ListKata T)
     return (NbElmt(T) == 0);
 }
 
-boolean IsFull (ListKata T)
+boolean IsFullHangman (ListKata T)
 {
     return (NbElmt(T) == MaxNbEl(T));
 }

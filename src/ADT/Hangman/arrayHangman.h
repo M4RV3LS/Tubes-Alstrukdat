@@ -1,6 +1,6 @@
-#include "boolean.h"
-#include "mesinkar2.h"
-#include "mesinkata2.h"
+#include "../boolean.h"
+#include "../mesinkar2.h"
+#include "../mesinkata2.h"
 
 #ifndef ARRAY_H
 #define ARRAY_H
@@ -83,7 +83,7 @@ boolean IsIdxValid (ListKata T, IdxType i);
 boolean IsEmptyArrayHangman (ListKata T);
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
-boolean IsFull (ListKata T);
+boolean IsFullHangman (ListKata T);
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */

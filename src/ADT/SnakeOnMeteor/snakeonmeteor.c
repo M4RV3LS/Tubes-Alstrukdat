@@ -3,15 +3,15 @@
 boolean IsEmptySOM (List L)
 /* Mengirim true jika list kosong */
 {
-    return (Head(L) == Nil && Tail(L) == Nil);
+    return (Head(L) == NilSOM && Tail(L) == NilSOM);
 }
 
 void CreateEmpty (List *L)
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
 {
-    Head(*L) = Nil;
-    Tail(*L) = Nil;
+    Head(*L) = NilSOM;
+    Tail(*L) = NilSOM;
 }
 
 void CreatePoint (Point *P, int X, int Y)
@@ -25,22 +25,22 @@ void CreateList3Elemen(List *L, Point P1, Point P2, Point P3)
     address P;
     P = (address) malloc (sizeof(ElmtList));
     Info(P) = P1;
-    Prev(P) = Nil;
-    Next(P) = Nil;
+    Prev(P) = NilSOM;
+    Next(P) = NilSOM;
     Head(*L) = P;
     Tail(*L) = P;
 
     P = (address) malloc (sizeof(ElmtList));
     Info(P) = P2;
     Prev(P) = Tail(*L);
-    Next(P) = Nil;
+    Next(P) = NilSOM;
     Next(Tail(*L)) = P;
     Tail(*L) = P;
 
     P = (address) malloc (sizeof(ElmtList));
     Info(P) = P3;
     Prev(P) = Tail(*L);
-    Next(P) = Nil;
+    Next(P) = NilSOM;
     Next(Tail(*L)) = P;
     Tail(*L) = P;
 }
@@ -112,14 +112,14 @@ Point CreateNextNextPoint(Point P, Point P1)
 
 address Alokasi (Point X)
 /* Mengirimkan address hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
-/* menghasilkan P, maka info(P)=X, Next(P)=Nil */
-/* Jika alokasi gagal, mengirimkan Nil */
+/* Jika alokasi berhasil, maka address tidak NilSOM, dan misalnya */
+/* menghasilkan P, maka info(P)=X, Next(P)=NilSOM */
+/* Jika alokasi gagal, mengirimkan NilSOM */
 {
     address P = (address) malloc(sizeof(ElmtList));
     Info(P) = X;
-    Next(P) = Nil;
-    Prev(P) = Nil;
+    Next(P) = NilSOM;
+    Prev(P) = NilSOM;
     
     return P;
 }
@@ -135,7 +135,7 @@ void Dealokasi (address *P)
 void printList(List L)
 {
     address P = Head(L);
-    while (P != Nil)
+    while (P != NilSOM)
     {
         printf("(%d,%d)\n", Absis(Info(P)), Ordinat(Info(P)));
         P = Next(P);
@@ -153,7 +153,7 @@ int NbElmt (List L)
     else
     {
         address P = Head(L);
-        while (P != Nil)
+        while (P != NilSOM)
         {
             count++;
             P = Next(P);
@@ -259,7 +259,7 @@ void DeleteDi (List *L, Point P)
     if (X == Tail(*L)) // di ekor or sama kayak delete last
     {
         Tail(*L) = Prev(X);
-        Next(Tail(*L)) = Nil;
+        Next(Tail(*L)) = NilSOM;
     }
     else // selain pala sama ekor
     {
@@ -272,7 +272,7 @@ boolean IsMember (List L, Point P)
 /* Mengirimkan true jika P adalah anggota list, false jika tidak */
 {
     address X = Head(L);
-    while (X != Nil)
+    while (X != NilSOM)
     {
         if (IsPointSama(Info(X), P))
         {
@@ -293,7 +293,7 @@ boolean IsBadanKenaMeteor(List L, Point P)
 /* Mengirimkan true jika L kena meteor di P, false jika tidak */
 {
     address X = Next(Head(L));
-    while (X != Nil)
+    while (X != NilSOM)
     {
         if (IsPointSama(Info(X), P))
         {
@@ -322,7 +322,7 @@ boolean IsHeadNabrakBadan(List L)
 {
     Point P = Info(Head(L));
     address X = Next(Head(L));
-    while (X != Nil)
+    while (X != NilSOM)
     {
         if (IsPointSama(Info(X), P))
         {
@@ -376,7 +376,7 @@ int indexOf(List L, Point P)
 {
     int i = 0;
     address X = Head(L);
-    while (X != Nil)
+    while (X != NilSOM)
     {
         if (IsPointSama(Info(X), P))
         {

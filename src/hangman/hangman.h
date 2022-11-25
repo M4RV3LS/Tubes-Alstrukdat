@@ -7,6 +7,8 @@
 #include "../ADT/Hangman/arrayHangman.h"
 #include "../ADT/arrayOfString.h"
 #include "../ADT/ArrayOfMap/arrayofmap.h"
+#include "../ADT/Hangman/hangmanprint.h"
+#include "../console.h"
 
 
 #include <stdio.h>

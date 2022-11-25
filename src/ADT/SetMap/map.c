@@ -15,7 +15,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 // typedef int bool;
 typedef int keytype;
 typedef int valuetype;
-typedef int address;
+typedef int alamat;
 
 typedef struct {
 	keytype Nama;
@@ -24,7 +24,7 @@ typedef struct {
 
 typedef struct {
 	infotype Elements[MaxEl];
-	address Count;
+	alamat Count;
 } Map;
 */
 /* Definisi Map M kosong : M.Count = Nil */
