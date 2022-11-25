@@ -147,7 +147,7 @@ boolean win(Stack c)
     // Compare two towers
     int j = 0;
     boolean found = false;
-    while (j<MaxEl && !found)
+    while (j<Maksimal && !found)
     {
         if (!diskComp(c.T[j],w.T[j]))
         {
@@ -162,7 +162,7 @@ boolean win(Stack c)
 
 void displaystacks(Stack a, Stack b, Stack c)
 {
-    int i = MaxEl-1;
+    int i = Maksimal-1;
 
     //Display konten tower
     while (i>=0)
@@ -189,7 +189,7 @@ void towerofhanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
 {
     // Kamus
     int countsteps = 0;
-    int score = 0;
+    int skor = 0;
 
     // Menciptakan "towers"
     Stack a;
@@ -283,11 +283,11 @@ void towerofhanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
         }
     }
 
-    //Menampilkan nilai
-    scoring(countsteps,&score);
+    //Menampilkan Invalidai
+    scoring(countsteps,&skor);
     printf("Kamu berhasil!\n");
-    printf("Skor didapatkan: %d", score);
-    score = score;
+    printf("Skor didapatkan: %d", skor);
+    score = skor;
     Username(game , ListGames , GameMap , score);
 }
 

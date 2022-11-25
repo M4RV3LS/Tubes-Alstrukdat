@@ -133,7 +133,7 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         printmap(L, Meteor, Food, Obstacle);
         if (IsBadanKenaMeteor(L, Meteor) && gerak)
         {
-            DeleteAt(&L, Meteor);
+            DeleteDi(&L, Meteor);
             printf("\nAnda terkena meteor!\n");
             printmap(L, Meteor, Food, Obstacle);
             printf("\n");
@@ -163,7 +163,7 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         int skor = NbElmt(L)*2;
         printf("Game berakhir. Skor: %d\n", skor-2);
     }
-    else if (IsEmpty(L))
+    else if (IsEmptySOM(L))
     {
         printf("Snake mati karena tubuh snake terkena meteor semua!\n");
     }

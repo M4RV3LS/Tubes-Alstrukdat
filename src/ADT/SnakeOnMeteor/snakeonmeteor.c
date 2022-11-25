@@ -1,6 +1,6 @@
 #include "snakeonmeteor.h"
 
-boolean IsEmpty (List L)
+boolean IsEmptySOM (List L)
 /* Mengirim true jika list kosong */
 {
     return (Head(L) == Nil && Tail(L) == Nil);
@@ -146,7 +146,7 @@ int NbElmt (List L)
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 {
     int count = 0;
-    if (IsEmpty(L))
+    if (IsEmptySOM(L))
     {
         return 0;
     }
@@ -234,7 +234,7 @@ void SalinPoint(Point P1, Point *P2)
     Ordinat(*P2) = Ordinat(P1);
 }
 
-void InsertLast (List *L)
+void InsertAkhirSOM (List *L)
 /* I.S. Sembarang */
 /* F.S. X ditambahkan sebagai elemen terakhir yang baru dengan X adalah point elemen
 sebelumnya */
@@ -247,7 +247,7 @@ sebelumnya */
 
 }
 
-void DeleteAt (List *L, Point P)
+void DeleteDi (List *L, Point P)
 /* I.S. List tidak kosong */
 /* F.S. Elemen list ber-Point P dihapus dari list karena kena meteor*/
 {
@@ -346,12 +346,12 @@ boolean IsGameOver(List L, Point Meteor, Point Obstacle)
 4. ulernya abis (kosong)
 */
 {
-    return (IsHeadKenaMeteor(L, Meteor) || IsHeadNabrakBadan(L) || IsEmpty(L)) || IsObstacle(Obstacle, Info(Head(L)));
+    return (IsHeadKenaMeteor(L, Meteor) || IsHeadNabrakBadan(L) || IsEmptySOM(L)) || IsObstacle(Obstacle, Info(Head(L)));
 }
 
 void MoveList(List *L, Point Geser) // kalo dia abis makan
 {
-    InsertLast(L);
+    InsertAkhirSOM(L);
     address P = Prev(Tail(*L));
     while (P != Head(*L))
     {

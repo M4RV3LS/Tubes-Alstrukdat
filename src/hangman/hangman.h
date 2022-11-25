@@ -1,10 +1,10 @@
 #ifndef _HANGMAN_
 #define _HANGMAN_
 
-#include "ADT/boolean.h"
-#include "ADT/mesinkata2.h"
-#include "ADT/mesinkar2.h"
-#include "ADT/Hangman/arrayHangman.h"
+#include "../ADT/boolean.h"
+#include "../ADT/mesinkata2.h"
+#include "../ADT/mesinkar2.h"
+#include "../ADT/Hangman/arrayHangman.h"
 #include "../ADT/arrayOfString.h"
 #include "../ADT/ArrayOfMap/arrayofmap.h"
 

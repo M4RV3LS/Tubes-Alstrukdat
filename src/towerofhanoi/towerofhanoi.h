@@ -3,9 +3,10 @@
 #include "../ADT/TowerOfHanoi/stackofdisks.h"
 #include "../ADT/arrayOfString.h"
 #include "../ADT/ArrayOfMap/arrayofmap.h"
+#include "../console.h"
 
 void scoring(int steps, int* score);
-/* Menampilkan nilai dari pemain sesuai steps yang dibutuhkan */
+/* Menampilkan Invalidai dari pemain sesuai steps yang dibutuhkan */
 
 void cekValiditas(char tow1, char tow2, Stack a, Stack b, Stack c, boolean *valid);
 /* Cek validitas input command game*/

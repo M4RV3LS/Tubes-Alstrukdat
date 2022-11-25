@@ -38,7 +38,7 @@ typedef struct tElmtList {
 #define Absis(P) (P).X
 #define Ordinat(P) (P).Y
 
-boolean IsEmpty (List L);
+boolean IsEmptySOM (List L);
 /* Mengirim true jika list kosong */
 
 /****************** PEMBUATAN LIST KOSONG ******************/
@@ -98,12 +98,12 @@ void SalinPoint(Point P1, Point *P2);
 /* I.S. P1 terdefinisi */
 /* F.S. P2 terdefinisi */
 
-void InsertLast (List *L);
+void InsertAkhirSOM (List *L);
 /* I.S. Sembarang */
 /* F.S. X ditambahkan sebagai elemen terakhir yang baru dengan X adalah point elemen
 sebelumnya */
 
-void DeleteAt (List *L, Point P);
+void DeleteDi (List *L, Point P);
 /* I.S. List tidak kosong */
 /* F.S. Elemen list ber-Point P dihapus dari list karena kena meteor*/
 
