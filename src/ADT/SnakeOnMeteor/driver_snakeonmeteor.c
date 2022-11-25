@@ -29,7 +29,7 @@ int main()
     // Test meteor, obstacle,  food, and snake
     Point Meteor, Obstacle, Food;
     Obstacle = GenerateObstacle(L);
-    Food = GenerateFood(L);
+    Food = GenerateFoodPertama(Obstacle, L);
     Meteor = GenerateMeteor(Food, Obstacle);
 
     if (IsPointSama(Meteor, Food) || IsPointSama(Meteor, Obstacle))
