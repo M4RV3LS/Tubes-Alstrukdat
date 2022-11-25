@@ -33,27 +33,31 @@ void STARTWORD(char *filename){
 
 void ADVWORD(){
     IgnoreBlanks();
-    if (GetCC() == MARK){
+    if (GetCC() == MARK || GetCC() == ENTER || feof(pita)){
         EndWord = true;
+        //printf("EndWord\n");
+            
     } else {
         CopyWord();
     }
-    IgnoreBlanks();
+    // IgnoreBlanks();
 }
 
 void CopyWord(){
+    // printf("woi1\n");
     int i = 0;
     currentChar = GetCC();
-    while (currentChar != MARK && currentChar != BLANK && currentChar != ENTER){
+    while (currentChar != MARK && currentChar != BLANK && currentChar != ENTER &&  !feof(pita)){
         currentWord.TabWord[i] = currentChar;
         ADV();
         currentChar = GetCC();
         //printf("%c", currentChar);
         i++;
     }
-    
+    // printf("i = %d\n",i);
+    //printf("woi2\n");
     currentWord.Length = i;
-
+    //printf("%s\n",currentWord);
     if (i >= NMax){
         currentWord.Length = NMax;
     } 
@@ -196,9 +200,9 @@ Word kataKedua(Word w)
 }
 
 /***** ADT UNTUK KONVERSI TYPE DATA *****/
-char *akusisi(Word kata)
+char *WORDTOSTRING(Word kata)
 {
-    CopyWord();
+    //CopyWord();
     char *akusisiKata = NULL;
 
     akusisiKata = malloc(kata.Length * sizeof(char));
@@ -208,6 +212,7 @@ char *akusisi(Word kata)
         *(akusisiKata + i) = kata.TabWord[i];
         i++;
     }
+    akusisiKata[i] = '\0';
     return akusisiKata;
 }
 
@@ -243,6 +248,8 @@ void wordToString(Word currentWord, char *string)
     }
     string[i] = '\0';
 }
+
+
 
 Word stringToWord(char* command) 
 /* Mengirimkan kata yang elemen of arraynya berasal dari command */
@@ -330,6 +337,52 @@ boolean CompareString(char *string1 , char *string2)
     }
     if((*(string1 + i) != '\0') || (*(string2 + i) != '\0')){
         equal = false;
+    }
+    return equal;
+}
+
+boolean IsUsernameEqual(char*string1 , char*string2)
+/*Membandingkan String Dengan Memperhatikan Uppercase dan Lowercase string 1 dan 2 dan string yang dimasukkan harus berupa character*/
+{
+    int i = 0;
+    boolean equal = true;
+    if (LengthKalimat(string1) != LengthKalimat(string2))
+    {
+        equal = false;
+        return equal;
+    }
+    while (*(string1 + i) != '\0' && *(string2 + i) != '\0')
+    {
+        //printf("Character ke - %d\n", i+1);
+        int j = *(string2 + i);
+        if ((j >= 65) && (j <= 90))
+        {
+            if ((*(string1 + i) != *(string2 + i)) && (*(string1 + i) != *(string2 + i) + 32))
+            {   
+                printf("Gak Sama\n");
+                equal = false;
+                return equal;
+            }
+        }
+        else if ((j >= 97) && (j <= 122))
+        {
+            if ((*(string1 + i) != *(string2 + i)) && (*(string1 + i) != *(string2 + i) - 32))
+            {
+                printf("Gak Sama\n");
+                equal = false;
+                return equal;
+            }
+        }
+        else
+        {
+            if(*(string1 + i) != *(string2 + i))
+            {
+                printf("Gak Sama\n");
+                equal = false;
+                return equal;
+            }
+        }
+        i++;
     }
     return equal;
 }
@@ -477,3 +530,14 @@ int main(){
     return 0;
 }
 */
+
+// int main (){
+//     char*a = "Marvel\0";
+//     char*b = "MArvEl\0";
+//     if(IsUsernameEqual(a,b)){
+//         printf("Sama");
+//     }
+//     else{
+//         printf("Tidak Sama");
+//     }
+// }

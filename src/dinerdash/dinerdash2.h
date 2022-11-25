@@ -2,7 +2,7 @@
 #define DINERDASH2_H
 
 #include <stdio.h>
-#include "ADT/DinerDash/queuehybrid.h"
+#include "../ADT/DinerDash/queuehybrid.h"
 #include <time.h>
 #include <stdlib.h>
 

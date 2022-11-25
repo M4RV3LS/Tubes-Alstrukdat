@@ -1,19 +1,20 @@
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 #include "arrayOfString.h"
 
 
 ArrayDin CreateDynArray() {
  ArrayDin array;
  // Alokasi elemen array secara dinamik menggunakan malloc
- array.A = (ElType*) malloc (50 * sizeof(ElType));
- array.Capacity = 50; // Kapasitas array diset sebesar StartSize
+ array.A = (ElType*) malloc (100 * sizeof(ElType));
+ array.Capacity = 100; // Kapasitas array diset sebesar StartSize
  array.Neff = 0; // Karena masih kosong, elemen efektif array bernilai 0
  return array;
 }
 
 void DeallocateList(ArrayDin *array) {
     free(array->A);
+    array->Neff = 0;
 }
 
 int Length(ArrayDin array) {
@@ -60,8 +61,8 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i)
   
  void InsertLast(ArrayDin *array, ElType el) 
  { 
-    (*array).A[(*array).Neff] = el; 
-    (*array).Neff++; 
+
+    InsertAt(array, el, array->Neff);
  } 
   
  void InsertFirst(ArrayDin *array, ElType el) 
@@ -74,19 +75,17 @@ boolean IsEmpty (ArrayDin array)
 {
     return (array.Neff == 0);
 }
-/*
-int main()
-{
-    ArrayDin arr;
-    arr = CreateDynArray();
-    char temp[8] = "Timothy";
-    arr.A[0] = temp;
-    int i = 0;
-    int j = 0;
-    while (arr.A[0][i] != '\0')
-    {
-        printf("%c",arr.A[0][i]);
-        i++;
-    }
-}
-*/
+
+// int main()
+// {
+//     ArrayDin arr;
+//     CreateDynArray(&arr);
+//     char*string = "MATH QUIZ";
+//     InsertLast(&arr,string);
+//     InsertLast(&arr,"Marvel");
+//     for (int i = 0; i < arr.Neff; i++)
+//     {
+//         printf("%s\n", arr.A[i]);
+//     }
+//     return 0;
+// }

@@ -1,4 +1,7 @@
- gcc main.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c console.c ADT/DinerDash/queuehybrid.c ADT/DinerDash/mesinkar.c ADT/DinerDash/mesinkata.c  -o main
+cara run main.c
+direktori harus di posisi src
+salin teks dibawah :  
+gcc main.c ADT/mesinkata2.c ADT/mesinkar2.c ADT/arrayOfString.c ADT/queue.c console.c ADT/DinerDash/queuehybrid.c ADT/DinerDash/mesinkar.c ADT/DinerDash/mesinkata.c ADT/Stack/stack.c ADT/SetMap/map.c ADT/ArrayOfMap/arrayofmap.c  scoreboard/scoreboard.c history/history.c -o main
 
 
 

@@ -51,7 +51,7 @@ int pengurangan(int skor);
 
 int perkalian(int skor);
 
-void mathquiz(int score);
+void mathquiz(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score);
 
 void DisplayPesanan(QUEUEDD q);
 // Menampilkan antrian pesanan
@@ -91,7 +91,7 @@ void SERVE(QUEUEDD *Masakan, QUEUEDD *Sajian, int *Saldo);
 //int randint(int lower, int upper);
 // Mengembalikan angka acak di range tertentu
 
-void dinnerdash();
+void dinerdash(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score);
 // procedure utama untuk menjalankan game dinner dash
 
 boolean foundmathquiz(ArrayDin ListGames);

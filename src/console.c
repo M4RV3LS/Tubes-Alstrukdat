@@ -4,7 +4,7 @@ void CREATEGAME(ArrayDin *ListGames , ArrayOfMap *GameMap)
 {
     printf("Masukkan nama game yang akan ditambahkan : ");
     STARTCOMMANDGAME();
-        char string[1000];
+    char string[1000];
     char *gamename = (char*) malloc (currentCMD.Length * sizeof(char));
     // char * gamename;
     int j = 0;
@@ -23,7 +23,7 @@ void CREATEGAME(ArrayDin *ListGames , ArrayOfMap *GameMap)
     boolean found = false;
     for (int i = 0; i < ListGames->Neff; i++)
     {
-        if (CompareString(gamename, ListGames->A[i]))
+        if (IsUsernameEqual(gamename, ListGames->A[i]))
         {
             found = true;
             printf("Game sudah ada di dalam list game.\n");
@@ -47,9 +47,10 @@ void DELETE(ArrayDin *ListGames, Queue q1 , ArrayOfMap *GameMap)
     printf("Masukkan nomor game yang akan dihapus: ");
     STARTCOMMAND();
     printf("\n");
-    int input;
+    if(isInteger(currentCMD)){
+        int input;
     input = WordToInt(currentCMD);
-    printf("input = %d\n",input);
+    //printf("input = %d\n",input);
     if ((input > 0 && input <=6)  || input>(*ListGames).Neff) {
         printf("Game ke-%d gagal dihapus\n" , input);
     } else {
@@ -78,6 +79,11 @@ void DELETE(ArrayDin *ListGames, Queue q1 , ArrayOfMap *GameMap)
         }
     }
     printf("\n");
+    }
+    else{
+        printf("Masukan tidak valid\n");
+        printf("\n");
+    }
 }
 
 
@@ -268,30 +274,37 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
         {
             printf("Loading MATH QUIZ ...\n");
             delay(2);
-            mathquiz(score);
+            mathquiz(game ,ListGames , GameMap , score);
             PushStack(GameHistory , game);
-            Username(game , ListGames , GameMap , score);
+            
         }
 
         else if (CompareString(game , dinerDash))
         {
             printf("Loading %s ...\n", dinerDash);
             delay(2);
-            dinnerdash();
+            dinerdash(game , ListGames , GameMap , score);
             PushStack(GameHistory , game);
-            Username(game , ListGames , GameMap , score); 
+            
         }
 
 
         else
-        {
-            srand(time(NULL));
-            int random = rand();
-            printf("Skor Kamu Adalah %d\n",random);
+        {   
+                printf("Loading %s ...\n", game);
+                delay(2);
+                score = randint(1 , 100);
+                printf("Game Over.Skor Anda adalah %d\n", score);
+                Username(game , ListGames , GameMap , score);
+                PushStack(GameHistory , game);
+            }
+
+            // srand(time(NULL));
+            // int random = rand();
+            // printf("Skor Kamu Adalah %d\n",random);
         }
 
-    }
-}   
+    } 
 
 void QUEUEGAME(Queue *q1, ArrayDin game){
     if (isEmpty(*q1))
@@ -711,7 +724,7 @@ int perkalian(int skor){
 return skor;
 }
 
-void mathquiz(int score){      
+void mathquiz(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score){      
     printMathQuiz();
     printf("\n");
     printf("<SELAMAT DATANG DI GAME MATHQUIZ>\n");
@@ -749,8 +762,8 @@ void mathquiz(int score){
         }
     }
     
-    
     score = skormath;
+    Username(game , ListGames , GameMap , score);
 }
 // Menampilkan tabel
 void DisplayPesanan(QUEUEDD q)
@@ -915,7 +928,7 @@ void SERVE(QUEUEDD *Pesanan, QUEUEDD *Sajian, int *Saldo)
     printf("\n");
 }
 
-void dinnerdash()
+void dinerdash(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
 {
     
     // Kamus
@@ -1115,6 +1128,8 @@ void dinnerdash()
         printf("Good job, (kinda)!\n");
         printf("===============================\n");
     }
+    score = saldo;
+    Username(game , ListGames , GameMap , score); 
 }
 
 boolean foundmathquiz(ArrayDin ListGames){

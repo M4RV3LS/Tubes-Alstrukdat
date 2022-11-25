@@ -54,7 +54,7 @@ Word kataPertama(Word w);
 Word kataKedua(Word w);
 
 /***** ADT UNTUK KONVERSI TYPE DATA *****/
-char *akusisi(Word kata);
+char *WORDTOSTRING(Word kata);
 
 int charToInt(char c);
 
@@ -78,6 +78,8 @@ boolean wordAndCharSama(Word kata, char command[]);
 boolean wordAndWordSama(Word InputCommand, Word Command);
 
 boolean CompareString(char *string1 , char *string2);
+
+boolean IsUsernameEqual(char*string1 , char*string2);
 
 boolean isInteger(Word Kata);
 

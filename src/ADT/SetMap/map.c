@@ -134,7 +134,7 @@ boolean IsMemberMap(Map M, keytype k){
 	boolean found = false;
 	int i = 0;
 	while(!found && (i < M.Count)){
-		if(CompareString(M.Elements[i].Nama , k)){
+		if((IsUsernameEqual(M.Elements[i].Nama , k))){
 			found = true;
 		}
 		else {
