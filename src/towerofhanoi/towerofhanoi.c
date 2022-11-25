@@ -185,7 +185,7 @@ void displaystacks(Stack a, Stack b, Stack c)
     printf("     C    \n");
 }
 
-void towerofhanoi()
+void towerofhanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
 {
     // Kamus
     int countsteps = 0;
@@ -287,10 +287,12 @@ void towerofhanoi()
     scoring(countsteps,&score);
     printf("Kamu berhasil!\n");
     printf("Skor didapatkan: %d", score);
+    score = score;
+    Username(game , ListGames , GameMap , score);
 }
 
-int main()
-{
-    towerofhanoi();
-    return 0;
-}
+// int main()
+// {
+//     towerofhanoi();
+//     return 0;
+// }

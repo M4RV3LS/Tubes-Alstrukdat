@@ -1,10 +1,10 @@
 #include <stdio.h>
-#include "ADT/SnakeOnMeteor/snakeonmeteor.h"
+#include "gameSOM.h"
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
 
-int SnakeOnMeteor(){
+void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score){
     printf("Selamat datang di Snake on Meteor!\n\n");
     printf("Mengenerate peta, snake, dan makanan . . .\n\n");
     delay(1);
@@ -176,7 +176,8 @@ int SnakeOnMeteor(){
         printf("Game berakhir. Skor: %d\n", skor-2);
     }
 
-    return 0;
+    score = skor;
+    Username(game , ListGames , GameMap , score);
 }
 
 /*int main()
@@ -212,10 +213,10 @@ int SnakeOnMeteor(){
     return 0;
 }*/
 
-int main(){
-    SnakeOnMeteor();
-    return 0;
-}
+// int main(){
+//     SnakeOnMeteor();
+//     return 0;
+// }
 
 
 /*int main()

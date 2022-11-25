@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void hangman()
+void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
 {
     // pilihan menu
     ListKata ListKata;
@@ -97,6 +97,8 @@ void hangman()
             printInputNotValid();
         }
     }
+    score = skor;
+    Username(game , ListGames , GameMap , score);
 }
 
 void mainHangman(int*kesempatan, char*Kata)

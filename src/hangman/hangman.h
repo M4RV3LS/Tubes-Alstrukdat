@@ -5,11 +5,14 @@
 #include "ADT/mesinkata2.h"
 #include "ADT/mesinkar2.h"
 #include "ADT/Hangman/arrayHangman.h"
+#include "../ADT/arrayOfString.h"
+#include "../ADT/ArrayOfMap/arrayofmap.h"
+
 
 #include <stdio.h>
 #include <stdlib.h>
 
-void hangman();
+void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score);
 
 void mainHangman(int*kesempatan, char*Kata);
 

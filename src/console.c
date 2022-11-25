@@ -250,24 +250,27 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
 
         else if(CompareString(game , hangman))
         {
-            // printf("Loading %s ...\n", hangman);
-            // delay(2);
-            //Hangman();
+            printf("Loading %s ...\n", hangman);
+            delay(2);
+            hangman(game , ListGames , GameMap , score);
+            PushStack(GameHistory , game);
         }
 
         else if(CompareString(game , towerofhanoi))
         {
-            // printf("Loading %s ...\n", towerofhanoi);
-            // delay(2);
-            // TowerOfHanoi();
+            printf("Loading %s ...\n", towerofhanoi);
+            delay(2);
+            towerofhanoi(game , ListGames , GameMap , score);
+            PushStack(GameHistory , game);
 
         }
 
         else if(CompareString(game , snakeonmeteor))
         {
-            // printf("Loading %s ...\n", snakeonmeteor);
-            // delay(2);
-            // SnakeOnMeteor();
+            printf("Loading %s ...\n", snakeonmeteor);
+            delay(2);
+            SnakeOnMeteor(game , ListGames , GameMap , score);
+            PushStack(GameHistory , game);
 
         }
         else if(CompareString(game , MTK))
