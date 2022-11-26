@@ -110,7 +110,7 @@ int main(){
             if(CompareString(game , "GAME"))
             {
                 //printf("naon yak 2");
-                DELETE(&ListGames, QueueGame , &GameMap);
+                DELETE(&ListGames, QueueGame , &GameMap , &GameHistory);
             }
             else
             {

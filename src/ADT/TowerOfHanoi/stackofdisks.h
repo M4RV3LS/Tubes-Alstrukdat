@@ -15,7 +15,7 @@
 /* InvalidTowerOfHanoi adalah STACKSS dengan elemen kosong . */
 
 typedef char* TipeElemen;
-typedef int address;   /* indeks tabel */
+typedef int ALAMAT;   /* indeks tabel */
 
 typedef struct {
     TipeElemen sym;
@@ -26,7 +26,7 @@ typedef struct {
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct { 
   Disk T[Maksimal]; /* tabel penyimpan elemen */
-  address TOP;  /* alamat TOP: elemen puncak */
+  ALAMAT TOP;  /* alamat TOP: elemen puncak */
 } STACKSS;
 /* Definisi STACKSS S kosong : S.TOP = InvalidTowerOfHanoi */
 /* Elemen yang dipakai menyimpan InvalidTowerOfHanoiai STACKSS T[0]..T[Maksimal-1] */

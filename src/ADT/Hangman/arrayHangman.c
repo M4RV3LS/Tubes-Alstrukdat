@@ -11,7 +11,7 @@ void MakeEmpty (ListKata *T)
 }
 /* ********** SELEKTOR ********** */
 /* *** Banyaknya elemen *** */
-int NbElmt (ListKata T)
+int BanyakElemenListKata (ListKata T)
 {
     return T.Neff;
 }
@@ -28,7 +28,7 @@ IdxType GetFirstIdx (ListKata T)
 
 IdxType GetLastIdx (ListKata T)
 {
-    return NbElmt(T);
+    return BanyakElemenListKata(T);
 }
 
 Word GetElmt (ListKata T, IdxType i)
@@ -69,12 +69,12 @@ boolean IsIdxValid (ListKata T, IdxType i)
 /* *** Test tabel kosong *** */
 boolean IsEmptyArrayHangman (ListKata T)
 {
-    return (NbElmt(T) == 0);
+    return (BanyakElemenListKata(T) == 0);
 }
 
 boolean IsFullHangman (ListKata T)
 {
-    return (NbElmt(T) == MaxNbEl(T));
+    return (BanyakElemenListKata(T) == MaxNbEl(T));
 }
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */

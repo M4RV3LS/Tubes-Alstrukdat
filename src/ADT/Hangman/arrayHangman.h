@@ -39,7 +39,7 @@ void MakeEmpty (ListKata *T);
 
 /* ********** SELEKTOR ********** */
 /* *** Banyaknya elemen *** */
-int NbElmt (ListKata T);
+int BanyakElemenListKata (ListKata T);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */

@@ -163,7 +163,7 @@ void SortMap(Map *M){
 	infotype temp;
 	for(i = 0; i < (*M).Count - 1; i++){
 		for(j = i + 1; j < (*M).Count; j++){
-			if((*M).Elements[i].Skor > (*M).Elements[j].Skor){
+			if((*M).Elements[i].Skor < (*M).Elements[j].Skor){
 				temp = M->Elements[i];
 				M->Elements[i] = M->Elements[j];
 				M->Elements[j] = temp;

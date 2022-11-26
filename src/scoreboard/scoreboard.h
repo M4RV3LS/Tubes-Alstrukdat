@@ -9,6 +9,7 @@
 
 
 boolean ya();
+
 void ResetScoreboard(ArrayOfMap *M , ArrayDin *ListGames );
 
 int KataTerpanjang(Map Game);

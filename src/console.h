@@ -12,17 +12,18 @@
 #include "ADT/DinerDash/mesinkata.h"
 #include "ADT/SetMap/map.h"
 #include "ADT/Stack/stack.h"
-#include "scoreboard/scoreboard.h"
-#include "history/history.h"
-#include "towerofhanoi/towerofhanoi.h"
-#include "snakeonmeteor/gameSOM.h"
-#include "hangman/hangman.h"
-
+#include "ADT/ArrayOfMap/arrayofmap.h"
+#include "ADT/Hangman/arrayHangman.h"
+#include "ADT/Hangman/hangmanprint.h"
+#include "ADT/TowerOfHanoi/stackofdisks.h"
+#include "ADT/SnakeOnMeteor/snakeonmeteor.h"
 
 
 void CREATEGAME(ArrayDin *ListGames , ArrayOfMap *GameMap);
 
-void DELETE(ArrayDin *ListGames, Queue q1 , ArrayOfMap *GameMap);
+void DELETE(ArrayDin *ListGames, Queue q1 , ArrayOfMap *GameMap , Stack *GameHistory);
+
+Stack DELETEHISTORY(Stack *in , char*game);
 
 void HELP();
 
@@ -102,3 +103,56 @@ boolean foundmathquiz(ArrayDin ListGames);
 void Scoreboard(ArrayDin ListGames , ArrayOfMap GameMap);
 
 void Username(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score);
+
+boolean ya();
+
+void ResetScoreboard(ArrayOfMap *M , ArrayDin *ListGames );
+
+int KataTerpanjang(Map Game);
+
+void PrintScoreBoard(Map Game);
+
+boolean yes();
+
+void History(Stack Game , int n);
+
+void ResetHistory (Stack * Game);
+
+void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score);
+/*GAME SNAKE On Meteor*/
+
+void Hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score);
+
+void mainHangman(int*kesempatan, char*Kata);
+
+void loadkata(ListKata *ListKata, char*filename);
+
+void saveListKata(ListKata ListKata, char*filename);
+
+boolean isTebakanValid(Word word);
+
+boolean isHurufAda(char huruf, char* kata);
+
+void underscoreToHuruf(char huruf, char* GuessedKata, char*kata);
+
+void PrintCharWithSpace(char*kata, int len);
+
+void PrintCharNoSpace(char*kata, int len);
+
+int panjang_kata(char*s);
+
+void InsertKataLast(char huruf, char*kata);
+
+char* wordToStr(Word word);
+
+void scoring(int steps, int* score);
+/* Menampilkan Invalidai dari pemain sesuai steps yang dibutuhkan */
+
+void cekValiditas(char tow1, char tow2, STACKSS a, STACKSS b, STACKSS c, boolean *valid);
+/* Cek validitas input command game*/
+
+void displaystacks(STACKSS a, STACKSS b, STACKSS c);
+/* Menampilkan tiap tower di masing-masing ronde tower of hanoi */
+
+void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score);
+/* Memainkan game tower of hanoi */

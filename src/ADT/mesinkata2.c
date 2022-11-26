@@ -387,6 +387,7 @@ boolean IsUsernameEqual(char*string1 , char*string2)
     return equal;
 }
 
+
 boolean isInteger(Word Kata){
     boolean isInt = true;
     int panjang = Kata.Length;

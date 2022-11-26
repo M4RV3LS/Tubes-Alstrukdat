@@ -175,12 +175,12 @@ void ResetHistory (Stack * Game){
 // int main(){
 //     Stack Game;
 //     CreateEmptyStack(&Game);
-//     Push(&Game, "RNG");
-//     Push(&Game, "Diner DASH");
-//     Push(&Game, "HANGMAN");
-//     Push(&Game, "TOWER OF HANOI");
-//     Push(&Game, "SNAKE ON METEOR");
-//     Push(&Game, "MATH QUIZ");
+//     PushStack(&Game, "RNG");
+//     PushStack(&Game, "Diner DASH");
+//     PushStack(&Game, "HANGMAN");
+//     PushStack(&Game, "TOWER OF HANOI");
+//     PushStack(&Game, "SNAKE ON METEOR");
+//     PushStack(&Game, "MATH QUIZ");
 //     //DisplayStack(Game , Top(Game));
 //     History(Game , Top(Game));
 //     ResetHistory(&Game);
