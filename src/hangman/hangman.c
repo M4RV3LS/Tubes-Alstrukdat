@@ -15,12 +15,15 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
         if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "PLAY"))
         {
             themePage();
-            STARTCOMMAND();
+            STARTCOMMANDGAME();
             boolean valid = false;
+            printf("CurrentCmd = %s\n", currentCMD);
             while (!valid)
             {
+                printf("wibu1\n");
                 if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "KOTA"))
                 {
+                    printf("Masuk Kota\n");
                     loadkata(&ListKata, "KataKota.txt"); valid = true;
                 }
                 else if(wordAndCharSama(currentCMD, "2") || wordAndCharSama(currentCMD, "NEGARA"))
@@ -181,7 +184,7 @@ void mainHangman(int*kesempatan, char*Kata)
 void loadkata(ListKata *ListKata, char*filename)
 {
     char path[NMax];
-    stringConcat("data/",filename,path);
+    stringConcat("hangman/",filename,path);
     STARTWORD(path);
     int nGame = WordToInt(currentWord);
     for (int i = 1; i <= nGame; i++){

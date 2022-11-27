@@ -4,77 +4,78 @@
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong */
-void MakeEmpty (ListKata *T)
+void MAKEEMPTYLISTKATA (ListKata *T)
 {
-    (*T).TI [IdxMax - IdxMin + 1];
-    (*T).Neff = 0;
+    (*T).TI [INDEKSMAKSIMUM - INDEKSMINIMUM + 1];
+    (*T).EFEKTIF = 0;
 }
 /* ********** SELEKTOR ********** */
 /* *** Banyaknya elemen *** */
-int BanyakElemenListKata (ListKata T)
+int BanyakElementListKata (ListKata T)
 {
-    return T.Neff;
+    return T.EFEKTIF;
 }
 
-int MaxNbEl (ListKata T)
+int BanyakElementListKataMaksimum (ListKata T)
 {
-    return IdxMax;
+    return INDEKSMAKSIMUM;
 }
 
-IdxType GetFirstIdx (ListKata T)
+TIPEINDEKS AmbilIndeksPertama (ListKata T)
 {
-    return IdxMin;
+    return INDEKSMINIMUM;
 }
 
-IdxType GetLastIdx (ListKata T)
+TIPEINDEKS AmbilIndeksTerakhir (ListKata T)
 {
-    return BanyakElemenListKata(T);
+    return BanyakElementListKata(T);
 }
 
-Word GetElmt (ListKata T, IdxType i)
+Word AmbilElement (ListKata T, TIPEINDEKS i)
 {
     return T.TI[i];
 }
 
-void SetTab (ListKata Tin, ListKata *Tout)
+void SalinTabListKata (ListKata Tin, ListKata *Tout)
 {
     int i;
-    for (i = IdxMin; i <= IdxMax; i++){
+    for (i = INDEKSMINIMUM; i <= INDEKSMAKSIMUM; i++){
         Tout->TI[i] = Tin.TI[i];
     }
-    Tout->Neff = Tin.Neff;
+    Tout->EFEKTIF = Tin.EFEKTIF;
 }
 
-void SetEl (ListKata *T, IdxType i, Word v)
+void SetElListKata (ListKata *T, TIPEINDEKS i, Word v)
 {
     T->TI[i] = v;
-    if (i == GetLastIdx(*T) + 1)
+    if (i == AmbilIndeksTerakhir(*T) + 1)
     {
-        T->Neff++;
+        T->EFEKTIF++;
     }
+    //printf("EFEKTIF = %d\n", T->EFEKTIF);
 }
 
-void SetNeff (ListKata *T, IdxType N)
+void SetEFEKTIFListKata (ListKata *T, TIPEINDEKS N)
 {
-    T->Neff = N;
+    T->EFEKTIF = N;
 }
 
 /* ********** Test Indeks yang valid ********** */
-boolean IsIdxValid (ListKata T, IdxType i)
+boolean ApakahIndeksValid (ListKata T, TIPEINDEKS i)
 {
-    return (i>= IdxMin && i <= IdxMax);
+    return (i>= INDEKSMINIMUM && i <= INDEKSMAKSIMUM);
 }
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
 boolean IsEmptyArrayHangman (ListKata T)
 {
-    return (BanyakElemenListKata(T) == 0);
+    return (BanyakElementListKata(T) == 0);
 }
 
 boolean IsFullHangman (ListKata T)
 {
-    return (BanyakElemenListKata(T) == MaxNbEl(T));
+    return (BanyakElementListKata(T) == BanyakElementListKataMaksimum(T));
 }
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
@@ -83,8 +84,8 @@ void TulisIsi (ListKata T)
     if (IsEmptyArrayHangman(T)){
         printf("Tabel kosong\n");
     } else {
-        for (int i = GetFirstIdx(T); i <= GetLastIdx(T); i++){
-            printf("%d:%d\n", i, GetElmt(T, i));
+        for (int i = AmbilIndeksPertama(T); i <= AmbilIndeksTerakhir(T); i++){
+            printf("%d:%d\n", i, AmbilElement(T, i));
         }
     }
 }

@@ -121,7 +121,8 @@ void ResetHistory (Stack * Game);
 void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score);
 /*GAME SNAKE On Meteor*/
 
-void Hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score);
+
+void Hangman(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score);
 
 void mainHangman(int*kesempatan, char*Kata);
 
@@ -144,6 +145,8 @@ int panjang_kata(char*s);
 void InsertKataLast(char huruf, char*kata);
 
 char* wordToStr(Word word);
+
+
 
 void scoring(int steps, int* score);
 /* Menampilkan Invalidai dari pemain sesuai steps yang dibutuhkan */
