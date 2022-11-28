@@ -317,10 +317,15 @@ boolean IsHeadKenaMeteor(List L, Point Meteor)
     return (IsPointSama(Info(Head(L)), Meteor));
 }
 
-boolean IsHeadNabrakBadan(List L)
+boolean IsHeadBakalNabrakBadan(List L, Point P)
 /* Mengirim true jika kepala snake nabrak badan */
 {
-    Point P = Info(Head(L));
+    if (NbElmt(L) == 1)
+    {
+        return false;
+    }
+    else
+    {
     address X = Next(Head(L));
     while (X != NilSOM)
     {
@@ -330,7 +335,39 @@ boolean IsHeadNabrakBadan(List L)
         }
         X = Next(X);
     }
+    }
     return false;
+    
+}
+
+boolean IsMasihBisaGerak(List L, Point Obstacle, Point Meteor)
+{
+    Point P = Info(Head(L));
+    P.X = (P.X + 1) % 5; // gerak ke kanan
+    if (!IsObstacle(Obstacle, P) && !IsHeadBakalNabrakBadan(L, P) && !IsMeteor(Meteor, P))
+    {
+        return true;
+    }
+    P = Info(Head(L));
+    P.X = (P.X - 1) % 5; // gerak ke kiri
+    if (!IsObstacle(Obstacle, P) && !IsHeadBakalNabrakBadan(L, P) && !IsMeteor(Meteor, P))
+    {
+        return true;
+    }
+    P = Info(Head(L));
+    P.Y = (P.Y + 1) % 5; // gerak ke atas
+    if (!IsObstacle(Obstacle, P) && !IsHeadBakalNabrakBadan(L, P) && !IsMeteor(Meteor, P))
+    {
+        return true;
+    }
+    P = Info(Head(L));
+    P.Y = (P.Y - 1) % 5; // gerak ke bawah
+    if (!IsObstacle(Obstacle, P) && !IsHeadBakalNabrakBadan(L, P) && !IsMeteor(Meteor, P))
+    {
+        return true;
+    }
+    return false;
+
 }
 
 boolean IsFood(Point Food, Point Geser)
@@ -346,7 +383,7 @@ boolean IsGameOver(List L, Point Meteor, Point Obstacle)
 4. ulernya abis (kosong)
 */
 {
-    return (IsHeadKenaMeteor(L, Meteor) || IsHeadNabrakBadan(L) || IsEmptySOM(L)) || IsObstacle(Obstacle, Info(Head(L)));
+    return (IsHeadKenaMeteor(L, Meteor) || IsEmptySOM(L) || IsObstacle(Obstacle, Info(Head(L))) || !IsMasihBisaGerak(L, Obstacle, Meteor));
 }
 
 void MoveList(List *L, Point Geser) // kalo dia abis makan

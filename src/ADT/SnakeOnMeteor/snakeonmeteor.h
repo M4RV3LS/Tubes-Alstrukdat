@@ -124,8 +124,11 @@ boolean IsMeteor(Point Meteor, Point P);
 boolean IsHeadKenaMeteor(List L, Point Meteor);
 /* Mengirim true jika kepala snake kena meteor */
 
-boolean IsHeadNabrakBadan(List L);
+boolean IsHeadBakalNabrakBadan(List L, Point P);
 /* Mengirim true jika kepala snake nabrak badan */
+
+boolean IsMasihBisaGerak(List L, Point Obstacle, Point Meteor);
+/* Mengirim true jika masih bisa gerak */
 
 boolean IsFood(Point Food, Point Geser);
 /* Mengirim true jika Food berada di tempat yang dituju */

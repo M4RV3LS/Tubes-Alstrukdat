@@ -2,7 +2,7 @@
 
 /*
 Note :
-Beberapa ADT khususnya boolean seperti IsMeteor, merupakan penerapan dari
+Beberapa ADT khususnya boolean seperti IsMeteor,IsHeadNabrakBadan dan lain-lain, merupakan penerapan dari
 IsPointSama dan ADT yang berisikan ADT-ADT basic. Maka untuk ADT "spesial" ini akan 
 dianggap sama seperti ADT "parent"-nya sehingga test cukup hanya untuk parentnya saja.
 */

@@ -59,7 +59,15 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         {
             Absis(Geser) = Absis(Geser) + 5;
         }
-        input = true;
+        if (IsHeadBakalNabrakBadan(L, Geser))
+        {
+            input = false;
+            printf("Input tidak valid. Jangan bunuh diri! Coba cerita sini sama aku.\n");
+        }
+        else
+        {
+            input = true;
+        }
     }
     else if (wordAndCharSama(currentCMD, "d"))
     {
@@ -68,7 +76,15 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         {
             Absis(Geser) = Absis(Geser) - 5;
         }
-        input = true;
+        if (IsHeadBakalNabrakBadan(L, Geser))
+        {
+            input = false;
+            printf("Input tidak valid. Jangan coba bunuh diri!\n");
+        }
+        else
+        {
+            input = true;
+        }
     }
     else if (wordAndCharSama(currentCMD, "w"))
     {
@@ -78,7 +94,15 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
             Ordinat(Geser) = Ordinat(Geser) + 5;
         }
         // printf("Geser: %d %d\n", Absis(Geser), Ordinat(Geser));
-        input = true;
+        if (IsHeadBakalNabrakBadan(L, Geser))
+        {
+            input = false;
+            printf("Input tidak valid. Jangan coba bunuh diri!\n");
+        }
+        else
+        {
+            input = true;
+        }
     }
     else if (wordAndCharSama(currentCMD, "s"))
     {
@@ -87,7 +111,15 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         {
             Ordinat(Geser) = Ordinat(Geser) - 5;
         }
-        input = true;
+        if (IsHeadBakalNabrakBadan(L, Geser))
+        {
+            input = false;
+            printf("Input tidak valid. Jangan coba bunuh diri!\n");
+        }
+        else
+        {
+            input = true;
+        }
     }
     else // input salah
     {
@@ -147,7 +179,7 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         }
     }
 
-    }while (!IsGameOver(L, Meteor, Obstacle));
+    }while (!IsGameOver(L, Meteor, Obstacle) || (nbElement(L) == 24));
 
     // INTERFACE GAMEOVER //
     int skor;
@@ -157,15 +189,11 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         skor = NbElmt(L)*2;
         printf("Game berakhir. Skor: %d\n", skor-2);
     }
-    else if (IsHeadNabrakBadan(L))
-    {
-        printf("Kepala snake nabrak badan!\n");
-        skor = NbElmt(L)*2;
-        printf("Game berakhir. Skor: %d\n", skor-2);
-    }
     else if (IsEmptySOM(L))
     {
         printf("Snake mati karena tubuh snake terkena meteor semua!\n");
+        skor = NbElmt(L)*2;
+        printf("Game berakhir. Skor: 0\n.");
     }
     else if (IsObstacle(Obstacle, Info(Head(L)))) // nabrak obstacle
     {
@@ -174,6 +202,12 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         input = false;
         skor = NbElmt(L)*2;
         printf("Game berakhir. Skor: %d\n", skor-2);
+    }
+    else if (nbElement(L) == 24)
+    {
+        printf("Selamat! Anda berhasil menyelesaikan permainan! Skor anda mentok kanan!\n");
+        skor = NbElmt(L)*2;
+        printf("Game berakhir. Skor: %d\n", skor);
     }
 
     score = skor;
