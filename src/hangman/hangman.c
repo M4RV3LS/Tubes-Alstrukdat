@@ -14,13 +14,12 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
         STARTCOMMAND();
         if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "PLAY"))
         {
-            themePage();
-            STARTCOMMANDGAME();
             boolean valid = false;
             printf("CurrentCmd = %s\n", currentCMD);
             while (!valid)
             {
-                printf("wibu1\n");
+                themePage();
+                STARTCOMMANDGAME();
                 if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "KOTA"))
                 {
                     printf("Masuk Kota\n");
@@ -59,12 +58,12 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
         }
         else if (wordAndCharSama(currentCMD, "3") || wordAndCharSama(currentCMD, "TAMBAHKATA"))
         {
-            themePage();
-            STARTCOMMAND();
             boolean valid = false;
             char*file; char* tema;
             while (!valid)
             {
+                themePage();
+                STARTCOMMAND();
                 if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "KOTA"))
                 {
                     file = "KataKota.txt"; tema = "KOTA";

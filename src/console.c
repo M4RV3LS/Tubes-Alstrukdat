@@ -1623,11 +1623,11 @@ void Hangman(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score)
         STARTCOMMANDGAME();
         if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "PLAY"))
         {
-            themePage();
-            STARTCOMMANDGAME();
             boolean valid = false;
             while (!valid)
             {
+                themePage();
+                STARTCOMMANDGAME();
                 if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "KOTA"))
                 {
                     loadkata(&ListKata, "KataKota.txt"); valid = true;
@@ -1679,12 +1679,12 @@ void Hangman(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score)
         }
         else if (wordAndCharSama(currentCMD, "3") || wordAndCharSama(currentCMD, "TAMBAHKATA"))
         {
-            themePage();
-            STARTCOMMAND();
             boolean valid = false;
             char*file; char* tema;
             while (!valid)
             {
+                themePage();
+                STARTCOMMAND();
                 if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "KOTA"))
                 {
                     file = "KataKota.txt"; tema = "KOTA";
