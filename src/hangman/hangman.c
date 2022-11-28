@@ -7,7 +7,9 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
 {
     // pilihan menu
     ListKata ListKata;
+    MAKEEMPTYLISTKATA (&ListKata);
     boolean on = true;
+    int skor = 0;
     while (on)
     {
         landingPage();
@@ -15,14 +17,12 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
         if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "PLAY"))
         {
             boolean valid = false;
-            printf("CurrentCmd = %s\n", currentCMD);
             while (!valid)
             {
                 themePage();
                 STARTCOMMANDGAME();
                 if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "KOTA"))
                 {
-                    printf("Masuk Kota\n");
                     loadkata(&ListKata, "KataKota.txt"); valid = true;
                 }
                 else if(wordAndCharSama(currentCMD, "2") || wordAndCharSama(currentCMD, "NEGARA"))
@@ -35,12 +35,11 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
                 }
             }
             int kesempatan = 10;
-            int skor = 0;
             while (kesempatan > 0)
             {
                 srand(time(NULL));
-                int random = rand() % (ListKata.Neff) + 1;   
-                char*Kata = wordToStr(ListKata.TI[random]);
+                int random = rand() % (ListKata.EFEKTIF);   
+                char*Kata = WORDTOSTRING(ListKata.TI[random]);
 
                 mainHangman(&kesempatan, Kata);
                 if (kesempatan != 0) skor += 25;
@@ -84,8 +83,8 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
             printf(" yang ingin kamu tambahkan");
             printf("\n(DALAM HURUF KAPITAL) :");
             STARTCOMMAND();
-            int n = ListKata.Neff;
-            SetEl(&ListKata, n+1, currentCMD);
+            int n = ListKata.EFEKTIF;
+            SetElListKata(&ListKata, n+1, currentCMD);
             saveListKata(ListKata, file);
         }
         else if (wordAndCharSama(currentCMD, "4") || wordAndCharSama(currentCMD, "QUIT"))
@@ -183,12 +182,12 @@ void mainHangman(int*kesempatan, char*Kata)
 void loadkata(ListKata *ListKata, char*filename)
 {
     char path[NMax];
-    stringConcat("hangman/",filename,path);
+    stringConcat("ADT/Hangman/",filename,path);
     STARTWORD(path);
     int nGame = WordToInt(currentWord);
     for (int i = 1; i <= nGame; i++){
         ADVLine();
-        SetEl(ListKata, i, currentWord);
+        SetElListKata(ListKata, i, currentWord);
     }
 }
 
@@ -197,11 +196,11 @@ void saveListKata(ListKata ListKata, char*filename)
     FILE* fp; 
     char path[50]; 
   
-    stringConcat("data/",filename,path); 
+    stringConcat("ADT/Hangman/",filename,path); 
     fp = fopen(path,"w"); 
 
-    fprintf(fp,"%d",ListKata.Neff); 
-    for(int i = 1; i <= ListKata.Neff;i++) 
+    fprintf(fp,"%d",ListKata.EFEKTIF); 
+    for(int i = 1; i <= ListKata.EFEKTIF;i++) 
     {
         char*string = wordToStr(ListKata.TI[i]);
         fprintf(fp,"\n%s", string); 
@@ -288,3 +287,12 @@ char* wordToStr(Word word)
 
     return str;  
 }
+
+/*int main(){
+    char* game;
+    ArrayDin ListGames;
+    ArrayOfMap *GameMap;
+    int score;
+    hangman(game, ListGames, GameMap, score);
+}
+*/
