@@ -62,7 +62,7 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         if (IsHeadBakalNabrakBadan(L, Geser))
         {
             input = false;
-            printf("Input tidak valid. Jangan bunuh diri! Coba cerita sini sama aku.\n");
+            printf("Input tidak valid. Jangan bunuh diri! Coba cerita sini sama aku. ><\n");
         }
         else
         {
@@ -79,7 +79,7 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         if (IsHeadBakalNabrakBadan(L, Geser))
         {
             input = false;
-            printf("Input tidak valid. Jangan coba bunuh diri!\n");
+            printf("Input tidak valid. Jangan bunuh diri! Coba cerita sini sama aku. ><\n");
         }
         else
         {
@@ -97,7 +97,7 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         if (IsHeadBakalNabrakBadan(L, Geser))
         {
             input = false;
-            printf("Input tidak valid. Jangan coba bunuh diri!\n");
+            printf("Input tidak valid. Jangan bunuh diri! Coba cerita sini sama aku. ><\n");
         }
         else
         {
@@ -114,7 +114,7 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         if (IsHeadBakalNabrakBadan(L, Geser))
         {
             input = false;
-            printf("Input tidak valid. Jangan coba bunuh diri!\n");
+            printf("Input tidak valid. Jangan bunuh diri! Coba cerita sini sama aku. ><\n");
         }
         else
         {
