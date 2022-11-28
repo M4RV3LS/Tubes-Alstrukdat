@@ -6,6 +6,14 @@
 
 void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score){
     printf("Selamat datang di Snake on Meteor!\n\n");
+    // aturan permainan 
+    printf("Peraturan permainan Snake on Meteor:\n");
+    printf("1. Snake dapat bergerak ke atas, kiri, bawah, atau kanan dengan meng-input w/a/s/d TANPA SPASI!\n");
+    printf("2. Tujuan permainan : Dapatkan skor tertinggi dengan menghindari obstacle dan meteor yang jatuh dari langit!\n");
+    printf("3. Snake akan mati jika terkena meteor, obstacle, atau badan sendiri.\n\n");
+
+    printf("Selamat bermain!\n\n");
+    delay(5);
     printf("Mengenerate peta, snake, dan makanan . . .\n\n");
     delay(1);
 
@@ -47,12 +55,15 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
     printf("TURN %d\n", turn);
     printf("Silahkan masukkan command anda:");
     STARTCOMMANDGAME();
+    IgnoreBlanksCMD(); // kalo ada blank
     printf("\n");
 
     Point Geser;
     Geser = Info(Head(L));
 
-    if (wordAndCharSama(currentCMD, "a"))
+    if (currentCMD.Length == 1 )
+    {
+    if (wordAndCharSama(currentCMD,"a") || wordAndCharSama(currentCMD,"A"))
     {
         Absis(Geser) = Absis(Geser) - 1;
         while (Absis(Geser) < 0)
@@ -62,14 +73,14 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         if (IsHeadBakalNabrakBadan(L, Geser))
         {
             input = false;
-            printf("Input tidak valid. Jangan bunuh diri! Coba cerita sini sama aku. ><\n");
+            printf("Input tidak valid. Dilarang bunuh diri!\n");
         }
         else
         {
             input = true;
         }
     }
-    else if (wordAndCharSama(currentCMD, "d"))
+    else if (wordAndCharSama(currentCMD, "d") || wordAndCharSama(currentCMD,"D"))
     {
         Absis(Geser) = Absis(Geser) + 1;
         while(Absis(Geser) > 4)
@@ -79,14 +90,14 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         if (IsHeadBakalNabrakBadan(L, Geser))
         {
             input = false;
-            printf("Input tidak valid. Jangan bunuh diri! Coba cerita sini sama aku. ><\n");
+            printf("Input tidak valid. Dilarang bunuh diri!\n");
         }
         else
         {
             input = true;
         }
     }
-    else if (wordAndCharSama(currentCMD, "w"))
+    else if (wordAndCharSama(currentCMD, "w") || wordAndCharSama(currentCMD,"W"))
     {
         Ordinat(Geser) = Ordinat(Geser) - 1;
         while(Ordinat(Geser) < 0)
@@ -97,14 +108,14 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         if (IsHeadBakalNabrakBadan(L, Geser))
         {
             input = false;
-            printf("Input tidak valid. Jangan bunuh diri! Coba cerita sini sama aku. ><\n");
+            printf("Input tidak valid. Dilarang bunuh diri!\n");
         }
         else
         {
             input = true;
         }
     }
-    else if (wordAndCharSama(currentCMD, "s"))
+    else if (wordAndCharSama(currentCMD, "s") || wordAndCharSama(currentCMD,"S"))
     {
         Ordinat(Geser) = Ordinat(Geser) + 1;
         while(Ordinat(Geser) > 4)
@@ -114,13 +125,18 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         if (IsHeadBakalNabrakBadan(L, Geser))
         {
             input = false;
-            printf("Input tidak valid. Jangan bunuh diri! Coba cerita sini sama aku. ><\n");
+            printf("Input tidak valid. Dilarang bunuh diri!\n");
         }
         else
         {
             input = true;
         }
     }
+    else // input salah
+    {
+        printf("Command tidak valid! Silahkan input command menggunakan huruf w/a/s/d\n");
+        input = false;
+    }}
     else // input salah
     {
         printf("Command tidak valid! Silahkan input command menggunakan huruf w/a/s/d\n");
@@ -185,91 +201,38 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
     int skor;
     if (IsHeadKenaMeteor(L, Meteor))
     {
-        printf("Kepala snake terkena meteor!\n");
+        printf("Kepala snake terkena meteor!\n\n");
         skor = NbElmt(L)*2;
-        printf("Game berakhir. Skor: %d\n", skor-2);
+        printf("Game berakhir. Skor: %d\n\n", skor-2);
     }
     else if (IsEmptySOM(L))
     {
-        printf("Snake mati karena tubuh snake terkena meteor semua!\n");
+        printf("Snake mati karena tubuh snake terkena meteor semua!\n\n");
         skor = NbElmt(L)*2;
-        printf("Game berakhir. Skor: 0\n.");
+        printf("Game berakhir. Skor: 0.\n\n");
     }
     else if (IsObstacle(Obstacle, Info(Head(L)))) // nabrak obstacle
     {
-        printf("Ada obstacle itu lho, yo jangan mbok tabrak to mas\n");
+        printf("Ada obstacle itu lho, yo jangan mbok tabrak to mas\n\n");
         gerak = false;
         input = false;
         skor = NbElmt(L)*2;
-        printf("Game berakhir. Skor: %d\n", skor-2);
+        printf("Game berakhir. Skor: %d\n\n", skor-2);
     }
     else if (NbElmt(L) == 24)
     {
-        printf("Selamat! Anda berhasil menyelesaikan permainan! Skor anda mentok kanan!\n");
+        printf("Selamat! Anda berhasil menyelesaikan permainan!\n\n");
         skor = NbElmt(L)*2;
-        printf("Game berakhir. Skor: %d\n", skor);
+        printf("Game berakhir. Skor: %d\n\n", skor);
     }
     else if (!IsMasihBisaGerak(L, Obstacle, Meteor))
     {
-        printf("Snake mati karena tidak bisa bergerak lagi!\n");
+        printf("Snake mati karena tidak bisa bergerak lagi!\n\n");
         skor = NbElmt(L)*2;
-        printf("Game berakhir. Skor: %d\n", skor-2);
+        printf("Game berakhir. Skor: %d\n\n", skor-2);
     }
     score = skor;
     Username(game , ListGames , GameMap , score);
 }
 
-/*int main()
-{
-    
-    
-    List L;
-    CreateEmpty(&L);
-    int X = randint(0,4);
-    int Y = randint(0,4);
 
-    Point P1;
-    CreatePoint(&P1, X, Y);
-    Point P2 = CreateNextPoint(P1);
-    Point P3 = CreateNextPoint(P2);
-
-    printf("P1: %d %d\n", Absis(P1), Ordinat(P1));
-    printf("P2: %d %d\n", Absis(P2), Ordinat(P2));
-    printf("P3: %d %d\n", Absis(P3), Ordinat(P3));
-
-    
-    CreateList3Elemen(&L, P1, P2, P3);
-
-    
-    printf("Isi list: \n");
-    printList(L);
-    printf("%i\n", NbElmt(L));
-
-    printf("info head: %d %d\n", Absis(Info(Head(L))), Ordinat(Info(Head(L))));
-    
-
-    //SnakeOnMeteor();
-    return 0;
-}*/
-
-// int main(){
-//     SnakeOnMeteor();
-//     return 0;
-// }
-
-
-/*int main()
-{
-    Point P1, P2;
-    CreatePoint(&P1, 1, 1);
-    CreatePoint(&P2, 1, 1);
-    if (IsMeteor(P1, P2))
-    {
-        printf("mati\n");
-    }
-    else
-    {
-        printf("idup\n");
-    }
-    return 0;
-}*/
