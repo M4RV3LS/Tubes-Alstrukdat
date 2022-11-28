@@ -228,8 +228,8 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
     else if (!IsMasihBisaGerak(L, Obstacle, Meteor))
     {
         printf("Snake mati karena tidak bisa bergerak lagi!\n\n");
-        skor = NbElmt(L)*2;
-        printf("Game berakhir. Skor: %d\n\n", skor-2);
+        skor = (NbElmt(L)*2)-2;
+        printf("Game berakhir. Skor: %d\n\n", skor);
     }
     score = skor;
     Username(game , ListGames , GameMap , score);
