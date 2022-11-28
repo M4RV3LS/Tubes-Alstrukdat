@@ -179,7 +179,7 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         }
     }
 
-    }while (!IsGameOver(L, Meteor, Obstacle) || (nbElement(L) == 24));
+    }while (!IsGameOver(L, Meteor, Obstacle) || (NbElmt(L) == 24));
 
     // INTERFACE GAMEOVER //
     int skor;
@@ -203,7 +203,7 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
         skor = NbElmt(L)*2;
         printf("Game berakhir. Skor: %d\n", skor-2);
     }
-    else if (nbElement(L) == 24)
+    else if (NbElmt(L) == 24)
     {
         printf("Selamat! Anda berhasil menyelesaikan permainan! Skor anda mentok kanan!\n");
         skor = NbElmt(L)*2;
