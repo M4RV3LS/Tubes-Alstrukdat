@@ -26,7 +26,14 @@ int main(){
     STARTCOMMAND();
     if (wordAndCharSama(currentCMD, "START"))
     {
-        STARTGAME(&ListGames);
+        ADVCOMMAND();
+        if(EndWord){
+            STARTGAME(&ListGames);
+            EndWord = true;
+        }
+        else{
+            printf("Command tidak valid\n");
+        }
         
     }
     else if(wordAndCharSama(currentCMD, "LOAD")) // asumsi nama file pasti benar dan file tidak kosong
@@ -37,23 +44,30 @@ int main(){
 
         wordToString(currentCMD, namafile);
         //printf("%s\n",namafile);
-        int j =0;
-        char *filename = (char *)malloc(currentCMD.Length * sizeof(char));
-        //printf("%d",currentCMD.Length);
-        while (j <= currentCMD.Length)
-        {
-            filename[j] = namafile[j];
-            j++;
+        ADVCOMMAND();
+        if(EndWord){
+            int j =0;
+            char *filename = (char *)malloc(currentCMD.Length * sizeof(char));
+            //printf("%d",currentCMD.Length);
+            while (j <= currentCMD.Length)
+            {
+                filename[j] = namafile[j];
+                j++;
+            }
+            //printf("%s\n",filename);
+            LOADFILE(&ListGames,&GameHistory, filename , &GameMap);
+            EndWord = true;
         }
-        //printf("%s\n",filename);
-        LOADFILE(&ListGames,&GameHistory, filename , &GameMap);
+        else{
+            printf("Command tidak valid\n");
+        }
         
     }
     else{
         printf("Masukan command salah. Silahkan masukkan command kembali.\n ");
     }
     while(!EndWord){
-        ADVCOMMAND();
+         ADVCOMMAND();
     }
     }
 

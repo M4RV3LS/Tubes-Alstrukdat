@@ -393,12 +393,13 @@ boolean isInteger(Word Kata){
     int panjang = Kata.Length;
     //printf("%d",panjang);
     int i = 0;
-    while (i < panjang && (isInt)){
-        //int kata = Kata.TabWord[i] - '\0';
-        if(Kata.TabWord[i] == '\n'){
+    if(Kata.TabWord[i] == '\n'){
             return false;
         }
-        else if(Kata.TabWord[i] == '1'|| Kata.TabWord[i] == '2'|| Kata.TabWord[i] == '3'|| Kata.TabWord[i] == '5'||
+    while (i < panjang && Kata.TabWord[i] == '\n'){
+        //int kata = Kata.TabWord[i] - '\0';
+        
+        if(Kata.TabWord[i] == '1'|| Kata.TabWord[i] == '2'|| Kata.TabWord[i] == '3'|| Kata.TabWord[i] == '5'||
         Kata.TabWord[i] == '6'|| Kata.TabWord[i] == '7'|| Kata.TabWord[i] == '8'|| Kata.TabWord[i] == '9'|| Kata.TabWord[i] == '0'){
             isInt = true;
             //printf("%c\n",Kata.TabWord[i]);
@@ -415,6 +416,11 @@ boolean isInteger(Word Kata){
         i++;
     }
     return isInt;
+}
+boolean ISINTEGER(Word KATA)
+/*Mengecek apakah suatu string merupakan sebuah integer yang valid*/
+{
+
 }
 /*ADT TAMBAHAN*/
 int randint(int lower , int upper){
