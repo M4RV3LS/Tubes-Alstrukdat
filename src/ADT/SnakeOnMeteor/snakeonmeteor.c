@@ -452,8 +452,6 @@ void printmap(List L, Point M, Point F, Point O)
                 if(j % 2 == 0)
                 {
                     printf("|");
-                    printf("\n");
-                    printf("|");
                 }
                 
                 else 
