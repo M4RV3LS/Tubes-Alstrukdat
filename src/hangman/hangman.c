@@ -42,7 +42,7 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
                 char*Kata = WORDTOSTRING(ListKata.TI[random]);
 
                 mainHangman(&kesempatan, Kata);
-                if (kesempatan != 0) skor += 25;
+                if (kesempatan != 0) skor += panjang_kata(Kata);
             }
             printf("\nGAME OVER.");
             printf("\n\nSkor kamu adalah %d", skor); 
@@ -174,7 +174,7 @@ void mainHangman(int*kesempatan, char*Kata)
     }
     if (win == true){
         printf("\nBerhasil menebak "); PrintCharNoSpace(Kata, panjang_kata(Kata));
-        printf("! Kamu mendapatkan 25 poin!");
+        printf("! Kamu mendapatkan %d poin!", panjang_kata(Kata));
     }
     if ((*kesempatan) == 0) printf("\nKesempatan habis! Total poin yang kamu dapatkan adalah ");
 }
