@@ -5,7 +5,21 @@
 #include <time.h>
 
 void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score){
-    printf("Selamat datang di Snake on Meteor!\n\n");
+    printf("============== WELCOME TO ==============\n");
+    printf("===== S N A K E  O N  M E T E O R ======\n");
+	printf("========================================\n");
+    printf(" ▄████████▄    ▄███████▄    |\n");
+    printf(" ███    ███    ███    ██    |\n");
+    printf(" ███    ███    ███    ██  ▄███▄\n");
+    printf(" ███    ███    ███    ██  █▀█▀█\n");
+    printf(" ███    ███    ███    ██  ▀███▀\n");
+    printf(" ███    ███    ███    ██   ███ \n");
+    printf("  ▀█    ▀████████▀    ▀███████\n");
+          
+  
+    
+    
+    
     // aturan permainan 
     printf("Peraturan permainan Snake on Meteor:\n");
     printf("1. Snake dapat bergerak ke atas, kiri, bawah, atau kanan dengan meng-input w/a/s/d TANPA SPASI!\n");
