@@ -437,13 +437,13 @@ void printmap(List L, Point M, Point F, Point O)
             
             if(i % 2 == 0)
             {
-                if (j % 2 != 0)
+                if (j % 2 == 0)
                 {
-                    printf("------");
+                    printf(" ");
                 }
                 else 
                 {
-                    printf(" ");
+                    printf("-------");
                 }
             }
             
@@ -451,7 +451,7 @@ void printmap(List L, Point M, Point F, Point O)
             {
                 if(j % 2 == 0)
                 {
-                    printf("|");
+                    printf("| ");
                 }
                 
                 else 
@@ -461,16 +461,16 @@ void printmap(List L, Point M, Point F, Point O)
                     if(IsMember(L,S)) // kalo ketemu bagian dari list
                     {
                         if(M.X == S.X && M.Y == S.Y){ // kalo ketemu meteor
-                            printf("  m  ");
+                            printf("  m   ");
                         }
                         else { // kalo ga ktemu meteor
                             // printf(" %c ", Search(L,S)->info);
                             if (indexOf(L,S) == 0)
                             {
-                                printf("  H  ");
+                                printf("  H   ");
                             }
                             else{
-                                printf("  %i  ", indexOf(L,S));
+                                printf("  %i   ", indexOf(L,S));
                             }
                         }
                         
@@ -480,19 +480,19 @@ void printmap(List L, Point M, Point F, Point O)
                     {
                         if(F.X == S.X && F.Y == S.Y) // makanan
                         {
-                            printf("  o  ");
+                            printf("  o   ");
                         }
                         else if(M.X == S.X && M.Y == S.Y) // meteor
                         {
-                            printf("  m  ");
+                            printf("  m   ");
                         }
                         else if(O.X == S.X && O.Y == S.Y) // obstacle
                         {
-                            printf("  +  "); 
+                            printf("  +   "); 
                         }
                         else 
                         {
-                            printf("     ");
+                            printf("      ");
                         }
                     }
                     
