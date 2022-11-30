@@ -437,13 +437,13 @@ void printmap(List L, Point M, Point F, Point O)
             
             if(i % 2 == 0)
             {
-                if (j % 2 == 0)
+                if (j % 2 != 0)
                 {
-                    printf(" ");
+                    printf("------");
                 }
                 else 
                 {
-                    printf("-----");
+                    printf("  ");
                 }
             }
             
