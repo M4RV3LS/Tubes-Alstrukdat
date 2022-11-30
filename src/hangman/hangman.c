@@ -13,19 +13,19 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
     while (on)
     {
         landingPage();
-        STARTCOMMAND();
-        if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "PLAY"))
+        STARTCOMMANDGAME();
+        if ((wordAndCharSama(currentCMD, "1") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "PLAY") && currentCMD.Length == 4))
         {
             boolean valid = false;
             while (!valid)
             {
                 themePage();
                 STARTCOMMANDGAME();
-                if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "KOTA"))
+                if ((wordAndCharSama(currentCMD, "1") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "KOTA") && currentCMD.Length == 4))
                 {
                     loadkata(&ListKata, "KataKota.txt"); valid = true;
                 }
-                else if(wordAndCharSama(currentCMD, "2") || wordAndCharSama(currentCMD, "NEGARA"))
+                else if((wordAndCharSama(currentCMD, "2") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "NEGARA") && currentCMD.Length == 6))
                 {
                     loadkata(&ListKata, "KataNegara.txt"); valid = true;
                 }
@@ -49,26 +49,26 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
             
             on = false; 
         } 
-        else if (wordAndCharSama(currentCMD, "2") || wordAndCharSama(currentCMD, "HELP"))
+        else if ((wordAndCharSama(currentCMD, "2") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "HELP") && currentCMD.Length == 4))
         {
             helpHangman();
             printf("\n\nPress any key to continue..\n");
             STARTCOMMAND();
         }
-        else if (wordAndCharSama(currentCMD, "3") || wordAndCharSama(currentCMD, "TAMBAHKATA"))
+        else if ((wordAndCharSama(currentCMD, "3") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "TAMBAHKATA") && currentCMD.Length == 10))
         {
             boolean valid = false;
             char*file; char* tema;
             while (!valid)
             {
                 themePage();
-                STARTCOMMAND();
-                if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "KOTA"))
+                STARTCOMMANDGAME();
+                if ((wordAndCharSama(currentCMD, "1") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "KOTA") && currentCMD.Length == 4))
                 {
                     file = "KataKota.txt"; tema = "KOTA";
                     loadkata(&ListKata, file); valid = true;
                 }
-                else if(wordAndCharSama(currentCMD, "2") || wordAndCharSama(currentCMD, "NEGARA"))
+                else if ((wordAndCharSama(currentCMD, "2") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "NEGARA") && currentCMD.Length == 6))
                 {
                     file = "KataNegara.txt"; tema = "NEGARA";
                     loadkata(&ListKata, file); valid = true;
@@ -82,12 +82,12 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
             printf("%s", tema);
             printf(" yang ingin kamu tambahkan");
             printf("\n(DALAM HURUF KAPITAL) :");
-            STARTCOMMAND();
+            STARTCOMMANDGAME();
             int n = ListKata.EFEKTIF;
             SetElListKata(&ListKata, n+1, currentCMD);
             saveListKata(ListKata, file);
         }
-        else if (wordAndCharSama(currentCMD, "4") || wordAndCharSama(currentCMD, "QUIT"))
+        else if ((wordAndCharSama(currentCMD, "4") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "QUIT") && currentCMD.Length == 4))
         {
             printf("\nSad to say goodbye to you! :(((\n");
             on = false;
@@ -98,7 +98,7 @@ void hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
         }
     }
     score = skor;
-    Username(game , ListGames , GameMap , score);
+ //   Username(game , ListGames , GameMap , score);
 }
 
 void mainHangman(int*kesempatan, char*Kata)
@@ -288,11 +288,10 @@ char* wordToStr(Word word)
     return str;  
 }
 
-/*int main(){
+int main(){
     char* game;
     ArrayDin ListGames;
     ArrayOfMap *GameMap;
     int score;
     hangman(game, ListGames, GameMap, score);
 }
-*/
