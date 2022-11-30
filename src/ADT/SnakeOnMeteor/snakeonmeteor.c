@@ -452,7 +452,7 @@ void printmap(List L, Point M, Point F, Point O)
                 if(j % 2 == 0)
                 {
                     printf("|");
-                    printf("|")
+                    printf("|");
                 }
                 
                 else 
@@ -521,5 +521,17 @@ int main()
   printf("%d %d", P1.X, P1.Y);
 
   return 0;
+}
+*/
+
+/*
+int main()
+{
+    List L;
+    Point o, p, q;
+
+    printmap(L, o, p, q);
+
+    return 0;
 }
 */
