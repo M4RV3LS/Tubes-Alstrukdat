@@ -443,7 +443,7 @@ void printmap(List L, Point M, Point F, Point O)
                 }
                 else 
                 {
-                    printf(" ");
+                    printf("");
                 }
             }
             
