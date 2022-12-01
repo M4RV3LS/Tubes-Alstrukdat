@@ -77,7 +77,7 @@ int main(){
     while (!berhenti)
     {
         char*GAME = "GAME";
-        printf("ENTER COMMAND: ");
+        printf("\nENTER COMMAND: ");
         STARTCOMMAND();
         if (wordAndCharSama(currentCMD, "SAVE"))
         {

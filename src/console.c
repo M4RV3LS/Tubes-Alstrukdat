@@ -247,7 +247,7 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
 void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *GameHistory)
 {
     ElType A;
-    char *rng, *dinerDash , *hangman ,*towerofhanoi ,*snakeonmeteor ,*MTK;
+    char *rng, *dinerDash , *hangman ,*towerofhanoi ,*snakeonmeteor ,*MTK ,*Undertale;
     int score;
     rng = "RNG";
     dinerDash = "Diner DASH";
@@ -255,6 +255,7 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
     towerofhanoi = "TOWER OF HANOI";
     snakeonmeteor = "SNAKE ON METEOR";
     MTK = "MATH QUIZ";
+    Undertale = "UNDERTALE";
 
     if (isEmpty(*q1))
     {
@@ -315,6 +316,15 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
             printf("Loading %s ...\n", dinerDash);
             delay(2);
             dinerdash(game , ListGames , GameMap , score);
+            PushStack(GameHistory , game);
+            
+        }
+
+        else if (CompareString(game , Undertale))
+        {
+            printf("Loading %s ...\n", Undertale);
+            delay(2);
+            //undertale(game , ListGames , GameMap , score);
             PushStack(GameHistory , game);
             
         }
@@ -783,16 +793,17 @@ void mathquiz(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
     while (!masukanbenar){
         printf("ENTER COMMAND : ");
         STARTCOMMANDGAME();
-        if(wordAndCharSama(currentCMD,"Pertambahan")){
+        char*input = WORDTOSTRING(currentCMD);
+        if(CompareString(input,"Pertambahan")){
             masukanbenar = true;
             skormath = pertambahan(skormath);
         
         }
-        else if(wordAndCharSama(currentCMD,"Pengurangan")){
+        else if(CompareString(input,"Pengurangan")){
             masukanbenar = true;
             skormath = pengurangan(skormath);
         }
-        else if(wordAndCharSama(currentCMD,"Perkalian")){
+        else if(CompareString(input,"Perkalian")){
             masukanbenar = true;
             skormath = perkalian(skormath);
         }
@@ -1442,7 +1453,21 @@ void ResetHistory (Stack * Game){
 }
 
 void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score){
-    printf("Selamat datang di Snake on Meteor!\n\n");
+    printf("============== WELCOME TO ==============\n");
+    printf("===== S N A K E  O N  M E T E O R ======\n");
+	printf("========================================\n");
+    printf(" ▄████████▄    ▄███████▄    |\n");
+    printf(" ███    ███    ███    ██    |\n");
+    printf(" ███    ███    ███    ██  ▄███▄\n");
+    printf(" ███    ███    ███    ██  █▀█▀█\n");
+    printf(" ███    ███    ███    ██  ▀███▀\n");
+    printf(" ███    ███    ███    ██   ███ \n");
+    printf("  ▀█    ▀████████▀    ▀███████\n");
+          
+  
+    
+    
+    
     // aturan permainan 
     printf("Peraturan permainan Snake on Meteor:\n");
     printf("1. Snake dapat bergerak ke atas, kiri, bawah, atau kanan dengan meng-input w/a/s/d TANPA SPASI!\n");
@@ -1673,7 +1698,10 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
 }
 
 
-void Hangman(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score)
+
+
+
+void Hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
 {
     // pilihan menu
     ListKata ListKata;
@@ -1684,20 +1712,18 @@ void Hangman(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score)
     {
         landingPage();
         STARTCOMMANDGAME();
-        if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "PLAY"))
+        if ((wordAndCharSama(currentCMD, "1") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "PLAY") && currentCMD.Length == 4))
         {
             boolean valid = false;
             while (!valid)
             {
                 themePage();
                 STARTCOMMANDGAME();
-                if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "KOTA"))
+                if ((wordAndCharSama(currentCMD, "1") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "KOTA") && currentCMD.Length == 4))
                 {
                     loadkata(&ListKata, "KataKota.txt"); valid = true;
-                    //printf("MasukPakEko\n");
-
                 }
-                else if(wordAndCharSama(currentCMD, "2") || wordAndCharSama(currentCMD, "NEGARA"))
+                else if((wordAndCharSama(currentCMD, "2") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "NEGARA") && currentCMD.Length == 6))
                 {
                     loadkata(&ListKata, "KataNegara.txt"); valid = true;
                 }
@@ -1707,53 +1733,40 @@ void Hangman(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score)
                 }
             }
             int kesempatan = 10;
-            //int skor =0;
-            // if(IsEmptyArrayHangman(ListKata)){
-            //     printf("Array kosong\n");
-            // }
-            // else{
-            //     printf("Array tidak kosong\n");
-            //     printf("%s\n",ListKata.TI[1]);
-            //     printf("%d\n",ListKata.EFEKTIF);
-            // }
             while (kesempatan > 0)
             {
-                //printf("Masuk1\n");
                 srand(time(NULL));
-                int random = randint(1,ListKata.EFEKTIF);
-                // printf("%d\n",ListKata.EFEKTIF);
-                // printf("%d\n",random);  
-                char*Kata;
-                Kata = WORDTOSTRING(ListKata.TI[random]);
-                //printf("Masuk2\n");
+                int random = rand() % (ListKata.EFEKTIF);   
+                char*Kata = WORDTOSTRING(ListKata.TI[random]);
+
                 mainHangman(&kesempatan, Kata);
-                if (kesempatan != 0) skor += 25;
+                if (kesempatan != 0) skor += panjang_kata(Kata);
             }
             printf("\nGAME OVER.");
             printf("\n\nSkor kamu adalah %d\n", skor); 
             
             on = false; 
         } 
-        else if (wordAndCharSama(currentCMD, "2") || wordAndCharSama(currentCMD, "HELP"))
+        else if ((wordAndCharSama(currentCMD, "2") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "HELP") && currentCMD.Length == 4))
         {
             helpHangman();
             printf("\n\nPress any key to continue..\n");
             STARTCOMMAND();
         }
-        else if (wordAndCharSama(currentCMD, "3") || wordAndCharSama(currentCMD, "TAMBAHKATA"))
+        else if ((wordAndCharSama(currentCMD, "3") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "TAMBAHKATA") && currentCMD.Length == 10))
         {
             boolean valid = false;
             char*file; char* tema;
             while (!valid)
             {
                 themePage();
-                STARTCOMMAND();
-                if (wordAndCharSama(currentCMD, "1") || wordAndCharSama(currentCMD, "KOTA"))
+                STARTCOMMANDGAME();
+                if ((wordAndCharSama(currentCMD, "1") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "KOTA") && currentCMD.Length == 4))
                 {
                     file = "KataKota.txt"; tema = "KOTA";
                     loadkata(&ListKata, file); valid = true;
                 }
-                else if(wordAndCharSama(currentCMD, "2") || wordAndCharSama(currentCMD, "NEGARA"))
+                else if ((wordAndCharSama(currentCMD, "2") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "NEGARA") && currentCMD.Length == 6))
                 {
                     file = "KataNegara.txt"; tema = "NEGARA";
                     loadkata(&ListKata, file); valid = true;
@@ -1767,12 +1780,12 @@ void Hangman(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score)
             printf("%s", tema);
             printf(" yang ingin kamu tambahkan");
             printf("\n(DALAM HURUF KAPITAL) :");
-            STARTCOMMAND();
+            STARTCOMMANDGAME();
             int n = ListKata.EFEKTIF;
             SetElListKata(&ListKata, n+1, currentCMD);
             saveListKata(ListKata, file);
         }
-        else if (wordAndCharSama(currentCMD, "4") || wordAndCharSama(currentCMD, "QUIT"))
+        else if ((wordAndCharSama(currentCMD, "4") && currentCMD.Length == 1) || (wordAndCharSama(currentCMD, "QUIT") && currentCMD.Length == 4))
         {
             printf("\nSad to say goodbye to you! :(((\n");
             on = false;
@@ -1859,30 +1872,21 @@ void mainHangman(int*kesempatan, char*Kata)
     }
     if (win == true){
         printf("\nBerhasil menebak "); PrintCharNoSpace(Kata, panjang_kata(Kata));
-        printf("! Kamu mendapatkan 25 poin!");
+        printf("! Kamu mendapatkan %d poin!", panjang_kata(Kata));
     }
-    if ((*kesempatan) == 0)
-        printf("\nKesempatan habis!\n");
-    
-        
-    }
+    if ((*kesempatan) == 0) printf("\nKesempatan habis! Total poin yang kamu dapatkan adalah ");
+}
 
 void loadkata(ListKata *ListKata, char*filename)
 {
     char path[NMax];
     stringConcat("ADT/Hangman/",filename,path);
-    //printf("\n%s", path);
-    FILE *fp = fopen(path, "r");
     STARTWORD(path);
     int nGame = WordToInt(currentWord);
-    //char*temp;
     for (int i = 1; i <= nGame; i++){
         ADVLine();
         SetElListKata(ListKata, i, currentWord);
-        //temp = WORDTOSTRING(currentWord);
-        //printf("%d. %s\n",i , temp);
     }
-    printf("%d\n",(*ListKata).EFEKTIF);
 }
 
 void saveListKata(ListKata ListKata, char*filename)

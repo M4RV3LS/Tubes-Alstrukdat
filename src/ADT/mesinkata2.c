@@ -294,10 +294,15 @@ void stringConcat(char str1[] , char str2[] , char *output)
 boolean wordAndCharSama(Word kata, char command[]) {
     /* Mengirimkan true apabila kedua kata sama */
     boolean sama = true;
-    for (int i = 0; i < LengthKalimat(command); i++) {
-        if (kata.TabWord[i] != command[i]) {
-            sama = false;
-        }
+    if(kata.Length != LengthKalimat(command)){
+        return false;
+    }
+    else{
+        for (int i = 0; i < LengthKalimat(command); i++) {
+            if (kata.TabWord[i] != command[i]) {
+                sama = false;
+            }
+        }  
     }
     return sama;
 }

@@ -61,7 +61,7 @@ valuetype Skor(Map M, keytype k){
 		boolean found = false;
 		int i = 0;
 		while(!found && (i < M.Count)){
-			if(M.Elements[i].Nama == k){
+			if(IsUsernameEqual(M.Elements[i].Nama , k)){
 				Skor = M.Elements[i].Skor;
 				found = true;
 			}
@@ -143,7 +143,16 @@ boolean IsMemberMap(Map M, keytype k){
 	}
 	return found;
 }
-
+int SearchIndex(Map M, keytype k){
+    int i=0;
+    while (i<M.Count){
+        if(IsUsernameEqual(M.Elements[i].Nama,k)){
+            return i;
+        }
+        i++;
+    }
+    return Undefined;
+}
 /* Mengembalikan true jika k adalah member dari M */
 void PrintMap(Map M){
 	for(int i = 0; i < M.Count - 1; i++){
