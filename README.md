@@ -5,6 +5,8 @@
 ####  2. Menambahkan game
 ####  3. Menghapus game
 ####  4. Mengurutkan game yang akan dimainkan
+####  5. Menampilkan game yang telah dimainkan
+####  6. Menampilkan scoreboard game
 
 
 
