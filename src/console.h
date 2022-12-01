@@ -171,3 +171,70 @@ void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
 boolean win(STACKSS c, int jml_pir);
 /* Memeriksa kondisi menang */
 
+void penundaan(int number_of_seconds);
+
+void createRoute(BinTree* route, BinTree* l, BinTree* r);
+
+boolean end(char a);
+
+void undertale(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int nilai);
+
+void beginning();
+
+void toriel(BinTree* p , char*name , int *score);
+
+void papyrus(BinTree* p , char*name , int *score);
+
+void lastcorridor();
+
+void megalovania(BinTree* p , char*name , int *score);
+
+void sansneutral(BinTree* p,char*name , int *score);
+
+void sanspacifist(BinTree* p , char*name , int *score);
+
+void asriel(BinTree p , char*name , int *score);
+
+void torielfight(int *score , char*Username);;
+/* Permainan Rock Paper Scissor*/
+
+int mainpapyrus();
+/*Basic nya mirip mathquiz cuman bedanya semua mode pertambahan , perkalian , dan pengurangan di jadiin satu 
+dan dipisahkan dengan 3 stage berbeda*/
+
+
+void papyrusfight(int *score , char*Username);
+/*Melakukan looping hingga health papyrus harus diatas 70*/
+
+
+void sansfight(int *score , char *Username);
+/*Permainan game hitung duit */
+
+void CreateRandomPointAsriel(Point *P);
+/*Membuat Random point buat generate bomb dan treasure*/
+
+void PrintAlphabet(Map MiniGames , int index , char*input);
+/*Melakukan print alphabet sesuai value yang dimilikinya*/
+
+
+void Axe();
+/*Axe Ascii Art*/
+
+
+void WelcomingAsrielGames();
+/*Welcoming game Treasure Hunt*/
+
+void AsrielGameRule();
+/*print game rule buat treasure Hunt*/
+
+void PrintPetaAsriel(Map MiniGames);
+/*Print Peta permainan untuk game Treasure Hunt*/
+
+void InsertMapMiniGames(Map *M, keytype k, valuetype v);
+/*Insert atribut ke Map buat TreasureHunt*/
+
+int mainasriel(char*Username);
+/*Main Program Treasure Hunt*/
+
+void asrielfight(int *score , char *Username);
+/*Main Game Treasure Hunt*/

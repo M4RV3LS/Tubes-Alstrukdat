@@ -8,7 +8,7 @@ void createRoute(BinTree* route, BinTree* l, BinTree* r);
 
 boolean end(char a);
 
-void undertale();
+void undertale(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int score);
 
 void beginning();
 

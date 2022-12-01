@@ -324,7 +324,7 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
         {
             printf("Loading %s ...\n", Undertale);
             delay(2);
-            //undertale(game , ListGames , GameMap , score);
+            undertale(game , ListGames , GameMap , score);
             PushStack(GameHistory , game);
             
         }
@@ -2459,6 +2459,1410 @@ void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
     free(tempsti);
 }
 
+
+
+// void delay(int number_of_seconds)
+// {
+//     // Converting time into milli_seconds
+//     int milli_seconds = 1000 * number_of_seconds;
+ 
+//     // Storing start time
+//     clock_t start_time = clock();
+ 
+//     // looping till required time is not achieved
+//     while (clock() < start_time + milli_seconds);
+// }
+
+void toriel(BinTree* p , char*name , int *score)
+{
+    printf("              C H A P T E R - 1 , T O R I E L            \n");
+    printf("************************************************************\n");
+    delay(2);
+    printf("Your journey in the underground have started...\n");
+    printf("You encounter a flower-like creature, and it talks!\n");
+    delay(2);
+    printf("\n");
+    printf("⣿⣿⣿⣿⣿⣿⣿⡿⢿⣏⣉⠉⠙⠿⢿⣿⠿⠏⠉⠉⣽⡿⠿⣿⣿⣿⣿⣿⣿⣿\n");
+    printf("⣿⣿⣿⣿⣿⣿⣅⠀⣄⣴⣿⣿⠿⠿⠿⠿⠿⠿⣿⣿⣿⣤⠀⢨⣿⣿⣿⣿⣿⣿\n");
+    printf("⣿⣿⣿⠏⠉⠉⢿⣿⣿⠏⠀⠀⢀⣀⠀⠀⣄⡀⠀⠀⠙⢿⣿⡿⠋⠉⠙⢿⣿⣿\n");
+    printf("⣿⡏⠀⠲⠶⠶⣾⣿⠀⠀⠀⠀⢸⣿⠀⠀⣿⡇⠀⠀⠀⠀⣿⣷⠶⠶⠶⠀⠙⣿\n");
+    printf("⣿⣷⣦⡀⠀⠀⢸⣿⣄⠀⠰⢦⣈⣉⣀⣀⣩⣁⣰⠆⠀⢀⣿⡇⠀⠀⠀⣰⣶⣿\n");
+    printf("⣿⣿⣿⣿⣶⣶⣶⡾⣿⣆⠀⠀⠙⠶⠶⠶⠶⠎⠀⠀⣠⣾⠿⣶⣶⣶⣿⣿⣿⣿\n");
+    printf("⣿⣿⣿⣿⡿⠏⠀⢠⠿⢿⣿⣶⣄⣀⣀⣀⣀⣀⣶⣾⣿⠿⣄⠀⠙⢿⣿⣿⣿⣿\n");
+    printf("⣿⣿⣿⣿⡇⠀⠸⠇⠀⠀⠀⠈⢻⣋⣹⣏⣙⡏⠉⠀⠀⠀⠘⠇⠀⢸⣿⣿⣿⣿\n");
+    printf("⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣿⣿⣿⣿⣿⣿\n");
+    printf("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n");
+    printf("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n");
+    printf("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠧⠀⠸⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n");
+    printf("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠧⠀⠸⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n");
+    printf("\n");
+    delay(2);
+    printf("Peculiar Flower: Hi.. I'm Flowey!\n");
+    printf("\n");
+    printf("You sense a peculiarity in it, and not long after...\n");
+    delay(3);
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("D   I   E   !\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("Oh no, the flower is actually evil!  (꒪_/꒪)\n");
+    printf("Luckily, not long after... a goat creature came to your rescue!\n");
+    delay(2);
+    printf("Toriel: Oh.. Hello!\n");
+    delay(2);
+    printf("Toriel: My name is Toriel, keeper of the Undergrounds!\n");
+    delay(2);
+    printf("Toriel: Please be careful, my child, as this place is not safe\n");
+    printf("\n");
+    delay(2);
+    printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+    printf("\n");
+    printf("Toriel then brings you to her home and cares for you. It seems like\n");
+    delay(2);
+    printf("She had lost her own child before, and so she is very protective of you...\n");
+    delay(2);
+    printf("But you must return to your world. You cannot remain.\n");
+    delay(2);
+    printf("To do so, one day, you went to the gate she explicitly told you to avoid...\n");
+    printf("\n");
+    delay(2);
+    printf("Toriel arrives shortly afterwards with a dissapointed look on her face.\n");
+    delay(2);
+    printf("Toriel: My dear child.. I cannot let you through these gates...\n");
+    delay(2);
+    printf("However... must you insist, you'll need to face me first...\n");
+    delay(2);
+    printf("Prove to me, child, that you are strong enough to proceed.\n");
+    delay(2);
+    printf("\n");
+    delay(3);
+    printf("************************************************************\n");
+    printf("      Y O U - H A V E - E N T E R E D - A - F I G H T\n");
+    printf("************************************************************\n");
+    printf("\n");
+
+    torielfight(score,name);
+
+    printf("You have succeeded in defeating Toriel. Would you like to Kill or Spare her? (K/S) \n");
+    boolean lanjut = false;
+    while (!lanjut)
+    {
+        STARTCMD();
+        if (wordStringEq(CURRENTCOMMAND,"K"))
+        {
+            lanjut = true;
+            printf("Toriel: Why.. would.. you do this..?\n");
+            printf("Toriel perished. You open the gate in front of you to proceed in your journey.\n");
+            printf("\n");
+            *p = Left(*p);
+        } else if (wordStringEq(CURRENTCOMMAND,"S")) {
+            lanjut = true;
+            printf("Toriel: My child.. you have a kind heart.\n");
+            printf("Toriel: Proceed as you wish. May you always be protected.\n");
+            printf("You hugged Toriel, and stepped onto the gate to proceed with your Journey.\n");
+            *p = Right(*p);
+        } else {
+            printf("Please input K or S in capital.\n");
+        }
+
+    }
+}
+
+void papyrus(BinTree* p , char*name , int *score)
+{
+    printf("              C H A P T E R - 2 , P A P Y R U S           \n");
+    printf("************************************************************\n");
+    delay(2);
+    printf("You have just emerged outside of the Ruins (Undergrounds)...\n");
+    delay(2);
+    printf("You have reached an area filled with snow...\n");
+    printf("❄ ❄ ❄ ❄ ❄ ❄ ❄\n");
+    printf("      ❄ ❄ ❄ ❄ ❄ ❄ ❄\n");
+    printf("              ❄ ❄ ❄ ❄ ❄ ❄ ❄\n");
+    printf("                     ❄ ❄ ❄ ❄ ❄ ❄ ❄\n");
+    printf("                             ❄ ❄ ❄ ❄ ❄ ❄ ❄\n");
+    printf("\n");
+    delay(2);
+    printf("Behind all the trees and snow.. you discovered what looks like.. a skull?!\n");
+    delay(2);
+    printf("Sans: Hey, human!\n");
+    delay(2);
+    printf("Sans: Quick, hide behind that lamp!\n");
+    delay(2);
+    printf("Sans points to a nearby lamp. You notice a taller, more slender skeleton approaching\n");
+    delay(2);
+    printf("You quickly hid behind the lamp.\n");
+    delay(2);
+    printf("\n");
+    printf("Papyrus: Hey, don't you smell a human nearby?\n");
+    delay(2);
+    printf("Sans: Oh hey, bro! Ahh, it's probably just you and your mind.\n");
+    delay(2);
+    printf("Papyrus: Hmm... is that so..\n");
+    delay(2);
+    printf("Papyrus: Oh well, I'm off then!\n");
+    delay(2);
+    printf("\n");
+    printf("Papyrus leaves the scene.\n");
+    delay(2);
+    printf("\n");
+    printf("Sans: He's gone, Kid\n");
+    delay(2);
+    printf("You emerge out of the lamp to thank him. Sans left afterwards.\n");
+    delay(2);
+    printf("You continue to walk...\n");
+    delay(2);
+    printf("To your surprise, Papyrus was still nearby and ambushed you.\n");
+    delay(2);
+    printf("Papyrus: ALL HUMANS SHALL PERISH!\n");
+
+    delay(2);
+    printf("\n");
+    printf("************************************************************\n");
+    printf("      Y O U - H A V E - E N T E R E D - A - F I G H T\n");
+    printf("************************************************************\n");
+
+    printf("\n");
+    papyrusfight(score,name);
+    printf("\n");
+
+    printf("You have succeeded in defeating Papyrus. Would you like to Kill or Spare him? (K/S) \n");
+    boolean lanjut = false;
+    while (!lanjut)
+    {
+        STARTCMD();
+        if (wordStringEq(CURRENTCOMMAND,"K"))
+        {
+            lanjut = true;
+            delay(2);
+            printf("Papyrus: I knew it.. humans are nothing but trash...\n");
+            delay(2);
+            printf("Papyrus perished. You aim for King Asriel's palace, the only way out from the Undergrounds..\n");
+            printf("\n");
+            *p = Left(*p);
+        } else if (wordStringEq(CURRENTCOMMAND,"S")) {
+            lanjut = true;
+            delay(2);
+            printf("Papyrus: But.. but I thought humans were bad..\n");
+            printf("Papyrus: Seems that I have misjudged you.. I apologize..\n");
+            delay(2);
+            printf("Papyrus: From now on, Papyrus will always be by your side!\n");
+            printf("You shook hands with Papyrus, and he led you towards King Asriel's palace, the only way out from the Undergrounds..\n");
+            *p = Right(*p);
+        } else {
+            printf("Please input K or S in capital.\n");
+        }
+    } 
+}
+
+void lastcorridor()
+{
+    printf("        C H A P T E R - 3 , L A S T - C O R R I D O R       \n");
+    printf("************************************************************\n");
+    delay(2);
+    printf("\n");
+    printf("You have reached King Asriel's palace.\n");
+    delay(2);
+    printf("Using the elevators inside, you went straight to the top level.\n");
+    delay(2);
+    printf("It's the corrdior before King Asriel's throne.\n");
+    delay(2);
+    printf("On the edge of the palace, you see a familiar sight.\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("░░░░░░░░██████████████████\n");
+    printf("░░░░████░░░░░░░░░░░░░░░░░░████\n");
+    printf("░░██░░░░░░░░░░░░░░░░░░░░░░░░░░██\n");
+    printf("░░██░░░░░░░░░░░░░░░░░░░░░░░░░░██\n");
+    printf("██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██\n");
+    printf("██░░░░░░░░░░░░░░░░░░░░██████░░░░██\n");
+    printf("██░░░░░░░░░░░░░░░░░░░░██████░░░░██\n");
+    printf("██░░░░██████░░░░██░░░░██████░░░░██\n");
+    printf("░░██░░░░░░░░░░██████░░░░░░░░░░██\n");
+    printf("████░░██░░░░░░░░░░░░░░░░░░██░░████\n");
+    printf("██░░░░██████████████████████░░░░██\n");
+    printf("██░░░░░░██░░██░░██░░██░░██░░░░░░██\n");
+    printf("░░████░░░░██████████████░░░░████\n");
+    printf("░░░░░░████░░░░░░░░░░░░░░████\n");
+    printf("░░░░░░░░░░██████████████\n");
+}
+
+void megalovania(BinTree* p , char*name , int*score)
+{
+    lastcorridor();
+
+    printf("\n");
+    printf("Sans: Heya, Kid.\n");
+    delay(2);
+    printf("Sans: You've been busy, Huh?\n");
+    delay(2);
+    printf("Sans: Just going around, killing everyone you see\n");
+    delay(3);
+    printf("Sans: So, i've got a question for ya.");
+    delay(2);
+    printf("Sans: Do you think even the worst person can change?\n");
+    delay(2);
+    printf("\n");
+    printf("Despite his dialogue, you step forward, bringing out your knife.\n");
+    delay(2);
+    printf("\n");
+    printf("Sans: Heh.. here's a better question.\n");
+    delay(2);
+    printf("Sans: Do you wanna have a bad time? Cause if you step forward...\n");
+    delay(2);
+    printf("Sans: You're REALLY not going to like what happens next.\n");
+    delay(2);
+    printf("\n");
+    delay(3);
+    printf("You take one more step forward.\n");
+    printf("\n");
+    delay(2);
+    printf("Sans: Welp, here we go.\n");
+
+    delay(2);
+    printf("\n");
+    printf("************************************************************\n");
+    printf("      Y O U - H A V E - E N T E R E D - A - F I G H T\n");
+    printf("************************************************************\n");
+    printf("\n");
+
+    sansfight(score,name);
+    printf("\n");
+
+    printf("You have succeeded in defeating Sans. Would you like to Kill or Spare him? (K/S) \n");
+    boolean lanjut = false;
+    while (!lanjut)
+    {
+        STARTCMD();
+        if (wordStringEq(CURRENTCOMMAND,"K"))
+        {
+            lanjut = true;
+            printf("Sans: Heh.. heh...\n");
+            delay(2);
+            printf("Sans: At least.. I get to be with my brother now..\n");
+            delay(2);
+            printf("\n");
+            printf("You proceed to Asriel's throne.\n");
+            printf("\n");
+            *p = Left(*p);
+        } else if (wordStringEq(CURRENTCOMMAND,"S")) {
+            lanjut = true;
+            delay(2);
+            printf("Sans: You should've just killed me.. kid.\n");
+            delay(2);
+            printf("Sans: Just like you did with everyone else, right?\n");
+            delay(2);
+            printf("Sans: Just like you did.. with my brother.\n");
+            printf("\n");
+            delay(2);
+            printf("You proceed to Asriel's throne.\n");
+            printf("\n");
+            *p = Right(*p);
+        } else {
+            printf("Please input Y or N in capital.\n");
+        }
+    }
+
+}
+
+void sansneutral(BinTree* p , char*name , int *score)
+{
+    lastcorridor();
+    printf("\n");
+    delay(2);
+    printf("Sans: Heya, Kid.\n");
+    delay(2);
+    printf("Sans: How does it feel? You're finally at the end of your journey...\n");
+    delay(2);
+    printf("Sans: Beyond these gates, is the throne of King Asriel\n");
+    delay(2);
+    printf("Sans: There, you will be at the pinnacle of life and death...\n");
+    delay(3);
+    printf("Sans: Take a moment to reflect upon your actions in the past...\n");
+    delay(2);
+    printf("Sans: Those people that you've murdered.. and those you've spared\n");
+    delay(2);
+    printf("Sans: Well.. at least you were honest with yourself..\n");
+    delay(3);
+    *p = Left(*p);
+}
+
+void sanspacifist(BinTree* p ,char*name , int *score)
+{
+    lastcorridor();
+    printf("\n");
+    printf("Sans: Heya, Kid.\n");
+    delay(2);
+    printf("Sans: How does it feel? You're finally at the end of your journey...\n");
+    delay(2);
+    printf("Sans: Beyond these gates, is the throne of King Asriel\n");
+    delay(2);
+    printf("Sans: There, you will be at the pinnacle of life and death...\n");
+    delay(2);
+    printf("Sans: Take a moment to reflect upon your actions in the past...\n");
+    delay(3);
+    printf("Sans: ...\n");
+    delay(2);
+    printf("Sans: But you've always been a kind soul, haven't you?\n");
+    delay(2);
+    printf("Sans: Even if you're thrown in situations that you didn't want to face\n");
+    delay(2);
+    printf("Sans: Even if you ran away.. you ran away with a smile\n");
+    delay(2);
+    printf("Sans: You gained love from all of us.\n");
+    delay(2);
+    printf("Sans: We're all rooting for ya, Kid.\n");
+    *p = Left(*p);
+}
+
+void asriel(BinTree p , char*name , int *score)
+{
+    printf("              C H A P T E R - 4 , T H E  E N D   \n");
+    printf("************************************************************\n");
+    printf("\n");
+    printf("                              {} {}\n");
+    printf("                        !  !  II II  !  !\n");
+    printf("                     !  I__I__II II__I__I  !\n");
+    printf("                     !  I__I__II II__I__I  !\n");
+    printf("                     I_/|--|--||   ||--|____I\n");
+    printf("                     |_____|           |____|\n");
+    printf("                     |_____|           |____|\n");
+    printf("                     |_____|           |____|\n");
+    printf("                     |_____|           |____|\n");
+    printf("                     |_____|           |____|\n");
+    printf("                     |_____|           |____|\n");
+    printf("                     |_____|           |____|\n");
+    printf("                     |_____|           |____|\n");
+    printf("                     |_____|           |____|\n");
+    printf("                     I_/|--|--||   ||--|____I\n");
+    printf("                     !   I__I__II II__I__I  !\n");
+    printf("                    ||I      ---------      I||\n");
+    printf("                    ||I      ---------      I||\n");
+    printf("                    //      ---------       I__\n");
+    printf("\n");
+    printf("You finally reached Asriel's Throne.\n");
+    delay(3);
+    printf("Asriel: Welcome, Human.\n");
+    delay(3);
+    printf("Asriel: You know what must happen... right?\n");
+    delay(3);
+    printf("Asriel: You know what I must do.. to protect the creatures in the Underground...\n");
+    
+    if (p->Info=='H')
+    {
+        delay(3);
+        printf("Asriel: But I guess you do not have the heart... to understand that\n");
+        delay(2);
+        printf("Asriel gets off his throne.\n");
+        delay(2);
+        printf("Asriel: Whenever you're ready, human.\n");
+    } else if (p->Info=='O') {
+        delay(2);
+        printf("Asriel: Even though I do not want to.. since you have the kindest heart.\n");
+        delay(3);
+        printf("Asriel: Forgive me, human.\n");
+        delay(2);
+        printf("Asriel gets off his throne.\n");
+        delay(2);
+        printf("Asriel: Whenever you're ready, human.\n");
+    } else {
+        delay(2);
+        printf("Asriel gets off his throne.\n");
+        delay(2);
+        printf("Asriel: Whenever you're ready, human.\n");
+    }
+
+    printf("\n");
+    printf("Are you read to fight Asriel? (Y/N)\n");
+    boolean ready = false;
+    while (!ready)
+    {
+        STARTCMD();
+        if (wordStringEq(CURRENTCOMMAND,"Y"))
+        {
+            ready = true;
+        } else if (wordStringEq(CURRENTCOMMAND,"N")) {
+            printf("Take your time.\n");
+            printf("Type in 'Y' whenever you are ready.\n");
+        } else {
+            printf("Please input Y or N in capital\n");
+        }
+    }
+
+    printf("\n");
+    printf("************************************************************\n");
+    printf("      Y O U - H A V E - E N T E R E D - A - F I G H T\n");
+    printf("************************************************************\n");
+    printf("\n");
+
+    asrielfight(score,name);
+}
+
+boolean end(char a)
+{
+    return a == 'H' || a == 'I' || a == 'J' || a == 'K' || a == 'L' || a == 'M' || a == 'N' || a == 'O';
+}
+
+void beginning()
+{
+    printf("                 T H E - B E G I N N I N G                  \n");
+    printf("************************************************************\n");
+    printf("Long ago, two races ruled over Earth: HUMANS and MONSTERS\n");
+    printf("One day, war broke out between the two races.\n");
+    printf("After a long battle, the humans were victorious\n");
+    printf("They sealed the monsters underground with a magic spell.\n");
+    printf("Many years later...a human fell into the depths of Mt. Ebbot\n");
+    printf("************************************************************\n");
+    printf("\n");
+}
+void createRoute(BinTree* route, BinTree* l, BinTree* r)
+{
+    MakeTree('A',*l,*r,route);
+    AddDaun (route,'A','B', true);
+    AddDaun (route,'A','C', false);
+    AddDaun (route,'B','D', true);
+    AddDaun (route,'B','E', false);
+    AddDaun (route,'C','F', true);
+    AddDaun (route,'C','G', false);
+    AddDaun (route,'D','H', true);
+    AddDaun (route,'D','I', false);
+    AddDaun (route,'E','J', true);
+    AddDaun (route,'E','K', false);
+    AddDaun (route,'F','L', true);
+    AddDaun (route,'F','M', false);
+    AddDaun (route,'G','N', true);
+    AddDaun (route,'G','O', false);
+}
+
+void undertale(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int nilai)
+{
+    printf(" _______ _______ _____  _______ ______ _______ _______ _____   _______ \n");
+    printf("|   |   |    |  |     \\    ___|   __ \\_    _|   _   |     |_|    ___|\n");
+    printf("|   |   |       |  --  |    ___|      < |   | |       |       |    ___|\n");
+    printf("|_______|__|____|_____/|_______|___|__| |___| |___|___|_______|_______|\n");
+
+    printf("\n");    
+    printf("\n"); 
+    printf("\n");                                               
+
+    printf("░░░░░░░░░░░▄▀▄▀▀▀▀▄▀▄░░░░░░░░░░░░░░░░░░\n");
+    printf("░░░░░░░░░░░█░░░░░░░░▀▄░░░░░░▄░░░░░░░░░░\n");
+    printf("░░░░░░░░░░█░░▀░░▀░░░░░▀▄▄░░█░█░░░░░░░░░\n");
+    printf("░░░░░░░░░░█░▄░█▀░▄░░░░░░░▀▀░░█░░░░░░░░░\n");
+    printf("░░░░░░░░░░█░░▀▀▀▀░░░░░░░░░░░░█░░░░░░░░░\n");
+    printf("░░░░░░░░░░█░░░░░░░░░░░░░░░░░░█░░░░░░░░░\n");
+    printf("░░░░░░░░░░█░░░░░░░░░░░░░░░░░░█░░░░░░░░░\n");
+    printf("░░░░░░░░░░░█░░▄▄░░▄▄▄▄░░▄▄░░█░░░░░░░░░░\n");
+    printf("░░░░░░░░░░░█░▄▀█░▄▀░░█░▄▀█░▄▀░░░░░░░░░░\n");
+    printf("░░░░░░░░░░░░▀░░░▀░░░░░▀░░░▀░░░░░░░░░░░░\n");
+
+    printf("\n");  
+    printf("\n");  
+
+    printf("Type 'START' in all capitals to start! ");
+
+    STARTCMD();
+
+    while (!wordStringEq(CURRENTCOMMAND,"START"))
+    {
+        printf("Invalid command! (꒪‸/꒪)\n");
+        printf("Type 'START' in all capitals to start!");
+        STARTCMD();
+    }
+
+    printf("\n");  
+
+    BinTree route,l,r;
+    createRoute(&route,&l,&r);
+    
+    BinTree pointer = route;
+
+    int score = 0;
+
+    beginning();
+
+    // Giving the character a name
+    printf("\n");
+    printf("(。╹‿ ╹ 。)\n");
+    printf("Name the fallen Human\n");
+    STARTCMD();
+    char* name;
+    /*Ini aku ijin ganti funsginya*/
+    name = KATATOSTRING(CURRENTCOMMAND);
+    boolean correct = false;
+    while (!correct)
+    {
+        printf("Is this name correct? (Y/N)\n");
+        printf("%s\n", name);
+        printf("\n");
+        STARTCMD();
+        printf("\n");
+        if (wordStringEq(CURRENTCOMMAND,"Y"))
+        {
+            correct = true;
+        } else if (wordStringEq(CURRENTCOMMAND,"N")) {
+            printf("Name the fallen Human\n");
+            STARTCMD();
+        } else {
+            printf("Please input Y or N in capital\n");
+        }
+    }
+
+    printf("Dear %s, WELCOME TO UNDERTALE.\n", name);
+    printf("In undertale, your every choice determines how your story ends.\n");
+    printf("Choose wisely. Follow your heart.\n");
+    printf("\n");
+
+    while (!end(pointer->Info))
+    {
+        if (pointer->Info == 'A')
+        {
+            toriel(&pointer , name , &score);
+        } else if (pointer->Info == 'B' || pointer->Info == 'C') {
+            papyrus(&pointer , name , &score);
+        } else {
+            if (pointer->Info == 'D')
+            {
+                megalovania(&pointer , name , &score);
+            } else if (pointer->Info == 'G') {
+                sanspacifist(&pointer , name , &score);
+            } else {
+                sansneutral(&pointer , name , &score);
+            }
+        }
+    }
+
+    asriel(pointer , name , &score);
+
+    printf("\n");
+    printf("***************************************************************************\n");
+    printf("      Y O U - H A V E - E S C A P E D - T H E - U N D E R G R O U N D\n");
+    printf("***************************************************************************\n");
+    printf("\n");
+
+    printf("Thank you for playing\n");
+    printf(" _______ _______ _____  _______ ______ _______ _______ _____   _______ \n");
+    printf("|   |   |    |  |     \\    ___|   __ \\_    _|   _   |     |_|    ___|\n");
+    printf("|   |   |       |  --  |    ___|      < |   | |       |       |    ___|\n");
+    printf("|_______|__|____|_____/|_______|___|__| |___| |___|___|_______|_______|\n");
+    printf("\n");
+    printf("Remember that every choice you make in life Matters.\n");
+    printf("\n");
+
+    Username(game , ListGames , GameMap , nilai);
+}
+
+void torielfight(int *score , char*Username)
+/*Melakukan permainan Rock , Paper , Scissors dimana user akan menginput Rock , Paper , atau scissors*/
+{
+    int skor = 100;
+    int langkah = 0;
+    Map RPS;
+    CreateEmptyMap(&RPS);
+    Insert(&RPS, "rock", 1);
+    Insert(&RPS, "paper", 2);
+    Insert(&RPS, "scissors", 3);
+    // for (int i = 0;i < RPS.Count ; i++){
+    //     printf("%s %d\n", RPS.Elements[i].Nama, RPS.Elements[i].Skor);
+    // }
+    boolean win = false;
+    boolean valid = false;
+    int random;
+    char *input;
+    while(!valid && !win){
+        langkah++;
+        srand(time(0));
+        random = randint(1, 3);
+        //printf("random integer = %d\n",random);
+        //char *RPSopponet = copystr(RPS.Elements[random - 1].Nama);
+        printf("RPSOpponet = %s\n",RPS.Elements[random - 1].Nama);
+            
+            printf("rock / paper / scissors \n");
+            printf("Masukan pilihanmu:");
+            STARTCOMMANDGAME();
+            input = WORDTOSTRING(currentCMD);
+            //printf("input = %s\n", input);
+            if(IsUsernameEqual(input, "rock") || IsUsernameEqual(input, "paper") || IsUsernameEqual(input, "scissors")){
+                valid = true;
+                printf("masuk\n");
+                //printf("value input = %d\n" , Skor(RPS, input));
+                if (IsUsernameEqual(input, "rock")){
+                    if (random == 3){
+                        printf("Draw\n");
+                    } else if (random == 2){
+                        printf("You lose\n");
+                    } else if (random == 1){
+                        printf("You win\n");
+                        win = true;
+                    }
+                } else if (IsUsernameEqual(input, "paper")){
+                    if (random == 3){
+                        printf("You win\n");
+                        win = true;
+                    } else if (random == 2){
+                        printf("Draw\n");
+                    } else if (random == 1){
+                        printf("You lose\n");
+                    }
+                } else if (IsUsernameEqual(input , "scissors")){
+                    if (random == 3){
+                        printf("You lose\n");
+                    } else if (random == 2){
+                        printf("You win\n");
+                        win = true;
+                    } else if (random == 1){
+                        printf("Draw\n");
+                    }
+                } 
+                //EndWord = true;
+                if(!win){
+                    valid = false;
+                }
+            }
+            else{
+                printf("Inputan Salah! Silahkan Input kembali berupa rock / paper / scissor\n");
+            }
+        
+    }
+    skor = (skor - (langkah * 1)) + 1;
+    (*score) += skor;
+} 
+
+int mainpapyrus()
+/*Basic nya mirip mathquiz cuman bedanya semua mode pertambahan , perkalian , dan pengurangan di jadiin satu 
+dan dipisahkan dengan 3 stage berbeda*/
+{
+    /*FASE 1 - PERTAMBAHAN*/
+    printf("\n! WARNING !\n");
+    printf("Untuk Memenangkan Game ini , Anda Harus mempertahankan health ... agar tidak dibawah 70\n");
+    printf("Setiap Kesalahan akan mengurangi health anda sebesar 10 , jadi pastikan tidak ada kesalahan\n");
+    int health = 100;
+    int  a , b , c;
+    int i = 0;
+    int looping = 3;
+    printf("health anda saat ini = %d\n", health);
+    boolean ulang1 = true;
+    while(ulang1){
+        printf("\nSTAGE 1\n");
+        printf("GET READY ...\n\n");
+        while(i < looping ){
+                a = randint(0,20);
+                b = randint(0,20);
+                c = a + b;
+                int masukan;
+                //printf("hasil adalah %d\n" , c);
+                printf("%d + %d = ", a , b);
+                STARTCOMMANDGAME();
+                if(isInteger(currentCMD)){
+                    //printf("masuk\n");
+                    masukan = WordToInt(currentCMD);
+                    //printf("Masukan kamu adalah %d\n",masukan);
+                    
+                    if (masukan == c){
+                        printf("Jawaban Anda Benar\n");
+                    }
+                    else{
+                        printf("Jawaban Anda Salah \n\n");
+                        printf("Jawabannya seharusnya adalah %d\n",c);
+                        health = health - 10;
+                    }
+                }
+                else{
+                    printf("Input tidak valid\n");
+                }
+                //printf("Skor kuis kamu sekarang adalah %d\n" , skor);
+                IgnoreBlanksCMD();
+                i++;   
+                printf("\n");
+            }
+            boolean valid = false;
+            printf("health anda saat ini = %d\n", health);
+            while(!valid){
+                printf("Apakah anda ingin mengulang stage 1 ? (yes/no)\n");
+                STARTCOMMANDGAME();
+                if(IsUsernameEqual(WORDTOSTRING(currentCMD), "yes")){
+                    i = 0;
+                    //looping = 3;
+                    valid = true;
+                    ulang1 = true;
+                    health = 100;
+                } else if (IsUsernameEqual(WORDTOSTRING(currentCMD), "no")){
+                    ulang1 = false;
+                    valid = true;  
+                }
+                else{
+                    printf("Input Tidak Valid\n\n");
+                }
+            }
+            
+        }
+    /*FASE 2 - PERKALIAN*/
+    i = 0;
+    int health1 = health;
+    boolean ulang2 = true;
+    while(ulang2){
+        printf("\nSTAGE 2\n");
+        printf("GET READY ...\n\n");
+        while(i < looping ){
+                a = randint(0,10);
+                b = randint(0,10);
+                c = a * b;
+                int masukan;
+                //printf("hasil adalah %d\n" , c);
+                printf("%d x %d = ", a , b);
+                STARTCOMMANDGAME();
+                if(isInteger(currentCMD)){
+                    //printf("masuk\n");
+                    masukan = WordToInt(currentCMD);
+                    //printf("Masukan kamu adalah %d\n",masukan);
+                    
+                    if (masukan == c){
+                        printf("Jawaban Anda Benar\n");
+                    }
+                    else{
+                        printf("Jawaban Anda Salah \n\n");
+                        printf("Jawabannya seharusnya adalah %d\n",c);
+                        health = health - 10;
+                    }
+                }
+                else{
+                    printf("Input tidak valid\n");
+                }
+                //printf("Skor kuis kamu sekarang adalah %d\n" , skor);
+                IgnoreBlanksCMD();
+                i++;   
+                printf("\n");
+            }
+            boolean valid = false;
+            printf("health anda saat ini = %d\n", health);
+            while(!valid){
+                printf("Apakah anda ingin mengulang stage 1 ? (yes/no)\n");
+                STARTCOMMANDGAME();
+                if(IsUsernameEqual(WORDTOSTRING(currentCMD), "yes")){
+                    i = 0;
+                    //looping = 3;
+                    valid = true;
+                    ulang2 = true;
+                    health = health1;
+                } else if (IsUsernameEqual(WORDTOSTRING(currentCMD), "no")){
+                    ulang2 = false;
+                    valid = true;  
+                }
+                else{
+                    printf("Input Tidak Valid\n\n");
+                }
+            }
+            
+        }
+
+    i = 0;
+    int health2 = health;
+    boolean ulang3 = true;
+    while(ulang3){
+        printf("\nSTAGE 3\n");
+        printf("GET READY ...\n\n");
+        while(i < looping ){
+                a = randint(0,50);
+                // while(a == 0){
+                //     a = randint(0,50);
+                // }
+                b = randint(0,50);
+                // while(b < a){
+                //      b = randint(0,50);
+                // }
+                if (a >= b){
+                    c = a - b;
+                    //printf("hasil adalah %d\n" , c);
+                    printf("%d - %d = ", a , b);
+                }
+                else{
+                    c = b - a;
+                    printf("%d - %d = ", b , a);
+                }
+                int masukan;
+                //printf("hasil adalah %d\n" , c);
+                //printf("%d x %d = ", a , b);
+                STARTCOMMANDGAME();
+                if(isInteger(currentCMD)){
+                    //printf("masuk\n");
+                    masukan = WordToInt(currentCMD);
+                    //printf("Masukan kamu adalah %d\n",masukan);
+                    
+                    if (masukan == c){
+                        printf("Jawaban Anda Benar\n");
+                    }
+                    else{
+                        printf("Jawaban Anda Salah \n\n");
+                        printf("Jawabannya seharusnya adalah %d\n",c);
+                        health = health - 10;
+                    }
+                }
+                else{
+                    printf("Input tidak valid\n");
+                }
+                //printf("Skor kuis kamu sekarang adalah %d\n" , skor);
+                IgnoreBlanksCMD();
+                i++;   
+                printf("\n");
+            }
+            boolean valid = false;
+            printf("health anda saat ini = %d\n", health);
+            while(!valid){
+                printf("Apakah anda ingin mengulang stage 1 ? (yes/no)\n");
+                STARTCOMMANDGAME();
+                if(IsUsernameEqual(WORDTOSTRING(currentCMD), "yes")){
+                    i = 0;
+                    //looping = 3;
+                    valid = true;
+                    ulang3 = true;
+                    health = health2;
+                } else if (IsUsernameEqual(WORDTOSTRING(currentCMD), "no")){
+                    ulang3 = false;
+                    valid = true;  
+                }
+                else{
+                    printf("Input Tidak Valid\n\n");
+                }
+            }
+            
+        }
+        printf("health anda saat ini = %d\n", health);
+    
+    return health;
+}
+
+void papyrusfight(int *score , char*Username)
+/*Melakukan looping hingga health papyrus harus diatas 70*/
+{
+    int papyrus = mainpapyrus();
+    while (papyrus < 70){
+        printf("Anda gagal dalam permainan ini\n");
+        printf("Anda harus mengulangi game ini kembali untuk melanjutkan ke cerita selanjutnya\n");
+        papyrus = mainpapyrus();
+    }
+    (*score) += papyrus;
+}
+
+void sansfight(int *score , char *Username)
+/*Menyusun beberapa jenis uang dengan jumlah tertentu agar sesuai dengan jumlah uang yang harus dibayarkan*/
+{
+    int skor = 100;
+    int langkah = 0;
+    printf("\n");
+    printf("%s ingin membeli makanan di restoran %s dengan suatu harga tertentu . \n" , Username , Username);
+    printf("Bantulah %s untuk menyiapkan uangnya agar sesuai dengan jumlah uang yang harus dibayar . \n" , Username , Username);
+    printf("\n");
+    int quarters = 25;
+    int dimes = 10;
+    int nickels = 5;
+    int pennies = 1;
+    srand(time(0));
+    int random = randint(1,200);
+    printf("Jumlah uang yang harus %s bayar adalah %d\n",Username ,  random);
+    printf("Keterangan : \n");
+    printf ("quarters = 25 \n");
+    printf ("dimes = 10 \n");
+    printf ("nickels = 5 \n");
+    printf ("pennies = 1 \n");
+    printf("\n");
+    int masukanquarters , masukandimes , masukannickels , masukanpennies;
+    boolean valid = false;
+    boolean win = false;
+    int total;
+    while (!win){
+        while(!valid){
+        printf("Masukkan jumlah quarters : \n");
+        STARTCOMMANDGAME();
+        if(isInteger(currentCMD)){
+            masukanquarters = WordToInt(currentCMD);
+            valid = true;
+            }
+        
+        else{
+            printf("Input tidak valid\n");
+        }
+    }
+
+        valid = false;
+        while(!valid){
+            printf("Masukkan jumlah dimes : \n");
+            STARTCOMMANDGAME();
+            if(isInteger(currentCMD)){
+                masukandimes = WordToInt(currentCMD);
+                valid = true;
+                }
+            
+            else{
+                printf("Input tidak valid\n");
+            }
+        }
+
+        valid = false;
+        while(!valid){
+            printf("Masukkan jumlah nickels : \n");
+            STARTCOMMANDGAME();
+            if(isInteger(currentCMD)){
+                masukannickels = WordToInt(currentCMD);
+                valid = true;
+                }
+            
+            else{
+                printf("Input tidak valid\n");
+            }
+        }
+
+        valid = false;
+        while(!valid){
+            printf("Masukkan jumlah pennies : \n");
+            STARTCOMMANDGAME();
+            if(isInteger(currentCMD)){
+                masukanpennies = WordToInt(currentCMD);
+                valid = true;
+                }
+            
+            else{
+                printf("Input tidak valid\n");
+            }
+        }
+
+        total = (quarters * masukanquarters) + (dimes * masukandimes) + (nickels * masukannickels) + (pennies * masukanpennies);
+        if (total == random){
+            printf("Selamat anda berhasil\n");
+            win = true;
+        }
+        else if (total > random){
+            printf("Jumlah uang anda lebih banyak dari yang dibutuhkan\n");
+            printf("Silahkan coba lagi\n");
+        }
+        else{
+            printf("Jumlah uang anda kurang dari yang dibutuhkan\n");
+            printf("Silahkan coba lagi\n");
+        }
+        printf("\n");
+    }
+    skor = (skor - (langkah * 10)) + 10;
+    (*score) += skor;
+}
+void CreateRandomPointAsriel(Point *P){
+    int x = randint(0, 4);
+    int y = randint(0, 4);
+    CreatePoint(P , x, y);
+}
+
+void PrintAlphabet(Map MiniGames , int index , char*input)
+/*Melakukan print alphabet sesuai value yang dimilikinya*/
+{ 
+    int value;
+    value = MiniGames.Elements[index].Skor;
+    if(value == 1 || value == 0 || value == -999){
+        printf("  %s  ",input);
+    }
+    else if(value == -1){
+        printf("     ");
+    }
+    else if(value == 100){
+        printf(" WIN ");
+    }
+    else if(value == -100){
+        printf(" BOM ");
+    }
+}
+
+void Axe(){
+    printf(" _,-,\n");
+    printf("T_  |\n");
+    printf("||`-'\n");
+    printf("||   \n");
+    printf("||   \n");
+    printf("~~ \n");                                                  
+}
+
+
+
+void WelcomingAsrielGames(){
+printf("\n");
+printf("           *O*                                                   \n");
+printf("           |X|_                                                  \n");
+printf("           |X||-------________________________________________   \n");
+printf(",O---------+X| \\___   `=------------------------------- _____ \\*\n");
+printf("`O---------+X| /      ,=-------------------------------'      /* \n");
+printf("           |X||-------~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   \n");
+printf("           |X|~                                                  \n");
+printf("           *0*                                                   \n");
+printf("\n");
+
+printf("\n");
+printf("==================================================================\n");
+printf("=                  WELCOME TO THE FINAL STAGE                    =\n");
+printf("==================================================================\n");
+printf ("\n");
+}
+
+void AsrielGameRule(){
+printf("******************************************************************\n");
+printf("*                       RULES OF THE GAME                        *\n");
+printf("******************************************************************\n");
+printf("*             DO NOT USING WHITESPACE WHEN INPUT COMMAND!        *\n");
+printf("*               DO NOT OPEN THE BOX THAT CONTAIN BOMB            *\n");
+printf("*           THERE IS ONLY ONE TREASURE THAT U SHOUL FIND IT      *\n");
+printf("******************************************************************\n");
+
+printf("\n");
+printf("~~~~~~~~~~~~~~~~~~~~~~~~~~ GOOD LUCK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+printf("\n");
+}
+void PrintPetaAsriel(Map MiniGames){
+    printf("Berikut merupakan peta permainan\n");
+    int i,j;
+    int alphabet = 0;
+    int value;
+    for(i = 0; i < 11; i++)
+    {
+        for(j = 0; j < 11; j++)
+        {
+            
+            if(i % 2 == 0)
+            {
+                if (j % 2 == 0)
+                {
+                    printf(" ");
+                }
+                else 
+                {
+                    printf("-----");
+                }
+            }
+            
+            else 
+            {
+                if(j % 2 == 0)
+                {
+                    printf("|");
+                }
+                
+                else 
+                {
+                    if(i == 1 && j == 1)
+                    {
+                        // value = MiniGames.Elements[0].Skor;
+                        // if(value == 1 || value == 0 || value == -999){
+                        //     printf("  A  ");
+                        // }
+                        // else if(value == -1){
+                        //     printf("  X  ");
+                        // }
+                        // else if(value == 100){
+                        //     printf(" WIN ");
+                        // }
+                        // else if(value == -100){
+                        //     printf(" BOM ");
+                        // }
+                    PrintAlphabet(MiniGames , alphabet , "A");
+                    }
+                    else if(i == 1 && j == 3)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "B");
+                    }
+                    else if(i == 1 && j == 5)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "C");
+                    }
+                    else if(i == 1 && j == 7)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "D");
+                    }
+                    else if(i == 1 && j == 9)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "E");
+                    }
+                    else if(i == 3 && j == 1)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "F");
+                    }
+                    else if(i == 3 && j == 3)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "G");
+                    }
+                    else if(i == 3 && j == 5)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "H");
+                    }
+                    else if(i == 3 && j == 7)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "I");
+                    }
+                    else if(i == 3 && j == 9)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "J");
+                    }
+                    else if(i == 5 && j == 1)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "K");
+                    }
+                    else if(i == 5 && j == 3)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "L");
+                    }
+                    else if(i == 5 && j == 5)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "M");
+                    }
+                    else if(i == 5 && j == 7)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "N");
+                    }
+                    else if(i == 5 && j == 9)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "O");
+                    }
+                    else if(i == 7 && j == 1)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "P");
+                    }
+                    else if(i == 7 && j == 3)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "Q");
+                    }
+                    else if(i == 7 && j == 5)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "R");
+                    }
+                    else if(i == 7 && j == 7)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "S");
+                    }
+                    else if(i == 7 && j == 9)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "T");
+                    }
+                    else if(i == 9 && j == 1)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "U");
+                    }
+                    else if(i == 9 && j == 3)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "V");
+                    }
+                    else if(i == 9 && j == 5)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "W");
+                    }
+                    else if(i == 9 && j == 7)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "X");
+                    }
+                    else if(i == 9 && j == 9)
+                    {
+                        PrintAlphabet(MiniGames , alphabet , "Y");
+                    }
+                    alphabet++;
+            }
+        }
+        
+    }
+    printf("\n");
+}
+}
+
+void InsertMapMiniGames(Map *M, keytype k, valuetype v)
+{
+	if(IsEmptyMap(*M)){
+		(*M).Elements[(*M).Count].Nama = k;
+		(*M).Elements[(*M).Count].Skor = v;
+		(*M).Count++;
+	}
+	else{
+		if(!IsMemberMap(*M , k)){
+			(*M).Elements[(*M).Count].Nama = k;
+			(*M).Elements[(*M).Count].Skor = v;
+			(*M).Count++;
+		}
+	}
+}
+
+int mainasriel(char*Username){
+    WelcomingAsrielGames();
+    AsrielGameRule();
+    int skor = 100;
+    int langkah = 0;
+    Point bomb1, bomb2, bomb3, bomb4, bomb5 , treasure;
+    Map asriel_map;
+    CreateEmptyMap(&asriel_map);
+    CreateRandomPointAsriel(&bomb1);
+    CreateRandomPointAsriel(&bomb2);
+    CreateRandomPointAsriel(&bomb3);
+    CreateRandomPointAsriel(&bomb4);
+    CreateRandomPointAsriel(&bomb5);
+    CreateRandomPointAsriel(&treasure);
+    /*Memastikan setiap bomb dan treasure menghasilkan Point Value yang berbeda beda*/
+    while(IsPointSama(bomb1, bomb2) || IsPointSama(bomb1, bomb3) || IsPointSama(bomb1, bomb4) || IsPointSama(bomb1, bomb5) || IsPointSama(bomb1,treasure)){
+        CreateRandomPointAsriel(&bomb1);
+    }
+    while(IsPointSama(bomb2 , bomb1) || IsPointSama(bomb2,bomb3) || IsPointSama(bomb2,bomb4) || IsPointSama(bomb2,bomb5) || IsPointSama(bomb2,treasure)){
+        CreateRandomPointAsriel(&bomb2);
+    }
+    while(IsPointSama(bomb3 , bomb1) || IsPointSama(bomb3,bomb2) || IsPointSama(bomb3,bomb4) || IsPointSama(bomb3,bomb5) || IsPointSama(bomb3,treasure)){
+        CreateRandomPointAsriel(&bomb3);
+    }
+    while(IsPointSama(bomb4 , bomb1) || IsPointSama(bomb4,bomb2) || IsPointSama(bomb4,bomb3) || IsPointSama(bomb4,bomb5) || IsPointSama(bomb4,treasure)){
+        CreateRandomPointAsriel(&bomb4);
+    }
+    while(IsPointSama(bomb5 , bomb1) || IsPointSama(bomb5,bomb2) || IsPointSama(bomb5,bomb3) || IsPointSama(bomb5,bomb4) || IsPointSama(bomb5,treasure)){
+        CreateRandomPointAsriel(&bomb5);
+    }
+    
+    /*Inisiasi Map*/
+    int TreasureMap[5][5];
+    int x,y;
+    for(x = 0; x < 5; x++){
+        for(y = 0; y < 5; y++){
+            /*Melakukan assign matrix value sebesar -999 ke lokasi yang merupakan bomb*/
+            if((x == Absis(bomb1) && y == Ordinat(bomb1)) || (x == Absis(bomb2) && y == Ordinat(bomb2)) || (x == Absis(bomb3) && y == Ordinat(bomb3)) || (x == Absis(bomb4) && y == Ordinat(bomb4)) || (x == Absis(bomb5) && y == Ordinat(bomb5))){
+                TreasureMap[x][y] = -999;
+            }
+            /*Melakukan assign matrix value sebesar 0 ke lokasi yang merupakan treasure*/
+            else if(x == Absis(treasure) && y == Ordinat(treasure)){
+                TreasureMap[x][y] = 0;
+            }
+            /*Melakukan assign matrix value sebesar 1 ke lokasi yang bukan merupakan bomb / treasure*/
+            else{
+                TreasureMap[x][y] = 1;
+            }
+        }
+    }
+    
+    InsertMapMiniGames(&asriel_map , "A" , TreasureMap[0][0]);
+    InsertMapMiniGames(&asriel_map , "B" , TreasureMap[0][1]);
+    InsertMapMiniGames(&asriel_map , "C" , TreasureMap[0][2]);
+    InsertMapMiniGames(&asriel_map , "D" , TreasureMap[0][3]);
+    InsertMapMiniGames(&asriel_map , "E" , TreasureMap[0][4]);
+    InsertMapMiniGames(&asriel_map , "F" , TreasureMap[1][0]);
+    InsertMapMiniGames(&asriel_map , "G" , TreasureMap[1][1]);
+    InsertMapMiniGames(&asriel_map , "H" , TreasureMap[1][2]);
+    InsertMapMiniGames(&asriel_map , "I" , TreasureMap[1][3]);
+    InsertMapMiniGames(&asriel_map , "J" , TreasureMap[1][4]);
+    InsertMapMiniGames(&asriel_map , "K" , TreasureMap[2][0]);
+    InsertMapMiniGames(&asriel_map , "L" , TreasureMap[2][1]);
+    InsertMapMiniGames(&asriel_map , "M" , TreasureMap[2][2]);
+    InsertMapMiniGames(&asriel_map , "N" , TreasureMap[2][3]);
+    InsertMapMiniGames(&asriel_map , "O" , TreasureMap[2][4]);
+    InsertMapMiniGames(&asriel_map , "P" , TreasureMap[3][0]);
+    InsertMapMiniGames(&asriel_map , "Q" , TreasureMap[3][1]);
+    InsertMapMiniGames(&asriel_map , "R" , TreasureMap[3][2]);
+    InsertMapMiniGames(&asriel_map , "S" , TreasureMap[3][3]);
+    InsertMapMiniGames(&asriel_map , "T" , TreasureMap[3][4]);
+    InsertMapMiniGames(&asriel_map , "U" , TreasureMap[4][0]);
+    InsertMapMiniGames(&asriel_map , "V" , TreasureMap[4][1]);
+    InsertMapMiniGames(&asriel_map , "W" , TreasureMap[4][2]);
+    InsertMapMiniGames(&asriel_map , "X" , TreasureMap[4][3]);
+    InsertMapMiniGames(&asriel_map , "Y" , TreasureMap[4][4]);
+    PrintPetaAsriel(asriel_map);
+    int TM = 0;
+    for(x = 0; x < 5; x++){
+        for(y = 0; y < 5; y++){
+            printf("%d " , asriel_map.Elements[TM].Skor);
+            TM++;
+        }
+        printf("\n");
+    }
+    // PrintMap(asriel_map);
+    // printf("\n");
+    /*Melakukan Print Map */
+    //PrintPetaAsriel();
+    
+    boolean win = false;
+    boolean bomb = false;
+
+    /*Selama dia gakena bomb atau treasure terus diiterasi*/
+    while(!bomb && !win){
+            langkah++;
+            printf("Pilih kotak dengan memilih huruf yang tersedia : \n");
+            STARTCOMMANDGAME();
+            char *input = WORDTOSTRING(currentCMD);
+            valuetype value = Skor(asriel_map , input);
+            //printf("value : %d\n",value);
+            
+            /*Jika Inputan Valid maka cek setiap kondisi*/
+            if(IsMemberMap(asriel_map , input)){
+                if(value == 1){
+                    //printf("TEST1\n");
+                    for(int index = 0;index < asriel_map.Count ; index++){
+                        if(IsUsernameEqual(asriel_map.Elements[index].Nama , input)){
+                            //printf("masuk1\n");
+                            asriel_map.Elements[index].Skor = -1;
+                        }
+                    }
+                    PrintPetaAsriel(asriel_map);
+                }
+                else if(value == 0){
+                    //printf("TEST2\n");
+                    for(int index = 0;index < asriel_map.Count ; index++){
+                        if(IsUsernameEqual(asriel_map.Elements[index].Nama , input)){
+                            //printf("masuk2\n");
+                            asriel_map.Elements[index].Skor = 100;
+                        }
+                    }
+                    PrintPetaAsriel(asriel_map);
+                    //printf("nemu harta karun\n");
+                    win = true;
+                }
+                else if(value == -999){
+                    //printf("TEST3\n");
+                        for(int index = 0;index < asriel_map.Count ; index++){
+                            if(IsUsernameEqual(asriel_map.Elements[index].Nama , input)){
+                                //printf("masuk3\n");
+                                asriel_map.Elements[index].Skor = -100;
+                            }
+                        }
+                        PrintPetaAsriel(asriel_map);
+                        //printf("Kena Bom\n");
+                        bomb = true;
+                    }
+                else if(value == -1){
+                    printf("Kotak sudah terbuka\n");
+                }
+            }
+            else{
+                printf("Input tidak valid, silahkan masukkan input yang valid\n");
+            }
+            int TM = 0;
+            for(x = 0; x < 5; x++){
+                for(y = 0; y < 5; y++){
+                    printf("%d " , asriel_map.Elements[TM].Skor);
+                    TM++;
+                }
+            printf("\n");
+        }
+    }
+    if(bomb){
+        skor = 0;
+    }
+    else if (win){
+        skor = (skor - (langkah * 5)) + 5;
+    }
+    return skor;
+}
+
+void asrielfight(int *score , char *Username){
+    int skor = mainasriel(Username);
+    while (skor == 0){
+        printf("\nKamu kalah, silahkan coba lagi !\n");
+        delay(3);
+        skor = mainasriel(Username);
+    }
+    (*score) += skor;
+}
+
+
+//int main()
+//{
+//    undertale();
+//    return 0;
+//}
 
 
 // int main()
