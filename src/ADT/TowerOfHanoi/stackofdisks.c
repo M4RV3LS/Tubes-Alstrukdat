@@ -42,14 +42,25 @@ void PushSS(STACKSS * S, TipeElemen X, int sz)
 }
 
 /* ************ Menghapus sebuah elemen STACKSS ************ */
-void PopSS(STACKSS * S, Disk* X)
+void PopSS(STACKSS * S, Disk* X, int jml_pir, char * temp)
 /* Menghapus X dari STACKSS S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah Invalidai elemen TOP yang lama, TOP berkurang 1 */
 {
     X->sym = InfoTop(*S).sym;
     X->size = InfoTop(*S).size;
-    InfoTop(*S).sym = "    |    ";
+    int width = jml_pir*2-1;
+    int ctr;
+    for (ctr=0;ctr<width;ctr++)
+    {
+        if (ctr==jml_pir-1)
+        {
+            temp[ctr] = '|';
+        } else {
+            temp[ctr] = ' ';
+        }
+    }
+    InfoTop(*S).sym = temp;
     InfoTop(*S).size = 6;
     Top(*S)--;
 }
