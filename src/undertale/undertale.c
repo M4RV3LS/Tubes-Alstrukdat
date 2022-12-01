@@ -595,8 +595,8 @@ void undertale()
 
 }
 
-int main()
-{
-    undertale();
-    return 0;
-}
+//int main()
+//{
+//    undertale();
+//    return 0;
+//}
