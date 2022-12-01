@@ -2,14 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
-#include "ADT/mesinkar2.h"
-#include "ADT/mesinkata2.h"
-#include "ADT/arrayOfString.h"
-#include "boolean.h"
-#include "ADT/queue.h"
-#include "ADT/SetMap/map.h"
-#include "ADT/Stack/stack.h"
-#include "ADT/SnakeOnMeteor/snakeonmeteor.h"
 
 
 void torielfight(int *score , char*Username)
@@ -88,7 +80,7 @@ void torielfight(int *score , char*Username)
     (*score) += skor;
 } 
 
-int mainsans()
+int mainpapyrus()
 /*Basic nya mirip mathquiz cuman bedanya semua mode pertambahan , perkalian , dan pengurangan di jadiin satu 
 dan dipisahkan dengan 3 stage berbeda*/
 {
@@ -291,25 +283,25 @@ dan dipisahkan dengan 3 stage berbeda*/
     return health;
 }
 
-void sansfight(int *score , char*Username)
+void papyrusfight(int *score , char*Username)
 /*Melakukan looping hingga health papyrus harus diatas 70*/
 {
-    int sans = mainsans();
+    int papyrus = mainpapyrus();
     while (papyrus < 70){
         printf("Anda gagal dalam permainan ini\n");
         printf("Anda harus mengulangi game ini kembali untuk melanjutkan ke cerita selanjutnya\n");
-        sans = mainsans();
+        papyrus = mainpapyrus();
     }
-    (*score) += sans;
+    (*score) += papyrus;
 }
 
-void papyrusfight(int *score , char *Username)
+void sansfight(int *score , char *Username)
 /*Menyusun beberapa jenis uang dengan jumlah tertentu agar sesuai dengan jumlah uang yang harus dibayarkan*/
 {
     int skor = 100;
     int langkah = 0;
     printf("\n");
-    printf("%s ingin membeli makanan di restoran Papyrus dengan suatu harga tertentu . \n" , Username);
+    printf("%s ingin membeli makanan di restoran %s dengan suatu harga tertentu . \n" , Username , Username);
     printf("Bantulah %s untuk menyiapkan uangnya agar sesuai dengan jumlah uang yang harus dibayar . \n" , Username , Username);
     printf("\n");
     int quarters = 25;
@@ -418,7 +410,7 @@ void PrintAlphabet(Map MiniGames , int index , char*input)
         printf("  %s  ",input);
     }
     else if(value == -1){
-        printf("  0  ");
+        printf("     ");
     }
     else if(value == 100){
         printf(" WIN ");
@@ -830,6 +822,7 @@ void asrielfight(int *score , char *Username){
     int skor = mainasriel(Username);
     while (skor == 0){
         printf("\nKamu kalah, silahkan coba lagi !\n");
+        delay(3);
         skor = mainasriel(Username);
     }
     (*score) += skor;

@@ -11,7 +11,8 @@
     "stdio.h": "c",
     "stdlib.h": "c",
     "stackofdisks.h": "c",
-    "arrayhangman.h": "c"
+    "arrayhangman.h": "c",
+    "undertaleminigames.h": "c"
   },
   "C_Cpp.errorSquiggles": "Disabled"
 }

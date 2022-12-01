@@ -1,5 +1,6 @@
 #include "tree.h"
 #include "mesinkata.h"
+#include "undertaleminigames.h"
 
 void delay(int number_of_seconds);
 
