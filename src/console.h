@@ -198,6 +198,8 @@ void asriel(BinTree p , char*name , int *score);
 void torielfight(int *score , char*Username);;
 /* Permainan Rock Paper Scissor*/
 
+void WelcomingGamePapyrus();
+
 int mainpapyrus();
 /*Basic nya mirip mathquiz cuman bedanya semua mode pertambahan , perkalian , dan pengurangan di jadiin satu 
 dan dipisahkan dengan 3 stage berbeda*/

@@ -171,7 +171,7 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
             //gamename[j] = '\0';  
             //InsertIn(string , ListGames , i);
             InsertLast(ListGames , gamename);
-            printf("%s\n" , (*ListGames).A[i-1]);
+            //printf("%s\n" , (*ListGames).A[i-1]);
         }
         /*GAME HISTORY*/
         ADVLine(); //printf("%s\n" , currentCMD);
@@ -192,7 +192,7 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
             //gamename[j] = '\0';  
             //InsertIn(string , ListGames , i);
             PushStack(GameHistory, kata); 
-            printf("%s\n" , InfoTop(*GameHistory));
+            //printf("%s\n" , InfoTop(*GameHistory));
         }
         (*GameHistory) = ReverseStack(*GameHistory);
         //printf("Ini Setelah Reverse\n");
@@ -216,16 +216,8 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
                 kata = WORDTOSTRING(currentWord);
                 ADVWORD();
                 score = WordToInt(currentWord);
-                //printf("panjang currentWord score = %d\n" , currentWord.Length);
-                //printf("%d\n",score);
-                // while (j <= currentWord.Length)
-                // {
-                //     gamename[j] = kata[j];
-                //     j++;
-                // }
-                //gamename[j] = '\0';  
                 Insert(&Temp, kata, score);
-                printf("%s %d\n" , (Temp).Elements[idxMap].Nama , (Temp).Elements[idxMap].Skor);
+                //printf("%s %d\n" , (Temp).Elements[idxMap].Nama , (Temp).Elements[idxMap].Skor);
                 idxMap++;
             }
             
@@ -361,27 +353,37 @@ void QUEUEGAME(Queue *q1, ArrayDin game){
     printf("\n");
     LISTGAME(&game);
 
-
-    // Queue q;
-    printf("Nomor Game yang mau ditambahkan ke antrian : ");
+    boolean valid = false;
+    while(!valid){
+        printf("\n");
+        printf("Nomor Game yang mau ditambahkan ke antrian : ");
     int nomor_game;
     // CreateQueue(&q);
-    STARTCOMMAND();
-    nomor_game = WordToInt(currentCMD);
-    if (nomor_game > game.Neff){
-         printf("Nomor permainan tidak valid\n");
-    } else {
-        char *string = game.A[nomor_game - 1];
-        char *gamename = (char*) malloc (LengthKalimat(game.A[nomor_game - 1]) * sizeof(char));
-        int j = 0;
-        while (j <= LengthKalimat(game.A[nomor_game - 1]))
-        {
-            gamename[j] = string[j];
-            j++;
+    STARTCOMMANDGAME();
+    if(isInteger(currentCMD)){
+        nomor_game = WordToInt(currentCMD);
+        if (nomor_game > game.Neff){
+            printf("Nomor permainan tidak valid\n");
+        } else {
+            char *string = game.A[nomor_game - 1];
+            char *gamename = (char*) malloc (LengthKalimat(game.A[nomor_game - 1]) * sizeof(char));
+            int j = 0;
+            while (j <= LengthKalimat(game.A[nomor_game - 1]))
+            {
+                gamename[j] = string[j];
+                j++;
+            }
+            enqueue(q1, gamename);
+            printf("Game berhasil ditambahkan kedalam daftar antrian.\n");
+            valid = true;}
         }
-        enqueue(q1, gamename);
-        printf("Game berhasil ditambahkan kedalam daftar antrian.\n");
+        else{
+            printf("Nomor permainan tidak valid\n");
+        }
     }
+    // Queue q;
+    
+    
 }
 
 void QUIT() {
@@ -456,7 +458,7 @@ void SAVEBNMO(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
     char path[50]; 
   
     stringConcat("../data/",filename,path); 
-    printf("%s\n",path);
+    //printf("%s\n",path);
     fp = fopen (path,"w+"); 
     if(fp == NULL)
     {
@@ -469,14 +471,17 @@ void SAVEBNMO(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
         fprintf(fp,"\n%s",(*ListGames).A[i]); 
     } 
     fprintf(fp , "\n%d" , Top(*GameHistory) + 1);
-    printf("Top = %d\n",Top(*GameHistory));
+    //printf("Top = %d\n",Top(*GameHistory));
     INFOTYPE Game;
+    Stack Temp;
+    CreateEmptyStack(&Temp);
     while(!IsEmptyStack(*GameHistory))
     {   PopStack(GameHistory , &Game);
+        PushStack(&Temp , Game);
         //printf("Game = %s\n",Game);
         fprintf(fp , "\n%s" , Game);
-        
     }
+    (*GameHistory) = ReverseStack(Temp);
     int idxArrMap;
     int idxMap;
     char *name;
@@ -2572,7 +2577,7 @@ void toriel(BinTree* p , char*name , int *score)
 }
 
 void papyrus(BinTree* p , char*name , int *score)
-{
+{   printf("\n");
     printf("              C H A P T E R - 2 , P A P Y R U S           \n");
     printf("************************************************************\n");
     delay(2);
@@ -3056,6 +3061,9 @@ void undertale(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int nilai)
     Username(game , ListGames , GameMap , nilai);
 }
 
+// void WelcomingTorielFight(){
+//     printf("\n");
+// }
 void torielfight(int *score , char*Username)
 /*Melakukan permainan Rock , Paper , Scissors dimana user akan menginput Rock , Paper , atau scissors*/
 {
@@ -3082,13 +3090,13 @@ void torielfight(int *score , char*Username)
         printf("RPSOpponet = %s\n",RPS.Elements[random - 1].Nama);
             
             printf("rock / paper / scissors \n");
-            printf("Masukan pilihanmu:");
+            printf("Enter your choice:");
             STARTCOMMANDGAME();
             input = WORDTOSTRING(currentCMD);
             //printf("input = %s\n", input);
             if(IsUsernameEqual(input, "rock") || IsUsernameEqual(input, "paper") || IsUsernameEqual(input, "scissors")){
                 valid = true;
-                printf("masuk\n");
+                //printf("masuk\n");
                 //printf("value input = %d\n" , Skor(RPS, input));
                 if (IsUsernameEqual(input, "rock")){
                     if (random == 3){
@@ -3129,22 +3137,43 @@ void torielfight(int *score , char*Username)
         
     }
     skor = (skor - (langkah * 1)) + 1;
+    printf("skor RPS %d\n", skor);
     (*score) += skor;
 } 
-
+void WelcomingGamePapyrus(){
+printf("     __________ \n");
+printf("    | ________ |\n");
+printf("    ||12345678||\n");
+printf("    |~~~~~~~~~~|\n");
+printf("    |[M|#|C][-]|\n");
+printf("    |[7|8|9][+]|\n");
+printf("    |[4|5|6][x]|\n");
+printf("    |[1|2|3][%]|\n");
+printf("    |[.|O|:][=]|\n");
+printf("    ------------\n");
+printf("\n");
+printf(" :::::::::::::::::::::\n");
+printf(" ::  !! WARNING !!  ::\n");
+printf(" :::::::::::::::::::::\n");
+printf("\n");
+int rs = 175;
+int ls = 174;
+printf("%c Prepare Your Calculator %c\n",rs , ls);
+printf("%c To win this game, you must maintain your health so that it is not below 70 %c\n",rs , ls);
+printf("%c Every Mistake will reduce your health by 10 , so make sure there are no mistakes %c\n",rs , ls);
+}
 int mainpapyrus()
 /*Basic nya mirip mathquiz cuman bedanya semua mode pertambahan , perkalian , dan pengurangan di jadiin satu 
 dan dipisahkan dengan 3 stage berbeda*/
 {
     /*FASE 1 - PERTAMBAHAN*/
-    printf("\n! WARNING !\n");
-    printf("Untuk Memenangkan Game ini , Anda Harus mempertahankan health ... agar tidak dibawah 70\n");
-    printf("Setiap Kesalahan akan mengurangi health anda sebesar 10 , jadi pastikan tidak ada kesalahan\n");
+    WelcomingGamePapyrus();
+    printf("\n");
     int health = 100;
     int  a , b , c;
     int i = 0;
     int looping = 3;
-    printf("health anda saat ini = %d\n", health);
+    printf("Your Health = %d\n", health);
     boolean ulang1 = true;
     while(ulang1){
         printf("\nSTAGE 1\n");
@@ -3163,16 +3192,16 @@ dan dipisahkan dengan 3 stage berbeda*/
                     //printf("Masukan kamu adalah %d\n",masukan);
                     
                     if (masukan == c){
-                        printf("Jawaban Anda Benar\n");
+                        printf("Your Answer Is Correct\n");
                     }
                     else{
-                        printf("Jawaban Anda Salah \n\n");
-                        printf("Jawabannya seharusnya adalah %d\n",c);
+                        printf("Your Ansewr Is Wrong \n\n");
+                        printf("The Answer Should Be %d\n",c);
                         health = health - 10;
                     }
                 }
                 else{
-                    printf("Input tidak valid\n");
+                    printf("Invalid Input !\n");
                 }
                 //printf("Skor kuis kamu sekarang adalah %d\n" , skor);
                 IgnoreBlanksCMD();
@@ -3180,9 +3209,9 @@ dan dipisahkan dengan 3 stage berbeda*/
                 printf("\n");
             }
             boolean valid = false;
-            printf("health anda saat ini = %d\n", health);
+            printf("Your Health =  %d\n", health);
             while(!valid){
-                printf("Apakah anda ingin mengulang stage 1 ? (yes/no)\n");
+                printf("Do You Want To Repeat Stage 1 ? (yes/no)\n");
                 STARTCOMMANDGAME();
                 if(IsUsernameEqual(WORDTOSTRING(currentCMD), "yes")){
                     i = 0;
@@ -3195,7 +3224,7 @@ dan dipisahkan dengan 3 stage berbeda*/
                     valid = true;  
                 }
                 else{
-                    printf("Input Tidak Valid\n\n");
+                    printf("Invalid Input !\n\n");
                 }
             }
             
@@ -3221,16 +3250,16 @@ dan dipisahkan dengan 3 stage berbeda*/
                     //printf("Masukan kamu adalah %d\n",masukan);
                     
                     if (masukan == c){
-                        printf("Jawaban Anda Benar\n");
+                        printf("Your Answer Is Correct\n");
                     }
                     else{
-                        printf("Jawaban Anda Salah \n\n");
-                        printf("Jawabannya seharusnya adalah %d\n",c);
+                        printf("Your Answer Is Wrong \n\n");
+                        printf("The Answer Should Be %d\n",c);
                         health = health - 10;
                     }
                 }
                 else{
-                    printf("Input tidak valid\n");
+                    printf("Invalid Input\n");
                 }
                 //printf("Skor kuis kamu sekarang adalah %d\n" , skor);
                 IgnoreBlanksCMD();
@@ -3238,9 +3267,9 @@ dan dipisahkan dengan 3 stage berbeda*/
                 printf("\n");
             }
             boolean valid = false;
-            printf("health anda saat ini = %d\n", health);
+            printf("Your Health =  %d\n", health);
             while(!valid){
-                printf("Apakah anda ingin mengulang stage 1 ? (yes/no)\n");
+                printf("Do You Want To Repeat Stage 2 ? (yes/no)\n");
                 STARTCOMMANDGAME();
                 if(IsUsernameEqual(WORDTOSTRING(currentCMD), "yes")){
                     i = 0;
@@ -3253,7 +3282,7 @@ dan dipisahkan dengan 3 stage berbeda*/
                     valid = true;  
                 }
                 else{
-                    printf("Input Tidak Valid\n\n");
+                    printf("Invalid Input !\n\n");
                 }
             }
             
@@ -3293,16 +3322,16 @@ dan dipisahkan dengan 3 stage berbeda*/
                     //printf("Masukan kamu adalah %d\n",masukan);
                     
                     if (masukan == c){
-                        printf("Jawaban Anda Benar\n");
+                        printf("Your Answer Is Correct\n");
                     }
                     else{
-                        printf("Jawaban Anda Salah \n\n");
-                        printf("Jawabannya seharusnya adalah %d\n",c);
+                        printf("Your Answer Is Wrong \n\n");
+                        printf("The Answer Should Be %d\n",c);
                         health = health - 10;
                     }
                 }
                 else{
-                    printf("Input tidak valid\n");
+                    printf("Invalid Input\n");
                 }
                 //printf("Skor kuis kamu sekarang adalah %d\n" , skor);
                 IgnoreBlanksCMD();
@@ -3310,9 +3339,9 @@ dan dipisahkan dengan 3 stage berbeda*/
                 printf("\n");
             }
             boolean valid = false;
-            printf("health anda saat ini = %d\n", health);
+            printf("Your Health =  %d\n", health);
             while(!valid){
-                printf("Apakah anda ingin mengulang stage 1 ? (yes/no)\n");
+                printf("Do You Want To Repeat Stage 3 ? (yes/no)\n");
                 STARTCOMMANDGAME();
                 if(IsUsernameEqual(WORDTOSTRING(currentCMD), "yes")){
                     i = 0;
@@ -3325,12 +3354,12 @@ dan dipisahkan dengan 3 stage berbeda*/
                     valid = true;  
                 }
                 else{
-                    printf("Input Tidak Valid\n\n");
+                    printf("Invalid Input !\n\n");
                 }
             }
             
         }
-        printf("health anda saat ini = %d\n", health);
+        printf("Your Current Health = %d\n", health);
     
     return health;
 }
@@ -3340,10 +3369,11 @@ void papyrusfight(int *score , char*Username)
 {
     int papyrus = mainpapyrus();
     while (papyrus < 70){
-        printf("Anda gagal dalam permainan ini\n");
-        printf("Anda harus mengulangi game ini kembali untuk melanjutkan ke cerita selanjutnya\n");
+        printf("You Failed This Game\n");
+        printf("You have to repeat this game again to continue to the next story !\n");
         papyrus = mainpapyrus();
     }
+    //printf("Skor math quiz %d\n",papyrus);
     (*score) += papyrus;
 }
 
@@ -3353,8 +3383,8 @@ void sansfight(int *score , char *Username)
     int skor = 100;
     int langkah = 0;
     printf("\n");
-    printf("%s ingin membeli makanan di restoran %s dengan suatu harga tertentu . \n" , Username , Username);
-    printf("Bantulah %s untuk menyiapkan uangnya agar sesuai dengan jumlah uang yang harus dibayar . \n" , Username , Username);
+    printf("%s want to cook his favorite food %s So he has to buy some groceries in the market for a certain amount. \n" , Username , Username);
+    printf("Help %s to prepare the money she needs to pay for her groceries while at the market . \n" , Username , Username);
     printf("\n");
     int quarters = 25;
     int dimes = 10;
@@ -3362,8 +3392,8 @@ void sansfight(int *score , char *Username)
     int pennies = 1;
     srand(time(0));
     int random = randint(1,200);
-    printf("Jumlah uang yang harus %s bayar adalah %d\n",Username ,  random);
-    printf("Keterangan : \n");
+    printf("the amount of money %s have to pay is  %d\n",Username ,  random);
+    printf("Description : \n");
     printf ("quarters = 25 \n");
     printf ("dimes = 10 \n");
     printf ("nickels = 5 \n");
@@ -3375,7 +3405,7 @@ void sansfight(int *score , char *Username)
     int total;
     while (!win){
         while(!valid){
-        printf("Masukkan jumlah quarters : \n");
+        printf("enter the number of quarters : \n");
         STARTCOMMANDGAME();
         if(isInteger(currentCMD)){
             masukanquarters = WordToInt(currentCMD);
@@ -3383,13 +3413,13 @@ void sansfight(int *score , char *Username)
             }
         
         else{
-            printf("Input tidak valid\n");
+            printf("Invalid Input !\n");
         }
     }
 
         valid = false;
         while(!valid){
-            printf("Masukkan jumlah dimes : \n");
+            printf("enter the number of dimes : \n");
             STARTCOMMANDGAME();
             if(isInteger(currentCMD)){
                 masukandimes = WordToInt(currentCMD);
@@ -3397,13 +3427,13 @@ void sansfight(int *score , char *Username)
                 }
             
             else{
-                printf("Input tidak valid\n");
+                printf("Invalid Input\n");
             }
         }
 
         valid = false;
         while(!valid){
-            printf("Masukkan jumlah nickels : \n");
+            printf("enter the number of nickels : \n");
             STARTCOMMANDGAME();
             if(isInteger(currentCMD)){
                 masukannickels = WordToInt(currentCMD);
@@ -3411,13 +3441,13 @@ void sansfight(int *score , char *Username)
                 }
             
             else{
-                printf("Input tidak valid\n");
+                printf("Invalid Input !\n");
             }
         }
 
         valid = false;
         while(!valid){
-            printf("Masukkan jumlah pennies : \n");
+            printf("enter the number of pennies : \n");
             STARTCOMMANDGAME();
             if(isInteger(currentCMD)){
                 masukanpennies = WordToInt(currentCMD);
@@ -3425,26 +3455,27 @@ void sansfight(int *score , char *Username)
                 }
             
             else{
-                printf("Input tidak valid\n");
+                printf("Invalid Input \n");
             }
         }
 
         total = (quarters * masukanquarters) + (dimes * masukandimes) + (nickels * masukannickels) + (pennies * masukanpennies);
         if (total == random){
-            printf("Selamat anda berhasil\n");
+            printf("Congratulations, you made it!\n");
             win = true;
         }
         else if (total > random){
-            printf("Jumlah uang anda lebih banyak dari yang dibutuhkan\n");
-            printf("Silahkan coba lagi\n");
+            printf("Your amount of money is more than needed\n");
+            printf("Please try again\n");
         }
         else{
-            printf("Jumlah uang anda kurang dari yang dibutuhkan\n");
-            printf("Silahkan coba lagi\n");
+            printf("Your amount of money is less than needed\n");
+            printf("Please try again\n");
         }
         printf("\n");
     }
     skor = (skor - (langkah * 10)) + 10;
+    //printf("Skor Hitung Duit %d\n",skor);
     (*score) += skor;
 }
 void CreateRandomPointAsriel(Point *P){
@@ -3516,7 +3547,7 @@ printf("~~~~~~~~~~~~~~~~~~~~~~~~~~ GOOD LUCK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 printf("\n");
 }
 void PrintPetaAsriel(Map MiniGames){
-    printf("Berikut merupakan peta permainan\n");
+    printf("Here is the game map\n");
     int i,j;
     int alphabet = 0;
     int value;
@@ -3780,7 +3811,7 @@ int mainasriel(char*Username){
     /*Selama dia gakena bomb atau treasure terus diiterasi*/
     while(!bomb && !win){
             langkah++;
-            printf("Pilih kotak dengan memilih huruf yang tersedia : \n");
+            printf("Select a box by selecting the available letters : \n");
             STARTCOMMANDGAME();
             char *input = WORDTOSTRING(currentCMD);
             valuetype value = Skor(asriel_map , input);
@@ -3823,11 +3854,11 @@ int mainasriel(char*Username){
                         bomb = true;
                     }
                 else if(value == -1){
-                    printf("Kotak sudah terbuka\n");
+                    printf("The box is already open\n");
                 }
             }
             else{
-                printf("Input tidak valid, silahkan masukkan input yang valid\n");
+                printf("Invalid input, please enter the valid input!\n");
             }
             int TM = 0;
             for(x = 0; x < 5; x++){
@@ -3850,10 +3881,11 @@ int mainasriel(char*Username){
 void asrielfight(int *score , char *Username){
     int skor = mainasriel(Username);
     while (skor == 0){
-        printf("\nKamu kalah, silahkan coba lagi !\n");
+        printf("\n You lost, please try again !\n");
         delay(3);
         skor = mainasriel(Username);
     }
+    //printf("Skor final game %d\n",skor);
     (*score) += skor;
 }
 
