@@ -1874,7 +1874,7 @@ void mainHangman(int*kesempatan, char*Kata)
         printf("\nBerhasil menebak "); PrintCharNoSpace(Kata, panjang_kata(Kata));
         printf("! Kamu mendapatkan %d poin!", panjang_kata(Kata));
     }
-    if ((*kesempatan) == 0) printf("\nKesempatan habis! Total poin yang kamu dapatkan adalah ");
+            if ((*kesempatan) == 0) printf("\nKesempatan habis! Total poin yang kamu dapatkan adalah ");
 }
 
 void loadkata(ListKata *ListKata, char*filename)
