@@ -1,11 +1,10 @@
-#include "ADT/mesinkar2.h"
-#include "ADT/mesinkata2.h"
-#include "ADT/arrayOfString.h"
-#include "boolean.h"
-#include "ADT/queue.h"
-#include "ADT/SetMap/map.h"
-#include "ADT/Stack/stack.h"
-#include "ADT/SnakeOnMeteor/snakeonmeteor.h"
+#include "../ADT/mesinkar2.h"
+#include "../ADT/mesinkata2.h"
+#include "../ADT/arrayOfString.h"
+#include "../boolean.h"
+#include "../ADT/SetMap/map.h"
+#include "../ADT/Stack/stack.h"
+#include "../ADT/SnakeOnMeteor/snakeonmeteor.h"
 
 
 void torielfight(int *score , char*Username);;

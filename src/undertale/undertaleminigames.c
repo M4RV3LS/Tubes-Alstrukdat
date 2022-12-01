@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include "undertaleminigames.h"
 
 
 void torielfight(int *score , char*Username)

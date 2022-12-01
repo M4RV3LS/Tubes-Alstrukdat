@@ -17,6 +17,7 @@
 #include "ADT/Hangman/hangmanprint.h"
 #include "ADT/TowerOfHanoi/stackofdisks.h"
 #include "ADT/SnakeOnMeteor/snakeonmeteor.h"
+#include "ADT/Tree/tree.h"
 
 
 void CREATEGAME(ArrayDin *ListGames , ArrayOfMap *GameMap);

@@ -5,12 +5,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "boolean.h"
+#include "../boolean.h"
 
 /* Modul lain yang digunakan */
-#include "mesinkar.h"
+#include "../DinerDash/mesinkar.h"
 
-#define Nil NULL
+#define NilBuatTree NULL
 //typedef char Infotype
 
 /*** Definisi Type Pohon Biner ***/
@@ -32,7 +32,7 @@ typedef AddressTree BinTree;
 /*** PROTOTYPE ***/
 /*** Selektor ***/
 #define Akar(P) (P)->Info
-/* Mengirimkan nilai Akar pohon biner P */
+/* Mengirimkan NilBuatTreeai Akar pohon biner P */
 
 #define Left(P) (P)->Left
 /* Mengirimkan Anak Kiri pohon biner P */
@@ -43,13 +43,13 @@ typedef AddressTree BinTree;
 /*** Konstruktor ***/
 BinTree Tree (Infotype Akar, BinTree L, BinTree R);
 /* Menghasilkan sebuah pohon biner dari A, L, dan R, jika alokasi berhasil */
-/* Menghasilkan pohon kosong (Nil) jika alokasi gagal */
+/* Menghasilkan pohon kosong (NilBuatTree) jika alokasi gagal */
 
 void MakeTree (Infotype Akar, BinTree L, BinTree R, BinTree *P);
 /* I.S. Sembarang */
 /* F.S. Menghasilkan sebuah pohon P */
 /* Menghasilkan sebuah pohon biner P dari A, L, dan R, jika alokasi berhasil */
-/* Menghasilkan pohon P yang kosong (Nil) jika alokasi gagal */
+/* Menghasilkan pohon P yang kosong (NilBuatTree) jika alokasi gagal */
 
 /*** Predikat-Predikat Penting ***/
 boolean IsTreeEmpty (BinTree P);
@@ -73,10 +73,10 @@ subpohon kiri dan subpohon kanan */
 
 /*** Searching ***/
 boolean SearchTree (BinTree P, Infotype X);
-/* Mengirimkan true jika ada node dari P yang bernilai X */
+/* Mengirimkan true jika ada node dari P yang berNilBuatTreeai X */
 
 /*** Fungsi-Fungsi Lain ***/
-int NbElmt (BinTree P);
+int NbElmtOfTree (BinTree P);
 /* Mengirimkan banyaknya elemen (node) pohon biner P */
 
 int NbDaun (BinTree P);
@@ -105,6 +105,6 @@ disimpan pada daun terkiri yang dihapus */
 
 void DelDaun (BinTree *P, Infotype X);
 /* I.S. P tidak kosong, X adalah salah satu daun */
-/* F.S. Semua daun bernilai X dihapus dari P */
+/* F.S. Semua daun berNilBuatTreeai X dihapus dari P */
 
 #endif

@@ -21,6 +21,8 @@ void COPYCOMMANDGAMEDD();
 
 void STARTCMD();
 
+char *KATATOSTRING(Kata kata);
+
 /* Operasi pada Kata */
 int KataToInt(Kata w);
 

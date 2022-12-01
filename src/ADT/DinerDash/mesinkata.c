@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "mesinkata.h"
 
 boolean EndKata;
@@ -27,6 +28,22 @@ void STARTCMD()
         EndKata = false;
         COPYCOMMANDGAMEDD();
     }
+}
+
+char *KATATOSTRING(Kata kata)
+{
+    //CopyWord();
+    char *akusisiKata = NULL;
+
+    akusisiKata = malloc(kata.Length * sizeof(char));
+    int i = 0;
+    while (i < kata.Length)
+    {
+        *(akusisiKata + i) = kata.TabKata[i];
+        i++;
+    }
+    akusisiKata[i] = '\0';
+    return akusisiKata;
 }
 
 /* Operasi pada Kata */

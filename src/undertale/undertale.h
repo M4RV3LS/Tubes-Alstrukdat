@@ -1,8 +1,8 @@
-#include "tree.h"
-#include "mesinkata.h"
+#include "../ADT/Tree/tree.h"
+#include "../ADT/DinerDash/mesinkata.h"
 #include "undertaleminigames.h"
 
-void delay(int number_of_seconds);
+void penundaan(int number_of_seconds);
 
 void createRoute(BinTree* route, BinTree* l, BinTree* r);
 
@@ -12,16 +12,16 @@ void undertale();
 
 void beginning();
 
-void toriel(BinTree* p);
+void toriel(BinTree* p , char*name , int *score);
 
-void papyrus(BinTree* p);
+void papyrus(BinTree* p , char*name , int *score);
 
 void lastcorridor();
 
-void megalovania(BinTree* p);
+void megalovania(BinTree* p , char*name , int *score);
 
-void sansneutral(BinTree* p);
+void sansneutral(BinTree* p,char*name , int *score);
 
-void sanspacifist(BinTree* p);
+void sanspacifist(BinTree* p , char*name , int *score);
 
-void asriel(BinTree p);
+void asriel(BinTree p , char*name , int *score);

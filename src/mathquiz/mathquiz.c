@@ -6,6 +6,7 @@
 
 void delay(int number_of_seconds)
 {
+    // printf("Masuk");
     // Converting time into milli_seconds
     int milli_seconds = 1000 * number_of_seconds;
  

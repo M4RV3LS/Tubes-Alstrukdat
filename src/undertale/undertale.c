@@ -1,26 +1,26 @@
 #include "undertale.h"
 #include <time.h>
 
-void delay(int number_of_seconds)
-{
-    // Converting time into milli_seconds
-    int milli_seconds = 1000 * number_of_seconds;
+// void delay(int number_of_seconds)
+// {
+//     // Converting time into milli_seconds
+//     int milli_seconds = 1000 * number_of_seconds;
  
-    // Storing start time
-    clock_t start_time = clock();
+//     // Storing start time
+//     clock_t start_time = clock();
  
-    // looping till required time is not achieved
-    while (clock() < start_time + milli_seconds);
-}
+//     // looping till required time is not achieved
+//     while (clock() < start_time + milli_seconds);
+// }
 
-void toriel(BinTree* p)
+void toriel(BinTree* p , char*name , int *score)
 {
     printf("              C H A P T E R - 1 , T O R I E L            \n");
     printf("************************************************************\n");
-    delay(2000);
+    delay(2);
     printf("Your journey in the underground have started...\n");
     printf("You encounter a flower-like creature, and it talks!\n");
-    delay(2000);
+    delay(2);
     printf("\n");
     printf("⣿⣿⣿⣿⣿⣿⣿⡿⢿⣏⣉⠉⠙⠿⢿⣿⠿⠏⠉⠉⣽⡿⠿⣿⣿⣿⣿⣿⣿⣿\n");
     printf("⣿⣿⣿⣿⣿⣿⣅⠀⣄⣴⣿⣿⠿⠿⠿⠿⠿⠿⣿⣿⣿⣤⠀⢨⣿⣿⣿⣿⣿⣿\n");
@@ -36,11 +36,11 @@ void toriel(BinTree* p)
     printf("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠧⠀⠸⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n");
     printf("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠧⠀⠸⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n");
     printf("\n");
-    delay(2000);
+    delay(2);
     printf("Peculiar Flower: Hi.. I'm Flowey!\n");
     printf("\n");
     printf("You sense a peculiarity in it, and not long after...\n");
-    delay(3000);
+    delay(3);
     printf("\n");
     printf("\n");
     printf("\n");
@@ -50,41 +50,41 @@ void toriel(BinTree* p)
     printf("\n");
     printf("Oh no, the flower is actually evil!  (꒪_/꒪)\n");
     printf("Luckily, not long after... a goat creature came to your rescue!\n");
-    delay(2000);
+    delay(2);
     printf("Toriel: Oh.. Hello!\n");
-    delay(2000);
+    delay(2);
     printf("Toriel: My name is Toriel, keeper of the Undergrounds!\n");
-    delay(2000);
+    delay(2);
     printf("Toriel: Please be careful, my child, as this place is not safe\n");
     printf("\n");
-    delay(2000);
+    delay(2);
     printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     printf("\n");
     printf("Toriel then brings you to her home and cares for you. It seems like\n");
-    delay(2000);
+    delay(2);
     printf("She had lost her own child before, and so she is very protective of you...\n");
-    delay(2000);
+    delay(2);
     printf("But you must return to your world. You cannot remain.\n");
-    delay(2000);
+    delay(2);
     printf("To do so, one day, you went to the gate she explicitly told you to avoid...\n");
     printf("\n");
-    delay(2000);
+    delay(2);
     printf("Toriel arrives shortly afterwards with a dissapointed look on her face.\n");
-    delay(2000);
+    delay(2);
     printf("Toriel: My dear child.. I cannot let you through these gates...\n");
-    delay(2000);
+    delay(2);
     printf("However... must you insist, you'll need to face me first...\n");
-    delay(2000);
+    delay(2);
     printf("Prove to me, child, that you are strong enough to proceed.\n");
-    delay(2000);
+    delay(2);
     printf("\n");
-    delay(3000);
+    delay(3);
     printf("************************************************************\n");
     printf("      Y O U - H A V E - E N T E R E D - A - F I G H T\n");
     printf("************************************************************\n");
     printf("\n");
 
-    torielfight(&score,name);
+    torielfight(score,name);
 
     printf("You have succeeded in defeating Toriel. Would you like to Kill or Spare her? (K/S) \n");
     boolean lanjut = false;
@@ -111,13 +111,13 @@ void toriel(BinTree* p)
     }
 }
 
-void papyrus(BinTree* p)
+void papyrus(BinTree* p , char*name , int *score)
 {
     printf("              C H A P T E R - 2 , P A P Y R U S           \n");
     printf("************************************************************\n");
-    delay(2000);
+    delay(2);
     printf("You have just emerged outside of the Ruins (Undergrounds)...\n");
-    delay(2000);
+    delay(2);
     printf("You have reached an area filled with snow...\n");
     printf("❄ ❄ ❄ ❄ ❄ ❄ ❄\n");
     printf("      ❄ ❄ ❄ ❄ ❄ ❄ ❄\n");
@@ -125,41 +125,41 @@ void papyrus(BinTree* p)
     printf("                     ❄ ❄ ❄ ❄ ❄ ❄ ❄\n");
     printf("                             ❄ ❄ ❄ ❄ ❄ ❄ ❄\n");
     printf("\n");
-    delay(2000);
+    delay(2);
     printf("Behind all the trees and snow.. you discovered what looks like.. a skull?!\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Hey, human!\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Quick, hide behind that lamp!\n");
-    delay(2000);
+    delay(2);
     printf("Sans points to a nearby lamp. You notice a taller, more slender skeleton approaching\n");
-    delay(2000);
+    delay(2);
     printf("You quickly hid behind the lamp.\n");
-    delay(2000);
+    delay(2);
     printf("\n");
     printf("Papyrus: Hey, don't you smell a human nearby?\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Oh hey, bro! Ahh, it's probably just you and your mind.\n");
-    delay(2000);
+    delay(2);
     printf("Papyrus: Hmm... is that so..\n");
-    delay(2000);
+    delay(2);
     printf("Papyrus: Oh well, I'm off then!\n");
-    delay(2000);
+    delay(2);
     printf("\n");
     printf("Papyrus leaves the scene.\n");
-    delay(2000);
+    delay(2);
     printf("\n");
     printf("Sans: He's gone, Kid\n");
-    delay(2000);
+    delay(2);
     printf("You emerge out of the lamp to thank him. Sans left afterwards.\n");
-    delay(2000);
+    delay(2);
     printf("You continue to walk...\n");
-    delay(2000);
+    delay(2);
     printf("To your surprise, Papyrus was still nearby and ambushed you.\n");
-    delay(2000);
+    delay(2);
     printf("Papyrus: ALL HUMANS SHALL PERISH!\n");
 
-    delay(2000);
+    delay(2);
     printf("\n");
     printf("************************************************************\n");
     printf("      Y O U - H A V E - E N T E R E D - A - F I G H T\n");
@@ -177,18 +177,18 @@ void papyrus(BinTree* p)
         if (wordStringEq(CURRENTCOMMAND,"K"))
         {
             lanjut = true;
-            delay(2000);
+            delay(2);
             printf("Papyrus: I knew it.. humans are nothing but trash...\n");
-            delay(2000);
+            delay(2);
             printf("Papyrus perished. You aim for King Asriel's palace, the only way out from the Undergrounds..\n");
             printf("\n");
             *p = Left(*p);
         } else if (wordStringEq(CURRENTCOMMAND,"S")) {
             lanjut = true;
-            delay(2000);
+            delay(2);
             printf("Papyrus: But.. but I thought humans were bad..\n");
             printf("Papyrus: Seems that I have misjudged you.. I apologize..\n");
-            delay(2000);
+            delay(2);
             printf("Papyrus: From now on, Papyrus will always be by your side!\n");
             printf("You shook hands with Papyrus, and he led you towards King Asriel's palace, the only way out from the Undergrounds..\n");
             *p = Right(*p);
@@ -202,14 +202,14 @@ void lastcorridor()
 {
     printf("        C H A P T E R - 3 , L A S T - C O R R I D O R       \n");
     printf("************************************************************\n");
-    delay(2000);
+    delay(2);
     printf("\n");
     printf("You have reached King Asriel's palace.\n");
-    delay(2000);
+    delay(2);
     printf("Using the elevators inside, you went straight to the top level.\n");
-    delay(2000);
+    delay(2);
     printf("It's the corrdior before King Asriel's throne.\n");
-    delay(2000);
+    delay(2);
     printf("On the edge of the palace, you see a familiar sight.\n");
     printf("\n");
     printf("\n");
@@ -231,39 +231,39 @@ void lastcorridor()
     printf("░░░░░░░░░░██████████████\n");
 }
 
-void megalovania(BinTree* p)
+void megalovania(BinTree* p , char*name , int*score)
 {
     lastcorridor();
 
     printf("\n");
     printf("Sans: Heya, Kid.\n");
-    delay(2000);
+    delay(2);
     printf("Sans: You've been busy, Huh?\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Just going around, killing everyone you see\n");
-    delay(3000);
+    delay(3);
     printf("Sans: So, i've got a question for ya.");
-    delay(2000);
+    delay(2);
     printf("Sans: Do you think even the worst person can change?\n");
-    delay(2000);
+    delay(2);
     printf("\n");
     printf("Despite his dialogue, you step forward, bringing out your knife.\n");
-    delay(2000);
+    delay(2);
     printf("\n");
     printf("Sans: Heh.. here's a better question.\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Do you wanna have a bad time? Cause if you step forward...\n");
-    delay(2000);
+    delay(2);
     printf("Sans: You're REALLY not going to like what happens next.\n");
-    delay(2000);
+    delay(2);
     printf("\n");
-    delay(3000);
+    delay(3);
     printf("You take one more step forward.\n");
     printf("\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Welp, here we go.\n");
 
-    delay(2000);
+    delay(2);
     printf("\n");
     printf("************************************************************\n");
     printf("      Y O U - H A V E - E N T E R E D - A - F I G H T\n");
@@ -282,23 +282,23 @@ void megalovania(BinTree* p)
         {
             lanjut = true;
             printf("Sans: Heh.. heh...\n");
-            delay(2000);
+            delay(2);
             printf("Sans: At least.. I get to be with my brother now..\n");
-            delay(2000);
+            delay(2);
             printf("\n");
             printf("You proceed to Asriel's throne.\n");
             printf("\n");
             *p = Left(*p);
         } else if (wordStringEq(CURRENTCOMMAND,"S")) {
             lanjut = true;
-            delay(2000);
+            delay(2);
             printf("Sans: You should've just killed me.. kid.\n");
-            delay(2000);
+            delay(2);
             printf("Sans: Just like you did with everyone else, right?\n");
-            delay(2000);
+            delay(2);
             printf("Sans: Just like you did.. with my brother.\n");
             printf("\n");
-            delay(2000);
+            delay(2);
             printf("You proceed to Asriel's throne.\n");
             printf("\n");
             *p = Right(*p);
@@ -309,57 +309,57 @@ void megalovania(BinTree* p)
 
 }
 
-void sansneutral(BinTree* p)
+void sansneutral(BinTree* p , char*name , int *score)
 {
     lastcorridor();
     printf("\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Heya, Kid.\n");
-    delay(2000);
+    delay(2);
     printf("Sans: How does it feel? You're finally at the end of your journey...\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Beyond these gates, is the throne of King Asriel\n");
-    delay(2000);
+    delay(2);
     printf("Sans: There, you will be at the pinnacle of life and death...\n");
-    delay(3000);
+    delay(3);
     printf("Sans: Take a moment to reflect upon your actions in the past...\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Those people that you've murdered.. and those you've spared\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Well.. at least you were honest with yourself..\n");
-    delay(3000);
+    delay(3);
     *p = Left(*p);
 }
 
-void sanspacifist(BinTree* p)
+void sanspacifist(BinTree* p ,char*name , int *score)
 {
     lastcorridor();
     printf("\n");
     printf("Sans: Heya, Kid.\n");
-    delay(2000);
+    delay(2);
     printf("Sans: How does it feel? You're finally at the end of your journey...\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Beyond these gates, is the throne of King Asriel\n");
-    delay(2000);
+    delay(2);
     printf("Sans: There, you will be at the pinnacle of life and death...\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Take a moment to reflect upon your actions in the past...\n");
-    delay(3000);
+    delay(3);
     printf("Sans: ...\n");
-    delay(2000);
+    delay(2);
     printf("Sans: But you've always been a kind soul, haven't you?\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Even if you're thrown in situations that you didn't want to face\n");
-    delay(2000);
+    delay(2);
     printf("Sans: Even if you ran away.. you ran away with a smile\n");
-    delay(2000);
+    delay(2);
     printf("Sans: You gained love from all of us.\n");
-    delay(2000);
+    delay(2);
     printf("Sans: We're all rooting for ya, Kid.\n");
     *p = Left(*p);
 }
 
-void asriel(BinTree p)
+void asriel(BinTree p , char*name , int *score)
 {
     printf("              C H A P T E R - 4 , T H E  E N D   \n");
     printf("************************************************************\n");
@@ -385,34 +385,34 @@ void asriel(BinTree p)
     printf("                    //      ---------       I__\n");
     printf("\n");
     printf("You finally reached Asriel's Throne.\n");
-    delay(3000);
+    delay(3);
     printf("Asriel: Welcome, Human.\n");
-    delay(3000);
+    delay(3);
     printf("Asriel: You know what must happen... right?\n");
-    delay(3000);
+    delay(3);
     printf("Asriel: You know what I must do.. to protect the creatures in the Underground...\n");
     
     if (p->Info=='H')
     {
-        delay(3000);
+        delay(3);
         printf("Asriel: But I guess you do not have the heart... to understand that\n");
-        delay(2000);
+        delay(2);
         printf("Asriel gets off his throne.\n");
-        delay(2000);
+        delay(2);
         printf("Asriel: Whenever you're ready, human.\n");
     } else if (p->Info=='O') {
-        delay(2000);
+        delay(2);
         printf("Asriel: Even though I do not want to.. since you have the kindest heart.\n");
-        delay(3000);
+        delay(3);
         printf("Asriel: Forgive me, human.\n");
-        delay(2000);
+        delay(2);
         printf("Asriel gets off his throne.\n");
-        delay(2000);
+        delay(2);
         printf("Asriel: Whenever you're ready, human.\n");
     } else {
-        delay(2000);
+        delay(2);
         printf("Asriel gets off his throne.\n");
-        delay(2000);
+        delay(2);
         printf("Asriel: Whenever you're ready, human.\n");
     }
 
@@ -531,7 +531,8 @@ void undertale()
     printf("Name the fallen Human\n");
     STARTCMD();
     char* name;
-    KataToStr(CURRENTCOMMAND,name);
+    /*Ini aku ijin ganti funsginya*/
+    name = KATATOSTRING(CURRENTCOMMAND);
     boolean correct = false;
     while (!correct)
     {
@@ -560,22 +561,22 @@ void undertale()
     {
         if (pointer->Info == 'A')
         {
-            toriel(&pointer);
+            toriel(&pointer , name , &score);
         } else if (pointer->Info == 'B' || pointer->Info == 'C') {
-            papyrus(&pointer);
+            papyrus(&pointer , name , &score);
         } else {
             if (pointer->Info == 'D')
             {
-                megalovania(&pointer);
+                megalovania(&pointer , name , &score);
             } else if (pointer->Info == 'G') {
-                sanspacifist(&pointer);
+                sanspacifist(&pointer , name , &score);
             } else {
-                sansneutral(&pointer);
+                sansneutral(&pointer , name , &score);
             }
         }
     }
 
-    asriel(pointer);
+    asriel(pointer , name , &score);
 
     printf("\n");
     printf("***************************************************************************\n");
