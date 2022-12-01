@@ -1,5 +1,22 @@
 #include "towerofhanoi.h"
 
+void createDisk(int i,int jml_pir, Disk* a)
+{
+    int width = jml_pir*2-1;
+    int border = (width-(i*2-1))/2;
+    int ctr;
+    for (ctr=0;ctr<width;ctr++)
+    {
+        if (ctr>=border && ctr<width-border)
+        {
+            a->sym[ctr] = '*';
+        } else {
+            a->sym[ctr] = ' ';
+        }
+    }
+    a->size = i;
+}
+
 void scoring(int steps, int* score)
 {
     int a = 10;
