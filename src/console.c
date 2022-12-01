@@ -1988,12 +1988,48 @@ char* wordToStr(Word word)
 
 
 
-void scoring(int steps, int* score)
+
+
+void createDisk(int i,int jml_pir, Disk* a)
 {
-    int a = 10;
-    if (steps>31)
+    int width = jml_pir*2-1;
+    int border = (width-(i*2-1))/2;
+    int ctr;
+    for (ctr=0;ctr<width;ctr++)
     {
-        steps-=31;
+        if (ctr>=border && ctr<width-border)
+        {
+            a->sym[ctr] = '*';
+        } else {
+            a->sym[ctr] = ' ';
+        }
+    }
+    a->size = i;
+}
+
+void createStick(int jml_pir, Disk *a)
+{
+    int width = jml_pir*2-1;
+    int ctr;
+    for (ctr=0;ctr<width;ctr++)
+    {
+        if (ctr==jml_pir-1)
+        {
+            a->sym[ctr] = '|';
+        } else {
+            a->sym[ctr] = ' ';
+        }
+    }
+    a->size = 6;
+}
+
+void scoring(int steps, int* score, int jml_disk)
+{
+    int ms = pow(2,jml_disk)-1 ;//minimum steps
+    int a = 10;
+    if (steps>ms)
+    {
+        steps-=ms;
         while (steps>0)
         {
             steps-=3;
@@ -2121,21 +2157,25 @@ void cekValiditas(char tow1, char tow2, STACKSS a, STACKSS b, STACKSS c, boolean
     } 
 }
 
-boolean win(STACKSS c)
+boolean win(STACKSS c, int jml_pir)
 {
     // Create winning tower
+    int x = jml_pir;
     STACKSS w;
     CreateEmptySS(&w);
-    PushSS(&w,"*********", 5);
-    PushSS(&w," ******* ", 4);
-    PushSS(&w,"  *****  ", 3);
-    PushSS(&w,"   ***   ", 2);
-    PushSS(&w,"    *    ", 1);
+    Disk tempp;
+    while (x>0)
+    {
+        tempp.sym = (char *) malloc (MaxEl*sizeof(char));
+        createDisk(x,jml_pir,&tempp);
+        PushSS(&w,tempp.sym,tempp.size);
+        x--;
+    }
 
     // Compare two towers
     int j = 0;
     boolean found = false;
-    while (j<Maksimal && !found)
+    while (j<jml_pir && !found)
     {
         if (!diskComp(c.T[j],w.T[j]))
         {
@@ -2144,13 +2184,14 @@ boolean win(STACKSS c)
             j++;
         }
     }
+    free(tempp.sym);
 
     return !found;
 }
 
-void displaystacks(STACKSS a, STACKSS b, STACKSS c)
+void displaystacks(STACKSS a, STACKSS b, STACKSS c, int jml_pir)
 {
-    int i = Maksimal-1;
+    int i = jml_pir-1;
 
     //Display konten tower
     while (i>=0)
@@ -2164,19 +2205,67 @@ void displaystacks(STACKSS a, STACKSS b, STACKSS c)
     }
 
     //Display base
-    printf("---------   ");
-    printf("---------   ");
-    printf("---------\n");
+    int outer = 0;
+    while (outer<3)
+    {
+        int pr = 0;
+        while (pr<(jml_pir*2)-1)
+        {
+            printf("-");
+            pr++;
+        }
+        printf("   ");
+        outer++;
+    }
+    printf("\n");
 
-    printf("    A      ");
-    printf("     B      ");
-    printf("     C    \n");
+    int width1 = jml_pir*2-1;
+    //Display tower names
+    //Print A
+    int letter_a;
+    for (letter_a=0;letter_a<width1;letter_a++)
+    {
+        if (letter_a == jml_pir-1)
+        {
+            printf("A");
+        } else {
+            printf(" ");
+        }
+    }
+    printf("   ");
+
+    //Print B
+    int letter_b;
+    for (letter_b=0;letter_b<width1;letter_b++)
+    {
+        if (letter_b == jml_pir-1)
+        {
+            printf("B");
+        } else {
+            printf(" ");
+        }
+    }
+    printf("   ");
+
+    //Print C
+    int letter_c;
+    for (letter_c=0;letter_c<width1;letter_c++)
+    {
+        if (letter_c == jml_pir-1)
+        {
+            printf("C");
+        } else {
+            printf(" ");
+        }
+    }
+    printf("   \n");
 }
 
 void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
 {
     // Kamus
     int countsteps = 0;
+    char * tempsti = (char *) malloc (MaxEl*sizeof(char));
     int skor = 0;
 
     // Menciptakan "towers"
@@ -2187,29 +2276,107 @@ void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
     CreateEmptySS(&b);
     CreateEmptySS(&c);
 
-    
+    //Welcome page
+    printf("\n");
+    printf("**************************************** K E L O M P O K   9   P U N Y A ****************************************\n");
+    printf("   ████████╗ ██████╗ ██╗    ██╗███████╗██████╗      ██████╗ ███████╗    ██╗  ██╗ █████╗ ███╗   ██╗ ██████╗ ██╗\n");
+    printf("   ╚══██╔══╝██╔═══██╗██║    ██║██╔════╝██╔══██╗    ██╔═══██╗██╔════╝    ██║  ██║██╔══██╗████╗  ██║██╔═══██╗██║\n");
+    printf("      ██║   ██║   ██║██║ █╗ ██║█████╗  ██████╔╝    ██║   ██║█████╗      ███████║███████║██╔██╗ ██║██║   ██║██║\n");
+    printf("      ██║   ██║   ██║██║███╗██║██╔══╝  ██╔══██╗    ██║   ██║██╔══╝      ██╔══██║██╔══██║██║╚██╗██║██║   ██║██║\n");
+    printf("      ██║   ╚██████╔╝╚███╔███╔╝███████╗██║  ██║    ╚██████╔╝██║         ██║  ██║██║  ██║██║ ╚████║╚██████╔╝██║\n");
+    printf("      ╚═╝    ╚═════╝  ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝     ╚═════╝ ╚═╝         ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝\n");
+    printf("*****************************************************************************************************************\n");
+
+    printf("\n");
+    boolean lanjut = false;
+    do
+    {
+        printf("Ketik 'START' dengan huruf kapital untuk bermain!\n");
+        STARTCMD();
+        if (wordStringEq(CURRENTCOMMAND,"START"))
+        {
+            lanjut = true;
+        }
+    } while (!lanjut);
+    printf("\n");
+
+    // Print how to play
+    printf("Hore! Mari kita bermain tower of hanoi ๑(◕‿◕)๑\n");
+    printf("Sebelumnya, apakah kamu pernah bermain tower of hanoi? (✌ﾟ∀ﾟ)☞ \n");
+    boolean htp = false;
+    do
+    {
+        printf("Ketik (Y/N)\n");
+        STARTCMD();
+        if (wordStringEq(CURRENTCOMMAND,"Y") || wordStringEq(CURRENTCOMMAND,"N"))
+        {
+            htp = true;
+        }
+    } while (!htp);
+
+    if (wordStringEq(CURRENTCOMMAND,"Y"))
+    {
+        printf("\n");
+        printf("Baiklah, mari kita langsung bermain!");
+        printf("\n");
+    } else {
+        printf("\n");
+        printf("Baiklah, berikut adalah HOW TO PLAY tower of hanoi! ( ๑‾̀◡‾́)o\n");
+        printf("\n");
+        printf("1. Akan terdapat 3 tower, ABC. Tower A akan terisi penuh dengan piringan.\n");
+        printf("2. Tower B dan C kosong. Tujuanmu adalah memindahkan seluruh piringan dari Tower A ke C.\n");
+        printf("3. Kamu hanya bisa memindahkan piringan ke tower kosong atau yang piringan teratasnya ukurannya\n");
+        printf("   lebih besar dari piringan yang mau dipindahkan.\n");
+        printf("4. Input untuk tower harus berupa huruf kapital A,B, atau C.\n");
+        printf("\n");
+        printf("Selamat bermain!\n");
+    }
+
+                                                                                                           
+    // Menentukan tinggi tower
+    boolean valid1 = false;
+    int jml_disk;
+    while (!valid1)
+    {
+        printf("\n");
+        printf("Masukkan jumlah piringan yang diinginkan ᕙ(⇀‸↼‶)ᕗ: ");
+        STARTCMD();
+        printf("\n");
+        jml_disk = KataToInt(CURRENTCOMMAND);
+        if (jml_disk>0 && jml_disk<=20)
+        {
+            valid1 = true;
+        } else {
+            printf("Piringan terlalu banyak!\n");
+        }
+    }
+
     // Setting initial state tower a
-    PushSS(&a,"*********", 5);
-    PushSS(&a," ******* ", 4);
-    PushSS(&a,"  *****  ", 3);
-    PushSS(&a,"   ***   ", 2);
-    PushSS(&a,"    *    ", 1);
+    int x = jml_disk;
+    Disk tempd;
+    while (x>0)
+    {
+        tempd.sym = (char *) malloc (MaxEl*sizeof(char));
+        createDisk(x,jml_disk,&tempd);
+        PushSS(&a,tempd.sym,tempd.size);
+        x--;
+    }
 
     //Setting initial state tower b dan c
     int i = 0;
-    while (i<Maksimal)
+    Disk tempst;
+    tempst.sym = (char *) malloc (MaxEl*sizeof(char));
+    createStick(jml_disk,&tempst);
+    while (i<jml_disk)
     {
-        b.T[i].sym = "    |    ";
-        b.T[i].size = 6;
-        c.T[i].sym = "    |    ";
-        c.T[i].size = 6;
+        b.T[i].sym = tempst.sym;
+        b.T[i].size = tempst.size;
+        c.T[i].sym = tempst.sym;
+        c.T[i].size = tempst.size;
         i++;
     }
-    
-    //Welcome page
-    printf("\n");
-    printf("Welcome to tower of hanoi!\n");
-    displaystacks(a,b,c);
+
+    displaystacks(a,b,c,jml_disk);
 
     //Looping game
     boolean finished = false;
@@ -2217,20 +2384,28 @@ void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
     {
         boolean valid = false;
         char tow1,tow2;
+        Kata tow1ch, tow2ch;
         while (!valid)
         {
             printf("\n");
             printf("TOWER ASAL: ");
             STARTCMD();
             printf("\n");
+            tow1ch = CURRENTCOMMAND;
             tow1 = CURRENTCOMMAND.TabKata[0];
 
             printf("TOWER TUJUAN: ");
             STARTCMD();
             printf("\n");
+            tow2ch = CURRENTCOMMAND;
             tow2 = CURRENTCOMMAND.TabKata[0];
 
-            cekValiditas(tow1,tow2,a,b,c,&valid);
+            if (tow1ch.Length>1 || tow2ch.Length>1)
+            {
+                printf("Perintah tidak valid!\n");
+            } else {
+                cekValiditas(tow1,tow2,a,b,c,&valid);
+            }
         }
 
         //menambah jumlah steps yang diambil
@@ -2239,11 +2414,11 @@ void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
         Disk temp;
         if (tow1=='A')
         {
-            PopSS(&a,&temp);
+            PopSS(&a,&temp,jml_disk,tempsti);
         } else if (tow1=='B') {
-            PopSS(&b,&temp);
+            PopSS(&b,&temp,jml_disk,tempsti);
         } else { //tow1=='C'
-            PopSS(&c,&temp);
+            PopSS(&c,&temp,jml_disk,tempsti);
         }
 
         if (tow2=='A')
@@ -2264,21 +2439,27 @@ void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
             PushSS(&c,temp.sym,temp.size);
         }
 
-        displaystacks(a,b,c);
+        displaystacks(a,b,c,jml_disk);
 
-        if (win(c))
+        if (win(c,jml_disk))
         {
             finished = true;
         }
     }
 
     //Menampilkan Invalidai
-    scoring(countsteps,&skor);
+    scoring(countsteps,&skor,jml_disk);
     printf("Kamu berhasil!\n");
-    printf("Skor didapatkan: %d", skor);
+    printf("Skor didapatkan: %d\n", skor);
     score = skor;
     Username(game , ListGames , GameMap , score);
+    
+    free(tempd.sym);
+    free(tempst.sym);
+    free(tempsti);
 }
+
+
 
 // int main()
 // {
