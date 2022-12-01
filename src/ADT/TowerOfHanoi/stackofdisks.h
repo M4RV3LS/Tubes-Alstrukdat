@@ -59,7 +59,7 @@ void PushSS(STACKSS * S, TipeElemen X, int sz);
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen STACKSS ************ */
-void PopSS(STACKSS * S, Disk* X);
+void PopSS(STACKSS * S, Disk* X, int jml_pir, char * temp);
 /* Menghapus X dari STACKSS S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah Invalidai elemen TOP yang lama, TOP berkurang 1 */
