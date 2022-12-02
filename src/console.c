@@ -54,7 +54,7 @@ void DELETE(ArrayDin *ListGames, Queue q1 , ArrayOfMap *GameMap , Stack *GameHis
         int input;
     input = WordToInt(currentCMD);
     //printf("input = %d\n",input);
-    if ((input > 0 && input <=6)  || input>(*ListGames).Neff) {
+    if ((input > 0 && input <=7)  || input>(*ListGames).Neff) {
         printf("Game ke-%d gagal dihapus\n" , input);
     } else {
         boolean found;
