@@ -1,6 +1,8 @@
 #include "console.h"
 #include <stdio.h>
+
 void CREATEGAME(ArrayDin *ListGames , ArrayOfMap *GameMap)
+/*Fitur untuk membuat Game*/
 {
     printf("Masukkan nama game yang akan ditambahkan : ");
     STARTCOMMANDGAME();
@@ -41,6 +43,7 @@ void CREATEGAME(ArrayDin *ListGames , ArrayOfMap *GameMap)
 
 
 void DELETE(ArrayDin *ListGames, Queue q1 , ArrayOfMap *GameMap , Stack *GameHistory)
+/*Fitur Untuk Menghapus Game*/
 {
     LISTGAME(ListGames);
     printf("\n");
@@ -117,6 +120,7 @@ Stack DELETEHISTORY(Stack *in , char*game)
 }
 
 void HELP()
+/*Fungsi untuk menampilkan fitur yang bisa dipakai*/
 {
     printf("Berikut command-command yang dapat anda gunakan: \n");
     printf("1. SAVE <nama_file> \n");
@@ -135,6 +139,7 @@ void HELP()
 }
 
 void LISTGAME(ArrayDin *ListGames)
+/*Fungsi untuk menampilkan daftar game yang tersedia*/
 {
     printf("Berikut adalah daftar game yang tersedia\n");
     for (int i = 0; i < (*ListGames).Neff; i++)
@@ -143,7 +148,9 @@ void LISTGAME(ArrayDin *ListGames)
     }
 }
 
-void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOfMap *GameMap){
+void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOfMap *GameMap)
+/*Fungsi untuk memuat file eksternal*/
+{
     char path[NMax];
     stringConcat("../data/",filename,path);
     //printf("%s\n",path);
@@ -183,14 +190,6 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
             //char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
             ADVLine();
             kata = WORDTOSTRING(currentWord);
-            //printf("%s\n",kata);
-            // while (j <= currentWord.Length)
-            // {
-            //     gamename[j] = kata[j];
-            //     j++;
-            // }
-            //gamename[j] = '\0';  
-            //InsertIn(string , ListGames , i);
             PushStack(GameHistory, kata); 
             //printf("%s\n" , InfoTop(*GameHistory));
         }
@@ -237,6 +236,7 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
 }
 
 void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *GameHistory)
+/*Fitur utuk memainkan game yang ada di antrian*/
 {
     ElType A;
     char *rng, *dinerDash , *hangman ,*towerofhanoi ,*snakeonmeteor ,*MTK ,*Undertale;
@@ -260,6 +260,7 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
         dequeue(q1 , &game);
         
         if (CompareString(game , rng))
+        /*Memainkan Game RNG*/
         {
             printf("Loading %s ...\n", rng);
             delay(2);
@@ -270,6 +271,7 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
         } 
 
         else if(CompareString(game , hangman))
+        /*Memainkan game hangman*/
         {
             printf("Loading %s ...\n", hangman);
             delay(2);
@@ -278,6 +280,7 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
         }
 
         else if(CompareString(game , towerofhanoi))
+        /*memainkan game tower of hanoi*/
         {
             printf("Loading %s ...\n", towerofhanoi);
             delay(2);
@@ -287,6 +290,7 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
         }
 
         else if(CompareString(game , snakeonmeteor))
+        /*Memainkan game snake on meteor*/
         {
             printf("Loading %s ...\n", snakeonmeteor);
             delay(2);
@@ -295,6 +299,7 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
 
         }
         else if(CompareString(game , MTK))
+        /*memainkan game math quiz*/
         {
             printf("Loading MATH QUIZ ...\n");
             delay(2);
@@ -304,6 +309,7 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
         }
 
         else if (CompareString(game , dinerDash))
+        /*Memainkan game diner dash*/
         {
             printf("Loading %s ...\n", dinerDash);
             delay(2);
@@ -313,6 +319,7 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
         }
 
         else if (CompareString(game , Undertale))
+        /*memainkan game undertale*/
         {
             printf("Loading %s ...\n", Undertale);
             delay(2);
@@ -323,6 +330,7 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
 
 
         else
+        /*memainkan game random*/
         {   
                 printf("Loading %s ...\n", game);
                 delay(2);
@@ -332,14 +340,13 @@ void PLAYGAME(Queue *q1 , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *Game
                 PushStack(GameHistory , game);
             }
 
-            // srand(time(NULL));
-            // int random = rand();
-            // printf("Skor Kamu Adalah %d\n",random);
         }
 
     } 
 
-void QUEUEGAME(Queue *q1, ArrayDin game){
+void QUEUEGAME(Queue *q1, ArrayDin game)
+/*Fitur untuk menaruh game ke antrian*/
+{
     if (isEmpty(*q1))
     {
         printf("Antrian game kosong.\n");
@@ -386,73 +393,16 @@ void QUEUEGAME(Queue *q1, ArrayDin game){
     
 }
 
-void QUIT() {
+void QUIT() 
+/*fitur untuk keluar dari program BNMO*/
+{
     printf("Anda keluar dari game BNMO.\n");
     printf("Bye bye ...\n");
     exit(0);
 }
 
-void printRNG(){
-    printf("    ____   _   _______\n");
-    printf("   / __  / | / / ____/\n");
-    printf("  / /_/ /  |/ / / __\n");  
-    printf(" / _, _/ /| / /_/ /\n");  
-    printf("/_/ |_/_/ |_/____/\n"); 
-}
-
-void printMathQuiz(){
-printf("   ▄▄▄▄███▄▄▄▄      ▄████████     ███        ▄█    █▄         ████████▄   ███    █▄   ▄█   ▄███████▄\n");
-printf(" ▄██▀▀▀███▀▀▀██▄   ███    ███ ▀█████████▄   ███    ███        ███    ███  ███    ███ ███  ██▀     ▄██ \n");
-printf(" ███   ███   ███   ███    ███    ▀███▀▀██   ███    ███        ███    ███  ███    ███ ███▌       ▄███▀ \n");
-printf(" ███   ███   ███   ███    ███     ███   ▀  ▄███▄▄▄▄███▄▄      ███    ███  ███    ███ ███▌  ▀█▀▄███▀▄▄ \n");
-printf(" ███   ███   ███ ▀███████████     ███     ▀▀███▀▀▀▀███▀       ███    ███  ███    ███ ███▌   ▄███▀   ▀ \n");
-printf(" ███   ███   ███   ███    ███     ███       ███    ███        ███    ███  ███    ███ ███  ▄███▀       \n");
-printf(" ███   ███   ███   ███    ███     ███       ███    ███        ███  ▀ ███  ███    ███ ███  ███▄     ▄█  \n");
-printf("  ▀█   ███   █▀    ███    █▀     ▄████▀     ███    █▀          ▀██████▀▄█ ████████▀  █▀    ▀████████▀  \n");       
-printf("+ - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x :\n");
-}
-
-void gameRNG(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)  
-{   printRNG();
-    printf("\n");
-    srand(time(NULL));
-    int maxTry = 50;
-    printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak sebuah angka X yang rentangnya berada diantara 1 - 50.\n");
-    int random = rand() % 50 + 1;
-    printf("Jawaban = %d\n",random);
-    int tebakan;
-    int skor = 0;
-    printf("Tebakan : ");
-    STARTCOMMAND();
-    tebakan = WordToInt(currentCMD);
-    int nTebakan = 1;
-    while(tebakan != random && (nTebakan < maxTry)){
-        if(tebakan < random){
-            printf("Lebih Besar\n");
-        }
-        else if(tebakan > random){
-            printf("Lebih Kecil\n");
-        }
-        printf("Tebakan : ");
-        STARTCOMMAND();
-        tebakan = WordToInt(currentCMD);
-        nTebakan++;
-    }
-    if(nTebakan >= maxTry){
-        printf("GAME OVER!\n");
-        skor = maxTry - nTebakan;
-    }
-    else{
-        printf("YA , X Adalah %d\n" , random);
-        skor = maxTry - nTebakan + 1;
-    }
-    printf("skor = %d\n" , skor);
-    score = skor;
-    printf("Score =  %d\n",score);
-    Username(game , ListGames , GameMap , score);
-}
-
 void SAVEBNMO(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOfMap *GameMap) 
+/*Fitur untuk melakukan save*/
  { 
     FILE* fp; 
     char path[50]; 
@@ -509,6 +459,7 @@ void SAVEBNMO(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
  }
 
 void SKIPGAME(Queue *q, int n , ArrayDin ListGames , ArrayOfMap *GameMap , Stack *GameHistory)
+/*Fitur untuk mengskip game yang ada di antrian*/
 {
     if (isEmpty(*q))
     {
@@ -533,10 +484,6 @@ void SKIPGAME(Queue *q, int n , ArrayDin ListGames , ArrayOfMap *GameMap , Stack
             i++;
         }
     PLAYGAME(q ,ListGames , GameMap , GameHistory);
-        //displayQueue(*q);
-        //PLAYGAME(q);
-        //for (int i = IDX_HEAD(*q) - n; i < IDX_HEAD(*q) - n + length(*q); i++){
-        //printf("%d. %s\n",i+1, q->buffer[i]);
     }
      
     else { 
@@ -548,7 +495,9 @@ void SKIPGAME(Queue *q, int n , ArrayDin ListGames , ArrayOfMap *GameMap , Stack
     }
 }
 
-void STARTGAME(ArrayDin *ListGames){
+void STARTGAME(ArrayDin *ListGames)
+/*Fungsi untuk melakukan START PROGRAM BNMO*/
+{
     char path[NMax];
     char *filename = "config.txt";
     stringConcat("../data/",filename,path);
@@ -583,9 +532,25 @@ void STARTGAME(ArrayDin *ListGames){
 }
 
 
+/***************************************  MATH QUIZ **********************************************/
 
-
-    int pertambahan(int skor){
+    void printMathQuiz()
+/*prosedure untuk menampilkan ascii math quiz*/
+{
+printf("   ▄▄▄▄███▄▄▄▄      ▄████████     ███        ▄█    █▄         ████████▄   ███    █▄   ▄█   ▄███████▄\n");
+printf(" ▄██▀▀▀███▀▀▀██▄   ███    ███ ▀█████████▄   ███    ███        ███    ███  ███    ███ ███  ██▀     ▄██ \n");
+printf(" ███   ███   ███   ███    ███    ▀███▀▀██   ███    ███        ███    ███  ███    ███ ███▌       ▄███▀ \n");
+printf(" ███   ███   ███   ███    ███     ███   ▀  ▄███▄▄▄▄███▄▄      ███    ███  ███    ███ ███▌  ▀█▀▄███▀▄▄ \n");
+printf(" ███   ███   ███ ▀███████████     ███     ▀▀███▀▀▀▀███▀       ███    ███  ███    ███ ███▌   ▄███▀   ▀ \n");
+printf(" ███   ███   ███   ███    ███     ███       ███    ███        ███    ███  ███    ███ ███  ▄███▀       \n");
+printf(" ███   ███   ███   ███    ███     ███       ███    ███        ███  ▀ ███  ███    ███ ███  ███▄     ▄█  \n");
+printf("  ▀█   ███   █▀    ███    █▀     ▄████▀     ███    █▀          ▀██████▀▄█ ████████▀  █▀    ▀████████▀  \n");       
+printf("+ - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x : + - x :\n");
+}
+    
+    int pertambahan(int skor)
+    /*Fungsi untuk bermain mode pertambahan pada game math quiz*/
+    {
     printf("Pilih Tingkat Kesulitan ! \n");
     printf("1.Mudah\n2.Normal\n3.Sulit\n");
     int batasbawah , batasatas;
@@ -644,7 +609,9 @@ void STARTGAME(ArrayDin *ListGames){
 return skor;
 }
 
-int pengurangan(int skor){
+int pengurangan(int skor)
+/*Fungsi untuk bermain mode pengurangan pada game math quiz*/
+{
     printf("Pilih Tingkat Kesulitan ! \n");
     printf("1.Mudah\n2.Normal\n3.Sulit\n");
     int batasbawah , batasatas;
@@ -716,7 +683,9 @@ int pengurangan(int skor){
 return skor;
 }
 
-int perkalian(int skor){
+int perkalian(int skor)
+/*Fungsi untuk bermain mode perkalian pada game math quiz*/
+{
     printf("Pilih Tingkat Kesulitan ! \n");
     printf("1.Mudah\n2.Normal\n3.Sulit\n");
     int batasbawah , batasatas;
@@ -778,7 +747,9 @@ int perkalian(int skor){
 return skor;
 }
 
-void mathquiz(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score){      
+void mathquiz(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
+/*Main Program game bonus math quiz*/
+{      
     printMathQuiz();
     printf("\n");
     printf("<SELAMAT DATANG DI GAME MATHQUIZ>\n");
@@ -820,8 +791,64 @@ void mathquiz(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
     score = skormath;
     Username(game , ListGames , GameMap , score);
 }
-// Menampilkan tabel
+
+/***************************************** RNG **************************************************/
+void printRNG()
+/*prosedure untuk menampilkan ascii RNG*/
+{
+    printf("    ____   _   _______\n");
+    printf("   / __  / | / / ____/\n");
+    printf("  / /_/ /  |/ / / __\n");  
+    printf(" / _, _/ /| / /_/ /\n");  
+    printf("/_/ |_/_/ |_/____/\n"); 
+}
+
+
+
+void gameRNG(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
+/*Prosedure untuk bermain game RNG*/  
+{   printRNG();
+    printf("\n");
+    srand(time(NULL));
+    int maxTry = 50;
+    printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak sebuah angka X yang rentangnya berada diantara 1 - 50.\n");
+    int random = rand() % 50 + 1;
+    printf("Jawaban = %d\n",random);
+    int tebakan;
+    int skor = 0;
+    printf("Tebakan : ");
+    STARTCOMMAND();
+    tebakan = WordToInt(currentCMD);
+    int nTebakan = 1;
+    while(tebakan != random && (nTebakan < maxTry)){
+        if(tebakan < random){
+            printf("Lebih Besar\n");
+        }
+        else if(tebakan > random){
+            printf("Lebih Kecil\n");
+        }
+        printf("Tebakan : ");
+        STARTCOMMAND();
+        tebakan = WordToInt(currentCMD);
+        nTebakan++;
+    }
+    if(nTebakan >= maxTry){
+        printf("GAME OVER!\n");
+        skor = maxTry - nTebakan;
+    }
+    else{
+        printf("YA , X Adalah %d\n" , random);
+        skor = maxTry - nTebakan + 1;
+    }
+    printf("skor = %d\n" , skor);
+    score = skor;
+    printf("Score =  %d\n",score);
+    Username(game , ListGames , GameMap , score);
+}
+
+/************************************ DINER DASH *****************************************************/
 void DisplayPesanan(QUEUEDD q)
+/*Prosedure untuk menampilkan tabel pesanan pada game diner dash*/
 {
     printf("Daftar Pesanan\n");
     printf("Makanan | Durasi memasak | Ketahanan | Harga\n");
@@ -852,6 +879,7 @@ void DisplayPesanan(QUEUEDD q)
 }
 
 void DisplayMasakan(QUEUEDD q)
+/*prosedure untuk menampilkan daftar masakan yang berjalan pada game diner dash*/
 {
     printf("Daftar Makanan yang sedang dimasak\n");
     printf("Makanan | Sisa durasi memasak\n");
@@ -877,6 +905,7 @@ void DisplayMasakan(QUEUEDD q)
 }
 
 void DisplaySajian(QUEUEDD q)
+/*menampilkan daftar sajian pada game dinerdash*/
 {
     printf("Daftar Makanan yang dapat disajikan\n");
     printf("Makanan | Sisa ketahanan makanan\n");
@@ -905,27 +934,32 @@ void DisplaySajian(QUEUEDD q)
 
 // Validasi command
 boolean isValid(Kata a)
+/*Fungsi untuk mengecek apakah Input dari user valid pada game Diner Dash*/
 {
     return isCook(a) || isServe(a) || isSkip(a);
 }
 
 boolean isCook(Kata a)
+/*FUNGSI UNTUK MENGECEK APAKAH MASUKAN BERUPA COOK*/
 {
     return wordStringEq(getCommand(a),"COOK");
 }
 
 boolean isServe(Kata a)
+/*FUNGSI UNTUK MENGECEK APAKAH MASUKAN BERUPA SERVE*/
 {
     return wordStringEq(getCommand(a),"SERVE");
 }
 
 boolean isSkip(Kata a)
+/*FUNGSI UNTUK MENGECEK APAKAH MASUKAN BERUPA SKIP*/
 {
     return wordStringEq(getCommand(a),"SKIP");
 }
 
 // Autogenerate pesanan
 void generateFood(Food *pes,int i)
+/*MEMBENTUK SUATU PESANAN*/
 {
     
     pes->Durasi = RANDINTDD(1,5);
@@ -943,6 +977,7 @@ void generateFood(Food *pes,int i)
 
 // Menyalin info makanan
 void copyFood(Food *copy,Food f)
+/*MENGCOPY IDENTITAS PESANAN*/
 {
     copy->Durasi = f.Durasi;
     copy->Harga = f.Harga;
@@ -984,6 +1019,7 @@ void SERVE(QUEUEDD *Pesanan, QUEUEDD *Sajian, int *Saldo)
 }
 
 void dinerdash(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
+/*PROGRAM UTAMA DINER DASH*/
 {
     
     // Kamus
@@ -1187,7 +1223,10 @@ void dinerdash(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score
     Username(game , ListGames , GameMap , score); 
 }
 
-boolean foundmathquiz(ArrayDin ListGames){
+/***************************** SPESIFIKASI DAN FITUR TAMBAHAN PADA MILESTONE 2 *********************/
+boolean foundmathquiz(ArrayDin ListGames)
+/*NYARI APAKAH ADA GAME MATHQUIZ DALAM LIST GAME*/
+{
     boolean found = false;
     int i = 0;
     while(i < (ListGames).Neff && !found)
@@ -1204,7 +1243,9 @@ boolean foundmathquiz(ArrayDin ListGames){
     return found;
 }
 
-void Scoreboard(ArrayDin ListGames , ArrayOfMap GameMap){
+void Scoreboard(ArrayDin ListGames , ArrayOfMap GameMap)
+/*FITUR UNTUK MENAMPILKAN SCOREBOARD UNTUK SETIAP GAME PADA DAFTAR GAME*/
+{
     int idxlistgame;
     for(idxlistgame = 0 ; idxlistgame < ListGames.Neff ; idxlistgame++){
         printf("**** SCOREBOARD GAME %s ****\n", ListGames.A[idxlistgame]);
@@ -1213,7 +1254,9 @@ void Scoreboard(ArrayDin ListGames , ArrayOfMap GameMap){
     }
 }
 
-void Username(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score){
+void Username(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score)
+/*FITUR UNTUK MEMINTA USERNAME PADA SETIAP GAME DAN MEMASUKANNYA KEDALAM ARRAY OF MAP*/
+{
     int index = 0;
     boolean found = false;
     while(!found){
@@ -1248,7 +1291,9 @@ void Username(char*game ,ArrayDin ListGames , ArrayOfMap *GameMap , int score){
 
 
 
-boolean ya(){
+boolean ya()
+/*FUNGDI UNTUK MENGECEK APAKAH MASUKAN BERUPA STRING "YA" */
+{
     boolean value = false;
     boolean valid = false;
     while(!valid){
@@ -1271,7 +1316,9 @@ boolean ya(){
 
 
 
-void ResetScoreboard(ArrayOfMap *M , ArrayDin *ListGames ){
+void ResetScoreboard(ArrayOfMap *M , ArrayDin *ListGames )
+/*FITUR UNTUK MELAKUKAN RESET PADA SCOREBOARD*/
+{
     printf("DAFTAR SCOREBOARD:\n");
     printf("0.ALL\n");
     for (int i = 0; i < (*ListGames).Neff; i++)
@@ -1291,16 +1338,17 @@ void ResetScoreboard(ArrayOfMap *M , ArrayDin *ListGames ){
         else{
             if (input == 0){
                 valid = true;
+                printf("\n");
                 printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL (YA/TIDAK)?\n");
                 if (ya()){
                     for(int i = 0; i < (*ListGames).Neff; i++){
                         CreateEmptyMap(&(M->ArrMap[i]));
-                        if(IsEmptyMap(M->ArrMap[i])){
-                            printf("Scoreboard ke-%d berhasil di-reset.\n",i+1);
-                        }
-                        else{
-                            printf("Scoreboard gagal di-reset.\n");
-                        }
+                        // if(IsEmptyMap(M->ArrMap[i])){
+                        //     printf("Scoreboard ke-%d berhasil di-reset.\n",i+1);
+                        // }
+                        // else{
+                        //     printf("Scoreboard gagal di-reset.\n");
+                        // }
                     }
                     printf("Scoreboard berhasil di-reset.\n");
                 }
@@ -1332,7 +1380,9 @@ void ResetScoreboard(ArrayOfMap *M , ArrayDin *ListGames ){
     }
 }
 
-int KataTerpanjang(Map Game){
+int KataTerpanjang(Map Game)
+/*FUNGSI UNTUK MENCARI KATA TERPANJANG UNTUK KEPERLUAN PRINT SCOREBOARD*/
+{
     int max = 0;
     int i = 0;
     while(i < Game.Count){
@@ -1346,6 +1396,7 @@ int KataTerpanjang(Map Game){
 
 
 void PrintScoreBoard(Map Game)
+/*FUNGSI UNTUK MENAMPILKAN SCOREBOARD*/
 {
     int maxstring = KataTerpanjang(Game);
     if (maxstring == 0)
@@ -1378,7 +1429,9 @@ void PrintScoreBoard(Map Game)
     }
 }
 
-boolean yes(){
+boolean yes()
+/*VALIDASI APAKAH MASUKAN BERUPA STRING "YES" */
+{
 
     boolean value = false;
     boolean valid = false;
@@ -1402,7 +1455,9 @@ boolean yes(){
 }
 
 
-void History(Stack Game , int n){
+void History(Stack Game , int n)
+/*FUNGSI UNTUK MENAMPILKAN RIWAYAT PERMAINAN YANG TELAH DIMAINKAN*/
+{
     if(IsEmptyStack(Game)){
         printf("Belum ada game yang dimainkan\n");
     }
@@ -1434,7 +1489,9 @@ void History(Stack Game , int n){
     }
 }
 
-void ResetHistory (Stack * Game){
+void ResetHistory (Stack * Game)
+/*FITUR UNTUK MENGHAPUS RIWAYAT PERMAINAN YANG TELAH DIMAINKAN*/
+{
     
     if(yes()){
         CreateEmptyStack(Game);
@@ -1457,6 +1514,7 @@ void ResetHistory (Stack * Game){
     }
 }
 
+/***************************************** SNAKE ON METEOR ********************************************/
 void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score){
     printf("============== WELCOME TO ==============\n");
     printf("===== S N A K E  O N  M E T E O R ======\n");
