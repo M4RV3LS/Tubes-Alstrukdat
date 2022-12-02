@@ -195,6 +195,8 @@ void sanspacifist(BinTree* p , char*name , int *score);
 
 void asriel(BinTree p , char*name , int *score);
 
+void welcomingtorielfight();
+
 void torielfight(int *score , char*Username);;
 /* Permainan Rock Paper Scissor*/
 

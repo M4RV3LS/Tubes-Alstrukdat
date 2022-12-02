@@ -161,7 +161,7 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
         int nGame = WordToInt(currentWord);
         //nGame -= 10;
         //printf("%s\n",currentWord);
-        printf("%d\n" , nGame);
+        //printf("%d\n" , nGame);
         char string[NMax];
         for (int i = 1; i <= nGame; i++){
             char *gamename = (char*) malloc (currentWord.Length * sizeof(char));
@@ -183,7 +183,7 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
         /*GAME HISTORY*/
         ADVLine(); //printf("%s\n" , currentCMD);
         nGame = WordToInt(currentWord);
-        printf("%d\n" , nGame);
+        //printf("%d\n" , nGame);
         char *kata;
         //printf("Ini Sebelum Reverse\n");
         for (int i = 1; i <= nGame; i++){
@@ -207,7 +207,7 @@ void LOADFILE(ArrayDin *ListGames , Stack *GameHistory , char* filename ,ArrayOf
             CreateEmptyMap(&Temp);
             ADVLine(); //printf("%s\n" , currentCMD);
             nGame = WordToInt(currentWord);
-            printf("%d\n" , nGame);
+            //printf("%d\n" , nGame);
             idxMap = 0;
             while(idxMap < nGame){
                 
@@ -3146,10 +3146,25 @@ void undertale(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int nilai)
     Username(game , ListGames , GameMap , nilai);
 }
 
+void welcomingtorielfight(){
+    printf("\n");
+    Axe();
+    printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
+    printf("================= WELCOME TO YOUR FIRST FIGHT ================\n");
+    printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
+    printf("\n");
+    int a = 220;
+    int b = 219;
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a);
+    printf("%c To continue to the next stage, you must win these mini games in the form of a rock / paper / scissors game %c\n",b,b);
+    printf("%c                                                  ! GOOD LUCK !                                             %c\n",b,b);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a);
 
+}
 void torielfight(int *score , char*Username)
 /*Melakukan permainan Rock , Paper , Scissors dimana user akan menginput Rock , Paper , atau scissors*/
 {
+    welcomingtorielfight();
     int skor = 100;
     int langkah = 0;
     Map RPS;
@@ -3170,7 +3185,7 @@ void torielfight(int *score , char*Username)
         random = randint(1, 3);
         //printf("random integer = %d\n",random);
         //char *RPSopponet = copystr(RPS.Elements[random - 1].Nama);
-        printf("RPSOpponet = %s\n",RPS.Elements[random - 1].Nama);
+        printf("To make it easier for you to answer, here's your opponent's answer = %s\n",RPS.Elements[random - 1].Nama);
             
             printf("rock / paper / scissors \n");
             printf("Enter your choice:");
@@ -3215,7 +3230,7 @@ void torielfight(int *score , char*Username)
                 }
             }
             else{
-                printf("Inputan Salah! Silahkan Input kembali berupa rock / paper / scissor\n");
+                printf("Wrong Input! Please input again in the form of rock / paper / scissor\n");
             }
         
     }
