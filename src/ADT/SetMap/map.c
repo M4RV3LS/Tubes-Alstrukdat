@@ -181,32 +181,3 @@ void SortMap(Map *M){
 	}
 }
 
-// int main()
-// {
-//     Map M;
-//     CreateEmpty(&M);
-// 	printf("oi\n");
-//     Insert(&M, "Akk", 2);
-//     Insert(&M, "Bkk", 1);
-//     Insert(&M, "Ckk", 4);
-//     Insert(&M, "Dkk", 3);
-//     Insert(&M, "Ekk", 8);
-//     Insert(&M, "Fkk", 7);
-//     Insert(&M, "Gkk", 6);
-//     Insert(&M, "Hkk", 5);
-//     Insert(&M, "Ikk", 5);
-// 	SortMap(&M);
-// 	printf("\n");
-// 	printf("%d\n",M.Elements[0].Skor);
-//     printf("Isi Map M:\n");
-//     PrintMap(M);
-// 	printf("\n");
-// 	printf("%d\n",M.Count);
-// 	Delete(&M , "Akk");
-// 	printf("%d\n",M.Count);
-// 	PrintMap(M);
-// 	printf("\n");
-// 	valuetype Score = Skor(M , "Ikk");
-// 	printf("Ini Skor untuk nilai Ikk = %d",Score);
-//     return 0;
-// }

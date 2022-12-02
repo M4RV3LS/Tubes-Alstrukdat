@@ -2099,16 +2099,15 @@ void createStick(int jml_pir, Disk *a)
 }
 
 void scoring(int steps, int* score, int jml_disk)
-/*PROSEDURE MEMBUAT SKOR PADA TOWER*/
 {
     int ms = pow(2,jml_disk)-1 ;//minimum steps
-    int a = 10;
+    int a = jml_disk*2;
     if (steps>ms)
     {
         steps-=ms;
         while (steps>0)
         {
-            steps-=3;
+            steps--;
             a--;
         }
     }
@@ -2408,6 +2407,7 @@ void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
         printf("3. Kamu hanya bisa memindahkan piringan ke tower kosong atau yang piringan teratasnya ukurannya\n");
         printf("   lebih besar dari piringan yang mau dipindahkan.\n");
         printf("4. Input untuk tower harus berupa huruf kapital A,B, atau C.\n");
+        printf("5. Skor maksimal yang didapatkan adalah dua kali jumlah disk.\n");
         printf("\n");
         printf("Selamat bermain!\n");
     }

@@ -186,27 +186,3 @@ void DeleteLastArrayOfMap(ArrayOfMap *T)
 /* I.S. L terdefinisi, tidak kosong. */
 /* F.S. F diset dengan elemen terakhir L, elemen terakhir L dihapus dari L. */
 
-// int main(){
-//     ArrayOfMap T;
-//     MakeEmptyArrayOfMap(&T);
-//     Map M1;
-//     Map M2;
-//     CreateEmptyMap(&M1);
-//     CreateEmptyMap(&M2);
-//     Insert(&M1, "test1", 1);
-//     Insert(&M1, "test2", 2);
-//     Insert(&M2, "test3", 3);
-//     Insert(&M2, "test4", 4);
-//     InsertFirstArrayOfMap(&T, M1);
-//     InsertLastArrayOfMap(&T, M2);
-//     printf("%s %d\n" , GetElmtArrayOfMap(T, 0).Elements[0].Nama, GetElmtArrayOfMap(T, 0).Elements[0].Skor);
-//     CreateEmptyMap(&(T.ArrMap[0]));
-//     printf("%s %d\n" , GetElmtArrayOfMap(T, 0).Elements[0].Nama, GetElmtArrayOfMap(T, 0).Elements[0].Skor);
-//     if(IsEmptyMap(T.ArrMap[0])){
-//         printf("M1 kosong\n");
-//     }
-//     else{
-//         printf("M1 tidak kosong\n");
-//     }
-//     return 0;
-// }
