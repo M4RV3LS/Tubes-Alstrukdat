@@ -100,28 +100,3 @@ Stack ReverseStack(Stack in){
 }
     
 
-// int main(){
-//     Stack S;
-//     char *TOP;
-//     CreateEmptyStack(&S);
-//     Push(&S,"Marvel");
-//     Push(&S,"Tim");
-//     Push(&S,"Jodi");
-//     Push(&S,"lim");
-//     DisplayStack(S , Top(S));
-//     printf("\n");
-//     Stack out;
-//     out = ReverseStack(S);
-//     printf("Hasil Reverse ; \n");
-//     DisplayStack(out , Top(out));
-//     printf("\n");
-//     // Pop(&S,&TOP);
-//     // printf("TOP Yang di Pop adalah : %s\n" , TOP);
-//     // DisplayStack(S , Top(S));
-//     // printf("\n");
-//     // Pop(&S,&TOP);
-//     // Pop(&S,&TOP);
-//     // Pop(&S,&TOP);
-//     // DisplayStack(S , Top(S));
-//     return 0;
-// }

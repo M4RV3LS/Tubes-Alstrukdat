@@ -404,23 +404,12 @@ boolean isInteger(Word Kata){
         }
        
     while (i < panjang && Kata.TabWord[i] != '\n'){ 
-        //int kata = Kata.TabWord[i] - '\0';
-        //printf("masuk2\n");
         if(Kata.TabWord[i] == '1'|| Kata.TabWord[i] == '2'|| Kata.TabWord[i] == '3'|| Kata.TabWord[i] == '5'|| Kata.TabWord[i] == '4' ||
         Kata.TabWord[i] == '6'|| Kata.TabWord[i] == '7'|| Kata.TabWord[i] == '8'|| Kata.TabWord[i] == '9'|| Kata.TabWord[i] == '0'){
             isInt = true;
             //printf("True = %c\n",Kata.TabWord[i]);
         }
         
-        // else{
-        //     isInt = false;
-        //     printf("False = %c\n",Kata.TabWord[i]);
-        //     return isInt;
-        // }
-        //if(Kata.TabWord[i] == 1|| Kata.TabWord[i] == 2|| Kata.TabWord[i] == 3|| Kata.TabWord[i] == 5||
-        //Kata.TabWord[i] == 6 || Kata.TabWord[i] == 7 || Kata.TabWord[i] == 8 || Kata.TabWord[i] == 9 || Kata.TabWord[i] == 0){
-            //isInt = true;
-            //printf("benar\n");
         
         else{
             //printf("False = %c\n",Kata.TabWord[i]);
