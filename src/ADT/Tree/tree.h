@@ -1,95 +1,69 @@
+/* ADT POHON BINER */
+
 #ifndef pohon_h
 #define pohon_h
 
-/* ADT Pohon Biner */
-
 #include <stdio.h>
 #include <stdlib.h>
-#include "../boolean.h"
+#include "boolean.h"
+#include "mesinkar.h"
 
-/* Modul lain yang digunakan */
-#include "../DinerDash/mesinkar.h"
+#define Nil NULL
 
-#define NilBuatTree NULL
-//typedef char Infotype
-
-/*** Definisi Type Pohon Biner ***/
+// Definisi Tipe Pohon Biner
 typedef char Infotype;
-typedef struct tNode *AddressTree;
-typedef struct tNode {
+typedef struct treeNode *AddressTree;
+typedef struct treeNode {
 	Infotype Info;
 	AddressTree Left;
 	AddressTree Right;
 } Node;
 typedef AddressTree BinTree;
 
-/*
-	BEBERAPA CATATAN
-	1. Pohon merupakan pohon biner dengan representasi karakter
-	2. pita karakter merupakan stdin (di-supply dari stdin)
-*/
-
 /*** PROTOTYPE ***/
-/*** Selektor ***/
-#define Akar(P) (P)->Info
-/* Mengirimkan NilBuatTreeai Akar pohon biner P */
 
-#define Left(P) (P)->Left
-/* Mengirimkan Anak Kiri pohon biner P */
+//SELEKTOR
+#define Akar(P) (P)->Info //Mengirimkan info pohon
+#define Left(P) (P)->Left //Mengirimkan alamat dari cabang kiri suatu pohon
+#define Right(P) (P)->Right //Mengirimkan alamat dari cabang kanan suatu pohon
 
-#define Right(P) (P)->Right
-/* Mengirimkan Anak Kanan pohon biner P */
-
-/*** Konstruktor ***/
+//KONSTRUKTOR 
 BinTree Tree (Infotype Akar, BinTree L, BinTree R);
-/* Menghasilkan sebuah pohon biner dari A, L, dan R, jika alokasi berhasil */
-/* Menghasilkan pohon kosong (NilBuatTree) jika alokasi gagal */
+// Menghasilkan sebuah pohon biner dari Akar, L, dan R, jika alokasi berhasil
+// Menghasilkan pohon kosong (Nil) jika alokasi gagal
 
 void MakeTree (Infotype Akar, BinTree L, BinTree R, BinTree *P);
-/* I.S. Sembarang */
-/* F.S. Menghasilkan sebuah pohon P */
-/* Menghasilkan sebuah pohon biner P dari A, L, dan R, jika alokasi berhasil */
-/* Menghasilkan pohon P yang kosong (NilBuatTree) jika alokasi gagal */
+// I.S. Sembarang
+// F.S. Menghasilkan sebuah pohon P
+// Menghasilkan sebuah pohon biner P dari Akar , L, dan R, jika alokasi berhasil
+// Menghasilkan pohon P yang kosong (Nil) jika alokasi gagal
 
-/*** Predikat-Predikat Penting ***/
+//PREDIKAT
 boolean IsTreeEmpty (BinTree P);
-/* Mengirimkan true jika P adalah pohon biner kosong */
+// Mengirimkan true jika P adalah pohon biner kosong
 
 boolean IsOneElmt (BinTree P);
 /* Mengirimkan true jika P adalah pohon biner tidak kosong dan hanya memiliki 1
 elemen */
 
-boolean IsUnerLeft (BinTree P);
-/* Mengirimkan true jika pohon biner tidak kosong P adalah pohon unerleft: hanya
-mempunyai subpohon kiri */
-
 boolean IsUnerRight (BinTree P);
-/* Mengirimkan true jika pohon biner tidak kosong P adalah pohon unerright: hanya
+/* Mengirimkan true jika pohon biner tidak kosong P hanya
 mempunyai subpohon kanan */
 
+boolean IsUnerLeft (BinTree P);
+/* Mengirimkan true jika pohon biner tidak kosong P hanya
+mempunyai subpohon kiri */
+
 boolean IsBiner (BinTree P);
-/* Mengirimkan true jika pohon biner tidak kosong P adalah pohon biner: mempunyai
+/* Mengirimkan true jika pohon biner tidak kosong P mempunyai
 subpohon kiri dan subpohon kanan */
 
-/*** Searching ***/
+//SEARCHING
 boolean SearchTree (BinTree P, Infotype X);
-/* Mengirimkan true jika ada node dari P yang berNilBuatTreeai X */
+/* Mengirimkan true jika ada node dari P yang bernilai X */
 
-/*** Fungsi-Fungsi Lain ***/
-int NbElmtOfTree (BinTree P);
-/* Mengirimkan banyaknya elemen (node) pohon biner P */
-
-int NbDaun (BinTree P);
-/* Mengirimkan banyaknya daun (node) pohon biner P */
-
-boolean IsSkewLeft (BinTree P);
-/* Mengirimkan true jika P adalah pohon condong kiri */
-
-boolean IsSkewRight (BinTree P);
-/* Mengirimkan true jika P adalah pohon condong kanan */
-
-/*** Operasi lain ***/
-void AddDaunTerkiri (BinTree *P, Infotype X);
+//OPERASI ADDITION DAN DELETION
+void AddDaunLeft (BinTree *P, Infotype X);
 /* I.S. P boleh kosong */
 /* F.S. P bertambah simpulnya, dengan X sebagai simpul daun terkiri */
 
@@ -98,13 +72,23 @@ void AddDaun (BinTree *P, Infotype X, Infotype Y, boolean Kiri);
 /* F.S. P bertambah simpulnya, dengan Y sebagai anak kiri X (jika Kiri = true), atau
 sebagai anak k@anan X (jika Kiri = false) */
 
-void DelDaunTerkiri (BinTree *P, Infotype *X);
+void DelDaunLeft (BinTree *P, Infotype *X);
 /* I.S. P tidak kosong */
 /* F.S. P dihapus daun terkirinya, dan didealokasi, dengan X adalah info yang semula
 disimpan pada daun terkiri yang dihapus */
 
 void DelDaun (BinTree *P, Infotype X);
 /* I.S. P tidak kosong, X adalah salah satu daun */
-/* F.S. Semua daun berNilBuatTreeai X dihapus dari P */
+/* F.S. Semua daun bernilai X dihapus dari P */
+
+//FUNGSI TAMBAHAN
+int NbElmt (BinTree P);
+/* Mengirimkan banyaknya elemen (node) pohon biner P */
+
+int NbLeaf (BinTree P);
+/* Mengirimkan banyaknya daun (node) pohon biner P */
+
+void printTree (BinTree P);
+/* Mencetak elemen Tree ke layar */
 
 #endif
