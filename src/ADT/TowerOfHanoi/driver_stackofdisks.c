@@ -4,7 +4,7 @@
 
 int main()
 {
-    Stack s;
+    STACKSS s;
     CreateEmptySS(&s);
 
     //Test isempty
