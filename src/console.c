@@ -1868,11 +1868,14 @@ void mainHangman(int*kesempatan, char*Kata)
     Kata[string_length(Kata)] = '\0';
 
     char huruf;
-    char GuessedHuruf[10]; GuessedHuruf[0] = '\0';
+    char *GuessedHuruf = (char*)malloc(sizeof(char)*string_length(Kata));
+    GuessedHuruf[0] = '\0';
+    //printf("%d\n", string_length(Kata));
 
-    char GuessedKata[20];
+    char *GuessedKata = (char*)malloc(sizeof(char)*string_length(Kata));
     for (int i = 0; i < string_length(Kata); i++){
         GuessedKata[i] = '_';
+        //printf("%c ", GuessedKata[i]);
     }
     GuessedKata[panjang_kata(Kata)] = '\0';
 
@@ -3143,6 +3146,7 @@ void undertale(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int nilai)
     printf("Remember that every choice you make in life Matters.\n");
     printf("\n");
 
+    nilai = score;
     Username(game , ListGames , GameMap , nilai);
 }
 
@@ -3155,10 +3159,10 @@ void welcomingtorielfight(){
     printf("\n");
     int a = 220;
     int b = 219;
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a);
+    // printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a);
     printf("%c To continue to the next stage, you must win these mini games in the form of a rock / paper / scissors game %c\n",b,b);
     printf("%c                                                  ! GOOD LUCK !                                             %c\n",b,b);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a);
+    // printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",b,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,b);
 
 }
 void torielfight(int *score , char*Username)
@@ -3476,7 +3480,7 @@ void papyrusfight(int *score , char*Username)
         papyrus = mainpapyrus();
     }
     //printf("Skor math quiz %d\n",papyrus);
-    (*score) += papyrus;
+    (*score) = (*score) + papyrus;
 }
 
 void sansfight(int *score , char *Username)
