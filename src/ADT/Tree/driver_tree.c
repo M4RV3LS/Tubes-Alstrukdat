@@ -46,7 +46,7 @@ int main()
 	AddDaun(&test,'A','B',true);
 
 	//Test nbelmt dan nbdaun, wanted answer: 3 dan 2
-	printf("Jumlah elemen pohon adalah: %d\n", NbElmt(test));
+	printf("Jumlah elemen pohon adalah: %d\n", NbElmtTree(test));
 	printf("Jumlah daun adalah: %d\n", NbLeaf(test));
 
 	//Test search

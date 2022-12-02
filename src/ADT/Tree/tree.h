@@ -5,10 +5,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "boolean.h"
-#include "mesinkar.h"
+#include "../boolean.h"
+#include "../DinerDash/mesinkar.h"
 
-#define Nil NULL
+#define NILBUATTREE NULL
 
 // Definisi Tipe Pohon Biner
 typedef char Infotype;
@@ -30,13 +30,13 @@ typedef AddressTree BinTree;
 //KONSTRUKTOR 
 BinTree Tree (Infotype Akar, BinTree L, BinTree R);
 // Menghasilkan sebuah pohon biner dari Akar, L, dan R, jika alokasi berhasil
-// Menghasilkan pohon kosong (Nil) jika alokasi gagal
+// Menghasilkan pohon kosong (NILBUATTREE) jika alokasi gagal
 
 void MakeTree (Infotype Akar, BinTree L, BinTree R, BinTree *P);
 // I.S. Sembarang
 // F.S. Menghasilkan sebuah pohon P
 // Menghasilkan sebuah pohon biner P dari Akar , L, dan R, jika alokasi berhasil
-// Menghasilkan pohon P yang kosong (Nil) jika alokasi gagal
+// Menghasilkan pohon P yang kosong (NILBUATTREE) jika alokasi gagal
 
 //PREDIKAT
 boolean IsTreeEmpty (BinTree P);
@@ -60,7 +60,7 @@ subpohon kiri dan subpohon kanan */
 
 //SEARCHING
 boolean SearchTree (BinTree P, Infotype X);
-/* Mengirimkan true jika ada node dari P yang bernilai X */
+/* Mengirimkan true jika ada node dari P yang berNILBUATTREEai X */
 
 //OPERASI ADDITION DAN DELETION
 void AddDaunLeft (BinTree *P, Infotype X);
@@ -79,10 +79,10 @@ disimpan pada daun terkiri yang dihapus */
 
 void DelDaun (BinTree *P, Infotype X);
 /* I.S. P tidak kosong, X adalah salah satu daun */
-/* F.S. Semua daun bernilai X dihapus dari P */
+/* F.S. Semua daun berNILBUATTREEai X dihapus dari P */
 
 //FUNGSI TAMBAHAN
-int NbElmt (BinTree P);
+int NbElmtTree (BinTree P);
 /* Mengirimkan banyaknya elemen (node) pohon biner P */
 
 int NbLeaf (BinTree P);
