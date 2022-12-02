@@ -1515,7 +1515,9 @@ void ResetHistory (Stack * Game)
 }
 
 /***************************************** SNAKE ON METEOR ********************************************/
-void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score){
+void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
+/*MAIN PROGRAM SNAKE ON METEOR*/
+{
     printf("============== WELCOME TO ==============\n");
     printf("===== S N A K E  O N  M E T E O R ======\n");
 	printf("========================================\n");
@@ -1760,11 +1762,9 @@ void SnakeOnMeteor(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int s
     Username(game , ListGames , GameMap , score);
 }
 
-
-
-
-
+/************************************* HANGMAN *********************************************/
 void Hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
+/*MAIN PROGRAM HANGMAN*/
 {
     // pilihan menu
     ListKata ListKata;
@@ -1863,6 +1863,7 @@ void Hangman(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
 }
 
 void mainHangman(int*kesempatan, char*Kata)
+/*pROSEDURE MEMAINKAN GAME HANGMAN*/
 {
     Kata[string_length(Kata)] = '\0';
 
@@ -1941,6 +1942,7 @@ void mainHangman(int*kesempatan, char*Kata)
 }
 
 void loadkata(ListKata *ListKata, char*filename)
+/*PROSEDURE LOAD KATA DI KAMUS HANGMAN*/
 {
     char path[NMax];
     stringConcat("ADT/Hangman/",filename,path);
@@ -1953,6 +1955,7 @@ void loadkata(ListKata *ListKata, char*filename)
 }
 
 void saveListKata(ListKata ListKata, char*filename)
+/*PROSEDURE SAVA KATA YANG INGIN DITAMBAHKAN KE KAMUS HANGMAN*/
 {
     FILE* fp; 
     char path[50]; 
@@ -1977,12 +1980,14 @@ void saveListKata(ListKata ListKata, char*filename)
 }
 
 boolean isTebakanValid(Word word)
+/*CEK VALIDITAS INPUT DARI USER*/
 {
     if (word.Length =! 1) return false;
     else true;
 }
 
 boolean isHurufAda(char huruf, char* kata)
+/*CEK VALIDITAS APAKAH HURUF ADA DI KATA YANG DITEBAK*/
 {
     int i = 0;
     boolean found = false;
@@ -1995,6 +2000,7 @@ boolean isHurufAda(char huruf, char* kata)
 }
 
 void underscoreToHuruf(char huruf, char* GuessedKata, char* kata)
+/*MERUBAH UNDER SCORE MENJADI HURUF YANG BENAR DITEBAK*/
 {
     for (int i = 0; i < string_length(kata); i++)
     {
@@ -2005,6 +2011,7 @@ void underscoreToHuruf(char huruf, char* GuessedKata, char* kata)
 }
 
 void PrintCharWithSpace(char* kata, int len)
+/*MENCETAK CHARACTER DENGAN TAMBAHAN BLANK*/
 {
 	for (int i = 0; i < len; ++i)
 	{
@@ -2014,6 +2021,7 @@ void PrintCharWithSpace(char* kata, int len)
 }
 
 void PrintCharNoSpace(char* kata, int len)
+/*MENCETAK CHARACTER TANPA TAMBAHAN BLANK*/
 {
 	for (int i = 0; i < len; ++i)
 	{
@@ -2021,13 +2029,16 @@ void PrintCharNoSpace(char* kata, int len)
 	}
 }
 
-int panjang_kata(char*s){
+int panjang_kata(char*s)
+/*FUNGS UNTUK MENYIMPAN PANJANG KATA*/
+{
     int i;
     for (i = 0; s[i] != '\0'; ++i);
     return i;
 }
 
 void InsertKataLast(char huruf, char*kata)
+/*PROSEDURE MELAKUKAN INSERT KATA TERAKHIR*/
 {
     int n = panjang_kata(kata);
     kata[n] = huruf;
@@ -2035,6 +2046,7 @@ void InsertKataLast(char huruf, char*kata)
 }
 
 char* wordToStr(Word word)
+/*FUNGSI UNTUK MERUBAH TYPE WORD MENJADI STRING / CHAR * */
 {
     char*str = (char *)malloc(sizeof(char) * word.Length);
 
@@ -2050,10 +2062,9 @@ char* wordToStr(Word word)
 }
 
 
-
-
-
+/******************************************** TOWER OF HANOI **************************************/
 void createDisk(int i,int jml_pir, Disk* a)
+/*PROSEDURE MEMBUAT PIRINGAN*/
 {
     int width = jml_pir*2-1;
     int border = (width-(i*2-1))/2;
@@ -2071,6 +2082,7 @@ void createDisk(int i,int jml_pir, Disk* a)
 }
 
 void createStick(int jml_pir, Disk *a)
+/*PROSEDURE MEMBUAT STICK PADA TOWER OF HANOI*/
 {
     int width = jml_pir*2-1;
     int ctr;
@@ -2087,6 +2099,7 @@ void createStick(int jml_pir, Disk *a)
 }
 
 void scoring(int steps, int* score, int jml_disk)
+/*PROSEDURE MEMBUAT SKOR PADA TOWER*/
 {
     int ms = pow(2,jml_disk)-1 ;//minimum steps
     int a = 10;
@@ -2109,6 +2122,7 @@ void scoring(int steps, int* score, int jml_disk)
 }
 
 void cekValiditas(char tow1, char tow2, STACKSS a, STACKSS b, STACKSS c, boolean *valid)
+/* CEK VALIDITAS INPUT USER AGAR TIDAK MELANGGAR CONSTRAINT*/
 {
     if ((tow1=='A' || tow1=='B' || tow1=='C') && (tow2=='A' || tow2=='B' || tow2=='C'))
     {
@@ -2221,6 +2235,7 @@ void cekValiditas(char tow1, char tow2, STACKSS a, STACKSS b, STACKSS c, boolean
 }
 
 boolean win(STACKSS c, int jml_pir)
+/*CEK KONDISI MENANG*/
 {
     // Create winning tower
     int x = jml_pir;
@@ -2253,6 +2268,7 @@ boolean win(STACKSS c, int jml_pir)
 }
 
 void displaystacks(STACKSS a, STACKSS b, STACKSS c, int jml_pir)
+/*MENAMPILKAN STACK TOWER OF HANOI*/
 {
     int i = jml_pir-1;
 
@@ -2325,6 +2341,7 @@ void displaystacks(STACKSS a, STACKSS b, STACKSS c, int jml_pir)
 }
 
 void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int score)
+/*MAIN PROGRAM*/
 {
     // Kamus
     int countsteps = 0;
@@ -2536,7 +2553,9 @@ void TowerOfHanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
 //     while (clock() < start_time + milli_seconds);
 // }
 
+/*************************************** UNDERTALE ****************************************/
 void toriel(BinTree* p , char*name , int *score)
+/*PROSEDURE MENJALANKAN CERITA TORIEL*/
 {
     printf("              C H A P T E R - 1 , T O R I E L            \n");
     printf("************************************************************\n");
@@ -2635,6 +2654,7 @@ void toriel(BinTree* p , char*name , int *score)
 }
 
 void papyrus(BinTree* p , char*name , int *score)
+/*PROSEDURE MENJALANKAN CERITA PAPYRUS*/
 {   printf("\n");
     printf("              C H A P T E R - 2 , P A P Y R U S           \n");
     printf("************************************************************\n");
@@ -2722,6 +2742,7 @@ void papyrus(BinTree* p , char*name , int *score)
 }
 
 void lastcorridor()
+/*PROSEDURE MENJALANKAN CERITA UNTUK LAST CORRIDOR*/
 {
     printf("        C H A P T E R - 3 , L A S T - C O R R I D O R       \n");
     printf("************************************************************\n");
@@ -2755,6 +2776,7 @@ void lastcorridor()
 }
 
 void megalovania(BinTree* p , char*name , int*score)
+/*PROSEDURE UNTUK MENJALANKAN CERITA DENGAN KARAKTER MEGALOVANIA*/
 {
     lastcorridor();
 
@@ -2833,6 +2855,7 @@ void megalovania(BinTree* p , char*name , int*score)
 }
 
 void sansneutral(BinTree* p , char*name , int *score)
+/*PROSEDURE UNTUK MENJALANKAN CERITA SANSNEUTRAL*/
 {
     lastcorridor();
     printf("\n");
@@ -2883,6 +2906,7 @@ void sanspacifist(BinTree* p ,char*name , int *score)
 }
 
 void asriel(BinTree p , char*name , int *score)
+/*PROSEDURE UNTUK MENJALANKAN CHAPTER TERAKHIR YAITU ASRIEL */
 {
     printf("              C H A P T E R - 4 , T H E  E N D   \n");
     printf("************************************************************\n");
@@ -2971,6 +2995,7 @@ boolean end(char a)
 }
 
 void beginning()
+/*PROSEDUR UNTUK MENJALANKAN AWAL DARI UNDERTALE*/
 {
     printf("                 T H E - B E G I N N I N G                  \n");
     printf("************************************************************\n");
@@ -2983,6 +3008,7 @@ void beginning()
     printf("\n");
 }
 void createRoute(BinTree* route, BinTree* l, BinTree* r)
+/*MEMBUAT CABANG CERITA*/
 {
     MakeTree('A',*l,*r,route);
     AddDaun (route,'A','B', true);
@@ -3002,6 +3028,7 @@ void createRoute(BinTree* route, BinTree* l, BinTree* r)
 }
 
 void undertale(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int nilai)
+/*MAIN PROGRAM GAME UNDERTALE*/
 {
     printf(" _______ _______ _____  _______ ______ _______ _______ _____   _______ \n");
     printf("|   |   |    |  |     \\    ___|   __ \\_    _|   _   |     |_|    ___|\n");
@@ -3119,9 +3146,7 @@ void undertale(char*game , ArrayDin ListGames , ArrayOfMap *GameMap , int nilai)
     Username(game , ListGames , GameMap , nilai);
 }
 
-// void WelcomingTorielFight(){
-//     printf("\n");
-// }
+
 void torielfight(int *score , char*Username)
 /*Melakukan permainan Rock , Paper , Scissors dimana user akan menginput Rock , Paper , atau scissors*/
 {
@@ -3198,7 +3223,9 @@ void torielfight(int *score , char*Username)
     printf("skor RPS %d\n", skor);
     (*score) += skor;
 } 
-void WelcomingGamePapyrus(){
+void WelcomingGamePapyrus()
+/*PROSEDUR MENJALANKAN AWAL MINIGAME PAPYRUS*/
+{
 printf("     __________ \n");
 printf("    | ________ |\n");
 printf("    ||12345678||\n");
@@ -3220,6 +3247,8 @@ printf("%c Prepare Your Calculator %c\n",rs , ls);
 printf("%c To win this game, you must maintain your health so that it is not below 70 %c\n",rs , ls);
 printf("%c Every Mistake will reduce your health by 10 , so make sure there are no mistakes %c\n",rs , ls);
 }
+
+
 int mainpapyrus()
 /*Basic nya mirip mathquiz cuman bedanya semua mode pertambahan , perkalian , dan pengurangan di jadiin satu 
 dan dipisahkan dengan 3 stage berbeda*/
@@ -3536,7 +3565,9 @@ void sansfight(int *score , char *Username)
     //printf("Skor Hitung Duit %d\n",skor);
     (*score) += skor;
 }
-void CreateRandomPointAsriel(Point *P){
+void CreateRandomPointAsriel(Point *P)
+/*MEMBUAT TITIK RANDOM UNTUK GAME ASIREL*/
+{
     int x = randint(0, 4);
     int y = randint(0, 4);
     CreatePoint(P , x, y);
@@ -3561,7 +3592,9 @@ void PrintAlphabet(Map MiniGames , int index , char*input)
     }
 }
 
-void Axe(){
+void Axe()
+/*PROSEDURE UNTUK MENAMPILKAN ASCII KAPAK*/
+{
     printf(" _,-,\n");
     printf("T_  |\n");
     printf("||`-'\n");
@@ -3572,7 +3605,9 @@ void Axe(){
 
 
 
-void WelcomingAsrielGames(){
+void WelcomingAsrielGames()
+/*PROSEDURE MENAMPILKAN WELCOMING MINIGAMES ASRIEL*/
+{
 printf("\n");
 printf("           *O*                                                   \n");
 printf("           |X|_                                                  \n");
@@ -3591,7 +3626,9 @@ printf("==================================================================\n");
 printf ("\n");
 }
 
-void AsrielGameRule(){
+void AsrielGameRule()
+/*PROSEDURE MENAMPILKAN RULE DARI MINIGAMES ASRIEL*/
+{
 printf("******************************************************************\n");
 printf("*                       RULES OF THE GAME                        *\n");
 printf("******************************************************************\n");
@@ -3604,7 +3641,10 @@ printf("\n");
 printf("~~~~~~~~~~~~~~~~~~~~~~~~~~ GOOD LUCK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 printf("\n");
 }
-void PrintPetaAsriel(Map MiniGames){
+
+void PrintPetaAsriel(Map MiniGames)
+/*PROSEDURE MENAMPILKAN PETA TREASURE HUNT PADA MINIGAMES ASRIEL*/
+{
     printf("Here is the game map\n");
     int i,j;
     int alphabet = 0;
@@ -3758,6 +3798,7 @@ void PrintPetaAsriel(Map MiniGames){
 }
 
 void InsertMapMiniGames(Map *M, keytype k, valuetype v)
+/*MELAKUKAN INSERT IDENTITAS BOX PADA MINI GAMES ASRIEL*/
 {
 	if(IsEmptyMap(*M)){
 		(*M).Elements[(*M).Count].Nama = k;
@@ -3773,7 +3814,9 @@ void InsertMapMiniGames(Map *M, keytype k, valuetype v)
 	}
 }
 
-int mainasriel(char*Username){
+int mainasriel(char*Username)
+/*FUNGSI MEJALANKAN GAME ASRIEL*/
+{
     WelcomingAsrielGames();
     AsrielGameRule();
     int skor = 100;
@@ -3936,7 +3979,9 @@ int mainasriel(char*Username){
     return skor;
 }
 
-void asrielfight(int *score , char *Username){
+void asrielfight(int *score , char *Username)
+/*PROSEDURE MENJALANKAN MAIN PROGRAM MINIGAMES ASRIEL*/
+{
     int skor = mainasriel(Username);
     while (skor == 0){
         printf("\n You lost, please try again !\n");
