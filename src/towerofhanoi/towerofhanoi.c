@@ -36,13 +36,13 @@ void createStick(int jml_pir, Disk *a)
 void scoring(int steps, int* score, int jml_disk)
 {
     int ms = pow(2,jml_disk)-1 ;//minimum steps
-    int a = 10;
+    int a = jml_disk*2;
     if (steps>ms)
     {
         steps-=ms;
         while (steps>0)
         {
-            steps-=3;
+            steps--;
             a--;
         }
     }
