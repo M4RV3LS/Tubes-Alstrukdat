@@ -337,6 +337,7 @@ void towerofhanoi(char* game , ArrayDin ListGames , ArrayOfMap *GameMap , int sc
         printf("3. Kamu hanya bisa memindahkan piringan ke tower kosong atau yang piringan teratasnya ukurannya\n");
         printf("   lebih besar dari piringan yang mau dipindahkan.\n");
         printf("4. Input untuk tower harus berupa huruf kapital A,B, atau C.\n");
+        printf("5. Skor maksimal yang didapatkan adalah dua kali jumlah disk.\n");
         printf("\n");
         printf("Selamat bermain!\n");
     }
